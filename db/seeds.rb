@@ -104,7 +104,7 @@ end
 
 ########### STORE #################
 
-(0..10).each do |i|
+(0..11).each do |i|
   store = Store.new(
     name: Faker::Company.name,
     address_id:rand(0..20),
@@ -201,6 +201,57 @@ puts "user DONE"
   storeproduct.save
   puts "store_product seed n° #{i}"
 end 
+########### EVENT 4th #################
 
 
+(0..25).each do |i|
+  startdate = rand(t1..t2)
+
+  event = Event.new(
+  title: Faker::Restaurant.name,
+  description: Faker::Restaurant.description,
+  start_date: startdate, 
+  end_date: startdate + rand(900..7600),
+  #address_id: rand(0..20), 
+  creator_id: rand(1..20), 
+  #event_type_id:rand(0..8),
+  )
+  event.save
+
+  puts "event seed n° #{i}"
+end
+
+########### COMMENT #################
+
+(0..25).each do |i|
+  comment = Comment.new(
+    text:Faker::GreekPhilosophers.quote,
+    user_id:rand(0..20),
+    event_id:rand(0..25),
+  )
+  comment.save
+  puts "comment seed n° #{i}"
+end
+
+########### APPOINTMENT #################
+  t0 = Time.parse("2019-11-13 00:00:00")
+  timenow = Time.now
+  (0..25).each do |i|
+      startdate = rand(t0..t2)
+      if startdate < timenow
+          app_status = "Past appointment"  
+      else
+          app_status = "Future appointment"
+      end
+    appointment = Appointment.new(
+    user_id:rand(0..20),
+    event_id:rand(0..25),
+    start_date: startdate,
+    duration:rand(40..300),
+    status: app_status,
+    points:rand(5..100))
+    appointment.save
+    
+  puts "Appointment seed n°#{i} done"
+  end
 
