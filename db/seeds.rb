@@ -52,3 +52,24 @@ arrayunitlength = array_unit.length
   unit.save
   puts "unit n°#{i} done"
 end
+
+########### PRODUCT #################
+
+(0..10).each do |i|
+  product = Product.new(
+  name:Faker::Food.fruits,
+  )
+  product.save
+  
+  product = Product.new(
+    name:Faker::Food.vegetables,
+    )
+  product.save
+
+  product = Product.new(
+    name:Faker::Food.ingredient,
+    )
+  product.save
+end
+
+puts "Product seed done, load 30 products"
