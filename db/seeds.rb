@@ -189,6 +189,18 @@ puts "Lana done"
 end
 puts "user DONE" 
 
+########### STORE_PRODUCT 3rd #################
+
+(0..25).each do |i|
+  storeproduct = StoreProduct.new(
+    product_id:rand(0..10),
+    store_id:rand(0..10),
+    quantity:rand(2..99),
+    unit_id: rand(0..arrayunitlength),
+  )
+  storeproduct.save
+  puts "store_product seed n° #{i}"
+end 
 
 
 
