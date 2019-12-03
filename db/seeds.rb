@@ -73,3 +73,32 @@ end
 end
 
 puts "Product seed done, load 30 products"
+
+########### ADDRESS #################
+
+(0..20).each do |i|
+
+  address = Address.new(
+    place:Faker::Address.street_name,
+    zip_code: "92340",
+    city: "Bourg-la-Reine",
+    sector: ["Bobo","Riche","Pauvre","Hopitaux","Centre"].sample, 
+  )
+  address.save
+  puts "Address seed n° #{i}"
+end
+
+########### EVENT_TYPE #################
+
+event_type_array = ["Récolte","Vente","Cuisine","Préparation de confiture","Kermesse","Ceuillettes", "Ramassage","Tenir la boutique","Inventaire mensuel", "Comptabilité"]
+
+(0..8).each do |i|
+
+  event_type = EventType.new(
+    name: event_type_array[i],
+  )
+  event_type.save
+
+  puts "Event_type seed n° #{i}"
+end
+
