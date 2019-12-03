@@ -269,3 +269,16 @@ end
 puts "Product Event seed n°#{i} done"
 end
 
+
+########### PRODUCT_APPOINTMENT #################
+
+(0..20).each do |i|
+  productappointment = ProductAppointment.new(
+    product_id: rand(1..30),
+    appointment_id:rand(0..25),
+    quantity: rand(1..99),
+    unit_id: rand(0..arrayunitlength),
+  )
+  productappointment.save
+  puts "Product_appointment seed n°#{i} done"
+end
