@@ -212,9 +212,9 @@ end
   description: Faker::Restaurant.description,
   start_date: startdate, 
   end_date: startdate + rand(900..7600),
-  #address_id: rand(0..20), 
+  address_id: rand(0..20), 
   creator_id: rand(1..20), 
-  #event_type_id:rand(0..8),
+  event_type_id:rand(0..8),
   )
   event.save
 
