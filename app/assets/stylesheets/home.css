@@ -1,0 +1,6 @@
+.jumbotron {
+    background-image: url(/assets/home_basilic.png);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    height: 800px;
+}
