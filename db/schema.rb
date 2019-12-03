@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_133159) do
     t.string "title"
     t.text "description"
     t.datetime "start_date"
-    t.datetime "end_da"
+    t.datetime "end_date"
     t.bigint "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -131,9 +131,9 @@ ActiveRecord::Schema.define(version: 2019_12_03_133159) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
-    t.bigint "adress_id"
+    t.bigint "address_id"
     t.bigint "store_id"
-    t.index ["adress_id"], name: "index_users_on_adress_id"
+    t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["store_id"], name: "index_users_on_store_id"
@@ -154,4 +154,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_133159) do
   add_foreign_key "store_products", "stores"
   add_foreign_key "store_products", "units"
   add_foreign_key "stores", "addresses"
+  add_foreign_key "users", "addresses"
+  add_foreign_key "users", "stores"
 end
