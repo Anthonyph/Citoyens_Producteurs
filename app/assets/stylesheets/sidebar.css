@@ -4,6 +4,11 @@
   height: 100%;
   left: -232px;
   transition: all 500ms ease;
+  z-index:1
+}
+
+#sidebar.active {
+  left: 0px;
 }
 
 .sidebar-box {
@@ -21,9 +26,7 @@
   height: 100%;
 }
 
-#sidebar.active {
-  left: 0px;
-}
+
 
 #sidebar h1 {
   padding-top: 15px;
@@ -53,7 +56,7 @@
 #sidebar .toggle-btn {
   position: absolute;
   left: 255px;
-  top: 78px;
+  top: 6px;
 }
 
 #sidebar .menu-burger {
@@ -68,17 +71,5 @@
 .sidebar-logo {
   width: 180px;
   height: 100px;
-  margin: 15px 35px 20px;
-}
-
-@media screen and (max-width: 760px) {
-
-  #sidebar .sidebar-link a {
-    font-size: 2.2em;
-  }
-
-  #sidebar .sidebar-link h1 {
-    font-size: 2.2em;
-  }
-
+  margin-bottom: 5px;
 }
