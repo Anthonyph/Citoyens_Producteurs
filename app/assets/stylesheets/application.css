@@ -13,5 +13,6 @@
  *= require underexpress
  *= require main
  *= require sidebar
+ *= require navbar
  *= require home
  */
