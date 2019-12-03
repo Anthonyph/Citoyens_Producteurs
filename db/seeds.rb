@@ -5,3 +5,50 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+################# DATABASE DESTROY ##########################
+
+ProductAppointment.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('ProductAppointment')
+Comment.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('Comment')
+Appointment.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('Appointment')
+ProductEvent.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('ProductEvent')
+Event.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('Event')
+User.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('User') 
+StoreProduct.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('StoreProduct')
+Store.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('Store')
+Address.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('Address')
+EventType.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('EventType')
+Product.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('Product')
+Unit.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('Unit')
+
+################# DATABASE DESTROY ##########################
+require 'faker'
+require 'time'
+
+t1 = Time.parse("2019-12-13 00:40:00")
+t2 = Time.parse("2020-02-01 00:00:00")
+
+########### Unit ###########
+array_unit = ["kg", "L", "unité","pot"]
+arrayunitlength = array_unit.length
+
+(0..arrayunitlength).each do |i|
+  unit = Unit.new(
+  name: array_unit[i]
+  )
+  unit.save
+  puts "unit n°#{i} done"
+end
