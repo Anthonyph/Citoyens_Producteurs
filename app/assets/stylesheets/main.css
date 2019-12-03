@@ -1,4 +1,14 @@
-body, html {
+html {
   height: 100%;
+}
+body {
   padding: 0%;
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.spacer {
+  flex: 1;
 }

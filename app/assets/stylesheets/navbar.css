@@ -1,0 +1,9 @@
+.navbar {
+    background-color: #FAE6B9;
+    opacity: 0.7;
+}
+
+.logo {
+    max-width: 80px;
+    max-height: 80px;
+}
