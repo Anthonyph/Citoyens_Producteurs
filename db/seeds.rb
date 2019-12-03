@@ -12,27 +12,27 @@
 ProductAppointment.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('ProductAppointment')
 Comment.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('Comment')
+ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 Appointment.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('Appointment')
+ActiveRecord::Base.connection.reset_pk_sequence!('appointments')
 ProductEvent.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('ProductEvent')
+ActiveRecord::Base.connection.reset_pk_sequence!('product_events')
 Event.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('Event')
+ActiveRecord::Base.connection.reset_pk_sequence!('events')
 User.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('User') 
+ActiveRecord::Base.connection.reset_pk_sequence!('users') 
 StoreProduct.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('StoreProduct')
+ActiveRecord::Base.connection.reset_pk_sequence!('store_products')
 Store.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('Store')
+ActiveRecord::Base.connection.reset_pk_sequence!('stores')
 Address.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('Address')
+ActiveRecord::Base.connection.reset_pk_sequence!('addresses')
 EventType.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('EventType')
+ActiveRecord::Base.connection.reset_pk_sequence!('event_types')
 Product.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('Product')
+ActiveRecord::Base.connection.reset_pk_sequence!('products')
 Unit.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('Unit')
+ActiveRecord::Base.connection.reset_pk_sequence!('units')
 
 ################# DATABASE DESTROY ##########################
 require 'faker'
@@ -90,7 +90,7 @@ end
 
 ########### EVENT_TYPE #################
 
-event_type_array = ["Récolte","Vente","Cuisine","Préparation de confiture","Kermesse","Ceuillettes", "Ramassage","Tenir la boutique","Inventaire mensuel", "Comptabilité"]
+event_type_array = ["Harvest","Sell","Cooking","Fruit jam preparation","Kermesse","crop", "picking","Store","Inventory", "Accounting"]
 
 (0..8).each do |i|
 
@@ -112,6 +112,82 @@ end
   store.save
   puts "Store seed n° #{i}"
 end
+
+########### USER #################
+
+user = User.new(
+  first_name: "Anthony", 
+  last_name: "Phim", 
+  email: "anthony.phim@gmail.com", 
+  password: "azerty34",
+  address_id:rand(1..20),
+  store_id: "2",
+  phone_number:Faker::PhoneNumber.phone_number,
+)
+user.save
+puts "Anthony done"
+user = User.new(
+  first_name: "Leo", 
+  last_name: "Vanel", 
+  email: "leovanel@hotmail.com", 
+  password: "azerty34",
+  address_id:rand(1..20),
+  store_id:"2",
+  phone_number:Faker::PhoneNumber.phone_number,
+)
+user.save
+puts "Leo done"
+user = User.new(
+  first_name: "Augustin", 
+  last_name: "De Louvencourt", 
+  email: "mail23@yopmail.com", 
+  password: "azerty34",
+  address_id:rand(1..20),
+  store_id:"2",
+  phone_number:Faker::PhoneNumber.phone_number,
+)
+user.save
+puts "Augustin done"
+user = User.new(
+  first_name: "Thibault", 
+  last_name: "Mariolle", 
+  email: "Thib@yopmail.com", 
+  password: "azerty34",
+  address_id:rand(1..20),
+  store_id:"2",
+  phone_number:Faker::PhoneNumber.phone_number,
+)
+user.save
+puts "Thib done"
+user = User.new(
+  first_name: "Lana", 
+  last_name: "Vizoli", 
+  email: "Lana@yopmail.com", 
+  password: "azerty34",
+  address_id:rand(1..20),
+  store_id:"2",
+  phone_number:Faker::PhoneNumber.phone_number,
+)
+user.save
+puts "Lana done" 
+(0..15).each do |i|
+  username = Faker::GreekPhilosophers.name
+  lastnameuser = Faker::Creature::Cat.name
+
+  user = User.new(
+    first_name: username, 
+    last_name: lastnameuser, 
+    email:"#{username}.#{lastnameuser}@yopmail.com", 
+    password:"azerty34",
+    address_id:rand(1..20),
+    store_id: rand(1..10),
+    phone_number:Faker::PhoneNumber.phone_number,
+  )
+
+  user.save
+  puts "user seed n°#{i}" 
+end
+puts "user DONE" 
 
 
 
