@@ -4,9 +4,8 @@
 
 .hero {
     background-image: url(/assets/home_basilic.png);
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
-    background-size: contain;
     width: 100%;
     height: 380px;
 }

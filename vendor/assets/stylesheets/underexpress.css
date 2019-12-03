@@ -7,10 +7,6 @@ html {
   overflow-wrap: break-word;
   font-size: 16px; }
 
-  body{
-    overflow: hidden;
-  }
-
 header {
   position: relative; }
 
