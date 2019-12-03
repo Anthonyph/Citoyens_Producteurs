@@ -251,7 +251,21 @@ end
     status: app_status,
     points:rand(5..100))
     appointment.save
-    
+
   puts "Appointment seed n°#{i} done"
   end
+
+########### PRODUCT_EVENT #################
+
+(0..25).each do |i|
+  productevent = ProductEvent.new(
+    product_id:rand(1..30),
+    event_id:rand(0..25) ,
+    unit_id: rand(0..arrayunitlength),  
+    quantity: rand(1.99),
+  )
+  productevent.save
+  
+puts "Product Event seed n°#{i} done"
+end
 
