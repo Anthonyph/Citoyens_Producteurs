@@ -102,3 +102,17 @@ event_type_array = ["Récolte","Vente","Cuisine","Préparation de confiture","Ke
   puts "Event_type seed n° #{i}"
 end
 
+########### STORE #################
+
+(0..10).each do |i|
+  store = Store.new(
+    name: Faker::Company.name,
+    address_id:rand(0..20),
+  )
+  store.save
+  puts "Store seed n° #{i}"
+end
+
+
+
+
