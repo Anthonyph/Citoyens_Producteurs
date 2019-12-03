@@ -14,5 +14,6 @@
  *= require main
  *= require sidebar
  *= require footer
+ *= require navbar
  *= require home
  */
