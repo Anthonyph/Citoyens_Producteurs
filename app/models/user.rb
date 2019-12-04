@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
  belongs_to :address
  belongs_to :store     
- has_many :comments
+ has_many :comments, dependent: :destroy
  
- has_many :created_events, foreign_key: 'creator_id', class_name: 'Event'
- has_many :appointments 
+ has_many :created_events, foreign_key: 'creator_id', class_name: 'Event', dependent: :destroy
+ has_many :appointments, dependent: :destroy
  has_many :events, through: :appointments
 
  
