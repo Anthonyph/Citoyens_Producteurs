@@ -7,4 +7,12 @@ class Event < ApplicationRecord
   has_many :users, through: :appointments  
   has_many :product_events, dependent: :destroy
   has_many :products, through: :product_events
+
+  #after_create :event_creation_user
+
+  def event_creation_user
+    EventMailer.new_event_user(self).deliver_now
+  end
+  
+
 end
