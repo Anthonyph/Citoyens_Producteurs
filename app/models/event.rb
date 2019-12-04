@@ -8,6 +8,7 @@ class Event < ApplicationRecord
   has_many :product_events, dependent: :destroy
   has_many :products, through: :product_events
 
+
   validates :title,
   presence: true,
   length: {maximum: 30}
@@ -24,6 +25,10 @@ class Event < ApplicationRecord
   validates :end_date,
   presence: true,
   validate :event_past, after_start_date
+
+  def event_creation_user
+    EventMailer.new_event_user(self).deliver_now
+  end
   
   private
 

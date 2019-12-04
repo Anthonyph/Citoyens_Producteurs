@@ -4,6 +4,7 @@ class Appointment < ApplicationRecord
   has_many :product_appointments, dependent: :destroy
   has_many :products, through: :product_appointments
 
+
   validates :start_date,
   presence: true,
   validate :event_past
@@ -12,6 +13,17 @@ class Appointment < ApplicationRecord
   validate :valid_duration
   validates :status, presence: true,
   validates :points, presence: true
+
+  after_create :appointment_creation_user
+  after_create :appointment_creation_creator
+
+  def appointment_creation_user
+    AppointmentMailer.new_appointment_user(self).deliver_now
+  end
+
+  def appointment_creation_creator
+    AppointmentMailer.new_appointment_creator(self).deliver_now
+  end
 
   private
   def event_past
@@ -26,13 +38,8 @@ class Appointment < ApplicationRecord
       self.errors[:base] << "Number must be divisible by 5!"
     end
       
-  end
-
-  
-
-  
-
-  
+  end 
  
+
 
 end
