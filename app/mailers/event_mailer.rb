@@ -12,7 +12,7 @@ class EventMailer < ApplicationMailer
    #on définit une variable @url qu'on utilisera dans la view d’e-mail
    @url  = 'www.citoyens-producteurs.fr' 
    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-   mail(to: @user.email, subject: 'Bienvenue chez nous !') 
+   mail(to: @user.email, subject: 'Tu as crée un nouvel événement !') 
   end
 
 end
