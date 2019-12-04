@@ -16,4 +16,5 @@
  *= require footer
  *= require navbar
  *= require home
+ *= require devise
  */

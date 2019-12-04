@@ -1,16 +1,31 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="form-style-1 bg-hue-yellow py-5 background-cover">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5 col-10 mx-auto text-center">
+      <div class="card p-4 my-4 material-shadow">
+        <h3 class="lighter text-center py-2">Modifier mon mot-de-passe</h3>
+        <hr>
+        <form>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="actions text-center">
+          <%= f.submit "Envoyer", class: "btn btn-light btn-rounded m-2" %>
+          <hr>
+          </div>
+          <div class "actions text-center">
+          <a class="btn btn-light btn-rounded m-2" <%= link_to "S'inscrire", new_user_registration_path %></a><br>
+          <a class="btn btn-light btn-rounded m-2" <%= link_to "Se connecter", new_user_session_path %></a><br>
+          </div>
+          <% end %>
+        </form>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+</div>
+</section>
 
 <%= render "devise/shared/links" %>
