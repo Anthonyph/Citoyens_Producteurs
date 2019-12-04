@@ -3,6 +3,7 @@ class AppointmentMailer < ApplicationMailer
 
   def new_appointment_user(appointment)
     @apt = appointment
+    @title = @apt.event.title
     @apt_duration = @apt.duration
     @apt_start_date = @apt.start_date
     @user = @apt.user
@@ -12,6 +13,7 @@ class AppointmentMailer < ApplicationMailer
     @user_last_name = @apt.user.last_name
     @creator = @apt.event.creator
     @creator_email = @creator.email
+    @creator_phonenumber = @creator.phone_number
     @creator_first_name = @creator.first_name
     @creator_last_name = @creator.last_name
 
@@ -23,15 +25,18 @@ class AppointmentMailer < ApplicationMailer
   def new_appointment_creator(appointment)
 
     @apt = appointment
+    @title = @apt.event.title
     @apt_duration = @apt.duration
     @apt_start_date = @apt.start_date
     @user = @apt.user
     @user_email = @apt.user.email
+    @user_phone_number = @user.phone_number
     @user_first_name = @apt.user.first_name
     @user_last_name = @apt.user.last_name
     @points = @apt.points
     @creator = @apt.event.creator
     @creator_email = @creator.email
+    @creator_phonenumber = @creator.phone_number
     @creator_first_name = @creator.first_name
     @creator_last_name = @creator.last_name
     
