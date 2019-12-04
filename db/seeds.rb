@@ -234,21 +234,17 @@ end
 end
 
 ########### APPOINTMENT #################
-  t0 = Time.parse("2019-11-13 00:00:00")
+  
   timenow = Time.now
   (0..25).each do |i|
-      startdate = rand(t0..t2)
-      if startdate < timenow
-          app_status = "Past appointment"  
-      else
-          app_status = "Future appointment"
-      end
+      startdate = rand(timenow..t2)
+      
     appointment = Appointment.new(
     user_id:rand(0..20),
     event_id:rand(0..25),
     start_date: startdate,
-    duration:rand(40..300),
-    status: app_status,
+    duration:rand(30..300)*5,
+    status: "Future appointment",
     points:rand(5..100))
     appointment.save
 
