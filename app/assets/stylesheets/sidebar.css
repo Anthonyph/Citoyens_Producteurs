@@ -2,7 +2,7 @@
   position: fixed;
   width: 250px;
   height: 100%;
-  left: -232px;
+  left: -250px;
   transition: all 500ms ease;
   z-index:1
 }

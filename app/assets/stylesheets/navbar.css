@@ -1,7 +1,10 @@
 .navbar {
-    opacity: 1;
+    background-color: whitesmoke;
+    opacity: 0.8;
     height: 80px;
-    font-size: 1.2em;
+    font-size: 1.4em;
+    font-weight: bold;
+    z-index: 1;
 }
 
 .navbar-logo {
