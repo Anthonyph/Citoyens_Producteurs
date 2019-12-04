@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
  belongs_to :address
  belongs_to :store
- after_create :usermail
+ after_create :welcome_send
 
-  def usermail
+  def welcome_send
   UserMailer.welcome_email(self).deliver_now
   end
 
