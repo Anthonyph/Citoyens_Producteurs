@@ -22,19 +22,6 @@
     padding-bottom: 60px;
 }
 
-#about .title-about {
-    color: #333;
-    font-weight: 700;
-    font-size: 32px;
-    margin-bottom: 40px;
-}
-
-@media (max-width: 768px) {
-    #about .about-container .title {
-        padding-top: 15px;
-    }
-}
-
 #about .description {
     margin-left: 80px;
     line-height: 24px;
@@ -50,11 +37,10 @@
 }
 
 .about-img {
-    background-position: right;
-    background-size: contain;
-    width: 650px;
-    margin-top: 100px;
-    margin-left: 0px;
+    border-radius: 10%;
+    width: 420px;
+    height: 500px;
+    margin-left: 160px;
 }
 
 .icon {
@@ -68,10 +54,122 @@
     flex-direction: column;
     text-align: center;
     border-radius: 50%;
-    border: 2px solid #2dc997;
+    border: 2px solid #9F9B30;
 }
 
 .icon i {
-    color: #2dc997;
+    color: #9F9B30;
     font-size: 24px;
+}
+
+.counter {
+    color: #181f49;
+    background-color: #eeeeee;
+}
+
+#services {
+    background: #fff;
+    background-size: cover;
+    padding: 80px 0 60px 0;
+}
+  
+#services .box {
+    padding: 50px 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 1px solid #e6e6e6;
+    height: 200px;
+    position: relative;
+    background: #fafafa;
+}
+  
+#services .icon {
+    position: absolute;
+    top: -36px;
+    left: calc(50% - 36px);
+    transition: 0.2s;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 72px;
+    height: 72px;
+    background: #9F9B30;
+}
+  
+#services .icon a {
+    display: inline-block;
+}
+  
+#services .icon i {
+    color: #fff;
+    font-size: 24px;
+}
+  
+#services .box:hover .icon {
+    background: #fff;
+    border: 2px solid #9F9B30;
   }
+  
+#services .box:hover .icon i {
+    color: #9F9B30;
+  }
+  
+#services .box:hover .icon a {
+    color: #9F9B30;
+  }
+  
+#services .title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+  
+#services .title a {
+    color: #9F9B30;
+}
+  
+#services .description {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.section-title {
+    font-size: 32px;
+    color: #181f49;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.section-description {
+    text-align: center;
+    padding-bottom: 40px;
+    color: rgb(48, 48, 48);
+}
+
+.carousel-item {
+    height: 420px;
+    border: 1px solid black;
+}
+
+.feature {
+    background-color: whitesmoke;
+}
+.feature .title {
+    color: #181f49;
+}
+
+.feature a {
+    display: inline-block;
+}
+  
+.feature i {
+    color: #9F9B30;
+    font-size: 24px;
+}
