@@ -9,7 +9,7 @@
 
 .call-to-action {
     margin-top: 220px;
-    margin-left: 260px;
+    margin-left: 220px;
 }
 
 .hero-logo {
@@ -154,6 +154,7 @@
 }
 
 .carousel-item {
+    z-index: 1;
     height: 420px;
     border: 1px solid black;
 }
