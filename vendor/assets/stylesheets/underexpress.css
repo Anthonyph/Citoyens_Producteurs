@@ -7,10 +7,6 @@ html {
   overflow-wrap: break-word;
   font-size: 16px; }
 
-  body{
-    overflow: hidden;
-  }
-
 header {
   position: relative; }
 
@@ -91,7 +87,7 @@ ul {
   height: 100%;
   left: 0;
   top: 0;
-  background: black; }
+  background: #b1b1b1; }
 
 .cwhite {
   color: white; }
@@ -231,7 +227,7 @@ ul {
   width: 13%;
   height: 2px;
   display: block;
-  background: #007BFF;
+  background: #9F9B30;
   top: 7px;
   position: relative;
   left: 2px; }

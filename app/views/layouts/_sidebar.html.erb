@@ -1,13 +1,15 @@
    <div id="sidebar">
     <div class="toggle-btn" onclick="toggleSidebar()">
     <a>
-    <%=image_tag("carrot.png")%>
+    <%=image_tag(("list.png"), class:"menu-burger")%>
     </a>
     </div>
-    <div class="container navbar">
+    <div class="container sidebar-box">
       <div class="sidebar-link">
         <div class="flex-start">
-          <h1 class="text-center brown">Citoyens Producteur</h1><hr>
+          <a href="/">
+          <%= image_tag(("logo.png"), class:"sidebar-logo")%>
+          </a>
           <a href="#">Index<span><%=image_tag("home.png")%></span></a>
           <a href="#">Villes<span><%=image_tag("city.png")%></span></a>
           <a href="#">Producteurs<span><%=image_tag("farmer.png")%></span></a>
