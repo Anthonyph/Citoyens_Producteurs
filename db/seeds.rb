@@ -225,7 +225,7 @@ end
 
 (0..25).each do |i|
   comment = Comment.new(
-    text:Faker::GreekPhilosophers.quote,
+    text:Faker::Lorem.characters(number: 200),
     user_id:rand(0..20),
     event_id:rand(0..25),
   )
