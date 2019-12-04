@@ -6,12 +6,13 @@ class Appointment < ApplicationRecord
 
 
   validates :start_date,
-  presence: true,
+  presence: true
   validate :event_past
   validates :duration,
-  presence: true,:numericality => { :greater_than_or_equal_to => 1}
+    presence: true,
+    :numericality => { :greater_than_or_equal_to => 1}
   validate :valid_duration
-  validates :status, presence: true,
+  validates :status, presence: true
   validates :points, presence: true
 
   after_create :appointment_creation_user

@@ -3,11 +3,12 @@ class Address < ApplicationRecord
   has_one :user
   has_many :events
 
-  validates :place, presence: true,
-  validates :zip_code, presence: true,
-  format: { with: /^(?:[0-8]\d|9[0-8])\d{3}$/, message: "veuillez entrer un code postal valide" },
-  validates :city, presence: true,
-  validates :sector, presence: true,
+  validates :place, presence: true
+  validates :zip_code, 
+    presence: true,
+    format: { with: /\A(?:[0-8]\d|9[0-8])\d{3}\z/, message: "veuillez entrer un code postal valide" }
+  validates :city, presence: true
+  validates :sector, presence: true
 
 
 end
