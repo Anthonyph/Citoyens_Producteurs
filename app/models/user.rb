@@ -5,5 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  belongs_to :address
- belongs_to :store        
+ belongs_to :store     
+ has_many :comments
+ has_many :events
+ has_many :appointments
+
+
+
 end
