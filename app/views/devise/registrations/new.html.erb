@@ -8,40 +8,44 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4 text-center">Rejoins-nous !</h3>
               <hr>
-              <form>
+
               <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
-                <% if devise_error_messages!.empty? %>
-                <% else %>
-                  <div class="alert alert-danger" role="alert">
-                    <%= devise_error_messages! %>
+                  <% if devise_error_messages!.empty? %>
+                  <% else %>
+                    <div class="alert alert-danger" role="alert">
+                      <%= devise_error_messages! %>
+                    </div>
+                  <% end %>
+                  <div class="field">
+                    <%= f.label :last_name, "Nom :" %><br />
+                    <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
                   </div>
-                <% end %>                  
-                <div class="field">
-                  <%= f.label :first_name, "Prénom" %><br />
-                  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
-                </div>
-                <div class="field">
-                  <%= f.label :last_name, "Nom" %><br />
-                  <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :email, "Email" %><br />
-                  <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :password, "Mot-de-passe" %>
-                  <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                  <% end %><br />
-                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= f.label :password_confirmation, "Mot-de-passe" %><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-                </div>
-                <div class="actions mt-5 text-center">
-                  <%= f.submit "Rejoindre", class: "btn btn-light btn-rounded m-2" %><hr class="my-2">
-                  <%end%>
+                  <div class="field">
+                    <%= f.label :first_name, "Prénom :" %><br />
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :email, "Email :" %><br />
+                    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :password, "Mot de passe :" %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.label :password_confirmation, "Confirmation de mot de passe :" %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                  </div>
+                  <div class="actions mt-5 text-center">
+                    <%= f.submit "S'inscrire", class: "btn btn-light btn-rounded m-2" %><hr class="my-2">
+                    <a class="btn btn-light btn-rounded m-2" <%= link_to "Se connecter", new_user_session_path %></a>
+                  </div>
+                  </div>
+                <% end %>
+
             </div>
           </div>
         </div>
