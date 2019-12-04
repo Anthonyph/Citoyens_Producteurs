@@ -1,0 +1,56 @@
+class EventsController < ApplicationController
+  # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :destroy]
+
+  def index
+    @events = Event.all
+  end
+
+  def show
+  end
+  
+  def new
+    @event = Event.new
+  end
+
+  def edit
+  end
+
+  
+  def create
+    @address = Address.create(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
+    @type = EventType.find(event_params[:type])
+    @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
+    if @event.save
+      flash[:success] = 'Event successfully created'
+      redirect_to events_path
+    else
+      flash.now[:danger] = 'Something went wrong, please check your input'
+      render new_event_path
+    end
+  end
+  
+  def update
+    @event = set_event
+    if @event.update(event_params)
+      redirect_to @event, notice: 'Event was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event.destroy
+      redirect_to events_url, notice: 'Event was successfully destroyed.'
+  end
+
+  private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback)
+  end
+end
