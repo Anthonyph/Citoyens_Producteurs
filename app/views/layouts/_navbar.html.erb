@@ -1,22 +1,51 @@
-<nav class="navbar navbar-expand-md navbar-style-6 font-title py-3">
+<nav class="navbar navbar-expand-lg navbar-style-8 font-title py-3 fixed-top">
   <div class="container">
-    <%= image_tag(("logo.png"), class:"logo")%>
+    <a class="navbar-brand" class="mr-2"><%= image_tag(("logo.png"), class:"navbar-logo")%></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent8" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"><%=image_tag("list.png")%></span>
+   </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent6">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active mx-2">
-          <a class="nav-link" href="#">A propos <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active mx-2">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item active mx-2">
-          <a class="nav-link" href="#">Contactez-nous</a>
-        </li>
-        <li class="nav-item mx-5">
-        <%= image_tag(("user.png"), class:"user")%>
-        </li>
-      </ul>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent8">
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Citoyens
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Super Product</a>
+          <a class="dropdown-item" href="#">Awesome Product</a>
+          <a class="dropdown-item" href="#">Fantastic Product</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Producteurs
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Super Product</a>
+          <a class="dropdown-item" href="#">Awesome Product</a>
+          <a class="dropdown-item" href="#">Fantastic Product</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Notre histoire</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active mx-2">
+        <a class="nav-link" href="#">Services<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="#">Contactez-nous</a>
+      </li>
+    </ul>
+      
   </div>
+  
+ </div>
+ <a class="navbar-brand" class="mr-2"><%= image_tag(("user.png"), class:"avatar")%></a>
 </nav>

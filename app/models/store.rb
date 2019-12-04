@@ -5,5 +5,10 @@ class Store < ApplicationRecord
   has_many :users
   has_many :events, through: :users
 
+  validates :name,
+  presence: true,
+  length: {maximum: 30}
+  
+
 
 end
