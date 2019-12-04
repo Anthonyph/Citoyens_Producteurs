@@ -193,7 +193,7 @@ puts "user DONE"
 
 (0..25).each do |i|
   storeproduct = StoreProduct.new(
-    product_id:rand(0..10),
+    product_id:rand(0..30),
     store_id:rand(0..10),
     quantity:rand(2..99),
     unit_id: rand(0..arrayunitlength),
