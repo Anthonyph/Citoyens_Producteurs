@@ -1,0 +1,37 @@
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: 0.75rem;
+  }
+  
+  .login,
+  .image {
+    min-height: 100vh;
+  }
+  
+  .bg-image {
+    background-image: url('https://images.pexels.com/photos/2208836/pexels-photo-2208836.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-image2 {
+    background-image: url('https://images.pexels.com/photos/1453713/pexels-photo-1453713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .login-heading {
+    font-weight: 300;
+  }
+
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    border-radius: 2rem;
+  }
+  
+  .container-fluid {
+    background-color: #FAE6B9;
+    opacity: 0.8;
+  }
