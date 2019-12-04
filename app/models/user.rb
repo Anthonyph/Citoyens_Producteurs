@@ -5,5 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  belongs_to :address
- belongs_to :store        
+ belongs_to :store
+ after_create :usermail
+
+  def usermail
+  UserMailer.welcome_email(self).deliver_now
+  end
+
+
 end
