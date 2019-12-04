@@ -13,8 +13,8 @@
 }
 
 .hero-logo {
-    width: 420px;
-    height: 250px;
+    width: 320px;
+    height: 150px;
 }
 
 .about {
@@ -37,7 +37,7 @@
 }
 
 .about-img {
-    border-radius: 10%;
+    border-radius: 100%;
     width: 420px;
     height: 500px;
     margin-left: 160px;
