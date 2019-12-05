@@ -1,10 +1,8 @@
 .navbar {
-    background-color: whitesmoke;
-    opacity: 0.8;
+    background-color:rgba(255, 255, 255, 0.5);
     height: 80px;
-    font-size: 1.4em;
     font-weight: bold;
-    color: #111;
+    color: #181F49;
     z-index: 1;
 }
 
@@ -15,6 +13,6 @@
 
 .avatar {
     float: right;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
 }
