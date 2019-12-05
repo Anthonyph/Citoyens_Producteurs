@@ -3,18 +3,18 @@
 <div class="card border-0 shadow my-5">
 
   <!-- Title -->
-  <h1 class="mt-4 text-center"><%=@event.title%> </h1>
+  <h1 class="mt-4 text-center"><%=@event.title%></h1>
 
   <!-- Author -->
-  <p class="lead">
+  <p>
   Créé par : <%= @event.creator.first_name + ' ' + @event.creator.last_name%> 
   </p>
   <hr>
 
   <!-- Tag -->
   <h5> Catégorie : </h5>
-  <p class="lead">
-    <span class="badge badge-pill badge-secondary"></span>
+  <p>
+    <span class="badge badge-pill badge-secondary">a modifier</span>
   </p>
 
   <!-- Preview Image -->
@@ -22,7 +22,7 @@
   <hr>
 
   <!-- Post Content -->
-  <p class="lead"><%=@event.description%></p>
+  <p><%=@event.description%></p>
    <hr>
 
   <!-- Comments Form -->
@@ -41,22 +41,22 @@
     </div>
    </div>
 
+  <hr>
   <!-- Comment with nested comments -->
   <div class="media mb-4">
     <div class="media-body">
-    <h3>Les commentaires</h3>
+    <h5>Les commentaires</h5>
      <% @event.comments.order('created_at DESC').each do |comment| %>
-      <h5 class="mt-0">Par : <%= comment.user.first_name + ' ' + comment.user.last_name%>, le : 
+      <p class="mt-0">Par : <%= comment.user.first_name + ' ' + comment.user.last_name%>, le 
       <%= comment.updated_at.strftime("%-d %B %Y at %Hh %Mm %Ss (UTC)") %>
-      </h5>
+      </p>
         <blockquote class="blockquote w-50">
-        <hr>
-          <p><%= comment.text %></p>  
+          <i><%= comment.text %></i>
         </blockquote>    
         <hr>
       <p>
-        <%= link_to 'Edit comment', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-lg bg-warning btn-rounded m-1" %>
-        <%= link_to 'Delete comment', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg bg-danger btn-rounded m-1" %>
+        <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-lg bg-warning btn-rounded m-1" %>
+        <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg bg-danger btn-rounded m-1" %>
       </p>
       <% end %>
     </div>
