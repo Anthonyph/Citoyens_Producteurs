@@ -18,15 +18,9 @@ class Event < ApplicationRecord
   #   length: {maximum: 250}
   
 
-<<<<<<< HEAD
-  # validates :start_date, presence: true,  if: :event_past?
-
-  # validates :end_date, presence: true, if: :after_start_date?
-=======
   validates :start_date, presence: true, 
   date: { after: Proc.new { Time.now }}
   
->>>>>>> development
 
   validates :end_date, presence: true,
   date: { after: :start_date }
