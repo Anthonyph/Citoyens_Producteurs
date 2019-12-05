@@ -12,8 +12,7 @@
 }
 
 .sidebar-box {
-  background-image: url(/assets/sidebar.jpg);
-  background-size: cover;
+  background-color:rgba(255, 255, 255, 0.5);
   height: 100%;
   padding: 0;
 }
@@ -36,11 +35,10 @@
 #sidebar a {
   display: inline-block;
   width: 90%;
-  color: rgba(0, 0, 0, 0.8);
+  color: #181F49;
   margin-left: 12px;
   margin-top: 12px;
   margin-bottom: 12px;
-  font-size: 1.4em;
   transition: .5s;
 }
 
@@ -55,13 +53,13 @@
 
 #sidebar .toggle-btn {
   position: absolute;
-  left: 255px;
-  top: 6px;
+  left: 320px;
+  top: 100px;
 }
 
 #sidebar .menu-burger {
-  height: 32px;
-  width: 32px;
+  height: 40px;
+  width: 40px;
 }
 
 #sidebar span {

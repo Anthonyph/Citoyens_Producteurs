@@ -4,16 +4,25 @@ class Appointment < ApplicationRecord
   has_many :product_appointments, dependent: :destroy
   has_many :products, through: :product_appointments
 
+<<<<<<< HEAD
   # validates :start_date, presence: true, if: :event_past?
 
   # validates :duration,
   #   presence: true, numericality:  { :greater_than_or_equal_to => 1}, if: :valid_duration?
+=======
+  validates :start_date, presence: true,
+  date: { after: Proc.new { Time.now }}
+  
+  validates :duration,
+  presence: true, numericality:  { :greater_than_or_equal_to => 1}
+  
+>>>>>>> development
 
   validates :status, presence: true
   validates :points, presence: true
 
-  after_create :appointment_creation_user
-  after_create :appointment_creation_creator
+  #after_create :appointment_creation_user
+  #after_create :appointment_creation_creator
 
   def appointment_creation_user
     AppointmentMailer.new_appointment_user(self).deliver_now
@@ -23,6 +32,7 @@ class Appointment < ApplicationRecord
     AppointmentMailer.new_appointment_creator(self).deliver_now
   end
 
+<<<<<<< HEAD
   private
   def event_past?
       self.start_date > DateTime.now
@@ -33,6 +43,8 @@ class Appointment < ApplicationRecord
     self.duration % 5 == 0
     self.errors[:base] << "Number must be divisible by 5!"
   end 
+=======
+>>>>>>> development
  
 
 
