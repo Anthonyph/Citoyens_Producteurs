@@ -1,0 +1,40 @@
+<h1><%= @event.title %></h1>
+
+    <h4>Créateur</h4>
+    <%
+=begin%>
+ <%= link_to @event.creator.first_name + ' ' + @event.creator.last_name, user_path(@event.creator), :class => 'btn btn-sm btn-outline-info'%> 
+<%
+=end%>
+    
+    <h4>Description</h4>
+    <p><%= @event.description %></p>
+
+    <%= render 'comments/form' %>
+
+  <div>
+  <h5><%= pluralize(@event.comments.size, 'comment') %></h5>
+
+  <% @event.comments.order('created_at DESC').each do |comment| %>
+    <blockquote class="blockquote w-50">
+    <hr/>
+      <p><%= comment.text %></p>
+      <%
+=begin%>
+ <footer class="blockquote-footer mb-2">by 
+      <%= link_to comment.user.first_name + ' ' + comment.user.last_name,
+        user_path(comment.user), class: 'text-secondary font-weight-bold'%> - <%= comment.updated_at.strftime("%-d %B %Y at %Hh %Mm %Ss (UTC)") %>
+      </footer> 
+<%
+=end%>
+      <hr/>
+      <p><%= link_to 'Edit comment', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }) %>
+      <%= link_to 'Delete comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </blockquote>
+  <% end %>
+  </div>
+
+  <hr/>
+  <%= link_to 'Back to index', events_path %>
+  <hr/>
+</div>

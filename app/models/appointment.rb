@@ -4,11 +4,11 @@ class Appointment < ApplicationRecord
   has_many :product_appointments, dependent: :destroy
   has_many :products, through: :product_appointments
 
-
   validates :start_date, presence: true, if: :event_past?
 
   validates :duration,
   presence: true, numericality:  { :greater_than_or_equal_to => 1}, if: :valid_duration?
+
   validates :status, presence: true
   validates :points, presence: true
 
