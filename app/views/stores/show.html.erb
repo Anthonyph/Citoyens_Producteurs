@@ -1,8 +1,16 @@
+<br>
+<br>
+<br>
+<br>
 <% @events.each do |event| %>
+<ul>
+  <li> <%= event.title %> </li>
+  <li> <%= event.start_date %></li>
+  <li> <%= event.end_date %></li>
+  <li> <%= event.address.city%></li>
+  <li> <%= event.address.sector%></li>
+  <li> <%= event.appointments.count%></li>
+  </ul>
 
-  <%= event.title %>
-  <%= event.start_date %>
-  <%= event.end_date %>
-  <%= event.address.city%>
-  <%= event.address.sector%>
+
   <%end%>
