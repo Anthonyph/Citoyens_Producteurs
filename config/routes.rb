@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :events do
   resources :appointments
   resources :products
+  resources :product_appointments
+  resources :product_events
   end
 end
