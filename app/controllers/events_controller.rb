@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: User.first) # event_params[:creator]
     if @event.save
       flash[:success] = 'Event successfully created'
-      redirect_to events_path
+      redirect_to @event
     else
       flash.now[:danger] = 'Something went wrong, please check your input'
       render new_event_path
