@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid devise">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image2"></div>
     <div class="col-md-8 col-lg-6">
@@ -6,9 +6,9 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-              <h3 class="login-heading mb-4 text-center">Se connecter !</h3>
+              <h3 class="login-heading mb-4 text-center">Connecte toi !</h3>
               <hr>
-              <form>
+
               <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
                 <% if devise_error_messages!.empty? %>
                 <% else %>
@@ -16,28 +16,30 @@
                     <%= devise_error_messages! %>
                   </div>
                 <% end %>
-                <div class="field">
-                  <%= f.label :email, "Ton email" %><br />
+                <div class="form-group">
+                  <%= f.label :email, "Email :" %><br />
                   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
                 </div>
-                <div class="field">
-                  <%= f.label :password %><br />
+                <div class="form-group">
+                  <%= f.label :password, "Mot de passe :"%><br />
                   <%= f.password_field :password, autocomplete: "current-password", class: "form-control"%>
                 </div>
                 <% if devise_mapping.rememberable? %>
                   <div class="field">
                     <%= f.check_box :remember_me %>
-                    <%= f.label :remember_me, "Se souvenir de moi" %>
+                    <%= f.label :remember_me %>
                   </div>
                 <% end %>
                 <div class="actions mt-5 text-center">
-                  <%= f.submit "Se connecter", class: "btn btn-light btn-rounded m-2" %><hr class="my-2">
-                  <a class="btn btn-light btn-rounded m-2" <%= link_to "S'inscrire", new_user_registration_path %></a><br>
-                  <a class="btn btn-light btn-rounded m-2" <%= link_to "Un trou de mémoire ?",  new_user_password_path %></a>
+                  <%= f.submit "Se connecter", class:"btn btn-lg bg-hue-blue btn-rounded m-2" %>
+                  <hr class="my-1">
+                  <%= link_to "Un trou de mémoire ?",  new_user_password_path, class:"btn btn-lg bg-light btn-rounded m-1"%><br>
+                  <%= link_to "S'inscrire", new_user_registration_path, class:"btn btn-lg bg-light btn-rounded m-1"%>
                   </div>
                 </div>
+
               <% end %>
-              </form>
+
             </div>
           </div>
         </div>

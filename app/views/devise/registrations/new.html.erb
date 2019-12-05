@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid devise">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
     <div class="col-md-8 col-lg-6">
@@ -8,40 +8,37 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h3 class="login-heading mb-4 text-center">Rejoins-nous !</h3>
               <hr>
-              <form>
+
               <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3" } do |f| %>
                 <% if devise_error_messages!.empty? %>
                 <% else %>
                   <div class="alert alert-danger" role="alert">
                     <%= devise_error_messages! %>
                   </div>
-                <% end %>                  
-                <div class="field">
-                  <%= f.label :first_name, "Prénom" %><br />
-                  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
-                </div>
-                <div class="field">
-                  <%= f.label :last_name, "Nom" %><br />
-                  <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
-                </div>
+                <% end %>
                 <div class="form-group">
-                  <%= f.label :email, "Email" %><br />
+                  <%= f.label :email, "Email :" %><br />
                   <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
                 </div>
                 <div class="form-group">
-                  <%= f.label :password, "Mot-de-passe" %>
+                  <%= f.label :password, "Mot de passe :" %>
                   <% if @minimum_password_length %>
                   <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %><br />
                   <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
                 </div>
                 <div class="form-group">
-                  <%= f.label :password_confirmation, "Mot-de-passe" %><br />
+                  <%= f.label :password_confirmation, "Confirmation de mot de passe :" %><br />
                   <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
                 </div>
                 <div class="actions mt-5 text-center">
-                  <%= f.submit "Rejoindre", class: "btn btn-light btn-rounded m-2" %><hr class="my-2">
-                  <%end%>
+                  <%= f.submit "S'inscrire", class: "btn btn-lg bg-hue-blue btn-rounded m-2" %>
+                  <hr class="my-1">
+                  <%= link_to "Se connecter", new_user_session_path, class:"btn btn-lg bg-light btn-rounded m-1" %>
+                </div>
+
+              <% end %>
+
             </div>
           </div>
         </div>

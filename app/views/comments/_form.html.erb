@@ -1,0 +1,10 @@
+  <div class='container'>
+    <%= form_with(model: @comment, local: true) do |form| %>
+        <h6> Nouveau commentaire : </h6>
+        <p><%= form.text_field :text, class: 'form-control' %></p>
+        <p><%= form.hidden_field :event_id, value: @event.id %></p>
+        <p><%= form.hidden_field :user_id, value: 1 %></p>
+
+        <%= form.submit "Submit input" %>
+    <% end %>
+  </div>
