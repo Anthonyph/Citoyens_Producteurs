@@ -1,51 +1,92 @@
 <nav class="navbar navbar-expand-lg navbar-style-8 font-title py-3 fixed-top">
+
   <div class="container">
+
     <a class="navbar-brand" class="mr-2"><%= image_tag(("logo.png"), class:"navbar-logo")%></a>
+    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent8" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"><%=image_tag("list.png")%></span>
-   </button>
+      <span class="navbar-toggler-icon"><%=image_tag("list.png")%></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent8">
-    <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent8">
+      <ul class="navbar-nav ml-auto">
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Citoyens
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Citoyens
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Super Product</a>
+            <a class="dropdown-item" href="#">Awesome Product</a>
+            <a class="dropdown-item" href="#">Fantastic Product</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Producteurs
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Super Product</a>
+            <a class="dropdown-item" href="#">Awesome Product</a>
+            <a class="dropdown-item" href="#">Fantastic Product</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Notre histoire</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active mx-2">
+          <a class="nav-link" href="#">Services<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="#">Contactez-nous</a>
+        </li>
+      </ul>
+
+      </div>
+
+    </div>
+
+
+    <% if user_signed_in? %>
+
+      <div class="dropdown">
+
+        <a class="nav-item has-dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag(("user-connected.png"), class:"avatar")%>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Super Product</a>
-          <a class="dropdown-item" href="#">Awesome Product</a>
-          <a class="dropdown-item" href="#">Fantastic Product</a>
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Producteurs
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Super Product</a>
-          <a class="dropdown-item" href="#">Awesome Product</a>
-          <a class="dropdown-item" href="#">Fantastic Product</a>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Notre histoire</a>
-      </li>
-
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active mx-2">
-        <a class="nav-link" href="#">Services<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item mx-2">
-        <a class="nav-link" href="#">Contactez-nous</a>
-      </li>
-    </ul>
-      
-  </div>
   
- </div>
- <a class="navbar-brand" class="mr-2"><%= image_tag(("user.png"), class:"avatar")%></a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a><%= link_to "Mon profil", edit_user_registration_path, class:"dropdown-item" %></a>
+            <% if current_user %>
+              <a><%= link_to "Espace Admin", root_path, class:"dropdown-item" %></a>
+            <% end %>
+            <a><%= link_to "Se déconnecter", destroy_user_session_path, method:"delete", class:"dropdown-item" %></a>
+        </div>
+
+      </div>
+
+    <% else %>
+
+      <div class="dropdown">
+
+        <a class="nav-item has-dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= image_tag(("user.png"), class:"avatar")%>
+        </a>
+  
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+          <a><%= link_to "Se connecter", new_user_session_path, class:"dropdown-item" %></a>
+          <a><%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item" %></a>
+        </div>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
 </nav>

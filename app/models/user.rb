@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- belongs_to :address
- belongs_to :store     
+ belongs_to :address, optional: true
+ belongs_to :store, optional: true
  has_many :comments, dependent: :destroy
  
  has_many :created_events, foreign_key: 'creator_id', class_name: 'Event', dependent: :destroy
