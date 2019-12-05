@@ -53,13 +53,13 @@
 
 #sidebar .toggle-btn {
   position: absolute;
-  left: 255px;
-  top: 6px;
+  left: 320px;
+  top: 100px;
 }
 
 #sidebar .menu-burger {
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
 }
 
 #sidebar span {
