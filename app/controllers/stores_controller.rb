@@ -7,6 +7,8 @@ class StoresController < ApplicationController
   end
 
   def show
+    @events = @store.events
+
   end
   
   def new
