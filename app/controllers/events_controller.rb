@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @appointments = Appointment.all
     @comment = Comment.new
   end
   
@@ -22,7 +23,7 @@ class EventsController < ApplicationController
     @address = Address.create(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
     @type = EventType.find(event_params[:type])
     @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: User.first) # event_params[:creator]
-    if @event.save
+    if @event.save!
       flash[:success] = 'Event successfully created'
       redirect_to @event
     else
