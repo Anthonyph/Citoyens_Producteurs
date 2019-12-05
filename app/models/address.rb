@@ -4,9 +4,9 @@ class Address < ApplicationRecord
   has_many :events
 
   validates :place, presence: true
-  validates :zip_code, 
-    presence: true,
-    format: { with: /\A(?:[0-8]\d|9[0-8])\d{3}\z/, message: "veuillez entrer un code postal valide" }
+
+  validates :zip_code, presence: true, zipcode: { country_code: :fr }
+
   validates :city, presence: true
   validates :sector, presence: true
 

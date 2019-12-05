@@ -18,11 +18,10 @@ class Event < ApplicationRecord
     length: {maximum: 250}
   
 
-  validates :start_date, presence: true
-  validate :event_past
+  validates :start_date, presence: true,  if: :event_past?
 
-  validates :end_date, presence: true
-  validate :event_past, :after_start_date
+  validates :end_date, presence: true, if: :after_start_date?
+
 
   def event_creation_user
     EventMailer.new_event_user(self).deliver_now
@@ -30,19 +29,15 @@ class Event < ApplicationRecord
   
   private
 
-  def event_past
-   
-    if start_date < DateTime.now
-      errors.add(:start_date, "La date de départ de l'événement ne peut pas être dans le passé")
-    end
+  def event_past?
+    start_date > DateTime.now
+    errors.add(:start_date, "La date de départ de l'event ne peut pas etre dans le passé")
+
   end
 
-  def after_start_date
-
-    if end_date < start_date
-      errors.add(:end_date, "La date de fin de l'évent doit être après le début de l'événement")
-
-    end
+  def after_start_date?
+    end_date < start_date
+    errors.add(:end_date, "La date de fin de l'évent doit être aprés le début de l'évent")
   end
 
 end
