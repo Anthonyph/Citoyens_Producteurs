@@ -1,0 +1,2 @@
+class ProductAppointmentController < ApplicationController
+end

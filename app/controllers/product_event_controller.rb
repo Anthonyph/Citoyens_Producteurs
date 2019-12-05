@@ -1,0 +1,2 @@
+class ProductEventController < ApplicationController
+end

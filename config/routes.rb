@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :stores
   resources :comments #, only: [:create, :update, :destroy]
   resources :events do
-    resources :appointments
+  resources :appointments
+  resources :products
   end
 end
