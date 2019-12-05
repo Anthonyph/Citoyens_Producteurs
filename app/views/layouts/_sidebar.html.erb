@@ -1,24 +1,23 @@
-   <div id="sidebar">
-    <div class="toggle-btn" onclick="toggleSidebar()">
-    <a>
-    <%=image_tag(("list.png"), class:"menu-burger")%>
-    </a>
-    </div>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+</head>
+
+<div id="sidebar">
+  <div class="toggle-btn" onclick="toggleSidebar()">
+    <a class="animated infinite bounce delay-2s"> <%=image_tag(("carrot.png"), class:"menu-burger")%></a>
+  </div>
     <div class="container sidebar-box">
       <div class="sidebar-link">
         <div class="flex-start">
-          <a href="/">
-          <%= image_tag(("logo.png"), class:"sidebar-logo")%>
-          </a>
-          <a href="#">Index<span><%=image_tag("home.png")%></span></a>
-          <a href="#">Villes<span><%=image_tag("city.png")%></span></a>
-          <a href="#">Producteurs<span><%=image_tag("farmer.png")%></span></a>
-          <a href="#">Évents<span><%=image_tag("events.png")%></span></a>
+        <br><br><br><br><br>
+          <a href="#">Evenements<span></a>
+          <a href="#">Produits<span></a>
+          <a href="#">Villes<span></a>
         </div>
+        <hr>
         <div class="flex-end">
-          <a href="#">À propos<span><%=image_tag("home.png")%></span></a>
-          <a href="#">Nous contacter<span><%=image_tag("home.png")%></span></a>
+          <a href="#">Mon espace</a>
         </div>
       </div>
     </div>
-  </div>
+</div>

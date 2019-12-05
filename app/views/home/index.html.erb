@@ -1,11 +1,5 @@
 <div class="hero">
   <div class="container call-to-action">
-    <div class="col-6">
-      <%= image_tag(("logo.png"), class:"hero-logo")%>
-      <p class="lead"><br>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <a class="btn btn-secondary btn-lg" href="#" role="button">Learn more</a>
-      </p>
-      </div>
   </div>
 </div>
 
@@ -14,36 +8,35 @@
   <div class="container about">
     <div class="row">
 
-      <div class="col-lg-6 content ">
-        <h1 class="section-title">Few Words About Us</h1>
+      <div class="content">
+        <h1 class="section-title">Qui sommes-nous?</h1>
+        <hr>
         <p class="section-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+        Notre mission est d’aller chercher les surplus de production chez les particuliers afin de créer une activité économique 100 % locale. En écoulant des produits sains, qui ont poussé sans produits chimiques, et qui n’ont pas voyagé.
+        Un des enjeux est de lutter contre le gaspillage alimentaire.
+        Un autre est de profiter d’une ressource alimentaire, déjà disponible en récupérant les fruits (ou les légumes) qui auraient poussé de toute façon.</p>
 
         <div class="wow fadeInUp">
-          <div class="icon"><i class="fa fa-shopping-bag"></i></div>
-          <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-          <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+          <div class="icon"><i class="fas fa-seedling"></i></div>
+          <h4 class="title"><a href="">Producteurs</a></h4>
+          <p class="description">Tu possèdes un petit potager ? Ta production est surabondante ? Tu en as marre de gaspiller ? Rejoint le mouvement pour qu’une équipe de cueilleur vienne récupérer tes surplus pour participer à un projet de forte valeur environnementale ! </p>
         </div>
 
         <div class="wow fadeInUp" data-wow-delay="0.2s">
-          <div class="icon"><i class="fa fa-photo"></i></div>
-          <h4 class="title"><a href="">Magni Dolores</a></h4>
-          <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h4 class="title"><a href="">Bénévoles</a></h4>
+          <p class="description">Tu as la main verte (ou pas) et tu souhaites consacrer ton temps libre à participer à la lutte contre le gaspillage alimentaire et rencontrer des personnes ? Rejoint le mouvement !</p>
         </div>
 
         <div class="wow fadeInUp" data-wow-delay="0.4s">
-          <div class="icon"><i class="fa fa-bar-chart"></i></div>
-          <h4 class="title"><a href="">Dolor Sitema</a></h4>
-          <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+          <div class="icon"><i class="fas fa-utensils"></i></div>
+          <h4 class="title"><a href="">Produits transformés</a></h4>
+          <p class="description">Tu aimes cuisiner et tu te sens capable de transformer les produits récoltés en produits consommables et conservables (confitures, soupes, tisanes) ? Participe au projet !</p>
         </div>
-
-      </div>
-
-      <div class="col-lg-6 wow fadeInRight">
-        <%= image_tag(("about-img.jpg"), class:"about-img")%>
-      </div>
-      
+        <hr>
+        <div class="btnsuccess text-center">
+        <a class="btn btn-success btn-rounded m-2" <%= link_to "Rejoignez-nous", new_user_registration_path %></a><br>
+        </div>
     </div>
 
   </div>
@@ -57,10 +50,10 @@
         <div class="font-title p-2">
           <div class="row text-center">
             <div class="col-5 justify-center align-center flex-column py-3">
-              <h2><i class="fa fa-envelope p-2"></i></h2>
-              <small class="uppercase">Envelopes Received</small>
+              <h2><i class="fas fa-seedling"></i></h2>
+              <small class="uppercase">Producteurs engagés</small>
             </div>
-            <div class="col-7 justify-center align-center "><span class="display-4">31K</span></div>
+            <div class="col-7 justify-center align-center "><span class="display-4">30</span></div>
           </div>
         </div>
       </div>
@@ -68,8 +61,8 @@
         <div class="font-title p-2">
           <div class="row text-center">
             <div class="col-5 justify-center align-center flex-column py-3">
-              <h2><i class="fa fa-phone p-2"></i></h2>
-              <small class="uppercase">Calls Received</small>
+              <h2><i class="fas fa-hand-holding-heart"></i></h2>
+              <small class="uppercase">Bénévoles engagés</small>
             </div>
             <div class="col-7 justify-center align-center "><span class="display-4">121</span></div>
           </div>
@@ -79,10 +72,10 @@
         <div class="font-title p-2">
           <div class="row text-center">
             <div class="col-5 justify-center align-center flex-column py-3">
-              <h2><i class="fa fa-users p-2"></i></h2>
-              <small class="uppercase">Users Registered</small>
+              <h2><i class="far fa-lemon"></i></h2>
+              <small class="uppercase">Produits récoltés</small>
             </div>
-            <div class="col-7 justify-center align-center "><span class="display-4">2K</span></div>
+            <div class="col-7 justify-center align-center "><span class="display-4">99 kg</span></div>
           </div>
         </div>
       </div>
@@ -90,8 +83,8 @@
         <div class="font-title p-2">
           <div class="row text-center">
             <div class="col-5 justify-center align-center flex-column py-3">
-              <h2><i class="fa fa-check p-2"></i></h2>
-              <small class="uppercase">Applicants Passed</small>
+              <h2><i class="fas fa-carrot"></i></h2>
+              <small class="uppercase">Produits vendus</small>
             </div>
             <div class="col-7 justify-center align-center "><span class="display-4">210</span></div>
           </div>
@@ -105,51 +98,52 @@
 <section id="services">
   <div class="container wow fadeIn">
     <div class="section-header">
-      <h3 class="section-title">Services</h3>
-      <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+      <h3 class="section-title">Autres engagements possibles</h3>
     </div>
+    <br><br><br>
     <div class="row">
       <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
         <div class="box">
-          <div class="icon"><a href=""><i class="fa fa-desktop"></i></a></div>
-          <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-          <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+          <div class="icon"><a href=""><i class="fas fa-bullhorn"></i></a></div>
+          <h4 class="title"><a href="">Communication</a></h4>
+          <p class="description">Animer la communauté et faire connaitre Citoyens Producteurs, animer des événements, mettre en place une image et du contenu, fédérer autour du projet de nouvelles personnes</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
         <div class="box">
-          <div class="icon"><a href=""><i class="fa fa-bar-chart"></i></a></div>
-          <h4 class="title"><a href="">Dolor Sitema</a></h4>
-          <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+          <div class="icon"><a href=""><i class="fas fa-shopping-basket"></i></a></div>
+          <h4 class="title"><a href="">Vente</a></h4>
+          <p class="description">Tenir des stands sur des salons, être capable de négocier avec des distributeurs locaux.</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
         <div class="box">
-          <div class="icon"><a href=""><i class="fa fa-paper-plane"></i></a></div>
-          <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-          <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+          <div class="icon"><a href=""><i class="far fa-thumbs-up"></i></a></div>
+          <h4 class="title"><a href="">Gestion</a></h4>
+          <p class="description">Gérer l’activité d’un point de vue comptable </p>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
         <div class="box">
-          <div class="icon"><a href=""><i class="fa fa-photo"></i></a></div>
-          <h4 class="title"><a href="">Magni Dolores</a></h4>
-          <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <div class="icon"><a href=""><i class="far fa-calendar-check"></i></a></div>
+          <h4 class="title"><a href="">Planifier</a></h4>
+          <p class="description">Tenir à jour un état des lieux des différentes parties prenantes (terrains, périodes de récolte, cueilleurs, lieux de stockage, transformation)</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
         <div class="box">
           <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
-          <h4 class="title"><a href="">Nemo Enim</a></h4>
-          <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+          <h4 class="title"><a href="">Déployer</a></h4>
+          <p class="description">Aider à déployer l’activité dans d’autres zones géographiques tout en préservant le concept d’origine</p>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
         <div class="box">
-          <div class="icon"><a href=""><i class="fa fa-shopping-bag"></i></a></div>
-          <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-          <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+          <div class="icon"><a href=""><i class="fas fa-utensils"></i></a></div>
+          <h4 class="title"><a href="">Consommer</a></h4>
+          <p class="description"> Confitures, gelées, pâtes de fruits, compotes, soupes, purées, potages, sauces, tisanes, herbes séchées
+           </p>
         </div>
       </div>
     </div>
@@ -165,27 +159,15 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="2000">
-      <img src="https://images.pexels.com/photos/186839/pexels-photo-186839.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div>
+      <img src="https://images.pexels.com/photos/48817/jam-preparations-jars-fruit-48817.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" data-interval="2000">
       <img src="https://images.pexels.com/photos/673673/pexels-photo-673673.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
     </div>
     <div class="carousel-item" data-interval="2000">
-      <img src="https://images.pexels.com/photos/277262/pexels-photo-277262.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      <img src="https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
       </div>
     </div>
-  </div>
   <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -196,52 +178,37 @@
   </a>
 </div>
 
+<br><br>
 
-  <section class="feature p-relative">
-    <div class="overlay op-4"></div>
-      <div class="container">
-        <div class="row py-4 p-relative">
-            <div class="col-12 col-sm-6 p-3">
-                <div class="flex">
-                    <div class="col-2 text-center"><i class="fa fa-code title-icon"></i>
-                    </div>
-                    <div class="col-10">
-                        <h4 class="font-title font-b-line title">Clean Code</h4>
-                        <p class="py-3">UnderExpress uses modular css classes, which helps you ship quickly with cleaner code.</p>
-                    </div>
-                </div>
+<section class="form-style-6 p-relative bg-white">
+  <div class="container">
+  <div class="row">
+    <div class="col-12 p-0">
 
-            </div>
-            <div class="col-12 col-sm-6 p-3">
-                <div class="flex">
-                    <div class="col-2 text-center"><i class="fa fa-cubes title-icon"></i>
-                    </div>
-                    <div class="col-10">
-                        <h4 class="font-title font-b-line title">100+ Components</h4>
-                        <p class="py-3">UnderExpress is your own A'La Carte, choose from various components, mix them to create unique pages.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 p-3">
-                <div class="flex">
-                    <div class="col-2 text-center"><i class="fa fa-money title-icon"></i>
-                    </div>
-                    <div class="col-10">
-                        <h4 class="font-title font-b-line title">Absolutely free</h4>
-                        <p class="py-3">UnderExpress comes absolutely free, which makes it most the affodable website framework.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 p-3">
-                <div class="flex">
-                    <div class="col-2 text-center"><i class="fa fa-desktop title-icon"></i>
-                    </div>
-                    <div class="col-10">
-                        <h4 class="font-title font-b-line title">Responsive</h4>
-                        <p class="py-3">All components are perfectly responsive. Your content will shine on every device.</p>
-                    </div>
-                </div>
-            </div>
+      <iframe class="p-relative"
+      width="100%"
+      height="300px"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10516.376138168858!2d2.31667645!3d48.780095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6712a13518e05%3A0x40b82c3688b3e80!2s92340%20Bourg-la-Reine!5e0!3m2!1sfr!2sfr!4v1575456577997!5m2!1sfr!2sfr" allowfullscreen>
+    </iframe>
+  </div>
+  <div class="col-10 mx-auto p-4 text-center">
+    <div class="row">
+      <div class="col-12 my-3">
+        <h2 class="font-title bolder text-center mb-5 uppercase" >Nous sommes là pour vous</h2></div>
+        <div class="col-12 p-0">
+        <h6 class="uppercase my-3 font-title">Adresse</h6>
+        <p class="mb-5 ">Bourg-la-Reine</p>
+        <h6 class="uppercase my-3 font-title">Contact</h6>
+        <p class="mb-5"><i class="fa fa-phone mr-2"></i>06 83 87 04 95<br><i class="fa fa-envelope mr-2"></i> citoyens-producteurs@lilo.org</p>
+        <h6 class="uppercase my-3 font-title">Suivez-nous</h6>
+        <a href ="https://www.facebook.com/CitoyensProducteurs/">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABTElEQVRIS7WVgU3DMBBFXydgBMoEwATtCDABdAJgAugEtBMAEwAbMALdADaACUA/sq3DtX0OUk6yIiX2vfP5+2fGxDGbOD89gEtgAZyEoZrew3gBXltFtgBnwD0wd3b5AdwAgu1FDbABrka2T2sE+hMlwH+Sx6Rb4NoScoDa8tyo/DMksO24A27NmnPbrhygfh5WAN/hkDXHRg7Q96M4wQKklodG9U+A5sRYBnXpqWEj7cICHoGLBmANqFqF18pUjAVI28edgLwt+TLlOtVLC/hxZGl34AFS7h6Ad9vfwlnk9Q3r7OKagjzAF3CQZd9FW+k5ZA9Qam3xkD2ZjjmDFSBV7rlp66L1AnTbk0GOsYpeQNMqtKua2fUAXLOLYijdag+QW8mQy/vhaDfR/GqAksMm1XoS1ESpS2amCzUoo/KuaAQ9AMdB2p8nB/wCsmVJGU6bMtcAAAAASUVORK5CYII="/>
+        </a>
         </div>
+      </div>
     </div>
+  </div>
+
+</div>
 </section>
