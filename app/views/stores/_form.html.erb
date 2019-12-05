@@ -1,4 +1,4 @@
-<%= form_with model: @store, class: 'mt-5 col-4 offset-4' do |f| %>
+<%= form_with model: @store, local: true, class: 'mt-5 col-4 offset-4' do |f| %>
   <div class= 'form-group'>
     <label> name </label>
     <%= f.text_field :name, class: 'form-control' %>
