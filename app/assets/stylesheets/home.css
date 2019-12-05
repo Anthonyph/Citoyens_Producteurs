@@ -1,10 +1,10 @@
 .hero {
-    background-image: url(/assets/hero.jpg);
+    background-image: url(/assets/cp.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 1060px;
-    margin-top: -80px;
+    height: 800px;
+    margin-top: -50px;
 }
 
 .call-to-action {
