@@ -1,6 +1,7 @@
 class ProductEventController < ApplicationController
   
   def index
+    @productevent = ProductEvent.all
   end
 
   def new 
@@ -16,5 +17,8 @@ class ProductEventController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
   end
 end
