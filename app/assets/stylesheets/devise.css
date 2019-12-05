@@ -8,7 +8,7 @@
   }
   
   .bg-image {
-    background-image: url('https://images.pexels.com/photos/1563515/pexels-photo-1563515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-image: url('https://images.pexels.com/photos/1395958/pexels-photo-1395958.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
     background-size: cover;
     background-position: center;
   }
@@ -35,10 +35,4 @@
     opacity: 0.8;
   }
 
-  .background-cover {
-    background-image: url('https://images.pexels.com/photos/1002543/pexels-photo-1002543.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
-  }
 
-  .card { 
-    background-color: rgba(245, 245, 245, 0.5); 
-  }
