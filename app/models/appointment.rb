@@ -4,10 +4,10 @@ class Appointment < ApplicationRecord
   has_many :product_appointments, dependent: :destroy
   has_many :products, through: :product_appointments
 
-  validates :start_date, presence: true, if: :event_past?
+  # validates :start_date, presence: true, if: :event_past?
 
-  validates :duration,
-  presence: true, numericality:  { :greater_than_or_equal_to => 1}, if: :valid_duration?
+  # validates :duration,
+  #   presence: true, numericality:  { :greater_than_or_equal_to => 1}, if: :valid_duration?
 
   validates :status, presence: true
   validates :points, presence: true
@@ -25,7 +25,7 @@ class Appointment < ApplicationRecord
 
   private
   def event_past?
-      start_date > DateTime.now
+      self.start_date > DateTime.now
       errors.add(:start_date, "La date de départ de l'event ne peut pas etre dans le passé")
   end
 

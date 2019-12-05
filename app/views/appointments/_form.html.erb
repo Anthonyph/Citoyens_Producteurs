@@ -1,0 +1,14 @@
+ <div class='container'>
+    <%= form_with(model: @appointment, url: [@appointment.event, @appointment], local: true) do |form| %>
+        <h6> Choisir un créneau : </h6>
+        <p>
+          <label> Date de début : </label>
+          <%= form.datetime_field :start_date, class: 'col-3 form-control' %>
+        </p>
+        <p>
+          <label> Durée de participation : </label>
+          <%= form.number_field :duration, in: 10..300, step: 5 %>
+        </p>
+        <%= form.submit "Participer" %>
+    <% end %>
+  </div>

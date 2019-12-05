@@ -9,18 +9,18 @@ class Event < ApplicationRecord
   has_many :products, through: :product_events
 
 
-  validates :title,
-    presence: true,
-    length: {maximum: 30}
+  # validates :title,
+  #   presence: true,
+  #   length: {maximum: 30}
 
-  validates :description,
-    presence: true,
-    length: {maximum: 250}
+  # validates :description,
+  #   presence: true,
+  #   length: {maximum: 250}
   
 
-  validates :start_date, presence: true,  if: :event_past?
+  # validates :start_date, presence: true,  if: :event_past?
 
-  validates :end_date, presence: true, if: :after_start_date?
+  # validates :end_date, presence: true, if: :after_start_date?
 
 
   def event_creation_user
