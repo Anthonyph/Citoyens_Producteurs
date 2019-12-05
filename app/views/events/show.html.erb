@@ -15,7 +15,7 @@
       <% if user_signed_in? %>
         <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>
         <% if @appointment != nil %>
-          <%= link_to 'Ne plus participer', event_appointment_path(@appointment.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>
+          <%= link_to 'Ne plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>
         <% else %>
           <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-sm btn-outline-dark ml-1' %>
         <% end %>
