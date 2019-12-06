@@ -10,14 +10,16 @@
 
         <% @events.each do |event| %>
 
+          
         <div class="card mb-4">
           <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
           <div class="card-body">
-            <h2 class="card-title">event.title</h2>
+            <h2 class="card-title"><%= event.title %></h2>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">event.start_date : ...</li>
-            <li class="list-group-item">event.appointments.count : ...</li>
-            <li class="list-group-item">event.address.sector : ...</li>
+            <li class="list-group-item"><%= event.start_date %></li>
+            <li class="list-group-item"><%= event.end_date %></li>
+            <li class="list-group-item"><%= event.address.city%></li>
+            <li class="list-group-item"><%= event.address.sector%></li>
             <%= link_to "Voir", event_path(event.id), class:"btn btn-primary" %>
           </ul>
           </div>
@@ -41,7 +43,7 @@
         <div class="card-body">
         <% else %>
         Proposer un évenement de ceuillette, préparation,etc... 
-        
+
         </div>
       </div>
 
@@ -113,12 +115,8 @@
 
 <% @events.each do |event| %>
 <ul>
-  <li> <%= event.title %> </li>
-  <li> <%= event.start_date %></li>
-  <li> <%= event.end_date %></li>
-  <li> <%= event.address.city%></li>
-  <li> <%= event.address.sector%></li>
-  <li> <%= event.appointments.count%></li>
+  <li>  </li>
+  
   </ul>
 
 
