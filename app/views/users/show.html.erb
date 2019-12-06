@@ -1,0 +1,32 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<% if current_user.created_events.length > 0%>
+    <p>Evénements que j'organise :</p>
+    <ul>
+        <% current_user.created_events.each do |event|%>
+        <li> #<%= event.id %> - A partir du <%= event.start_date %> au <%= event.end_date %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>Aucun événement organisé</p>
+<% end %>
+
+<% if current_user.appointments.length > 0%>
+    <p>Mes participations :</p>
+    <ul>
+        <% current_user.appointments.each do |appointment|%>
+        <li> #<%= appointment.id %> - A partir du <%= appointment.start_date %> | Durée : <%= appointment.duration %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+  <%= date %>
+
+  <% events.each do |event| %>
+    <div>
+      <%= event.title %>
+    </div>
+  <% end %>
+<% end %>
