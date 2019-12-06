@@ -1,13 +1,20 @@
 class Admin::UsersController < ApplicationController
 
   before_action :check_if_admin
-  before_action :user_detail
+  before_action :user_detail, only: [:show,:create,:update,:destroy]
+
+  def index
+    
+    @users = User.all
+    
+  end
 
   def show
     
     @events = Event.all
     
   end
+  
 
   def new
   end
@@ -32,7 +39,7 @@ class Admin::UsersController < ApplicationController
     
     @user_detail.destroy 
     flash[:danger] = "L'utilisateur #{@user_detail.email} à bien été supprimmé"
-    redirect_to '/admin'
+    redirect_to '/admin/users'
   end
 
   private

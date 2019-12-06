@@ -8,23 +8,9 @@
         
         <p class="lead"><%="Welcome #{current_user.first_name}" %> </p>
         <h5><%= link_to "Creer un nouvel evenement",new_event_path %></h5>
+        <h5><%= link_to "Voir tout les utilisateurs inscrits",admin_users_path %></h5>
         <br>     
       
   </div>
 
-    <div class="card-columns">
-<%@users.each do |liste|%>
-  <div class="card border-danger mb-3">
-  <h5 class="card-header"><%=liste.first_name%></h5>
-  <div class="card-body">
-    
-    <%= link_to "profil utilisateur", admin_user_path(liste.id) %>
-  </div>
-</div>
-</br>
-</br>
-<% end %>
-</div>
-
-</div>
-</center>
+   
