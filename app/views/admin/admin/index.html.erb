@@ -4,15 +4,13 @@
 <center>
 
 
-  <div class="container" >
+  <div>
         
-        <p class="lead"><%="Welcome #{current_user.first_name} !!" %> </p>
-        <h5><%= link_to ">>>  Creer un nouvel evenement  <<<" new_event_path %></h5>
-        <br>
-        <h5><%= link_to "Voir les evenements en attente de validation", 
-        admin_event_submissions_path %></h5>
-      </div>
-    </div>
+        <p class="lead"><%="Welcome #{current_user.first_name}" %> </p>
+        <h5><%= link_to "Creer un nouvel evenement",new_event_path %></h5>
+        <br>     
+      
+  </div>
 
     <div class="card-columns">
 <%@users.each do |liste|%>
