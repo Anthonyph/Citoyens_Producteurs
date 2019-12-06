@@ -13,12 +13,9 @@
  *= require underexpress
  *= require devise
  *= require main
+ *= require navbar
  *= require sidebar
  *= require footer
- *= require navbar
  *= require home
- *= require store
- *= require story
- *= require events
  *= require stores
  */
