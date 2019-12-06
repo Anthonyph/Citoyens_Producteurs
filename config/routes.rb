@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   get 'story', to: 'home#story'
+  get 'community', to: 'home#community'
 end
