@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   has_many :users, through: :appointments  
   has_many :product_events, dependent: :destroy
   has_many :products, through: :product_events
+  include Feedbackable
 
 
   # validates :title,
