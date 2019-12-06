@@ -1,3 +1,14 @@
+<center>
+
 <h1>Page Show des produits</h1>
 <h2><%= @product.name%><h2>
-<h3>Quantité du produit => <%=@productevents.find_by(product_id: @product.id).quantity%> <%=@productevents.find_by(product_id: @product.id).unit.name%></h3>
+<%productevent = @productevents.find_by(product_id: @product.id)%>
+<h3>Quantité du produit => <%=productevent.quantity%> <%=productevent.unit.name%></h3>
+<%eventid = productevent.event_id%>
+<%event = Event.find_by(id: eventid)%>
+<h3>A quel événement en récupérer ? <%= event.title%></h3>
+<h3>A quel endroit ? <%= event.address.place%> <%= event.address.zip_code%> <%= event.address.city%></h3>
+<h3>Cet évenement est organisé par <%= event.creator.first_name%> <%= event.creator.last_name%></h3>
+<%%>
+
+<center>
