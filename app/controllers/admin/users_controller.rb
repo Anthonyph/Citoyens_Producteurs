@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 
-  before_action :check_if_admin, user_detail
-
+  before_action :check_if_admin
+  before_action :user_detail
 
   def show
     
