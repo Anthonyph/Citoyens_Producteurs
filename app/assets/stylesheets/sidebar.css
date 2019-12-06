@@ -1,18 +1,29 @@
 #sidebar {
   position: fixed;
+  background-color: whitesmoke;
   width: 250px;
   height: 100%;
   left: -250px;
   transition: all 500ms ease;
-  z-index: 10;
+  z-index: 3;
 }
 
 #sidebar.active {
   left: 0px;
 }
 
+.sidebar-row {
+  height: 85%;
+  width: 250px;
+  margin: 0px;
+}
+
+.sidebar-col {
+  height: 100%;
+  padding: 0;
+}
+
 .sidebar-box {
-  background-color:rgba(255, 255, 255, 0.5);
   height: 100%;
   padding: 0;
 }
@@ -21,6 +32,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #181F49;
   width: 100%;
   height: 100%;
 }
@@ -32,29 +46,27 @@
   padding-bottom: 15px;
 }
 
-#sidebar a {
+#sidebar .sidenav-link {
   display: inline-block;
-  width: 90%;
+  width: 75%;
   color: #181F49;
-  margin-left: 12px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin: 12px 18px;
   transition: .5s;
 }
 
-#sidebar a:hover {
+#sidebar .sidenav-link:hover {
   color: rgb(0, 0, 0);
   transform: scale(1.15);
 }
 
 #sidebar .sidebar-link a {
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px 10px;
 }
 
 #sidebar .toggle-btn {
   position: absolute;
-  left: 320px;
-  top: 100px;
+  left: 280px;
+  top: 110px;
 }
 
 #sidebar .menu-burger {
@@ -68,6 +80,9 @@
 
 .sidebar-logo {
   width: 180px;
-  height: 100px;
+  height: 110px;
+  margin-top: 15px;
+  padding-bottom: 25px;
   margin-bottom: 5px;
+  border-bottom: 1px solid black;
 }
