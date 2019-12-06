@@ -306,7 +306,7 @@ footer {
     background-color: #868e96; }
 
 .btn-light {
-  background-color: rgba(248, 249, 250, 1); }
+  background-color: rgba(248, 249, 250, 0.4); }
   .btn-light:hover {
     background-color: #ffffff; }
 
