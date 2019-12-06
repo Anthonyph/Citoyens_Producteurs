@@ -1,1 +1,8 @@
+<center>
 <h1>Page index des produits </h1>
+<%length = @products.length%>
+<% for i in 1..length do%>
+<%product = @products.find(i)%>
+<h2><%=product.name%> <%=ProductEvent.find_by(product_id: product.id)%> <%=ProductEvent.find_by(product_id: product.id)%></h2> 
+<%end%>
+<center>

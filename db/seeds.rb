@@ -55,7 +55,7 @@ end
 
 ########### PRODUCT #################
 
-(0..10).each do |i|
+(0..5).each do |i|
   product = Product.new(
   name:Faker::Food.fruits,
   )
@@ -76,7 +76,7 @@ puts "Product seed done, load 30 products"
 
 ########### ADDRESS #################
 
-(0..20).each do |i|
+(0..25).each do |i|
 
   address = Address.new(
     place:Faker::Address.street_name,
@@ -191,7 +191,7 @@ puts "user DONE"
 
 ########### STORE_PRODUCT 3rd #################
 
-(0..25).each do |i|
+(1..25).each do |i|
   storeproduct = StoreProduct.new(
     product_id:rand(0..30),
     store_id:rand(0..10),
@@ -204,7 +204,7 @@ end
 ########### EVENT 4th #################
 
 
-(0..25).each do |i|
+(1..30).each do |i|
   startdate = rand(t1..t2)
 
   event = Event.new(
@@ -212,9 +212,9 @@ end
   description: Faker::Restaurant.description,
   start_date: startdate, 
   end_date: startdate + rand(900..7600),
-  address_id: rand(0..20), 
+  address_id: rand(1..20), 
   creator_id: rand(1..20), 
-  event_type_id:rand(0..8),
+  event_type_id:rand(1..8),
   )
   event.save
 
@@ -223,11 +223,11 @@ end
 
 ########### COMMENT #################
 
-(0..25).each do |i|
+(1..25).each do |i|
   comment = Comment.new(
     text:Faker::Lorem.characters(number: 200),
-    user_id:rand(0..20),
-    event_id:rand(0..25),
+    user_id:rand(1..20),
+    event_id:rand(1..25),
   )
   comment.save
   puts "comment seed n° #{i}"
@@ -236,12 +236,12 @@ end
 ########### APPOINTMENT #################
   
   timenow = Time.now
-  (0..25).each do |i|
+  (1..25).each do |i|
       startdate = rand(timenow..t2)
       
     appointment = Appointment.new(
-    user_id:rand(0..20),
-    event_id:rand(0..25),
+    user_id:rand(1..20),
+    event_id:rand(1..25),
     start_date: startdate,
     duration:rand(30..300)*5,
     status: "Future appointment",
@@ -253,12 +253,12 @@ end
 
 ########### PRODUCT_EVENT #################
 
-(0..25).each do |i|
+(1..25).each do |i|
   productevent = ProductEvent.new(
-    product_id:rand(1..30),
-    event_id:rand(0..25) ,
-    unit_id: rand(0..arrayunitlength),  
-    quantity: rand(1.99),
+    product_id:i,
+    event_id:i ,
+    unit_id: rand(1..arrayunitlength),  
+    quantity: rand(1..99),
   )
   productevent.save
   
@@ -268,12 +268,12 @@ end
 
 ########### PRODUCT_APPOINTMENT #################
 
-(0..20).each do |i|
+(1..25).each do |i|
   productappointment = ProductAppointment.new(
     product_id: rand(1..30),
-    appointment_id:rand(0..25),
+    appointment_id:rand(1..25),
     quantity: rand(1..99),
-    unit_id: rand(0..arrayunitlength),
+    unit_id: rand(1..arrayunitlength),
   )
   productappointment.save
   puts "Product_appointment seed n°#{i} done"

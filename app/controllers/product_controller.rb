@@ -2,10 +2,12 @@ class ProductController < ApplicationController
 
   def index
     @products = Product.all
+    @productevents = ProductEvent.all
   end
 
   def show
-    @products = Product.all
+    @product = Product.find(params[:id])
+    @productevents = ProductEvent.all
   end
 
   def new 
