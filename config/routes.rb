@@ -6,9 +6,6 @@ Rails.application.routes.draw do
 
   resources :product
   resources :events do
-    resources :product_events
-    resources :appointments do
-      resources :product_appointments
-      end
+    resources :appointments
   end
 end
