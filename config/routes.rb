@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
-  resources :stores
+  resources :stores do
+    resources :store_product
+  end
   resources :comments #, only: [:create, :update, :destroy]
 
   resources :product
