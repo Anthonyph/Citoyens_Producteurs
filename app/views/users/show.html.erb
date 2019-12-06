@@ -4,43 +4,61 @@
 <div class="container">
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
-      <h1 class="font-weight-light">Fixed Full Page Background Image</h1>
-      <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
-      <p class="lead">Scroll down...</p>
-      <div style="height: 700px"></div>
-      <p class="lead mb-0">You've reached the end!</p>
-    </div>
+      <h1 class="font-weight-light">Mon espace 🌾</h1>
+      <hr>
+
+    <% if current_user.created_events.length > 0%>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header"><h3>Mes évènements</h3></div>
+            <div class="card-body">
+              <% current_user.created_events.each do |event|%>
+               <h5 class="card-title"><%= event.id %></h5>
+                 <p class="card-text">A partir de <%= event.start_date %> au <%= event.end_date %></p>
+                 <%end%>
+                 <% else %>
+                  <p>Aucun événement organisé</p>
+                <% end %> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <br><br>
+
+      <% if current_user.appointments.length > 0%>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-header"><h3>Mes participations</h3></div>
+              <div class="card-body">
+                <% current_user.appointments.each do |appointment|%>
+                <h5 class="card-title"><%= appointment.id %></h5>
+                <p class="card-text">A partir du <%= appointment.start_date %> | Durée : <%= appointment.duration %></p>
+                <%end%>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br><br>
+
+  <div class="calendar text-center">
+    <h5>Mon calendrier : </h5>
+    <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+      <%= date %>
+    
+      <% events.each do |event| %>
+        <div>
+          <%= event.title %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
+  </div>
+  </div>
+
+
 </div>
-
-<% if current_user.created_events.length > 0%>
-    <p>Evénements que j'organise :</p>
-    <ul>
-        <% current_user.created_events.each do |event|%>
-        <li> #<%= event.id %> - A partir du <%= event.start_date %> au <%= event.end_date %></li>
-        <% end %>
-    </ul>
-<% else %>
-    <p>Aucun événement organisé</p>
-<% end %>
-
-<% if current_user.appointments.length > 0%>
-    <p>Mes participations :</p>
-    <ul>
-        <% current_user.appointments.each do |appointment|%>
-        <li> #<%= appointment.id %> - A partir du <%= appointment.start_date %> | Durée : <%= appointment.duration %></li>
-        <% end %>
-    </ul>
-<% end %>
-
-
-
-<%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-  <%= date %>
-
-  <% events.each do |event| %>
-    <div>
-      <%= event.title %>
-    </div>
-  <% end %>
-<% end %>
