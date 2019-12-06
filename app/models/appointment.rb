@@ -12,7 +12,7 @@ class Appointment < ApplicationRecord
   
 
   validates :status, presence: true
-  validates :points, presence: true
+  # validates :points, presence: true
 
   #after_create :appointment_creation_user
   #after_create :appointment_creation_creator

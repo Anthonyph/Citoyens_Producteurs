@@ -7,7 +7,10 @@
         </p>
         <p>
           <label> Durée de participation : </label>
-          <%= form.number_field :duration, in: 10..300, step: 5 %>
+          <%= form.number_field :duration, in: 10..300, step: 5, value: 30 %>
+          <%= form.hidden_field :points, value: 0 %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <%= form.hidden_field :event_id, value: @appointment.event.id %>
         </p>
         <%= form.submit "Participer" %>
     <% end %>
