@@ -36,9 +36,12 @@
     <div class="col-md-4 shop-show-aside">
 
       <div class="card my-4">
-        <h5 class="card-header">Side Widget</h5>
+        <h5 class="card-header"><%= link_to 'Créer un Evenement', new_event_path, class:  'btn btn-sm btn-outline-dark ml-1' %></h5>
+        
         <div class="card-body">
-          You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+        <% else %>
+        Proposer un évenement de ceuillette, préparation,etc... 
+        
         </div>
       </div>
 
