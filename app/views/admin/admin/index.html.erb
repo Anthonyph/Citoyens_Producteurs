@@ -1,0 +1,32 @@
+<% if flash[:danger] %>
+    <div class="danger"><%= flash[:danger] %></div>
+  <% end %>
+<center>
+
+
+  <div class="container" >
+        
+        <p class="lead"><%="Welcome #{current_user.first_name} !!" %> </p>
+        <h5><%= link_to ">>>  Creer un nouvel evenement  <<<" new_event_path %></h5>
+        <br>
+        <h5><%= link_to "Voir les evenements en attente de validation", 
+        admin_event_submissions_path %></h5>
+      </div>
+    </div>
+
+    <div class="card-columns">
+<%@users.each do |liste|%>
+  <div class="card border-danger mb-3">
+  <h5 class="card-header"><%=liste.first_name%></h5>
+  <div class="card-body">
+    
+    <%= link_to "profil utilisateur", admin_user_path(liste.id) %>
+  </div>
+</div>
+</br>
+</br>
+<% end %>
+</div>
+
+</div>
+</center>
