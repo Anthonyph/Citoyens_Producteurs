@@ -1,4 +1,3 @@
-<center>
 
 <h1><%= @product.name%><h1>
 
@@ -33,4 +32,3 @@
 <h4> si tu supprimes ce produit, tout les évenements auxquelles il est associé ainsi que son stock en boutique sera supprimé, fais bien attention ! </h4>
 <%=button_to "Supprimer", {:controller => :product, :action => 'destroy', :id => @product.id }, :method => :delete %>
 <br>
-<center>
