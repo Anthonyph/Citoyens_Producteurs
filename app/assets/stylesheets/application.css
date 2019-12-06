@@ -18,5 +18,7 @@
  *= require navbar
  *= require home
  *= require store
- += require story
+ *= require story
+ *= require events
+ *= require stores
  */

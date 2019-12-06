@@ -1,0 +1,2 @@
+module ProductEventHelper
+end

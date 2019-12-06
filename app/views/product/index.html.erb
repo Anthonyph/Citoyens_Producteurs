@@ -1,0 +1,7 @@
+<center>
+<h1>Page index des produits </h1>
+<%length = @products.length%>
+<% @products.each do |item|%>
+<h2><a href='/product/<%=item.id%>'><%=item.name%></a> <%=ProductEvent.find_by(product_id: item.id).quantity%> <%=ProductEvent.find_by(product_id: item.id).unit.name%></h2> 
+<%end%>
+<center>
