@@ -8,39 +8,9 @@
 
       <div class="card-columns shop-show-card-columns">
 
-        <div class="card mb-4">
-          <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">event.title</h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">event.start_date : ...</li>
-            <li class="list-group-item">event.appointments.count : ...</li>
-            <li class="list-group-item">event.address.sector : ...</li>
-            <a href="#" class="btn btn-primary">Rejoindre</a>
-          </ul>
-          </div>
-          <div class="card-footer text-muted">
-            event.UPDATED_AT
-          </div>
-        </div>
+        <% @events.each do |event| %>
 
         <div class="card mb-4">
-          <img class="card-img-top shop-show-events-img" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">event.title</h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">event.start_date : ...</li>
-            <li class="list-group-item">event.appointments.count : ...</li>
-            <li class="list-group-item">event.address.sector : ...</li>
-            <a href="#" class="btn btn-primary">Rejoindre</a>
-          </ul>
-          </div>
-          <div class="card-footer text-muted">
-            event.UPDATED_AT
-          </div>
-        </div>
-
-                <div class="card events-card mb-4">
           <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
           <div class="card-body">
             <h2 class="card-title">event.title</h2>
@@ -48,7 +18,7 @@
             <li class="list-group-item">event.start_date : ...</li>
             <li class="list-group-item">event.appointments.count : ...</li>
             <li class="list-group-item">event.address.sector : ...</li>
-            <a href="#" class="btn btn-primary">Rejoindre</a>
+            <%= link_to "Voir", event_path(event.id), class:"btn btn-primary" %>
           </ul>
           </div>
           <div class="card-footer text-muted">
@@ -56,39 +26,10 @@
           </div>
         </div>
 
-                <div class="card events-card mb-4">
-          <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">event.title</h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">event.start_date : ...</li>
-            <li class="list-group-item">event.appointments.count : ...</li>
-            <li class="list-group-item">event.address.sector : ...</li>
-            <a href="#" class="btn btn-primary">Rejoindre</a>
-          </ul>
-          </div>
-          <div class="card-footer text-muted">
-            event.UPDATED_AT
-          </div>
-        </div>
-
-                <div class="card events-card mb-4">
-          <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-          <div class="card-body">
-            <h2 class="card-title">event.title</h2>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">event.start_date : ...</li>
-            <li class="list-group-item">event.appointments.count : ...</li>
-            <li class="list-group-item">event.address.sector : ...</li>
-            <a href="#" class="btn btn-primary">Rejoindre</a>
-          </ul>
-          </div>
-          <div class="card-footer text-muted">
-            event.UPDATED_AT
-          </div>
-        </div>
+        <% end %>
 
       </div>
+      
     </div>
 
 
