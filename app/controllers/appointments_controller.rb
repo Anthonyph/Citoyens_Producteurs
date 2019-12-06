@@ -15,8 +15,7 @@ class AppointmentsController < ApplicationController
 
   # POST /events/:event_id/appointments
   def create
-    @appointment = @event.appointments.new(start_date: params[:start_date], duration: params[:duration], user_id: current_user.id, event_id: [:event_id], status: 'to_validate', points: 0)
-    # @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))
+    @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))
     if @appointment.save!
       redirect_to @event, success: 'Appointment created'
     else
@@ -56,6 +55,6 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:start_date, :duration, :user_id, :event_id)
+    params.require(:appointment).permit(:start_date, :duration, :points, :user_id, :event_id)
   end
 end

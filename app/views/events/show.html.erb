@@ -24,6 +24,18 @@
   <!-- Post Content -->
   <p><%=@event.description%></p>
    <hr>
+  
+  <p> <%= @event.appointments.count%> <%= @event.appointments.count > 1 ? 'participants' : 'participant' %></p>
+  <% if user_signed_in? %>
+    <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>
+    <% if @appointment != nil %>
+      <%= link_to 'Ne plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>
+    <% else %>
+      <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-sm btn-outline-dark ml-1' %>
+    <% end %>
+  <% else %>
+    <%= link_to 'Connecte toi pour participer', login_path, class: 'btn btn-sm btn-outline-dark' %>
+  <% end %>
 
   <!-- Comments Form -->
   <div class="card my-4">
@@ -38,29 +50,29 @@
         -->
     </div>
    </div>
+  </div>
 
   <hr>
   <!-- Comment with nested comments -->
   <div class="media mb-4">
     <div class="media-body">
-    <h5>Les commentaires</h5>
-     <% @event.comments.order('created_at DESC').each do |comment| %>
-      <p class="mt-0">Par : <%= comment.user.first_name + ' ' + comment.user.last_name%>, le 
-      <%= comment.updated_at.strftime("%-d %B %Y at %Hh %Mm %Ss (UTC)") %>
-      </p>
-        <blockquote class="blockquote w-50">
-          <i><%= comment.text %></i>
-        </blockquote>    
-        <hr>
-      <p>
-        <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-lg bg-warning btn-rounded m-1" %>
-        <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg bg-danger btn-rounded m-1" %>
-      </p>
+      <h5>Les commentaires</h5>
+      <% @event.comments.order('created_at DESC').each do |comment| %>
+        <p class="mt-0">Par : <%= comment.user.first_name + ' ' + comment.user.last_name%>, le 
+        <%= comment.updated_at.strftime("%-d %B %Y at %Hh %Mm %Ss (UTC)") %>
+        </p>
+          <blockquote class="blockquote w-50">
+            <i><%= comment.text %></i>
+          </blockquote>    
+          <hr>
+        <p>
+          <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-lg bg-warning btn-rounded m-1" %>
+          <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg bg-danger btn-rounded m-1" %>
+        </p>
       <% end %>
     </div>
-    </div>
   </div>
-</div>
+
 </div>
 </div>
 
