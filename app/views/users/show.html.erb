@@ -20,3 +20,13 @@
         <% end %>
     </ul>
 <% end %>
+
+<%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+  <%= date %>
+
+  <% events.each do |event| %>
+    <div>
+      <%= event.title %>
+    </div>
+  <% end %>
+<% end %>
