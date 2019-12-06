@@ -1,39 +1,35 @@
-  .devise {
-    margin-top: 80px;
-  }
+.login,
+.image {
+  min-height: 100vh;
+}
 
-  .login,
-  .image {
-    min-height: 100vh;
-  }
-  
-  .bg-image {
-    background-image: url('https://images.pexels.com/photos/1395958/pexels-photo-1395958.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-    background-size: cover;
-    background-position: center;
-  }
+.bg-image {
+  background-image: url('https://images.pexels.com/photos/1395958/pexels-photo-1395958.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size: cover;
+  background-position: center;
+}
 
-  .bg-image2 {
-    background-image: url('https://images.pexels.com/photos/1453713/pexels-photo-1453713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .login-heading {
-    font-weight: bold;
-  }
+.bg-image2 {
+  background-image: url('https://images.pexels.com/photos/1453713/pexels-photo-1453713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-size: cover;
+  background-position: center;
+}
 
-  .btn-login {
-    font-size: 0.9rem;
-    letter-spacing: 0.05rem;
-    padding: 0.75rem 1rem;
-    border-radius: 2rem;
-  }
-  
-  .container-fluid {
-    background-color: rgb(255, 255, 255);
-    opacity: 0.8;
-  }
+.login-heading {
+  font-weight: bold;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+}
+
+.container-fluid {
+  background-color: rgb(255, 255, 255);
+  opacity: 0.8;
+}
 
   .user-edit {
     background: url('https://images.pexels.com/photos/867349/pexels-photo-867349.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') no-repeat center center fixed;
