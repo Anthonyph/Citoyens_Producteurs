@@ -11,4 +11,5 @@ Rails.application.routes.draw do
       resources :product_appointments
       end
   end
+  resources :users, only: [:show]
 end

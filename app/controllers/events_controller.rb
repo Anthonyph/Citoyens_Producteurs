@@ -7,7 +7,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @appointments = Appointment.all
     @comment = Comment.new
   end
   

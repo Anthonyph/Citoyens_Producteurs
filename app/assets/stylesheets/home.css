@@ -1,10 +1,9 @@
 .hero {
-    background-image: url(/assets/cp.jpg);
+    background-image: url(/assets/gardening.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 800px;
-    margin-top: -50px;
 }
 
 .call-to-action {
@@ -154,7 +153,6 @@
 }
 
 .carousel-item {
-    z-index: 1;
     height: 420px;
     border: 1px solid black;
 }
