@@ -15,8 +15,8 @@ class Appointment < ApplicationRecord
   validates :status, presence: true
   # validates :points, presence: true
 
-  #after_create :appointment_creation_user
-  #after_create :appointment_creation_creator
+  after_create :appointment_creation_user
+  after_create :appointment_creation_creator
 
   def appointment_creation_user
     AppointmentMailer.new_appointment_user(self).deliver_now

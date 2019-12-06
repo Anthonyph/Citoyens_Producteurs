@@ -1,9 +1,11 @@
-<h1>Stores#index</h1>
-<p>Find me in app/views/stores/index.html.erb</p>
-<% if @stores.length > 0 %>
+<%= render 'layouts/navbar' %>
+<br>
+<br>
+<br>
+<br>
     <ul>
-        <% @stores.each do |store| %>
-            <li> <%= store.name %> </li>
-        <% end %>
+    <% @stores.each do |store| %>
+    <li><h3><%= link_to store.name, store_path(store.id) %><h3></li>
+    <% end %>
     </ul>
-<% end %>
+

@@ -17,7 +17,6 @@ class Event < ApplicationRecord
   # validates :description,
   #   presence: true,
   #   length: {maximum: 250}
-  
 
   validates :start_date, presence: true, 
   date: { after: Proc.new { Time.now }}

@@ -1,13 +1,23 @@
+<%= render 'layouts/navbar' %>
+<br>
+<br>
+<br>
+<br>
+<% i=1 %>
+<br>
+<h2><%= link_to "Clique ici pour voir les produits présents dans ce magasin", store_store_product_index_path(@store.id) %></h2>
+<br>
+<h3> Voici la liste des événements associés à cette boutique : </h3>
 <% @events.each do |event| %>
-
+<br>
   <ul>
-    <li> <%= event.title %> </li>
-    <li> <%= event.start_date %></li>
-    <li> <%= event.end_date %></li>
-    <li> <%= event.address.city%></li>
-    <li> <%= event.address.sector%></li>
-    <li> <%= event.appointments.count%></li>
+    <li> <h3><%= link_to event.title, event_path(event.id) %></h3> </li>
+    <li> Heure de début : <%= event.start_date %></li>
+    <li> Heure de fin : <%= event.end_date %></li>
+    <li> Lieu : <li>
+    <li> <%= event.address.place%></li>
+    <li> <%= event.address.zip_code%> <%= event.address.city%></li>
+    <li> Nombre de participants à l'évenement : <%= event.appointments.count%></li>
   </ul>
-
 
   <%end%>
