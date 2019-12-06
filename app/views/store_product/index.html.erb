@@ -1,8 +1,12 @@
-<h1>StoreProduct INDEX</h1>
 
-<%@store_products.where(store_id: params[:store_id]).each do |storeproduct|%>
+<center>
+<h1> Voici les produits présents dans la boutique <%=Store.find(params[:store_id]).name%> </h1>
+
+<%sp = @store_products.where(store_id: params[:store_id])%>
+<%sp.each do |storeproduct|%>
 <ul>
-<li><%= storeproduct.product.name %></li>
+<li><h2><%= storeproduct.product.name %></h2></li>
 <%= storeproduct.quantity %> <%= storeproduct.unit.name %>
 </ul>
 <%end%>
+<center>  
