@@ -17,5 +17,6 @@
  *= require footer
  *= require navbar
  *= require home
- *= require store
+ *= require events
+ *= require stores
  */
