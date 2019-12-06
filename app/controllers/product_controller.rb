@@ -14,8 +14,9 @@ class ProductController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
     @product.destroy
-    redirect_to events_url, notice: 'Product was successfully destroyed.'
+    redirect_to '/product ', notice: 'Product was successfully destroyed.'
   end
 
   def create

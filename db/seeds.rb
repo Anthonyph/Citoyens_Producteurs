@@ -42,7 +42,7 @@ t1 = Time.parse("2019-12-13 00:40:00")
 t2 = Time.parse("2020-02-01 00:00:00")
 
 ########### Unit ###########
-array_unit = ["kg", "L", "unités","pots","botte"]
+array_unit = ["kg", "L", "unités","pots","bottes"]
 arrayunitlength = array_unit.length
 
 (0..arrayunitlength).each do |i|

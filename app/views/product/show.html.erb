@@ -9,6 +9,8 @@
 <h3>A quel événement en récupérer ? <%= event.title%></h3>
 <h3>A quel endroit ? <%= event.address.place%> <%= event.address.zip_code%> <%= event.address.city%></h3>
 <h3>Cet évenement est organisé par <%= event.creator.first_name%> <%= event.creator.last_name%></h3>
-<%%>
 
+<h3> si tu supprimes ce produit, tout les évenements auxquelles il est associé ainsi que son stock en boutique sera supprimé, fais bien attention ! </h3>
+<%=button_to "Supprimer", {:controller => :product, :action => 'destroy', :id => @product.id }, :method => :delete %>
+<br>
 <center>

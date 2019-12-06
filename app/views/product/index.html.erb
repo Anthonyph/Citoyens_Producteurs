@@ -1,8 +1,7 @@
 <center>
 <h1>Page index des produits </h1>
 <%length = @products.length%>
-<% for i in 1..length do%>
-<%product = @products.find(i)%>
-<h2><a href='/product/<%=i%>'><%=product.name%></a> <%=ProductEvent.find_by(product_id: product.id).quantity%> <%=ProductEvent.find_by(product_id: product.id).unit.name%></h2> 
+<% @products.each do |item|%>
+<h2><a href='/product/<%=item.id%>'><%=item.name%></a> <%=ProductEvent.find_by(product_id: item.id).quantity%> <%=ProductEvent.find_by(product_id: item.id).unit.name%></h2> 
 <%end%>
 <center>
