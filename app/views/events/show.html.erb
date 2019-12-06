@@ -34,7 +34,7 @@
       <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-sm btn-outline-dark ml-1' %>
     <% end %>
   <% else %>
-    <%= link_to 'Connecte toi pour participer', login_path, class: 'btn btn-sm btn-outline-dark' %>
+    <%= link_to 'Connecte toi pour participer', new_user_session_path, class: 'btn btn-sm btn-outline-dark' %>
   <% end %>
 
   <!-- Comments Form -->
