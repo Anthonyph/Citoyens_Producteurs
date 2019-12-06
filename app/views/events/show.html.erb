@@ -37,6 +37,10 @@
     <%= link_to 'Connecte toi pour participer', new_user_session_path, class: 'btn btn-sm btn-outline-dark' %>
   <% end %>
 
+  <!-- Feedback -->
+  <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'button is-danger is-outlined is-small is-rounded' %>
+
+
   <!-- Comments Form -->
   <div class="card my-4">
     <h5 class="card-header">Laisser un commentaire</h5>

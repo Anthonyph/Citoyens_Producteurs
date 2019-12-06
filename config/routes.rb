@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :product
   resources :events do
     resources :appointments
+    resources :feedbacks
   end
   resources :users, only: [:show]
 end

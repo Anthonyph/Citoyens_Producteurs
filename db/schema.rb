@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_165837) do
+ActiveRecord::Schema.define(version: 2019_12_06_160809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,16 @@ ActiveRecord::Schema.define(version: 2019_12_03_165837) do
     t.index ["address_id"], name: "index_events_on_address_id"
     t.index ["creator_id"], name: "index_events_on_creator_id"
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.string "feedbackable_type"
+    t.bigint "feedbackable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feedbackable_type", "feedbackable_id"], name: "index_feedbacks_on_feedbackable_type_and_feedbackable_id"
   end
 
   create_table "product_appointments", force: :cascade do |t|
