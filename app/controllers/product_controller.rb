@@ -8,6 +8,7 @@ class ProductController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @productevents = ProductEvent.all
+    @storeproducts = StoreProduct.all
   end
 
   def new 
