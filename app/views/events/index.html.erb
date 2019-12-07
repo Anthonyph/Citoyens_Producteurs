@@ -41,18 +41,24 @@
 
     <div class="col-md-4 events-aside">
 
-      <div class="card my-4">
-        <h5 class="card-header"><%= link_to 'Créer un événement', new_event_path, class: 'btn btn-sm btn-outline-dark ml-1' %></h5>
+      <div class="card my-4"> 
         
-        <div class="card-body">
-       
-        Proposer un évenement de ceuillette, préparation,etc... 
+        <div class-="card-header">
+          <h5 class="card-header">Évenements</h5>
+        </div>  
 
-        <h5 class="card-header">Évenements</h5>
         <div class="card-body">
+          <p>
           Retrouver tous les évenements blablabla... <br>
-          (à completer)
+          (à completer)<br>
+          Proposer un évenement de ceuillette, préparation,etc...
+          </p>
         </div>
+
+        <div class="card-footer">
+          <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-outline-dark ml-1' %>
+        </div>
+
       </div>
 
       <div class="card my-4">
