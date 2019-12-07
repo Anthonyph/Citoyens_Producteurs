@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @stores = Store.all
   end
 
   def show
