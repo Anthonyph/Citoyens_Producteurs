@@ -1,6 +1,6 @@
 <%= render  "layouts/sidebar" %>
  
- <div class="container shop-show p-0">
+ <div class="container p-0">
 
   <div class="row">
 
@@ -16,15 +16,19 @@
           <div class="card-body">
             <h2 class="card-title"><%= event.title %></h2>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= event.start_date %></li>
-            <li class="list-group-item"><%= event.end_date %></li>
+            <li class="list-group-item">Le <%= event.start_date.strftime("%-d %B %Y") %></li>
+            <% if event.appointments.count > 0 %>
+              <li class="list-group-item"><%= event.appointments.count > 1 ? 'Nombre de participants : ' : 'Nombre de participant : ' %> <%= event.appointments.count %></li>
+            <% else %>
+              <li class="list-group-item">Aucun participant</li>
+            <% end %>
             <li class="list-group-item"><%= event.address.city%></li>
-            <li class="list-group-item"><%= event.address.sector%></li>
+            <li class="list-group-item">Quartier : <%= event.address.sector %></li>
             <%= link_to "Voir", event_path(event.id), class:"btn btn-primary" %>
           </ul>
           </div>
           <div class="card-footer text-muted">
-            event.UPDATED_AT
+            <li>Crée le <%= event. updated_at.strftime("%-d %B %Y") %></li>
           </div>
         </div>
 
@@ -38,12 +42,16 @@
     <div class="col-md-4 events-aside">
 
       <div class="card my-4">
-        <h5 class="card-header"><%= link_to 'Créer un Evenement', new_event_path, class:  'btn btn-sm btn-outline-dark ml-1' %></h5>
+        <h5 class="card-header"><%= link_to 'Créer un événement', new_event_path, class: 'btn btn-sm btn-outline-dark ml-1' %></h5>
         
         <div class="card-body">
        
         Proposer un évenement de ceuillette, préparation,etc... 
 
+        <h5 class="card-header">Évenements</h5>
+        <div class="card-body">
+          Retrouver tous les évenements blablabla... <br>
+          (à completer)
         </div>
       </div>
 
@@ -51,7 +59,7 @@
         <h5 class="card-header">Rechercher :</h5>
         <div class="card-body">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" class="form-control" placeholder="Chercher un évenement...">
             <span class="input-group-btn">
               <button class="btn btn-secondary" type="button">Go!</button>
             </span>
@@ -69,32 +77,18 @@
                 <div class="container events-city">
                   <div class="row-12 ">
 
-                    <div class="col-12 p-1">
-                      <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/518557/pexels-photo-518557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
-                        <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
-                          <i class="fa fa-heart cdanger"></i>
-                          <h2 class="cwhite p-2 font-title">Bourg-la-Reine</h2>
-                        </div>
-                      </div>
-                    </div>
+                    <% @stores.each do |store| %>
 
-                    <div class="col-12 p-1">
-                      <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/552779/pexels-photo-552779.jpeg?cs=srgb&dl=clouds-cloudy-country-distance-552779.jpg&fm=jpg');">
-                        <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
-                          <i class="fa fa-heart cdanger"></i>
-                          <h2 class="cwhite p-2 font-title">Montpellier</h2>
+                      <div class="col-12 p-1">
+                        <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/518557/pexels-photo-518557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+                          <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
+                            <i class="fa fa-heart cdanger"></i>
+                            <h2 class="cwhite p-2 font-title"><%= store.name %></h2>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div class="col-12 p-1">
-                      <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/358532/pexels-photo-358532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
-                        <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
-                          <i class="fa fa-heart cdanger"></i>
-                          <h2 class="cwhite p-2 font-title">Etc..</h2>
-                        </div>
-                      </div>
-                    </div>
+                    <% end %>
 
                   </div>
                 </div>
@@ -110,5 +104,3 @@
   </div>
 
 </div>
-
-
