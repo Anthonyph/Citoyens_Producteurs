@@ -1,64 +1,68 @@
-<%= render "layouts/sidebar" %>
+<div class="user">
 
-<!-- Page Content -->
-<div class="container">
-  <div class="card border-0 shadow my-5">
-    <div class="card-body p-5">
-      <h1 class="font-weight-light">Mon espace 🌾</h1>
-      <hr>
+  <%= render "layouts/sidebar" %>
 
-    <% if current_user.created_events.length > 0%>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-header"><h3>Mes évènements</h3></div>
-            <div class="card-body">
-              <% current_user.created_events.each do |event|%>
-               <h5 class="card-title"><%= event.id %></h5>
-                 <p class="card-text">A partir de <%= event.start_date %> au <%= event.end_date %></p>
-                 <%end%>
-                 <% else %>
-                  <p>Aucun événement organisé</p>
-                <% end %> 
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+        <h1 class="font-weight-light">Mon espace 🌾</h1>
+        <hr>
 
-        <br><br>
-
-      <% if current_user.appointments.length > 0%>
         <div class="row">
           <div class="col-sm-6">
             <div class="card">
-              <div class="card-header"><h3>Mes participations</h3></div>
-              <div class="card-body">
-                <% current_user.appointments.each do |appointment|%>
-                <h5 class="card-title"><%= appointment.id %></h5>
-                <p class="card-text">A partir du <%= appointment.start_date %> | Durée : <%= appointment.duration %></p>
-                <%end%>
-                <%end%>
+              <div class="card-header"><h3>Mes évènements</h3></div>
+              <% if current_user.created_events.length > 0%>
+                <div class="card-body">
+                  <% current_user.created_events.each do |event|%>
+                  <h5 class="card-title"><%= event.id %></h5>
+                  <p class="card-text">A partir de <%= event.start_date %> au <%= event.end_date %></p>
+                  <%end%>
+                </div>
+              <% else %>
+                <p>Aucun événement organisé</p>
+              <% end %> 
               </div>
             </div>
           </div>
         </div>
 
         <br><br>
+        <div class="card border-0 shadow my-5">
+          <div class="card-body p-5">
+            <% if current_user.appointments.length > 0%>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header"><h3>Mes participations</h3></div>
+                    <div class="card-body">
+                      <% current_user.appointments.each do |appointment|%>
+                      <h5 class="card-title"><%= appointment.id %></h5>
+                      <p class="card-text">A partir du <%= appointment.start_date %> | Durée : <%= appointment.duration %></p>
+                      <%end%>
+                      <%end%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-  <div class="calendar text-center">
-    <h5>Mon calendrier : </h5>
-    <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-      <%= date %>
-    
-      <% events.each do |event| %>
-        <div>
-          <%= event.title %>
-        </div>
+          <br><br>
+
+    <div class="calendar text-center">
+      <h5>Mon calendrier : </h5>
+      <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+        <%= date %>
+      
+        <% events.each do |event| %>
+          <div>
+            <%= event.title %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-  </div>
-  </div>
-
 
 </div>
