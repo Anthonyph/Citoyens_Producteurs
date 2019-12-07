@@ -20,10 +20,13 @@
 
   <body>
 
-    <%= yield %>
-    
-    <div class="spacer"></div>
-    <%= render 'layouts/footer' %>
+    <div id="page-content">
+
+      <%= yield %>
+      <div class="spacer"></div>
+      <%= render 'layouts/footer' %>
+      
+    </div>
 
   </body>
 

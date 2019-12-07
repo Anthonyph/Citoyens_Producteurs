@@ -12,6 +12,15 @@
   left: 0px;
 }
 
+#page-content {
+  transition: all 500ms ease;
+  margin-left: 0px;
+}
+
+#page-content.active {
+  margin-left: 250px;
+}
+
 .sidebar-row {
   height: 80%;
   width: 250px;
