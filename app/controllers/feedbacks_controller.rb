@@ -23,7 +23,7 @@ class FeedbacksController < ApplicationController
   private
 
   def set_feedback
-    @appointment = Feedback.find(params[:id])
+    @feedback = Feedback.find(params[:id])
   end
 
   def set_event
