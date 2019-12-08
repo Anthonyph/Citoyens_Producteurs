@@ -1,0 +1,10 @@
+  <div class='container'>
+    <%= form_with(model: @feedback, url: [@feedback.feedbackable, @feedback], local: true) do |form| %>
+        <h6> Nouveau feedback : </h6>
+        <p><%= form.text_area :content, class: 'form-control' %></p>
+        <h6> Ton expérience de 0 à 5 : </h6>
+        <p><%= form.number_field :rating, in: 0..5, step: 1, class: 'form-control' %></p>
+
+        <%= form.submit "Ajouter mon feedback" %>
+    <% end %>
+  </div>

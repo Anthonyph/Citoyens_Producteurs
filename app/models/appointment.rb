@@ -3,6 +3,7 @@ class Appointment < ApplicationRecord
   belongs_to :event
   has_many :product_appointments, dependent: :destroy
   has_many :products, through: :product_appointments
+  include Feedbackable
 
   # validates :start_date, presence: true,
   # date: { after: Proc.new { Time.now }}

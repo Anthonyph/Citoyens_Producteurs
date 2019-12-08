@@ -27,6 +27,7 @@
       
       <hr>
 
+      <!-- Appointment -->
       <% if user_signed_in? %>
         <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
         <% if @appointment != nil %>
@@ -37,6 +38,9 @@
       <% else %>
         <%= link_to 'Connecte toi pour participer !', new_user_session_path, class: 'btn btn-lg btn-outline-dark' %>
       <% end %>
+
+      <!-- Feedbacks -->
+      <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'button is-danger is-outlined is-small is-rounded' %>
 
       <!-- Comments Form -->
       <div class="card my-4">
@@ -59,7 +63,6 @@
 
           <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
           <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
-
       </div>
 
  
