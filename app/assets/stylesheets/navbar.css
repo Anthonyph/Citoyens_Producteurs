@@ -8,8 +8,6 @@
 
 .navbar-logo {
     float: right;
-    margin-left: 50px;
-    margin-right: 50px;
     max-width: 120px;
     max-height: 120px;
 }
@@ -17,6 +15,9 @@
 .navbar .nav-item {
     padding-left: 10px;
     padding-right: 10px;
+
+.all-nav-link {
+    margin-left: 120px;
 }
 
 .avatar {

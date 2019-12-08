@@ -3,13 +3,22 @@
   background-image: url("sidebar.jpg");
   width: 250px;
   height: 100%;
-  left: 0px;
+  left: -250px;
   transition: all 500ms ease;
   z-index: 3;
 }
 
 #sidebar.active {
-  left: -250px;
+  left: 0px;
+}
+
+#page-content {
+  transition: all 500ms ease;
+  margin-left: 0px;
+}
+
+#page-content.active {
+  margin-left: 250px;
 }
 
 .sidebar-row {
