@@ -3,7 +3,7 @@
         <h6> Nouveau commentaire : </h6>
         <p><%= form.text_area :text, class: 'form-control' %></p>
         <%= form.hidden_field :event_id, value: @event.id %>
-        <%= form.hidden_field :user_id, value: 1 %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
 
         <button type="submit" class="btn btn-secondary btn-rounded">Commenter</button>
         
