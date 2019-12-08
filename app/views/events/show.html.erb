@@ -76,7 +76,7 @@
       <div class="card event-show-aside">
         <h5 class="card-header"> <strong><%= @event.title %></strong> <span class="badge badge-pill badge-secondary float-right">a modifier</span></h5>
         <div class="card-body">
-          <p><strong>Créé par : </strong><%= @event.creator.first_name + ' ' + @event.creator.last_name%></p>
+          <p><strong>Créé par : </strong><%= @event.creator.first_name && @event.creator.last_name%></p>
           <p><strong>Secteur : </strong><%= @event.address.sector %>
           <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
           <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %Mm %Ss") %></p>
