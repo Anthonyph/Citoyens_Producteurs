@@ -53,20 +53,20 @@
           <div class="flex-start">
 
             <% if user_signed_in? %>
-              <%= link_to "Mon Espace", user_path(current_user.id), class: "sidenav-link" %>
+              <%= link_to "Mon Espace", user_path(current_user.id), class: "btn-light sidenav-link" %>
             <% else %>
-              <%= link_to "Mon Espace", new_user_session_path, class: "sidenav-link" %>
+              <%= link_to "Mon Espace", new_user_session_path, class: "btn-light sidenav-link" %>
             <% end %>
-            <%= link_to "Évenements", events_path, class: " sidenav-link" %>
-            <%= link_to "Magasin", stores_path, class: " sidenav-link" %>
-            <%= link_to "Produits", product_index_path, class: " sidenav-link" %>
+            <%= link_to "Évenements", events_path, class: "btn-light sidenav-link" %>
+            <%= link_to "Magasin", stores_path, class: "btn-light sidenav-link" %>
+            <%= link_to "Produits", product_index_path, class: "btn-light sidenav-link" %>
             
           </div>
 
           <div class="flex-end">
 
-            <%= link_to "#Communauté", root_path, class: "sidenav-link" %>
-            <%= link_to "Contactez nous", root_path(anchor: "contact"), class: "sidenav-link" %>
+            <%= link_to "#Communauté", root_path, class: "btn-light sidenav-link" %>
+            <%= link_to "Contactez nous", root_path(anchor: "contact"), class: "btn-light sidenav-link" %>
 
           </div>
 
