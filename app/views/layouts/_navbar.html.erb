@@ -1,9 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-style-8 font-title py-3 fixed-top">
+<nav class="navbar navbar-expand-lg font-title py-3 fixed-top">
   
   <%= link_to image_tag(("logo.png"), class:"navbar-logo"), root_path %>
   
-  <div class="container text-center all-nav-link">
-    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent8" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><%=image_tag("list.png")%></span>
     </button>
@@ -11,8 +9,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent8">
       <ul class="navbar-nav">
 
+        <% if user_signed_in? %>
+          <li class="nav-item">
+          <%= link_to "Mon Espace", user_path(current_user.id), class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+          <%= link_to "Mon Espace", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item">
-          <%= link_to "Qui sommes nous ?", root_path(:anchor => "about"), class:"nav-link" %>
+          <%= link_to "Qui sommes nous ?", root_path(anchor: "about"), class: "nav-link" %>
         </li>
 
         <li class="nav-item">
@@ -24,16 +31,15 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to "Engagements", root_path(:anchor => "services"), class:"nav-link" %>
+          <%= link_to "Engagements", root_path(anchor: "services"), class: "nav-link" %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Contactez nous", root_path(:anchor => "contact"), class:"nav-link" %>
+          <%= link_to "Contactez nous", root_path(anchor: "contact"), class: "nav-link" %>
         </li>
 
       </ul>
     </div>
-  </div>
 
   <% if user_signed_in? %>
 

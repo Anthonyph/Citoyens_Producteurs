@@ -1,7 +1,5 @@
 .navbar {
     background-color: rgba(255,255,255,0.4);
-    height: 80px;
-    padding-left: 100px;
     font-size: 1.2em;
     font-weight: bold;
     color: #181F49;
@@ -14,6 +12,10 @@
     max-height: 120px;
 }
 
+.navbar .nav-item {
+    padding-left: 10px;
+    padding-right: 10px;
+
 .all-nav-link {
     margin-left: 120px;
 }
@@ -23,4 +25,10 @@
     opacity: 1;
     width: 60px;
     height: 60px;
+}
+
+.navbar .nav-link:hover,
+.navbar .avatar-logo:hover,
+.navbar .navbar-logo:hover {
+    transform: scale(1.05);
 }
