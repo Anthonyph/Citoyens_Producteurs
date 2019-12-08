@@ -43,7 +43,7 @@
 
   <div class="container sidebar-box text-center">
 
-    <%= link_to image_tag(("logo.png"), class:"sidebar-logo "), root_path %>    
+    <%= link_to image_tag(("logo.png"), class:"sidebar-logo"), root_path %>    
 
     <div class="row sidebar-row text-center">
 
@@ -53,9 +53,9 @@
           <div class="flex-start">
 
             <% if user_signed_in? %>
-              <%= link_to "Mon Espace", user_path(current_user.id), class: " sidenav-link" %>
+              <%= link_to "Mon Espace", user_path(current_user.id), class: "sidenav-link" %>
             <% else %>
-              <%= link_to "Mon Espace", new_user_session_path, class: " sidenav-link" %>
+              <%= link_to "Mon Espace", new_user_session_path, class: "sidenav-link" %>
             <% end %>
             <%= link_to "Évenements", events_path, class: " sidenav-link" %>
             <%= link_to "Magasin", stores_path, class: " sidenav-link" %>
@@ -65,16 +65,12 @@
 
           <div class="flex-end">
 
-            <%= link_to "#Communauté", root_path, class: " sidenav-link" %>
-            <%= link_to "Contactez nous", root_path(:anchor => "contact"), class: " sidenav-link" %>
+            <%= link_to "#Communauté", root_path, class: "sidenav-link" %>
+            <%= link_to "Contactez nous", root_path(anchor: "contact"), class: "sidenav-link" %>
 
           </div>
 
         </div>
-      </div>
-
-      <div 1class="col-4 sidebar-col">
-
       </div>
 
     </div>
