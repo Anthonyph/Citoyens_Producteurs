@@ -55,24 +55,35 @@
 
 #sidebar .sidenav-link {
   display: inline-block;
+  text-align: left;
   width: 87%;
+  margin: 5px 0px 5px 0px;
+  transition: all 0.35s ease-in-out;
   color: #181F49;
-  margin: 12px 0px;
-  transition: .5s;
-  color: transparent;
-  background: #181F49;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
-  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0);  
+  text-shadow: 0px 5px 5px rgba(255, 255, 255, 0);  
 }
 
 #sidebar .sidenav-link:hover {
   transform: scale(1.15);
+  padding-left: 39px;
 }
 
 #sidebar .sidebar-link a {
-  padding: 10px 20px 10px;
+  padding: 10px 15px 10px;
+}
+
+#sidebar .sidebar-link a:after {
+  position: absolute;
+  left: -10%;
+  width: 0;
+  height: 35px;
+  background: #0baa69;
+  content: '';
+  transition: all 0.35s ease-in-out;
+}
+
+#sidebar .sidebar-link a:hover:after {
+  width: 22%;
 }
 
 #sidebar .toggle-btn {
@@ -91,12 +102,15 @@
 }
 
 .sidebar-logo {
-  width: 190px;
-  height: 115px;
-  margin-top: 14px;
-  padding-bottom: 25px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid black;
+  width: 215px;
+  height: 110px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  transition: all 0.35s ease;
+}
+
+.sidebar-logo:hover {
+  transform: scale(1.10);
 }
 
 .nav-avatar {
