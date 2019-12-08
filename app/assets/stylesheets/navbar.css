@@ -1,6 +1,7 @@
-.navbar-home {
+.navbar {
     background-color: rgba(255,255,255,0.4);
     height: 80px;
+    padding-left: 100px;
     font-size: 1.2em;
     font-weight: bold;
     color: #181F49;
@@ -9,10 +10,12 @@
 
 .navbar-logo {
     float: right;
-    margin-left: 50px;
-    margin-right: 50px;
     max-width: 120px;
     max-height: 120px;
+}
+
+.all-nav-link {
+    margin-left: 120px;
 }
 
 .avatar {
