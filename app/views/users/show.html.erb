@@ -1,9 +1,43 @@
-<!-- Page Content -->
+<body class="myspace">
 <div class="container">
-  <div class="card border-0 shadow my-5">
+  <div class="card border-0 shadow my-5" id="user-contain">
     <div class="card-body p-5">
       <h1 class="font-weight-light">Mon espace 🌾</h1>
       <hr>
+
+        <div class="col-lg-8 col-20 mx-auto">
+          <div class="card my-3 card-people-4" id="card-info">
+            <div class="card-header p-5 background-cover"  style="background-image:url('/assets/kiwi.jpeg')">
+            </div>
+            <div class="card-body p-relative font-title text-center">
+              <h4 class="mt-4 uppercase"><%= current_user.first_name%> 🌱</h4>
+              <div class="flex my-3">
+                <div class="col-6 p-3"><p><%=current_user.appointments.length%></p><h6 class="my-1 font-body">Participations</h6><br>
+                  <a class="btn btn-outline-secondary btn-rounded m-2">Voir</a>
+                </div>
+                <div class="col-6 p-3"><p><%=current_user.created_events.length%></p><h6 class="my-1 font-body">Evenement organisés</h6><br>
+                   <a class="btn btn-outline-secondary btn-rounded m-2">Voir</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <h1 class="font-weight-light">Mon calendrier 🗓</h1>
+        <hr>
+          <div class="calendar text-center">
+            <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+            <%= date %>
+        
+          <% events.each do |event| %>
+          <div>
+            <%= event.title %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
         <div class="row">
           <div class="col-sm-6">
@@ -48,8 +82,7 @@
           <br><br>
 
     <div class="calendar text-center">
-      <h5>Mon calendrier : </h5>
-      <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+          <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
         <%= date %>
       
         <% events.each do |event| %>
@@ -62,3 +95,4 @@
   </div>
 
 </div>
+</body>
