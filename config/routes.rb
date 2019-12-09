@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
+  namespace :admin do
+    resources :users  
+    root 'admin#index'
+  end
+  
   devise_for :users
   resources :stores do
     resources :store_product

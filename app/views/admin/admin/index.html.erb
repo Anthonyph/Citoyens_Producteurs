@@ -1,0 +1,17 @@
+<% if flash[:danger] %>
+    <div class="danger"><%= flash[:danger] %></div>
+  <% end %>
+<center>
+
+
+  <div>
+        
+        <p class="lead"><%="Welcome #{current_user.first_name}" %> </p>
+        <h5><%= link_to "Creer un nouvel evenement",new_event_path %></h5>
+        <h5><%= link_to "Voir tout les utilisateurs inscrits",admin_users_path %></h5>
+        
+        <br>     
+      
+  </div>
+
+   
