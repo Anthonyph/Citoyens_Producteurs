@@ -19,10 +19,8 @@
         <li> <h4><%= link_to event.title, event_path(event.id) %></h4> </li>
         <li> Heure de début : <%= event.start_date %></li>
         <li> Heure de fin : <%= event.end_date %></li>
-        <li> Lieu : <li>
-        <li> <%= event.address.place%></li>
-        <li> <%= event.address.zip_code%> <%= event.address.city%></li>
-        <li> Nombre de participants à l'évenement : <%= event.appointments.count%></li>
+        <li> Lieu : <%= event.address.place%>, <%= event.address.zip_code%> <%= event.address.city%><li>
+        <li> Nombre de participants : <%= event.appointments.count%></li>
       </ul>
       <%end%>
   
