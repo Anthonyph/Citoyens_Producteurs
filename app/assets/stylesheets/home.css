@@ -1,8 +1,12 @@
-.hero {
+.jumbotron {
     background-image: url(/assets/gardening.svg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 800px;
+}
+
+.btn-jumbo {
+    margin-top: 320px;
 }
 
 .hero-logo {
