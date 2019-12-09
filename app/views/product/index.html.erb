@@ -1,0 +1,10 @@
+<br>
+<br>
+<br>
+<br>
+<h2> Voici ce que nous pouvons te proposer chez Citoyens Producteurs</h2>
+<br>
+<%length = @products.length%>
+<% @products.each do |item|%>
+<h2><%= link_to item.name, product_path(item.id) %> <%=ProductEvent.find_by(product_id: item.id).quantity%> <%=ProductEvent.find_by(product_id: item.id).unit.name%></h2> 
+<%end%>

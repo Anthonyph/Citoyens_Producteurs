@@ -1,10 +1,110 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="container p-0">
 
-<% if @events.length > 0 %>
-    <ul>
+  <div class="row">
+
+    <div class="col-md-8 col-sm-12 p-0"><br>
+
+      <div class="card-columns events-card-columns">
+
         <% @events.each do |event| %>
-            <li> <%= event.title %> </li>
+
+          
+        <div class="card mb-4">
+          <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title"><%= event.title %></h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Le <%= event.start_date.strftime("%-d %B %Y") %></li>
+            <% if event.appointments.count > 0 %>
+              <li class="list-group-item"><%= event.appointments.count > 1 ? 'Nombre de participants : ' : 'Nombre de participant : ' %> <%= event.appointments.count %></li>
+            <% else %>
+              <li class="list-group-item">Aucun participant</li>
+            <% end %>
+            <li class="list-group-item"><%= event.address.city%></li>
+            <li class="list-group-item">Quartier : <%= event.address.sector %></li>
+            <%= link_to "Voir", event_path(event.id), class:"btn btn-primary" %>
+          </ul>
+          </div>
+          <div class="card-footer text-muted">
+            <li>Crée le <%= event. updated_at.strftime("%-d %B %Y") %></li>
+          </div>
+        </div>
+
         <% end %>
-    </ul>
-<% end %>
+
+      </div>
+      
+    </div>
+
+
+    <div class="col-md-4 events-aside">
+
+      <div class="card my-4"> 
+        
+        <div class-="card-header">
+          <h5 class="card-header">Évenements</h5>
+        </div>  
+
+        <div class="card-body">
+          <p>
+          Retrouver tous les évenements blablabla... <br>
+          (à completer)<br>
+          Proposer un évenement de ceuillette, préparation,etc...
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-outline-dark ml-1' %>
+        </div>
+
+      </div>
+
+      <div class="card my-4">
+        <h5 class="card-header">Rechercher :</h5>
+        <div class="card-body">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Chercher un évenement...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card my-4">
+        <h5 class="card-header">Villes :</h5>
+        <div class="card-body p-1">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <section class="showcase-style-2 p-relative bg-white p-0">
+                <div class="container events-city">
+                  <div class="row-12 ">
+
+                    <% @stores.each do |store| %>
+
+                      <div class="col-12 p-1">
+                        <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/518557/pexels-photo-518557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+                          <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
+                            <i class="fa fa-heart cdanger"></i>
+                            <h2 class="cwhite p-2 font-title"><%= store.name %></h2>
+                          </div>
+                        </div>
+                      </div>
+
+                    <% end %>
+
+                  </div>
+                </div>
+              </section>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

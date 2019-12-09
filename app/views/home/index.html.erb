@@ -1,3 +1,5 @@
+<%= render 'layouts/navbar' %>
+
 <div class="hero">
   <div class="container call-to-action">
   </div>
@@ -34,7 +36,8 @@
           <p class="description">Tu aimes cuisiner et tu te sens capable de transformer les produits récoltés en produits consommables et conservables (confitures, soupes, tisanes) ? Participe au projet !</p>
         </div>
         <hr>
-        <a class="btn btn-secondary btn-rounded m-2" <%= link_to "S'inscrire", new_user_registration_path %></a><br>
+        <div class="btnsuccess text-center">
+        <a class="btn btn-success btn-rounded m-2" <%= link_to "Rejoignez-nous", new_user_registration_path %></a><br>
         </div>
     </div>
 
@@ -42,7 +45,7 @@
 </section>
 
 
-<section class="counter p-4">
+<section id="counter" class="counter p-4">
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-sm-6 col-12 my-3">
@@ -167,7 +170,6 @@
       <img src="https://images.pexels.com/photos/1300972/pexels-photo-1300972.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
       </div>
     </div>
-  </div>
   <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -180,7 +182,7 @@
 
 <br><br>
 
-<section class="form-style-6 p-relative bg-white">
+<section id="contact" class="form-style-6 p-relative bg-white">
   <div class="container">
   <div class="row">
     <div class="col-12 p-0">
@@ -202,8 +204,7 @@
         <h6 class="uppercase my-3 font-title">Contact</h6>
         <p class="mb-5"><i class="fa fa-phone mr-2"></i>06 83 87 04 95<br><i class="fa fa-envelope mr-2"></i> citoyens-producteurs@lilo.org</p>
         <h6 class="uppercase my-3 font-title">Suivez-nous</h6>
-        <a href ="https://www.facebook.com/CitoyensProducteurs/">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABTElEQVRIS7WVgU3DMBBFXydgBMoEwATtCDABdAJgAugEtBMAEwAbMALdADaACUA/sq3DtX0OUk6yIiX2vfP5+2fGxDGbOD89gEtgAZyEoZrew3gBXltFtgBnwD0wd3b5AdwAgu1FDbABrka2T2sE+hMlwH+Sx6Rb4NoScoDa8tyo/DMksO24A27NmnPbrhygfh5WAN/hkDXHRg7Q96M4wQKklodG9U+A5sRYBnXpqWEj7cICHoGLBmANqFqF18pUjAVI28edgLwt+TLlOtVLC/hxZGl34AFS7h6Ad9vfwlnk9Q3r7OKagjzAF3CQZd9FW+k5ZA9Qam3xkD2ZjjmDFSBV7rlp66L1AnTbk0GOsYpeQNMqtKua2fUAXLOLYijdag+QW8mQy/vhaDfR/GqAksMm1XoS1ESpS2amCzUoo/KuaAQ9AMdB2p8nB/wCsmVJGU6bMtcAAAAASUVORK5CYII="/>
+        <li class="inline"> <%= link_to "", "https://www.facebook.com/CitoyensProducteurs/", class:"fab fa-facebook inline fa-2x", :target => '_blank'%></li>
         </a>
         </div>
       </div>

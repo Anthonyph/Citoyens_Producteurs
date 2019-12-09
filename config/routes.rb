@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
-  resources :stores
+  resources :stores do
+    resources :store_product
+  end
   resources :comments #, only: [:create, :update, :destroy]
-  resources :events
+
+  resources :product
+  resources :events do
+    resources :appointments
+    resources :feedbacks
+  end
+  resources :users, only: [:show]
+
+  get 'story', to: 'home#story'
+  get 'community', to: 'home#community'
 end

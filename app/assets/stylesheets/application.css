@@ -11,10 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require underexpress
+ *= require devise
  *= require main
+ *= require navbar
  *= require sidebar
  *= require footer
- *= require navbar
  *= require home
- *= require devise
+ *= require stores
+ *= require user
  */

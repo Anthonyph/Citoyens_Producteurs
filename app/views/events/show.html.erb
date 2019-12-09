@@ -1,40 +1,102 @@
-<h1><%= @event.title %></h1>
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+      <!-- Title -->
+      <h1 class="mt-4 text-center"><%=@event.title%></h1>
+      <!-- Author -->
+      <p class="lead">
+        Créé par : <%= @event.creator.first_name + ' ' + @event.creator.last_name%>
+      </p>
+      
+      <hr>
+      <!-- Date/Time -->
+      <p>Commence le <%= @event.start_date.strftime("%-d %B %Y à %Hh %Mm %Ss") %></p>
+      <hr>
+      <h5> Catégorie : <span class="badge badge-pill badge-secondary">a modifier</span></h5>
+      <br>
+      <!-- Preview Image -->
+      <img class="img-fluid rounded" src="https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
+      <hr>
+      <!-- Post Content -->
+      <p class="lead"><%= @event.description %></p>
+      <p> <%= @event.appointments.count%> <%= @event.appointments.count > 1 ? 'participants' : 'participant' %></p>
+      
+      <hr>
 
-    <h4>Créateur</h4>
-    <%
-=begin%>
- <%= link_to @event.creator.first_name + ' ' + @event.creator.last_name, user_path(@event.creator), :class => 'btn btn-sm btn-outline-info'%> 
-<%
-=end%>
-    
-    <h4>Description</h4>
-    <p><%= @event.description %></p>
+      <!-- Appointment -->
+      <% if user_signed_in? %>
+        <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
+        <% if @appointment != nil %>
+          <%= link_to 'Je ne peux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-lg btn-outline-dark ml-1' %>  
+        <% else %>
+          <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-lg btn-outline-dark ml-1' %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Connecte toi pour participer !', new_user_session_path, class: 'btn btn-lg btn-outline-dark' %>
+      <% end %>
 
-    <%= render 'comments/form' %>
+      <!-- Feedbacks -->
+      <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'button is-danger is-outlined is-small is-rounded' %>
 
-  <div>
-  <h5><%= pluralize(@event.comments.size, 'comment') %></h5>
+      <!-- Comments Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Laisser un commentaire</h5>
+        <div class="card-body">
+          <%= render 'comments/form' %>
+        </div>
+      </div>
 
-  <% @event.comments.order('created_at DESC').each do |comment| %>
-    <blockquote class="blockquote w-50">
-    <hr/>
-      <p><%= comment.text %></p>
-      <%
-=begin%>
- <footer class="blockquote-footer mb-2">by 
-      <%= link_to comment.user.first_name + ' ' + comment.user.last_name,
-        user_path(comment.user), class: 'text-secondary font-weight-bold'%> - <%= comment.updated_at.strftime("%-d %B %Y at %Hh %Mm %Ss (UTC)") %>
-      </footer> 
-<%
-=end%>
-      <hr/>
-      <p><%= link_to 'Edit comment', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }) %>
-      <%= link_to 'Delete comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-    </blockquote>
-  <% end %>
+      <!-- Comment -->
+      <% @event.comments.order('created_at DESC').each do |comment| %>
+
+      <div class="media mb-4">
+        <img class="d-flex mr-3 rounded-circle avatar" src="https://image.flaticon.com/icons/svg/145/145848.svg" alt="">
+        <div class="media-body">
+          <h5 class="mt-0"><%= comment.user.first_name + ' ' + comment.user.last_name%></h5>
+          <p><%= comment.text %></p>
+          <%= comment.updated_at.strftime("%-d %B %Y, %Hh %Mm %Ss") %>
+        </div>
+
+          <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
+          <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
+      </div>
+
+ 
+      <% end %>
+
+
+    </div>
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+      <!-- Side Widget -->
+
+      <div class="card event-show-aside">
+        <h5 class="card-header"> <strong><%= @event.title %></strong> <span class="badge badge-pill badge-secondary float-right">a modifier</span></h5>
+        <div class="card-body">
+          <p><strong>Créé par : </strong><%= @event.creator.first_name + ' ' + @event.creator.last_name%></p>
+          <p><strong>Secteur : </strong><%= @event.address.sector %>
+          <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
+          <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %Mm %Ss") %></p>
+           <hr>
+          <% if user_signed_in? %>
+            <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
+            <% if @appointment != nil %>
+              <%= link_to 'Je ne peux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-md btn-outline-dark ml-1' %>  
+            <% else %>
+              <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-md btn-outline-dark ml-1' %>
+            <% end %>
+          <% else %>
+            <%= link_to 'Connecte toi pour participer', new_user_session_path, class: 'btn btn-md btn-outline-dark' %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
   </div>
-
-  <hr/>
-  <%= link_to 'Back to index', events_path %>
-  <hr/>
+  <!-- /.row -->
 </div>
+<br><br>
