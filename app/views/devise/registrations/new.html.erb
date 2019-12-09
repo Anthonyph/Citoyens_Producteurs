@@ -19,6 +19,14 @@
                   </div>
                 <% end %>
                 <div class="form-group">
+                  <%= f.label :last_name, "Nom :" %><br />
+                  <%= f.text_field :last_name, autocomplete: "nom", class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :first_name, "Prénom :" %><br />
+                  <%= f.text_field :first_name, autocomplete: "prénom", class: "form-control" %>
+                </div>
+                <div class="form-group">
                   <%= f.label :email, "Email :" %><br />
                   <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
                 </div>
