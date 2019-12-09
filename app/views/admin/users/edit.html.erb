@@ -1,10 +1,10 @@
 <html>
 <center>
 </br>
-<%= form_with model: @user_detail, local: true, class: 'mt-5 col-4 offset-4' do |f| %>
+<%= form_with model: @user_detail , url: admin_user_path, method: "patch",local: true, class: 'mt-5 col-4 offset-4' do |f| %>
   <div class= 'form-group'>
     <label> type </label>
-    <%= f.select :store, Store.pluck(:name, :id), class: 'form-control' %>
+    <%= f.select :store, Store.pluck(:name, :id),autocomplete: @user_detail.store, class: 'form-control' %>
   </div>
  
 
@@ -25,7 +25,7 @@
 
   <div class= 'form-group'>
    <label>phone_number </label>
-    <%= f.text_field :description, class: 'form-control' %>
+    <%= f.text_field :phone_number, class: 'form-control' %>
   </div>
 
   <div class= 'form-group'>
@@ -35,7 +35,7 @@
 
   <div class= 'form-group'>
   <label> place </label>
-  <%= f.text_field :place, class: 'form-control' %>
+  <%= f.text_field :place,autocomplete: "place" , class: 'form-control' %>
   </div>
   <div class= 'form-group'>
     <label> zip_code </label>
