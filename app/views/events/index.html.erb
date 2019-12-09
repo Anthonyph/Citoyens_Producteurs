@@ -8,7 +8,7 @@
       
       <div class="card mb-4">
         <div class="card-header">
-          <h2 class="card-title"><%= event.title %></h2>
+          <h2 class="card-title"><%= event.title %><span class="badge badge-pill badge-info float-right"><%= event.event_type.name %></span></h2>
         </div>
         <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
         <div class="card-body">
@@ -25,7 +25,7 @@
         </ul>
         </div>
         <div class="card-footer text-muted">
-          <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-secondary" %>
+          <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-secondary btn-block" %>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
         </div>
 
         <div class="card-footer">
-          <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-outline-secondary ml-1' %>
+          <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
         </div>
 
       </div>
