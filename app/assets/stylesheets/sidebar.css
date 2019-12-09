@@ -3,22 +3,22 @@
   background-image: url("sidebar.jpg");
   width: 250px;
   height: 100%;
-  left: -250px;
+  left: 0px;
   transition: all 500ms ease;
   z-index: 3;
 }
 
 #sidebar.active {
-  left: 0px;
+  left: -250px;
 }
 
 #page-content {
   transition: all 500ms ease;
-  margin-left: 0px;
+  margin-left: 250px;
 }
 
 #page-content.active {
-  margin-left: 250px;
+  margin-left: 0px;
 }
 
 .sidebar-row {
@@ -114,11 +114,13 @@
 }
 
 .nav-avatar {
-  z-index: 1;
+  position: fixed;
   float: right;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
 }
 
-.side-navbar {
-  z-index: 0;
-  background-color: rgba(255, 255, 255, 0);
+.nav-avatar-dropdown {
+  padding-bottom: 25px;
 }
