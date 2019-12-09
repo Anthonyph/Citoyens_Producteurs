@@ -19,4 +19,5 @@
  *= require home
  *= require stores
  *= require user
+ *= require simple_calendar
  */
