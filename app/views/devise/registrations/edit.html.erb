@@ -3,7 +3,7 @@
 <div class="container">
 <div class="card border-0 shadow my-5">
   <div class="card-body p-5">
-    <h1 class="font-weight-light">Bonjour <%= resource_name.to_s.humanize %> 🌞</h1>
+    <h1 class="font-weight-light">Bonjour, <%= current_user.first_name%> <% resource_name.to_s.humanize %> 🌞</h1>
     <hr>
     
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
