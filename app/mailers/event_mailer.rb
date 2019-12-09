@@ -16,3 +16,4 @@ class EventMailer < ApplicationMailer
   end
 
 end
+  

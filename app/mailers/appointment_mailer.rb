@@ -19,7 +19,7 @@ class AppointmentMailer < ApplicationMailer
 
     @url  = 'www.citoyens-producteurs.fr' 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @user_email, subject: 'Tu as rejoint un événement !') 
+    mail(to: @user_email, subject: 'Tu as rejoint un événement Citoyens !') 
   end
 
   def new_appointment_creator(appointment)
@@ -42,7 +42,7 @@ class AppointmentMailer < ApplicationMailer
     
     @url  = 'www.citoyens-producteurs.fr' 
     # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-    mail(to: @creator_email, subject: 'Un nouveau citoyen s\'est inscrit à ton événement!') 
+    mail(to: @creator_email, subject: 'Un nouveau Citoyen s\'est inscrit à ton événement!') 
   end
 
 end
