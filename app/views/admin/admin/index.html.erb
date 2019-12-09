@@ -37,17 +37,21 @@
           <span>Pages</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="login.html">Utilisateurs</a>
-          <a class="dropdown-item" href="login.html">Evénements</a>
-          <a class="dropdown-item" href="register.html">Feedbacks</a>
+          <%= link_to "Utilisateurs", admin_users_path, class: "dropdown-item" %>
+          <%= link_to "Evénements", admin_events_path, class: "dropdown-item" %>
+          <%= link_to "Feedbacks", admin_feedbacks_path, class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Gestion de la boutique</h6>
-          <a class="dropdown-item" href="login.html">Agenda</a>
-          <a class="dropdown-item" href="register.html">Stock</a>
+          <%
+=begin%>
+ <%= link_to "Agenda", admin_calendar_path, class: "dropdown-item" %> 
+<%
+=end%>
+          <%= link_to "Stock", admin_store_products_path, class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Autre</h6>
-          <a class="dropdown-item" href="register.html">Types d'événements</a>
-          <a class="dropdown-item" href="register.html">Produits</a>
+          <%= link_to "Types d'événements", admin_event_types_path, class: "dropdown-item" %>
+          <%= link_to "Produits", admin_products_path, class: "dropdown-item" %>
           <a class="dropdown-item" href="404.html">(Unités de produit)</a>
         </div>
       </li>
