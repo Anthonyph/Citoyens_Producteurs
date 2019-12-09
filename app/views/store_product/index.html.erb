@@ -1,0 +1,14 @@
+<br>
+<br>
+<br>
+<br>
+
+<h1> Voici les produits présents dans la boutique <%=Store.find(params[:store_id]).name%> </h1>
+
+<%sp = @store_products.where(store_id: params[:store_id])%>
+<%sp.each do |storeproduct|%>
+<ul>
+<li><h2><%= storeproduct.product.name %></h2></li>
+<%= storeproduct.quantity %> <%= storeproduct.unit.name %>
+</ul>
+<%end%>

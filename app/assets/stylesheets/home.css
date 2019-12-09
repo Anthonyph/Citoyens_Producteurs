@@ -2,13 +2,7 @@
     background-image: url(/assets/gardening.svg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     height: 800px;
-}
-
-.call-to-action {
-    margin-top: 220px;
-    margin-left: 220px;
 }
 
 .hero-logo {
@@ -171,4 +165,9 @@
 .feature i {
     color: #9F9B30;
     font-size: 24px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
 }

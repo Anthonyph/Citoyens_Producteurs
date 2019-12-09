@@ -1,23 +1,36 @@
 .navbar {
     background-color: rgba(255,255,255,0.4);
-    height: 80px;
     font-size: 1.2em;
     font-weight: bold;
     color: #181F49;
     z-index: 2;
+    padding-top: 4px!important;
+    padding-bottom: 4px!important;
 }
 
 .navbar-logo {
     float: right;
-    margin-left: 50px;
-    margin-right: 50px;
     max-width: 120px;
     max-height: 120px;
 }
 
-.avatar {
+.navbar .navbar-nav {
+    padding-left: 40px;
+}
+
+.navbar .nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar-avatar {
     float: right;
-    opacity: 1;
     width: 60px;
     height: 60px;
+}
+
+.navbar .nav-link:hover,
+.navbar .navbar-avatar:hover,
+.navbar .navbar-logo:hover {
+    transform: scale(1.05);
 }
