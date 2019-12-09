@@ -7,7 +7,7 @@
       <h1 class="mt-4 text-center"><%=@event.title%></h1>
       <!-- Author -->
       <p class="lead">
-        Créé par : <%= @event.creator.first_name + ' ' + @event.creator.last_name%>
+        Créé par : <%= "#{@event.creator.first_name}" " #{@event.creator.last_name}"%>
       </p>
       
       <hr>
@@ -54,7 +54,7 @@
       <div class="media mb-4">
         <img class="d-flex mr-3 rounded-circle avatar" src="https://image.flaticon.com/icons/svg/145/145848.svg" alt="">
         <div class="media-body">
-          <h5 class="mt-0"><%= comment.user.first_name + ' ' + comment.user.last_name%></h5>
+          <h5 class="mt-0"><%= comment.user.first_name && comment.user.last_name%></h5>
           <p><%= comment.text %></p>
           <%= comment.updated_at.strftime("%-d %B %Y, %Hh %Mm %Ss") %>
         </div>
@@ -76,7 +76,7 @@
       <div class="card event-show-aside">
         <h5 class="card-header"> <strong><%= @event.title %></strong> <span class="badge badge-pill badge-secondary float-right">a modifier</span></h5>
         <div class="card-body">
-          <p><strong>Créé par : </strong><%= @event.creator.first_name + ' ' + @event.creator.last_name%></p>
+          <p><strong>Créé par : </strong><%= @event.creator.first_name && @event.creator.last_name%></p>
           <p><strong>Secteur : </strong><%= @event.address.sector %>
           <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
           <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %Mm %Ss") %></p>
