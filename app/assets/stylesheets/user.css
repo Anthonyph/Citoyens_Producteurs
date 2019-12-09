@@ -1,7 +1,15 @@
-.user {
-    background: url('/assets/mercado.jpg') no-repeat center center fixed;
+.myspace {
+    background: url('/assets/top_fruits.jpeg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
   }
+
+#user-contain {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#card-info {
+  background-color: #F9F3E5;
+}

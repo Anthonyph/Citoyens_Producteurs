@@ -1,64 +1,80 @@
-<!-- Page Content -->
+<body class="myspace">
 <div class="container">
-  <div class="card border-0 shadow my-5">
+  <div class="card border-0 shadow my-5" id="user-contain">
     <div class="card-body p-5">
       <h1 class="font-weight-light">Mon espace 🌾</h1>
       <hr>
 
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-header"><h3>Mes évènements</h3></div>
-              <% if current_user.created_events.length > 0%>
-                <div class="card-body">
-                  <% current_user.created_events.each do |event|%>
-                  <h5 class="card-title"><%= event.id %></h5>
-                  <p class="card-text">A partir de <%= event.start_date %> au <%= event.end_date %></p>
-                  <%end%>
-                </div>
-              <% else %>
-                <p>Aucun événement organisé</p>
-              <% end %> 
-              </div>
+        <div class="col-lg-8 col-20 mx-auto">
+          <div class="card my-3 card-people-4" id="card-info">
+            <div class="card-header p-5 background-cover"  style="background-image:url('/assets/kiwi.jpeg')">
             </div>
-          </div>
-        </div>
+            <div class="card-body p-relative font-title text-center">
+              <h4 class="mt-4 uppercase"><%= current_user.first_name%> 🌱</h4>
+              <div class="flex my-3">
+                <div class="col-6 p-3"><p><%=current_user.appointments.length%></p><h6 class="my-1 font-body">Participations</h6><br>
+                  <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-participate-modal-xl">Voir</button>
+                  <div class="modal fade bd-participate-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <br>
+                        <h4>Mes participations :</h4>
+                     
+                          <ul>
+                            <% if current_user.appointments.length > 0%>
+                            <% current_user.appointments.each do |appointment|%>
+                              <li>Evenement : <%= appointment.id %>
+                               <p>(Le <%= appointment.start_date %> | Durée : <%= appointment.duration %>)</p>
+                              </li>
+                             <%end%>
+                            <%end%>
+                          </ul>
 
-        <br><br>
-        <div class="card border-0 shadow my-5">
-          <div class="card-body p-5">
-            <% if current_user.appointments.length > 0%>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-header"><h3>Mes participations</h3></div>
-                    <div class="card-body">
-                      <% current_user.appointments.each do |appointment|%>
-                      <h5 class="card-title"><%= appointment.id %></h5>
-                      <p class="card-text">A partir du <%= appointment.start_date %> | Durée : <%= appointment.duration %></p>
-                      <%end%>
-                      <%end%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  
+                <div class="col-6 p-3"><p><%=current_user.created_events.length%></p><h6 class="my-1 font-body">Evenement organisés</h6><br>
+                  <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-event-modal-xl">Voir</button>
+                  <div class="modal fade bd-event-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                      <br>
+                        <h4>Evenements organisés :</h4>
+
+                          <% if current_user.created_events.length > 0%>
+                          <% current_user.created_events.each do |event|%>
+                            <h5 class="card-title"><%= event.id %></h5>
+                            <p class="card-text">A partir de <%= event.start_date %> au <%= event.end_date %></p>
+                          <%end%>
+                          <% else %>
+                            <p>Aucun événement organisé</p>
+                          <% end %> 
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <br><br>
+        <br>
 
-    <div class="calendar text-center">
-      <h5>Mon calendrier : </h5>
-      <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-        <%= date %>
-      
-        <% events.each do |event| %>
+        <h1 class="font-weight-light">Mon calendrier 🗓</h1>
+        <hr>
+          <div class="calendar text-center">
+            <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+            <%= date %>
+        
+          <% events.each do |event| %>
           <div>
             <%= event.title %>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
-
 </div>
+</body>

@@ -21,19 +21,28 @@
   <body>
 
     <% if show_sidebar %>
-      <%= render "layouts/sidebar" %>
-    <% end %>
 
-    <div id="page-content">
+      <div id="page-content">
+      
+        <%= render "layouts/sidebar" %>
+        
+        <%= yield %>
+
+        <div class="spacer"></div>
+      
+        <%= render 'layouts/footer' %>
+
+      </div>
+
+    <% else %>
       
       <%= yield %>
 
-      <div class="spacer">
-      </div>
+      <div class="spacer"></div>
       
       <%= render 'layouts/footer' %>
-      
-    </div>
+
+    <% end %>
 
   </body>
 
