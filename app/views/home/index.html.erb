@@ -2,7 +2,7 @@
 
 <div class="jumbotron">
   <div class="container call-to-action">
-    <button type="button" class="btn btn-success btn-rounded m-2 btn-jumbo" <%= link_to "Rejoignez-nous", new_user_registration_path %></button>
+    <button type="button" class="btn btn-success btn-rounded btn-lg m-2" id="btn-jumbo"<%= link_to "Rejoignez-nous", new_user_registration_path %></button>
   </div>
 </div>
 
@@ -93,7 +93,7 @@
         </div>
         <hr>
         <div class="btnsuccess text-center">
-        <a class="btn btn-success btn-rounded m-2" <%= link_to "Rejoignez-nous", new_user_registration_path %></a><br>
+        <a class="btn btn-primary btn-rounded m-2" <%= link_to "En savoir plus", community_path %></a><br>
         </div>
     </div>
 
@@ -152,6 +152,8 @@
         <p class="mb-5"><i class="fa fa-phone mr-2"></i>06 83 87 04 95<br><i class="fa fa-envelope mr-2"></i> citoyens-producteurs@lilo.org</p>
         <h6 class="uppercase my-3 font-title">Suivez-nous</h6>
         <li class="inline"> <%= link_to "", "https://www.facebook.com/CitoyensProducteurs/", class:"fab fa-facebook inline fa-2x", :target => '_blank'%></li>
+        <li class="inline"> <%= link_to "", "https://www.facebook.com/CitoyensProducteurs/", class:"fab fa-twitter inline fa-2x", :target => '_blank'%></li>
+        <li class="inline"> <%= link_to "", "https://www.instagram.com/citoyensproducteurs/", class:"fab fa-instagram inline fa-2x", :target => '_blank'%></li>
         </a>
         </div>
       </div>
