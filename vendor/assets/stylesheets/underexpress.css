@@ -281,9 +281,9 @@ footer {
     background-color: #ffc107; }
 
 .btn-primary {
-  background-color: rgba(0, 123, 255, 0.9); }
+  background-color: #181F49; }
   .btn-primary:hover {
-    background-color: #007BFF; }
+    background-color: #2A367F; }
 
 .btn-success {
   background-color: rgba(40, 167, 69, 0.9); }
