@@ -4,6 +4,7 @@ class EventMailer < ApplicationMailer
   def new_event_user(event)
    #on récupère l'instance event pour ensuite pouvoir la passer à la view en @event
     @event = event
+    @creator_id = @event.creator_id
     @user = User.find_by(id: @creator_id) #@user = @event.creator
     @user_email = @user.email
     @user_first_name = @user.first_name
