@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_160809) do
     t.string "phone_number"
     t.bigint "address_id"
     t.bigint "store_id"
-    t.boolean "is_admin"
+    t.boolean "is_admin", default: false
     t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
