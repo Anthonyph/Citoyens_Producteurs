@@ -14,7 +14,7 @@
 <%i= i+1%>
 <%end%>
 <br>
-<h2>Trouver ce produit à un événement</h2>
+<h2>Trouver ce produit à un évènement</h2>
 
 <%productevents = @productevents.where(product_id: @product.id)%>
 <%i=1%>
@@ -23,7 +23,7 @@
 <h4>Quantité de produit  <%=productevent.quantity%> <%=productevent.unit.name%></h4>
 <%eventid = productevent.event_id%>
 <%event = Event.find_by(id: eventid)%>
-<h4>A quel événement en récupérer ? <%= event.title%></h4>
+<h4>A quel évènement en récupérer ? <%= event.title%></h4>
 <h4>A quel endroit ? <%= event.address.place%> <%= event.address.zip_code%> <%= event.address.city%></h4>
 <h4>Cet évenement est organisé par <%= event.creator.first_name%> <%= event.creator.last_name%></h4>
 <%i= i+1%>
