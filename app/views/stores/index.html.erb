@@ -4,7 +4,11 @@
 <br>
     <ul>
     <% @stores.each do |store| %>
-    <li><h3><%= link_to store.name, store_path(store.id) %><h3></li>
+    <li>
+        <h3><%= link_to store.name, store_path(store.id) %><h3>
+        <%= link_to  "Modifier", edit_store_path(store) %>
+        <%= link_to  "Supprimer", store_path(store), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+    </li>
     <% end %>
     </ul>
 
