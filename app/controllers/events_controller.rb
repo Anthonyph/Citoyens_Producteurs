@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_event, only: [:show, :edit, :destroy]
+  before_action :set_event, only: [:show, :edit,:update, :destroy]
+  
   before_action :is_creator?, only: [:edit]
 
   def index
@@ -27,7 +28,11 @@ class EventsController < ApplicationController
     @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
     if @event.save
       flash[:success] = 'Event successfully created'
+      if @event.creator.is_admin == true
+        redirect_to '/admin/events'
+      else
       redirect_to @event
+      end
     else
       flash.now[:danger] = 'Something went wrong, please check your input'
       render new_event_path
@@ -39,13 +44,17 @@ class EventsController < ApplicationController
     @address = Address.find(@address1.id).update(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
     @type = EventType.find(event_params[:type])
     @creator = User.find(current_user.id)
-    @event = Event.find(params[:id])
+    #@event = Event.find(params[:id])
     @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
     #if @event.update(event_params)
+    flash[:success] = 'Event successfully updated'
+    if @creator.is_admin == true
+      redirect_to '/admin/events'
+    else
     redirect_to @event, notice: 'Event was successfully updated.'
     #else
     #render :edit
-    #end
+    end
   end
 
   def destroy
@@ -58,6 +67,7 @@ class EventsController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
   end
+
 
   def event_params
     params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback)

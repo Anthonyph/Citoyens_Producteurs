@@ -1,4 +1,9 @@
 <body class="myspace">
+<%if flash[:success] %>
+    <div class="alert alert-success text-center" role="alert">
+      <%=flash[:success] %>
+    </div>
+<%end%>
 <div class="container">
   <div class="card border-0 shadow my-5" id="user-contain">
     <div class="card-body p-5">
