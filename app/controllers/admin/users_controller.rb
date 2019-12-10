@@ -28,7 +28,7 @@ class Admin::UsersController < ApplicationController
     @address= @user_detail.address
     
     
-    if (@user_detail.update!(email: user_params[:email], first_name: user_params[:first_name], last_name:  user_params[:last_name], phone_number: user_params[:phone_number], is_admin: user_params[:is_admin], store:@store))&& (@address.update(place: user_params[:place], zip_code: user_params[:zip_code], city:  user_params[:city], sector: user_params[:sector]))
+    if (@user_detail.update(email: user_params[:email], first_name: user_params[:first_name], last_name:  user_params[:last_name], phone_number: user_params[:phone_number], is_admin: user_params[:is_admin], store:@store))&& (@address.update(place: user_params[:place], zip_code: user_params[:zip_code], city:  user_params[:city], sector: user_params[:sector]))
             
       redirect_to admin_user_path(@user_detail.id) # si ça marche, il redirige vers la page d'index du site
     else

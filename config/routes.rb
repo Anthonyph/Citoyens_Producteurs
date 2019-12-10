@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   root 'home#index'
   namespace :admin do
     resources :users  
+    resources :events
+    resources :appointments
+    resources :feedbacks
+    resources :stores
+    resources :calendar
+    resources :products
+    resources :store_products
+    resources :event_types
     root 'admin#index'
   end
   

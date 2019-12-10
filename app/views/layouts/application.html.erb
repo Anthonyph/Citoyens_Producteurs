@@ -3,7 +3,8 @@
 
   <head>
 
-    <title>CitoyensProducteurs</title>
+    <%= favicon_link_tag 'carrot.png' %>
+    <title>Citoyens Producteurs</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -33,6 +34,12 @@
         <%= render 'layouts/footer' %>
 
       </div>
+
+    <% elsif admin? %>
+
+      <%= render "layouts/admin_sidebar" %>
+      
+      <%= yield %>
 
     <% else %>
       
