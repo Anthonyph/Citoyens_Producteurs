@@ -6,14 +6,30 @@
 
 Augustin de Louvencourt, Leo Vanel, Thibault Mariolle, Lana Vizeu et Anthony Phimphachanh
 
-## Lien Heroku : 
+## Liens : 
 
-https://citoyens-producteurs.herokuapp.com/
+[Lien Heroku](https://citoyens-producteurs.herokuapp.com/)
+[Lien Trello](https://trello.com/b/PKTqicI3/projet-final/)
+[Lien Github](https://github.com/Anthonyph/Citoyens_Producteurs/)
+
 
 ## Contexte
 
 Ce projet est l'idée de Nathalie Patrat, mon ancienne responsable de promo et prof à l'ESG...
 Je lui ai parlé de THP, elle m'a parlé de son concept qu'elle commençait à mettre sur pied. Il ne lui manquait qu'une plateforme pour faciliter la logistique... La suite, on va l'écrire ensemble :)
+
+## Comment lancer le projet ?
+
+  $ git clone git@github.com:fthiounn/LaFourmiliere-THP.git
+  $ bundle install
+  $ rails db:drop db:create db:migrate db:seed
+  $ rails server
+  => va sur "http://localhost:3000/" sur ton navigateur.
+  Bonne navigation !
+
+## Pre-requis 
+
+Pour lancer cette web-app vous devez avoir Ruby 2.5.1
 
 ## 1. Présentation
 
