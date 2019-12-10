@@ -1,7 +1,7 @@
 <%= render 'layouts/navbar' %>
 
 <div class="jumbotron">
-    <%= link_to "Rejoignez-nous", user_path(current_user.id), class:"btn btn-success btn-rounded btn-lg animated fadeInRight", id:"btn-jumbo" %>
+    <%= link_to "Rejoignez-nous", new_user_session_path, class:"btn btn-success btn-rounded btn-lg animated fadeInRight", id:"btn-jumbo" %>
 </div>
 
 <section id="counter" class="counter p-4">
