@@ -1,8 +1,7 @@
-
-    <p> Titre de l'événement <%=@event.title%>
-    <p> Description de l'événement <%=@event.description%> </p>
-    <p> Le lieu de l'événement <%=@event.address.place%> <%=@event.address.zip_code%> <%=@event.address.city%> situé dans le secteur <%=@event.address.sector%></p>
-    <p> Le début de l'événement <%=@event.start_date%> </p>
-    <p> Prénom du fondateur de l'événement <%=@user_first_name%> </p>
-    <p> son nom de famille : <%=@user_last_name%></p>
-    <p> son email : <%=@user_email%></p>
+<h2> Salut <%=@user_first_name%> <%=@user_last_name%></h2>
+<p> Tu viens de créer un nouvel événement chez Citoyens Producteurs et nous te remercions chaleureusement de faire vivre la communauté</p>
+<p> Le titre de ton événement est : <%=@event.title%> et voici sa description : <%=@event.description%> </p>
+<p> Le lieu de l'événement <%=@event.address.place%> <%=@event.address.zip_code%> <%=@event.address.city%> situé dans le secteur <%=@event.address.sector%></p>
+<p> L'événement aura lieu le : <%=@event.start_date%> </p>
+<p> Les personnes qui s'inscriront à l'événement recevrons ton adresse email : <%=@user_email%> et ton numéro de téléphone</p>
+<p> A très bientôt chez <%=@url%></p>

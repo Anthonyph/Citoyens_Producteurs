@@ -9,6 +9,7 @@ class Event < ApplicationRecord
   has_many :products, through: :product_events
   include Feedbackable
 
+  after_create :event_creation_user
 
   # validates :title,
   #   presence: true,
@@ -20,7 +21,6 @@ class Event < ApplicationRecord
 
   validates :start_date, presence: true, 
   date: { after: Proc.new { Time.now }}
-  
 
   validates :end_date, presence: true,
   date: { after: :start_date }
@@ -29,8 +29,5 @@ class Event < ApplicationRecord
     EventMailer.new_event_user(self).deliver_now
   end
   
-  
-
-
 end
 
