@@ -5,3 +5,12 @@
   background-size: cover;
   -o-background-size: cover;
 }
+
+.show-store .jumbo {
+  background: whitesmoke;
+}
+
+
+.show-store .call-to-action {
+  background: whitesmoke;
+}
