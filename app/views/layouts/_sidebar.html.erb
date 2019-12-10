@@ -15,17 +15,21 @@
 
           <div class="flex-start">
 
-            <%= link_to "Mon Espace", user_path(current_user.id), class: "btn-xl btn-light btn-rounded sidenav-link" %>
-            <%= link_to "Évenements", events_path, class: "btn-xl btn-light btn-rounded sidenav-link" %>
-            <%= link_to "Magasin", stores_path, class: "btn-xl btn-light btn-rounded sidenav-link" %>
-            <%= link_to "#Stock", root_path, class: "btn-xl btn-light btn-rounded sidenav-link" %>
+            <% if user_signed_in? %>
+              <%= link_to "Mon Espace", user_path(current_user.id), class: " sidenav-link" %>
+            <% else %>
+              <%= link_to "Mon Espace", new_user_session_path, class: " sidenav-link" %>
+            <% end %>
+            <%= link_to "Évenements", events_path, class: " sidenav-link" %>
+            <%= link_to "Magasin", stores_path, class: " sidenav-link" %>
+            <%= link_to "#Stock", root_path, class: " sidenav-link" %>
             
           </div>
 
           <div class="flex-end">
 
-            <%= link_to "#Communauté", root_path, class: "btn-xl btn-light btn-rounded sidenav-link" %>
-            <%= link_to "Contactez nous", root_path(:anchor => "contact"), class: "btn-xl btn-light btn-rounded sidenav-link" %>
+            <%= link_to "#Communauté", root_path, class: " sidenav-link" %>
+            <%= link_to "Contactez nous", root_path(:anchor => "contact"), class: " sidenav-link" %>
 
           </div>
 

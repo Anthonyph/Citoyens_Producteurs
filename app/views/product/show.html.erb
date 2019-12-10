@@ -1,0 +1,36 @@
+<center>
+
+<h1><%= @product.name%><h1>
+
+<h2>Trouver ce produit en boutique</h2>
+
+<%storeproducts = @storeproducts.where(product_id: @product.id)%>
+<%i=1%>
+<%storeproducts.each do |storeproduct|%>
+<h3>Boutique n°<%=i%></h3>
+<h4><%=storeproduct.store.name%><h4>
+<h5><%=storeproduct.store.address.place%><h5>
+<h5><%=storeproduct.store.address.zip_code%> <%=storeproduct.store.address.city%><h5>
+<h4> Quantité de produits disponibles à la boutique : <%=storeproduct.quantity%> <%=storeproduct.unit.name%> <h4>
+<%i= i+1%>
+<%end%>
+<br>
+<h2>Trouver ce produit à un événement</h2>
+
+<%productevents = @productevents.where(product_id: @product.id)%>
+<%i=1%>
+<%productevents.each do |productevent|%>
+<h3>Evenement n°<%=i%></h3>
+<h4>Quantité de produit  <%=productevent.quantity%> <%=productevent.unit.name%></h4>
+<%eventid = productevent.event_id%>
+<%event = Event.find_by(id: eventid)%>
+<h4>A quel événement en récupérer ? <%= event.title%></h4>
+<h4>A quel endroit ? <%= event.address.place%> <%= event.address.zip_code%> <%= event.address.city%></h4>
+<h4>Cet évenement est organisé par <%= event.creator.first_name%> <%= event.creator.last_name%></h4>
+<%i= i+1%>
+<%end%>
+
+<h4> si tu supprimes ce produit, tout les évenements auxquelles il est associé ainsi que son stock en boutique sera supprimé, fais bien attention ! </h4>
+<%=button_to "Supprimer", {:controller => :product, :action => 'destroy', :id => @product.id }, :method => :delete %>
+<br>
+<center>
