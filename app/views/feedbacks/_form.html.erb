@@ -9,6 +9,9 @@
         <h6> Mon commentaire : </h6>
         <p><%= form.text_area :content, class:"form-control" %></p>
         <h6> Noter mon expérience de 0 à 5 : </h6>
+          <div class="rating">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+          </div>
         <p><%= form.number_field :rating, in: 0..5, step: 1, class:"form-control" %></p>
 
         <%= form.submit "Envoyer", class:"btn btn-success btn-rounded" %>
