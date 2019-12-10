@@ -1,38 +1,49 @@
 .jumbotron {
     background-image: url(/assets/gardening.jpeg);
     background-size: cover;
-    height: 900px;
+    height: 860px;
+    margin: 0;
 }
 
-#btn-jumbo {
+.container-hero {
     display: flex;
-    align-items: flex-end;
-    margin-top: 650px;
-    width: 200px;
+    margin-left: 10%;
 }
 
-.hero-logo {
-    width: 320px;
-    height: 150px;
+.hero {
+    border-radius: 10%;
+    width: 600px;
+    height: 420px;
+}
+
+.hero-btn {
+    margin-top: 600px;
+    width: 201px;
 }
 
 .about {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 42px;
+    padding-bottom: 42px;
+}
+
+#about {
+    display: flex;
 }
 
 #about .description {
     margin-left: 80px;
     line-height: 24px;
-    font-size: 14px;
+    font-size: 1.1em;
 }
 
 #about .title {
     margin-left: 80px;
     font-weight: 500;
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 1.4em;
     text-transform: uppercase;
+    font-weight: 700;
+    color: #181f49;
 }
 
 .about-img {
@@ -45,8 +56,8 @@
 .icon {
     float: left;
     background: #fff;
-    width: 64px;
-    height: 64px;
+    width: 70px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,9 +72,38 @@
     font-size: 24px;
 }
 
+#about .icon {
+    transition: 0.2s;
+    border: 6px solid #fff;
+    background: #9F9B30;
+    margin-right: 42px;
+}
+  
+#about .icon a {
+    display: inline-block;
+}
+  
+#about .icon i {
+    color: #fff;
+    font-size: 24px;
+}
+  
+#about .box:hover .icon {
+    background: #fff;
+    border: 2px solid #9F9B30;
+}
+  
+#about .box:hover .icon i {
+    color: #9F9B30;
+}
+  
+#about .box:hover .icon a {
+    color: #9F9B30;
+}
+
 .counter {
     color: #181f49;
-    background-color: #eeeeee;
+    background-color: whitesmoke;
 }
 
 #services {
@@ -111,15 +151,15 @@
 #services .box:hover .icon {
     background: #fff;
     border: 2px solid #9F9B30;
-  }
+}
   
 #services .box:hover .icon i {
     color: #9F9B30;
-  }
+}
   
 #services .box:hover .icon a {
     color: #9F9B30;
-  }
+}
   
 #services .title {
     font-weight: 700;
@@ -137,13 +177,34 @@
     line-height: 24px;
 }
 
-.section-title {
-    font-size: 32px;
+.title-goal {
+    font-size: 2.6em;
+    width: 380px;
     color: #181f49;
     text-transform: uppercase;
     text-align: center;
     font-weight: 700;
     margin-bottom: 5px;
+    background: linear-gradient(to bottom, #fff, #fff 50%, #fff 60%, #9F9B30 60%);
+}
+
+.title-about {
+    font-size: 2.6em;
+    color: #181f49;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 5px;
+    background: linear-gradient(to bottom, #fff, #fff 50%, #fff 60%, #9F9B30 60%);
+}
+
+.title-contact {
+    font-size: 2.6em;
+    color: #181f49;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(to bottom, #fff, #fff 50%, #fff 60%, #9F9B30 60%);
 }
 
 .section-description {
@@ -154,7 +215,6 @@
 
 .carousel-item {
     height: 420px;
-    border: 1px solid black;
 }
 
 .feature {
@@ -176,4 +236,10 @@
 .avatar {
     width: 60px;
     height: 60px;
+}
+
+.home-maps {
+    width: 100%;
+    height: 300px;
+    border: 0;
 }
