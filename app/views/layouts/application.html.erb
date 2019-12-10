@@ -3,7 +3,8 @@
 
   <head>
 
-    <title>CitoyensProducteurs</title>
+    <%= favicon_link_tag 'carrot.png' %>
+    <title>Citoyens Producteurs</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -21,19 +22,28 @@
   <body>
 
     <% if show_sidebar %>
-      <%= render "layouts/sidebar" %>
-    <% end %>
 
-    <div id="page-content">
+      <div id="page-content">
+      
+        <%= render "layouts/sidebar" %>
+        
+        <%= yield %>
+
+        <div class="spacer"></div>
+      
+        <%= render 'layouts/footer' %>
+
+      </div>
+
+    <% else %>
       
       <%= yield %>
 
-      <div class="spacer">
-      </div>
+      <div class="spacer"></div>
       
       <%= render 'layouts/footer' %>
-      
-    </div>
+
+    <% end %>
 
   </body>
 

@@ -3,22 +3,22 @@
   background-image: url("sidebar.jpg");
   width: 250px;
   height: 100%;
-  left: -250px;
+  left: 0px;
   transition: all 500ms ease;
   z-index: 3;
 }
 
 #sidebar.active {
-  left: 0px;
+  left: -250px;
 }
 
 #page-content {
   transition: all 500ms ease;
-  margin-left: 0px;
+  margin-left: 250px;
 }
 
 #page-content.active {
-  margin-left: 250px;
+  margin-left: 0px;
 }
 
 .sidebar-row {
@@ -56,7 +56,7 @@
 #sidebar .sidenav-link {
   display: inline-block;
   text-align: left;
-  width: 87%;
+  width: 88%;
   margin: 5px 0px 5px 0px;
   transition: all 0.35s ease-in-out;
   color: #181F49;
@@ -72,12 +72,22 @@
   padding: 10px 15px 10px;
 }
 
-#sidebar .sidebar-link a:after {
+#sidebar .sidebar-link .flex-start a:after {
   position: absolute;
   left: -10%;
   width: 0;
   height: 35px;
   background: #0baa69;
+  content: '';
+  transition: all 0.35s ease-in-out;
+}
+
+#sidebar .sidebar-link .flex-end a:after {
+  position: absolute;
+  left: -10%;
+  width: 0;
+  height: 35px;
+  background: #f9db31;
   content: '';
   transition: all 0.35s ease-in-out;
 }
@@ -114,11 +124,13 @@
 }
 
 .nav-avatar {
-  z-index: 1;
+  position: fixed;
   float: right;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
 }
 
-.side-navbar {
-  z-index: 0;
-  background-color: rgba(255, 255, 255, 0);
+.nav-avatar-dropdown {
+  padding-bottom: 25px;
 }
