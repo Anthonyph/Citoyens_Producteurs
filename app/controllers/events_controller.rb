@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     @type = EventType.find(event_params[:type])
     @creator = User.find(current_user.id)
     @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
-    if @event.save!
+    if @event.save
       flash[:success] = 'Event successfully created'
       redirect_to @event
     else
