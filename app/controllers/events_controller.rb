@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :destroy]
+  before_action :is_creator?, only: [:edit]
 
   def index
     @events = Event.all
@@ -61,4 +62,13 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback)
   end
+
+  def is_creator?
+    if current_user == @event.creator
+    
+    else
+    redirect_to event_path
+    end
+  end
+
 end

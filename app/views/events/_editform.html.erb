@@ -30,19 +30,19 @@
       </div>
         <div class= 'form-group'>
         <label> Adresse : </label>
-        <%= f.text_field :place, class: 'form-control' %>
+        <%= f.text_field :place, class: 'form-control', value: @event.address.place %>
       </div>
       <div class= 'form-group'>
         <label> Code postal : </label>
-        <%= f.text_field :zip_code, class: 'form-control' %>
+        <%= f.text_field :zip_code, class: 'form-control', value: @event.address.zip_code %>
       </div>
       <div class= 'form-group'>
         <label> Ville : </label>
-        <%= f.text_field :city, class: 'form-control' %>
+        <%= f.text_field :city, class: 'form-control', value: @event.address.city %>
       </div>
       <div class= 'form-group'>
         <label> Secteur : </label>
-        <%= f.text_field :sector, class: 'form-control' %>
+        <%= f.text_field :sector, class: 'form-control', value: @event.address.sector %>
       </div>
       <hr>
       <%= f.hidden_field :creator, value: current_user %>
