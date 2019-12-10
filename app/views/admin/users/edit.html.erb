@@ -1,12 +1,13 @@
 <html>
-<center>
+
 </br>
-<%= form_with model: @user_detail , url: admin_user_path, method: "patch",local: true, class: 'mt-5 col-4 offset-4' do |f| %>
+
+<%= form_with model: @user, local: true, class: 'mt-5 col-4 offset-4' do |f| %>
+
   <div class= 'form-group'>
-    <label> type </label>
-    <%= f.select :store, Store.pluck(:name, :id),autocomplete: @user_detail.store, class: 'form-control' %>
+  <label> type </label>
+  <%= f.select :store, Store.pluck(:name, :id), class: 'form-control' %>
   </div>
- 
 
   <div class= 'form-group'>
     <label> Prenom </label>
@@ -33,36 +34,45 @@
    <%= f.check_box :is_admin, class: 'form-control' %>
   </div>
 
+
   <div class= 'form-group'>
-  <label> place </label>
-  <%= f.text_field :place,autocomplete: "place" , class: 'form-control' %>
+    <label> Adresse : </label>
+    <%= f.text_field :place, class: 'form-control', value: @user.address.place %>
   </div>
   <div class= 'form-group'>
-    <label> zip_code </label>
-    <%= f.text_field :zip_code, class: 'form-control' %>
+    <label> code postal </label>
+    <%= f.text_field :zip_code, class: 'form-control', value: @user.address.zip_code %>
   </div>
   <div class= 'form-group'>
-    <label> city </label>
-    <%= f.text_field :city, class: 'form-control' %>
+    <label> ville </label>
+    <%= f.text_field :city, class: 'form-control', value: @user.address.city  %>
   </div>
   <div class= 'form-group'>
-    <label> sector </label>
-    <%= f.text_field :sector, class: 'form-control' %>
+    <label> quartier </label>
+    <%= f.text_field :sector, class: 'form-control', value: @user.address.sector  %>
   </div>
+
+  
+  
+
+ 
+  
 
   <div class='actions'>
     <%= f.submit %>
   </div>
+
 <% end %>
-</center>
+
+
 <center>
-<% if @user_detail.errors.any? %>
+<% if@user.errors.any? %>
   <div class="alert alert-dismissible alert-danger">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong> Erreur ! </strong>
     <p>Nous n'avons pas réussi à créer un évenement pour la (ou les) raison(s) suivante(s) :</p>
     <ul>
-      <% @user_detail.errors.full_messages.each do |message| %>
+      <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>

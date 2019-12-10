@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
 
   before_action :check_if_admin
-  before_action :user_detail, only: [:show,:create,:update,:destroy,:edit]
+  before_action :set_user, only: [:show,:create,:update,:destroy,:edit]
+
 
   def index
     
@@ -12,6 +13,7 @@ class Admin::UsersController < ApplicationController
   def show
     
     @events = Event.all
+    
     
   end
   
@@ -25,12 +27,12 @@ class Admin::UsersController < ApplicationController
   def update 
         
     @store = Store.find(user_params[:store])
-    @address= @user_detail.address
+    @address= @user.address
     
     
-    if (@user_detail.update(email: user_params[:email], first_name: user_params[:first_name], last_name:  user_params[:last_name], phone_number: user_params[:phone_number], is_admin: user_params[:is_admin], store:@store))&& (@address.update(place: user_params[:place], zip_code: user_params[:zip_code], city:  user_params[:city], sector: user_params[:sector]))
+    if (@user.update(email: user_params[:email], first_name: user_params[:first_name], last_name:  user_params[:last_name], phone_number: user_params[:phone_number], is_admin: user_params[:is_admin], store:@store))&& (@address.update(place: user_params[:place], zip_code: user_params[:zip_code], city:  user_params[:city], sector: user_params[:sector]))
             
-      redirect_to admin_user_path(@user_detail.id) # si ça marche, il redirige vers la page d'index du site
+      redirect_to admin_user_path(@user.id) # si ça marche, il redirige vers la page d'index du site
     else
       render :edit  # sinon, il render la view new (qui est celle sur laquelle on est déjà)
     end
@@ -39,13 +41,19 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     
-    @user_detail.destroy 
-    flash[:danger] = "L'utilisateur #{@user_detail.email} à bien été supprimmé"
+    @user.destroy 
+    flash[:danger] = "L'utilisateur #{@user.email} à bien été supprimmé"
     redirect_to '/admin/users'
   end
 
   private
 
+  def create_adress
+  @user = User.find(params[:id])
+  @address = Address.create(place: "default", zip_code: "11111", city: "default", sector: "default")
+  @user.update(address_id :@address.id)
+  end
+  
   def user_params
     params.require(:user).permit(:email,:first_name,:last_name,:phone_number,:is_admin,:place,:zip_code,:city,:sector,:store)
   end
@@ -61,8 +69,8 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def user_detail
-    @user_detail = User.find(params[:id])
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
