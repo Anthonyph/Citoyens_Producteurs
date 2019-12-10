@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :destroy]
+  before_action :is_creator?, only: [:edit]
 
   def index
     @events = Event.all
@@ -34,12 +35,17 @@ class EventsController < ApplicationController
   end
   
   def update
-    @event = set_event
-    if @event.update(event_params)
-      redirect_to @event, notice: 'Event was successfully updated.'
-    else
-      render :edit
-    end
+    @address1 = Event.find(params[:id]).address
+    @address = Address.find(@address1.id).update(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
+    @type = EventType.find(event_params[:type])
+    @creator = User.find(current_user.id)
+    @event = Event.find(params[:id])
+    @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
+    #if @event.update(event_params)
+    redirect_to @event, notice: 'Event was successfully updated.'
+    #else
+    #render :edit
+    #end
   end
 
   def destroy
@@ -56,4 +62,13 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback)
   end
+
+  def is_creator?
+    if current_user == @event.creator
+    
+    else
+    redirect_to event_path
+    end
+  end
+
 end

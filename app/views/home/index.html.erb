@@ -1,49 +1,10 @@
 <%= render 'layouts/navbar' %>
 
-<div class="hero">
+<div class="jumbotron">
   <div class="container call-to-action">
+    <%= button_to "Rejoignez-nous", new_user_session_path, class:"btn btn-success btn-rounded btn-lg m-2", id:"btn-jumbo" %>
   </div>
 </div>
-
-
-<section id="about">
-  <div class="container about">
-    <div class="row">
-
-      <div class="content">
-        <h1 class="section-title">Qui sommes-nous?</h1>
-        <hr>
-        <p class="section-description">
-        Notre mission est d’aller chercher les surplus de production chez les particuliers afin de créer une activité économique 100 % locale. En écoulant des produits sains, qui ont poussé sans produits chimiques, et qui n’ont pas voyagé.
-        Un des enjeux est de lutter contre le gaspillage alimentaire.
-        Un autre est de profiter d’une ressource alimentaire, déjà disponible en récupérant les fruits (ou les légumes) qui auraient poussé de toute façon.</p>
-
-        <div class="wow fadeInUp">
-          <div class="icon"><i class="fas fa-seedling"></i></div>
-          <h4 class="title"><a href="">Producteurs</a></h4>
-          <p class="description">Tu possèdes un petit potager ? Ta production est surabondante ? Tu en as marre de gaspiller ? Rejoint le mouvement pour qu’une équipe de cueilleur vienne récupérer tes surplus pour participer à un projet de forte valeur environnementale ! </p>
-        </div>
-
-        <div class="wow fadeInUp" data-wow-delay="0.2s">
-          <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
-          <h4 class="title"><a href="">Bénévoles</a></h4>
-          <p class="description">Tu as la main verte (ou pas) et tu souhaites consacrer ton temps libre à participer à la lutte contre le gaspillage alimentaire et rencontrer des personnes ? Rejoint le mouvement !</p>
-        </div>
-
-        <div class="wow fadeInUp" data-wow-delay="0.4s">
-          <div class="icon"><i class="fas fa-utensils"></i></div>
-          <h4 class="title"><a href="">Produits transformés</a></h4>
-          <p class="description">Tu aimes cuisiner et tu te sens capable de transformer les produits récoltés en produits consommables et conservables (confitures, soupes, tisanes) ? Participe au projet !</p>
-        </div>
-        <hr>
-        <div class="btnsuccess text-center">
-        <a class="btn btn-success btn-rounded m-2" <%= link_to "Rejoignez-nous", new_user_registration_path %></a><br>
-        </div>
-    </div>
-
-  </div>
-</section>
-
 
 <section id="counter" class="counter p-4">
   <div class="container">
@@ -97,57 +58,43 @@
 </section>
 
 
-<section id="services">
-  <div class="container wow fadeIn">
-    <div class="section-header">
-      <h3 class="section-title">Autres engagements possibles</h3>
-    </div>
-    <br><br><br>
+<section id="about">
+  <div class="container about">
     <div class="row">
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fas fa-bullhorn"></i></a></div>
-          <h4 class="title"><a href="">Communication</a></h4>
-          <p class="description">Animer la communauté et faire connaitre Citoyens Producteurs, animer des événements, mettre en place une image et du contenu, fédérer autour du projet de nouvelles personnes</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fas fa-shopping-basket"></i></a></div>
-          <h4 class="title"><a href="">Vente</a></h4>
-          <p class="description">Tenir des stands sur des salons, être capable de négocier avec des distributeurs locaux.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="far fa-thumbs-up"></i></a></div>
-          <h4 class="title"><a href="">Gestion</a></h4>
-          <p class="description">Gérer l’activité d’un point de vue comptable </p>
-        </div>
-      </div>
 
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="far fa-calendar-check"></i></a></div>
-          <h4 class="title"><a href="">Planifier</a></h4>
-          <p class="description">Tenir à jour un état des lieux des différentes parties prenantes (terrains, périodes de récolte, cueilleurs, lieux de stockage, transformation)</p>
+      <div class="content">
+        <h1 class="section-title">Qui sommes-nous?</h1>
+        <hr>
+        <p class="lead">
+        Notre mission est d’aller chercher les surplus de production chez les particuliers afin de créer une activité économique 100 % locale. En écoulant des produits sains, qui ont poussé sans produits chimiques, et qui n’ont pas voyagé.
+        Un des enjeux est de lutter contre le gaspillage alimentaire.
+        Un autre est de profiter d’une ressource alimentaire, déjà disponible en récupérant les fruits et légumes qui auraient poussé de toute façon.
+        </p>
+        <br>
+
+        <div class="wow fadeInUp">
+          <div class="icon"><i class="fas fa-seedling"></i></div>
+          <h4 class="title"><a href="">Producteurs</a></h4>
+          <p class="description">Tu possèdes un petit potager ? Ta production est surabondante ? Tu en as marre de gaspiller ? Rejoint le mouvement pour qu’une équipe de cueilleur vienne récupérer tes surplus pour participer à un projet de forte valeur environnementale ! </p>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
-          <h4 class="title"><a href="">Déployer</a></h4>
-          <p class="description">Aider à déployer l’activité dans d’autres zones géographiques tout en préservant le concept d’origine</p>
+        <br>
+
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h4 class="title"><a href="">Bénévoles</a></h4>
+          <p class="description">Tu as la main verte (ou pas) et tu souhaites consacrer ton temps libre à participer à la lutte contre le gaspillage alimentaire et rencontrer des personnes ? Rejoint le mouvement !</p>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fas fa-utensils"></i></a></div>
-          <h4 class="title"><a href="">Consommer</a></h4>
-          <p class="description"> Confitures, gelées, pâtes de fruits, compotes, soupes, purées, potages, sauces, tisanes, herbes séchées
-           </p>
+        <br>
+
+        <div class="wow fadeInUp" data-wow-delay="0.4s">
+          <div class="icon"><i class="fas fa-utensils"></i></div>
+          <h4 class="title"><a href="">Produits transformés</a></h4>
+          <p class="description">Tu aimes cuisiner et tu te sens capable de transformer les produits récoltés en produits consommables et conservables (confitures, soupes, tisanes) ? Participe au projet !</p>
         </div>
-      </div>
+        <hr>
+        <div class="btnsuccess text-center">
+          <a class="btn btn-primary btn-rounded m-2" <%= link_to "En savoir plus", community_path %></a><br>
+        </div>
     </div>
 
   </div>
@@ -205,6 +152,8 @@
         <p class="mb-5"><i class="fa fa-phone mr-2"></i>06 83 87 04 95<br><i class="fa fa-envelope mr-2"></i> citoyens-producteurs@lilo.org</p>
         <h6 class="uppercase my-3 font-title">Suivez-nous</h6>
         <li class="inline"> <%= link_to "", "https://www.facebook.com/CitoyensProducteurs/", class:"fab fa-facebook inline fa-2x", :target => '_blank'%></li>
+        <li class="inline"> <%= link_to "", "https://www.facebook.com/CitoyensProducteurs/", class:"fab fa-twitter inline fa-2x", :target => '_blank'%></li>
+        <li class="inline"> <%= link_to "", "https://www.instagram.com/citoyensproducteurs/", class:"fab fa-instagram inline fa-2x", :target => '_blank'%></li>
         </a>
         </div>
       </div>

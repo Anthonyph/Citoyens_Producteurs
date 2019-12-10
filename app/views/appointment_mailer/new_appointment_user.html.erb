@@ -1,6 +1,8 @@
-    <p>Salut <%=@user_first_name%> <%=@user_last_name%></p>
-    <p>Tu as rejoint l'évenement <%=@title%> </p>
-    <p>L'évenement débute le : <%=@apt_start_date%> et dure <%=@apt_duration%></p>
-    <p>avec cet événement tu vas récolter <%=@points%> points </p>
-    <p>Cet événement est géré par <%=@creator_first_name%> <%=@creator_last_name%> mn</p>
-    <p>tu peux le contacter via son email : <%=@creator_email%> et son numéro de téléphone : <%=@creator_phonenumber%></p>
+    <h2>Salut <%=@user_first_name%> <%=@user_last_name%> !</h2>
+    <p>Tu as rejoint l'évenement <%=@title%>.</p>
+    <p>L'évenement débute le : <%=@apt_start_date%> et dure <%=@apt_duration%> mn.</p>
+    <p>L'événement aura lieu à l'adresse suivante : "<%=@apt.user.address.place%> <%=@apt.user.address.zip_code%> <%=@apt.user.address.city%>".</p>
+    <p>Avec cet événement tu vas récolter <%=@apt.points%> points.</p>
+    <p>Cet événement est géré par <%=@creator_first_name%> <%=@creator_last_name%>.</p>
+    <p>Tu peux le contacter via son email : <%=@creator_email%> et son numéro de téléphone : <%=@creator_phonenumber%>.</p>
+    <p><b>Merci de faire vivre la communauté et à très bientôt sur <%=@url%> !</b></p>
