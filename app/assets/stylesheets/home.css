@@ -1,25 +1,32 @@
 .jumbotron {
-    background-image: url(/assets/gardening.jpeg);
+    background-image: url(/assets/hero.jpg);
     background-size: cover;
     height: 860px;
     margin: 0;
 }
 
 .container-hero {
-    display: flex;
-    margin-left: 10%;
-}
-
-.hero {
-    border-radius: 10%;
-    width: 600px;
-    height: 420px;
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 25px;
+    margin: 0%;
 }
 
 .hero-btn {
-    margin-top: 600px;
-    width: 201px;
+    margin-top: 42px;
+    width: 240px;
 }
+
+.title-slogan {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 4.2em;
+    color: #181f49;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 8%;
+    margin-left: 0%;
+}
+
 
 .about {
     padding-top: 42px;
