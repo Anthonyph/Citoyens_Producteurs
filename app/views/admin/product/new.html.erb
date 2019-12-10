@@ -1,0 +1,12 @@
+<%= form_with model: @product, local: true, class: 'mt-5 col-4 offset-4' do |f| %>
+  
+  <hr>
+  <%if flash[:danger] %>
+    <div class="alert alert-danger text-center" role="alert">
+      <%=flash[:danger] %>
+    </div>
+  <% end %>
+  <div class= 'form-group'>
+    <label> Nom du produit : </label>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
