@@ -1,7 +1,7 @@
 <center>
-<h4>Ajouter un produit: </h4>
+<h4>Modifier un produit: </h4>
 
-<%= form_for @product, url: admin_products_path, method: 'post' do |f| %> 
+<%= form_for @product, url: admin_product_path(@product.id), method: 'put' do |f| %> 
   
   
   <%if flash[:danger] %>
