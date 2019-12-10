@@ -1,0 +1,31 @@
+<h1>Mon profil: </h1>
+  <p>Prénom : <%=@user_detail.first_name%><p>
+  <p>Nom: <%=@user_detail.last_name%><p>
+  <p>Email: <%=@user_detail.email%><p>
+  <p>Telephone : <%=@user_detail.phone_number%><p>
+  <p>Adresse : <%=@user_detail.address.place%><p>
+  <p>Ville : <%=@user_detail.address.city%><p>
+  <p>Boutique de réference : <%=@user_detail.store.name%><p>
+
+  <%=link_to "Modifier le profil", edit_admin_user_path(@user_detail.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
+
+  <%=link_to "Supprimer", admin_user_path(@user_detail.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>
+
+  <center><div class="card-deck"></center>
+  
+<% @events.each do |liste| %>
+
+  <% if @user_detail == liste.creator_id %>
+  <center><div class="card" style="width: 50rem;">
+  <h5 class="card-header"><%=liste.creator.last_name%></h5>
+  <div class="card-body">
+    <h5 class="card-title"><%=liste.title%></h5>
+    <%= link_to "voir l'evenement", event_path(liste.id) %>
+  </div>
+</div><center>
+</br>
+</br>
+
+<% end %>
+<% end %>
+</div></center>

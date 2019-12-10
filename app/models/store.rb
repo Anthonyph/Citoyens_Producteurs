@@ -1,9 +1,9 @@
 class Store < ApplicationRecord
   belongs_to :address
-  has_many :store_products
+  has_many :store_products, dependent: :destroy
   has_many :products , through: :store_products
-  has_many :users
-  has_many :events, through: :users
+  has_many :users, dependent: :nullify
+  has_many :events, through: :users, dependent: :nullify
 
   validates :name,
   presence: true,
