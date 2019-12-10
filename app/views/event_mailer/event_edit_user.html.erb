@@ -1,1 +1,21 @@
-<h2> test test test </h2>
+<h2> Salut <%=@participant.first_name%> <%=@participant.last_name%> </h2>
+
+<p>L'évènement auquel tu participes a été modifié.</p>
+
+<p>Voici les nouvelles informations à propos de cet évènement : </p>
+<p>Le titre de l'évènement est : <%=@event.title%>.</p>
+<p>La description est : <%=@event.description%>.</p>
+<p>L'évènement débute le <%=@event.start_date%>.</p>
+
+<p>L'évènement aura lieu a :</p>
+<p><%=@event.address.place%> 
+<br>
+<%=@event.address.zip_code%>
+<br>
+<%=@event.address.city%>
+<br>
+<%=@event.address.sector%> </p>
+
+<p> Pour plus d'information, contacte directement le créateur de l'évènement par email : <%=@creator.email%> où bien par téléphone : <%=@creator_phone%></p>
+
+<p><b>Merci de faire vivre la communauté et à très bientôt chez <%=@url%></b></p>

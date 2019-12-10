@@ -12,7 +12,7 @@ class CommentMailer < ApplicationMailer
     @creator_last_name = @comment.event.creator.last_name
 
     @url = 'www.citoyens-producteurs.fr' 
-    mail(to: @creator_email, subject: 'Tu as reçu un commentaire sur ton événement !') 
+    mail(to: @creator_email, subject: 'Tu as reçu un commentaire sur ton évènement !') 
   end
 
 end
