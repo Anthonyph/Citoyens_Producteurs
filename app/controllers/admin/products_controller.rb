@@ -33,7 +33,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     
-  @product = Product.find(params[:id]) 
+    @product = Product.find(params[:id]) 
     if @product.update(product_params)
       flash[:success] = 'Product successfully updated'
       redirect_to '/admin/products'
@@ -43,6 +43,8 @@ class Admin::ProductsController < ApplicationController
     end
       
   end
+
+  
 
   private  
 
