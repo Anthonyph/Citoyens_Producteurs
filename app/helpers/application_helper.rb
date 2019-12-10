@@ -4,6 +4,11 @@ module ApplicationHelper
     !current_page?(controller: '/home', action: 'index') &&
     !current_page?(controller: '/home', action: 'community') &&
     !current_page?(controller: '/home', action: 'story') &&
+    !current_page?(controller: '/devise/registrations', action: 'new') &&
+    !current_page?(controller: '/devise/registrations', action: 'edit') &&
+    !current_page?(controller: '/devise/sessions', action: 'new') &&
+    !current_page?(controller: '/devise/passwords', action: 'new') &&
+    !current_page?(controller: '/devise/passwords', action: 'edit') &&
     !admin?
   end
 
