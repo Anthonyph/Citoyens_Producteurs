@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     @type = EventType.find(event_params[:type])
     @creator = User.find(current_user.id)
     @event = Event.find(params[:id])
-    @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address_id, creator: @creator)
+    @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
     #if @event.update(event_params)
     redirect_to @event, notice: 'Event was successfully updated.'
     #else
