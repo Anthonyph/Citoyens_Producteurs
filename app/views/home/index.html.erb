@@ -1,9 +1,7 @@
 <%= render 'layouts/navbar' %>
 
 <div class="jumbotron">
-  <div class="container call-to-action">
-    <%= button_to "Rejoignez-nous", new_user_session_path, class:"btn btn-success btn-rounded btn-lg m-2", id:"btn-jumbo" %>
-  </div>
+    <%= link_to "Rejoignez-nous", user_path(current_user.id), class:"btn btn-success btn-rounded btn-lg animated fadeInRight", id:"btn-jumbo" %>
 </div>
 
 <section id="counter" class="counter p-4">
@@ -65,28 +63,27 @@
       <div class="content">
         <h1 class="section-title">Qui sommes-nous?</h1>
         <hr>
-        <p class="lead">
+        <p class="lead text-center">
         Notre mission est d’aller chercher les surplus de production chez les particuliers afin de créer une activité économique 100 % locale. En écoulant des produits sains, qui ont poussé sans produits chimiques, et qui n’ont pas voyagé.
         Un des enjeux est de lutter contre le gaspillage alimentaire.
-        Un autre est de profiter d’une ressource alimentaire, déjà disponible en récupérant les fruits et légumes qui auraient poussé de toute façon.
         </p>
         <br>
 
-        <div class="wow fadeInUp">
+        <div class="animated fadeInUp delay-1s">
           <div class="icon"><i class="fas fa-seedling"></i></div>
           <h4 class="title"><a href="">Producteurs</a></h4>
           <p class="description">Tu possèdes un petit potager ? Ta production est surabondante ? Tu en as marre de gaspiller ? Rejoint le mouvement pour qu’une équipe de cueilleur vienne récupérer tes surplus pour participer à un projet de forte valeur environnementale ! </p>
         </div>
         <br>
 
-        <div class="wow fadeInUp" data-wow-delay="0.2s">
+        <div class="animated fadeInUp delay-2s" data-wow-delay="0.2s">
           <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
           <h4 class="title"><a href="">Bénévoles</a></h4>
           <p class="description">Tu as la main verte (ou pas) et tu souhaites consacrer ton temps libre à participer à la lutte contre le gaspillage alimentaire et rencontrer des personnes ? Rejoint le mouvement !</p>
         </div>
         <br>
 
-        <div class="wow fadeInUp" data-wow-delay="0.4s">
+        <div class="animated fadeInUp delay-3s" data-wow-delay="0.4s">
           <div class="icon"><i class="fas fa-utensils"></i></div>
           <h4 class="title"><a href="">Produits transformés</a></h4>
           <p class="description">Tu aimes cuisiner et tu te sens capable de transformer les produits récoltés en produits consommables et conservables (confitures, soupes, tisanes) ? Participe au projet !</p>

@@ -1,14 +1,14 @@
 .jumbotron {
     background-image: url(/assets/gardening.jpeg);
     background-size: cover;
-    background-repeat: no-repeat;
-    height: 700px;
+    height: 900px;
 }
 
 #btn-jumbo {
-    position: absolute;
-    bottom: 0;
-    left: 10;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 650px;
+    width: 200px;
 }
 
 .hero-logo {
