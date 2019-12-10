@@ -14,3 +14,9 @@
 .show-store .call-to-action {
   background: whitesmoke;
 }
+
+.store-maps {
+  width: 100%;
+  height: 200px;
+  border: 0;
+}
