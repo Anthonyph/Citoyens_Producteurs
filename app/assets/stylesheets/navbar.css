@@ -8,14 +8,19 @@
     padding-bottom: 4px!important;
 }
 
-.navbar-logo {
-    float: right;
-    max-width: 120px;
-    max-height: 120px;
+#navbar {
+  position: fixed; /* Make it stick/fixed */
+  top: 0; /* Stay on top */
+  width: 100%; /* Full width */
+  transition: all 0.5s; /* Transition effect when sliding down (and up) */
 }
 
-.navbar .navbar-nav {
-    padding-left: 40px;
+.navbar-logo {
+    float: right;
+    max-width: 140px;
+    max-height: 120px;
+    margin-left: 25px;
+    margin-right: 50px;
 }
 
 .navbar .nav-item {
@@ -29,8 +34,16 @@
     height: 60px;
 }
 
-.navbar .nav-link:hover,
+.navbar .nav-link {
+    border-bottom: 4px solid transparent;
+}
+
 .navbar .navbar-avatar:hover,
 .navbar .navbar-logo:hover {
     transform: scale(1.05);
+}
+
+.navbar .nav-link:hover {
+    border-bottom: 4px solid #9F9B30;
+    transform: scale(1.1);
 }

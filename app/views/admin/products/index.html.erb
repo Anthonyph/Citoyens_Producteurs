@@ -1,0 +1,59 @@
+<body class="products">
+<%if flash[:success] %>
+    <div class="alert alert-success text-center" role="alert">
+      <%=flash[:success] %>
+    </div>
+<%end%>
+
+
+<div class="container">
+  <div class="card border-0 shadow my-5" id="product-contain">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Tous les produits 🌾</h1>
+      <hr>
+
+<div class="container">
+	<table id="cart" class="table table-hover table-condensed"  style="background-color:#F4F2F2; border-radiux:9px;">
+    				<thead>
+						<tr>
+							<th style="width:85%; color:#635255; font-family: 'Hammersmith One', sans-serif;">Produits</th>											
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+              <% @products.each do |product| %>
+              <td data-th="Product">
+              <p><%=link_to product.name, admin_product_path(product.id) %></p>
+								
+									<div class="col-sm-10">
+										
+								</div>
+              </div>
+           </div>
+    </div>
+  </div>
+
+							</td>
+													
+						</tr>
+					</tbody>
+					<%end%>
+					
+        </table>
+<div class="col-md-4 products-aside">
+  <div class="card my-4">       
+    <div class="card-header"><%= link_to 'Ajouter un nouveau produit', new_admin_product_path, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
+    </div>    
+  </div>
+</div>  
+</div>
+</body>
+        
+        
+
+
+
+
+            
+       

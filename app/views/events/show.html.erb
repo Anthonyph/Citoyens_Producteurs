@@ -73,6 +73,8 @@
 
         <% if comment.user == current_user %>
         <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
+        <% end %>
+        <% if  current_user.is_admin == true %>
         <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
         <% end %>
 
