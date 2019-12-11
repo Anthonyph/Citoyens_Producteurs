@@ -17,7 +17,7 @@ class EventMailer < ApplicationMailer
 
   def event_edit_user(event)
      @event = event
-     @creator_id = event.creator_id
+     @creator_id = @event.creator_id
      @creator = User.find_by(id: @creator_id) 
      @creator_email = @creator.email
      @creator_first_name = @creator.first_name
