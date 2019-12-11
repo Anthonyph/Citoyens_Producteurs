@@ -41,6 +41,12 @@
       <br>
 
       <div class= 'form-group'>
+        <%= f.label :zip_code, "Code postal :" %><br />
+        <%= f.text_field :zip_code, value: current_user.address.zip_code, class: 'form-control' %>
+      </div>
+      <br>
+
+      <div class= 'form-group'>
         <%= f.label :city, "Ville :" %><br />
         <%= f.text_field :city, value: current_user.address.city, class: 'form-control' %>
       </div>
