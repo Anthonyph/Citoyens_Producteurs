@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 
   before_action :check_if_admin
-  before_action :set_user, only: [:show,:create,:update,:destroy,:edit]
+  before_action :set_user, only: [:show,:update,:destroy,:edit]
 
 
   def index
@@ -19,8 +19,21 @@ class Admin::UsersController < ApplicationController
   
 
   def new
+    @user = User.new
   end
-  def create
+  #def create
+   #@address = Address.create(place: user_params[:place], zip_code: user_params[:zip_code], city: user_params[:city], sector: user_params[:sector])
+    #@store = Store.find(user_params[:store])
+    
+    #@user = User.new(store: @store, email: user_params[:email], first_name: user_params[:first_name], last_name: user_params[:last_name], phone_number: user_params[:phone_number], is_admin: user_params[:is_admin], address: @address)
+    #if @user.save!
+      #flash[:success] = 'Event successfully created'
+      #redirect_to '/admin/events'
+      
+    #else
+      #flash.now[:danger] = 'Something went wrong, please check your input'
+      #render new_admin_user_path
+    #end
   end
   def edit        
   end
@@ -53,7 +66,7 @@ class Admin::UsersController < ApplicationController
   @address = Address.create(place: "default", zip_code: "11111", city: "default", sector: "default")
   @user.update(address_id :@address.id)
   end
-  
+
   def user_params
     params.require(:user).permit(:email,:first_name,:last_name,:phone_number,:is_admin,:place,:zip_code,:city,:sector,:store)
   end
