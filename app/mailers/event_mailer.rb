@@ -36,6 +36,7 @@ class EventMailer < ApplicationMailer
 
    def ask_feedback(appointment)
     @url  = 'www.citoyens-producteurs.fr' 
+    @id = appointment.event_id
     mail(to: appointment.user.email, subject: 'Après l\'évènement, le feedback !')
     #mail(to: @creator_email, subject: 'Après l\'évènement, le feedback !') 
     end
