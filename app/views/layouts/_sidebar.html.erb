@@ -49,23 +49,20 @@
       <div class="col-12 sidebar-col">
         <div class="sidebar-link">
 
-            <div class="flex-start"><%= link_to "Accueil", root_path, class: "btn-light sidenav-link" %>
-            <%= link_to "Magasin", store_path(1), class: "btn-light sidenav-link" %>
-            <%= link_to "Évenements", events_path, class: "btn-light sidenav-link" %>
-            <% if user_signed_in? %>
-              <%= link_to "Mon Espace", user_path(current_user.id), class: "btn-light sidenav-link" %>
-            <% else %>
-              <%= link_to "Mon Espace", new_user_session_path, class: "btn-light sidenav-link" %>
+            <div class="flex-start">
+
+            <% if current_user.is_admin %>
+              <%= link_to "Espace Admin", admin_root_path, class:"btn-light sidenav-link" %>
             <% end %>
-            
+            <%= link_to "Mon Espace", user_path(current_user.id), class: "btn-light sidenav-link" %>
+            <%= link_to "Évenements", events_path, class: "btn-light sidenav-link" %>
+            <%= link_to "Le Local", store_path(1), class: "btn-light sidenav-link" %>
                    
-
-
           </div>
 
           <div class="flex-end">
 
-            
+            <%= link_to "Accueil", root_path, class: "btn-light sidenav-link" %>
             <%= link_to "Contactez nous", root_path(anchor: "contact"), class: "btn-light sidenav-link" %>
 
           </div>
