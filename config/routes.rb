@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :events
     resources :appointments
     resources :feedbacks
-    resources :stores
+    resources :stores do 
+      resources :store_products
+    end
     resources :calendar
     resources :products
     resources :store_products

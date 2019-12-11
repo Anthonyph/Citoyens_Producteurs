@@ -1,14 +1,41 @@
-<br>
-<br>
-<br>
-<br>
+<h4> Les locaux actuellement ouverts: </h4>
+</br>
 
-<h1> Voici les produits présents dans la boutique <%=Store.find(params[:store_id]).name%> </h1>
+<%= link_to 'Créer un nouveau local', new_admin_store_path, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
+<div class="card-body">
+  <div class="table-responsive">
 
-<%sp = @store_products.where(store_id: params[:store_id])%>
-<%sp.each do |storeproduct|%>
-<ul>
-<li><h2><%= storeproduct.product.name %></h2></li>
-<%= storeproduct.quantity %> <%= storeproduct.unit.name %>
-</ul>
-<%end%>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Voie</th>
+          <th scope="col">Ville</th>
+          <th scope="col">Code Postal</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+
+      <%@stores.each do |store|%>
+        <tr>
+          <th scope="row"><%= store.id %></th>
+          <td><%= store.name %></td>
+          <td><%= store.address.place %></td>
+          <td><%= store.address.city%></td>
+          <td><%= store.address.zip_code%></td>
+          <td><%= link_to "Voir le stock", admin_store_path(store.id), class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %></td>
+         
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+
