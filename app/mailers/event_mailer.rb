@@ -15,22 +15,18 @@ class EventMailer < ApplicationMailer
    mail(to: @user.email, subject: 'Tu as crée un nouvel évènement !') 
   end
 
-  def event_edit_user(event)
-     @event = event
+  def event_edit_user(appointment)
+     @event = appointment.event
      @creator_id = @event.creator_id
      @creator = User.find_by(id: @creator_id) 
      @creator_email = @creator.email
      @creator_first_name = @creator.first_name
      @creator_last_name = @creator.last_name
      @creator_phone = @creator.phone_number
-
+    @participant = appointment.user
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = 'www.citoyens-producteurs.fr' 
-    @appointments = Appointment.where(event_id: @event.id)
-    @appointments.each do |appointment|
-      @participant = appointment.user
     mail(to: appointment.user.email, subject: 'Un évènement a été modifié !') 
-    end
 
    end
 
@@ -38,7 +34,6 @@ class EventMailer < ApplicationMailer
     @url  = 'www.citoyens-producteurs.fr' 
     @id = appointment.event_id
     mail(to: appointment.user.email, subject: 'Après l\'évènement, le feedback !')
-    #mail(to: @creator_email, subject: 'Après l\'évènement, le feedback !') 
     end
 end
   
