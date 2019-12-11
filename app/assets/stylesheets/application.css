@@ -21,6 +21,7 @@
  *= require home
  *= require stores
  *= require user
+ *= require feedback
  *= require community
  *= require story
  *= require events
