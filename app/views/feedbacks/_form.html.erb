@@ -1,10 +1,35 @@
-  <div class='container'>
-    <%= form_with(model: @feedback, url: [@feedback.feedbackable, @feedback], local: true) do |form| %>
-        <h6> Nouveau feedback : </h6>
-        <p><%= form.text_area :content, class: 'form-control' %></p>
-        <h6> Ton expérience de 0 à 5 : </h6>
-        <p><%= form.number_field :rating, in: 0..5, step: 1, class: 'form-control' %></p>
+<section class="form-style-1 bg-hue-yellow py-5 background-cover">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7 col-10 mx-auto" id="feedback">
+      <div class="card p-4 my-4 material-shadow">
+      <h3 class="lighter text-center py-2">Mon expérience :</h3>
+      <hr>
+        <%= form_with(model: @feedback, url: [@feedback.feedbackable, @feedback], local: true) do |form| %>
+         
+          <section id="like" class="rating">
 
-        <%= form.submit "Ajouter mon feedback" %>
+            <%= form.radio_button :rating, 5 %>
+            <%= form.label(:rating.to_s + "_5", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 4 %>
+            <%= form.label(:rating.to_s + "_4", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 3 %>
+            <%= form.label(:rating.to_s + "_3", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 2 %>
+            <%= form.label(:rating.to_s + "_2", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 1 %>
+            <%= form.label(:rating.to_s + "_1", "&#10084;".html_safe) %>
+
+          </section>
+
+        <h6> Noter mon expérience </h6>
+        <p><%= form.text_area :content, class:"form-control" %></p>
+          <div class="text-center">
+            <%= form.submit "Envoyer", class:"btn btn-success btn-rounded" %>
+          </div>
     <% end %>
+      </div>
+    </div>
   </div>
+</div>
+</section>

@@ -55,10 +55,10 @@ class Admin::UsersController < ApplicationController
   def check_if_admin
 
     if current_user == nil
-      flash[:danger] = "Vous n'avez pas acces a cette page"
+      flash[:danger] = "Vous n'avez pas acces à cette page"
       redirect_to '/'
     elsif current_user.is_admin == false
-      flash[:danger] = "Vous n'avez pas acces a cette page"
+      flash[:danger] = "Vous n'avez pas acces à cette page"
       redirect_to '/'    
     end
   end

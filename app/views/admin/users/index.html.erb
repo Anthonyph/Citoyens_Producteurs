@@ -1,25 +1,39 @@
-<% if flash[:danger] %>
-    <div class="danger"><%= flash[:danger] %></div>
-  <% end %>
-<center>
+        <div class="card mb-3">
 
-<h1>Utilisateurs: </h1>
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            User
+          </div>
 
+          <div class="card-body">
+            <div class="table-responsive">
 
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Nom </th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Local</th>
+                    <th scope="col">Profil</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-<div class="card-columns">
-<%@users.each do |liste|%>
-<div class="card border-danger mb-3">
-<h5 class="card-header"><%=liste.first_name%></h5>
-<div class="card-body">
+                <%@users.each do |user|%>
+                  <tr>
+                    <th scope="row"><%= user.id %></th>
+                    <td><%= user.first_name %></td>
+                    <td><%= user.last_name %></td>
+                    <td><%= user.store.name %></td>
+                    <td><%= link_to "voir le profil", admin_user_path(user.id) %></td>
+                  </tr>
+                <% end %>
 
-<%= link_to "profil utilisateur", admin_user_path(liste.id) %>
-</div>
-</div>
-</br>
-</br>
-<% end %>
-</div>
+                </tbody>
+              </table>
 
-</div>
-</center>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
