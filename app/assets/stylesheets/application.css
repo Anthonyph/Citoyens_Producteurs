@@ -16,6 +16,7 @@
  *= require main
  *= require navbar
  *= require sidebar
+ *= require sidebar_admin
  *= require footer
  *= require home
  *= require stores

@@ -38,9 +38,13 @@
 
     <% elsif admin? %>
 
-      <%= render "layouts/admin_sidebar" %>
-      
-      <%= yield %>
+      <div id="page-content">
+
+        <%= render "layouts/admin_sidebar" %>
+        
+        <%= yield %>
+
+      </div>
 
     <% else %>
       
