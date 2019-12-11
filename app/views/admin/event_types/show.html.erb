@@ -1,0 +1,5 @@
+<h4>Type: </h4>
+  <p>Nom : <%=@type.name%><p>
+  
+  <%=link_to "Modifier le produit", edit_admin_event_type_path(@type.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
+  <%=link_to "Supprimer", admin_event_type_path(@type.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>
