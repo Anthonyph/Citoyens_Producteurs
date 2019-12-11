@@ -12,3 +12,11 @@ body {
 .spacer {
   flex: 1;
 }
+
+.bg-citizens {
+  background: url('/assets/top_fruits.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}

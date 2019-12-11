@@ -25,14 +25,18 @@
     <% if show_sidebar %>
 
       <div id="page-content">
-      
-        <%= render "layouts/sidebar" %>
-        
-        <%= yield %>
+      <%= render "layouts/sidebar" %>
+        <div class="bg-citizens">
 
-        <div class="spacer"></div>
-      
-        <%= render 'layouts/footer' %>
+          
+          
+          <%= yield %>
+
+          <div class="spacer"></div>
+        
+          <%= render 'layouts/footer' %>
+
+        </div>
 
       </div>
 
