@@ -18,23 +18,8 @@ class Admin::UsersController < ApplicationController
   end
   
 
-  def new
-    @user = User.new
-  end
-  #def create
-   #@address = Address.create(place: user_params[:place], zip_code: user_params[:zip_code], city: user_params[:city], sector: user_params[:sector])
-    #@store = Store.find(user_params[:store])
-    
-    #@user = User.new(store: @store, email: user_params[:email], first_name: user_params[:first_name], last_name: user_params[:last_name], phone_number: user_params[:phone_number], is_admin: user_params[:is_admin], address: @address)
-    #if @user.save!
-      #flash[:success] = 'Event successfully created'
-      #redirect_to '/admin/events'
-      
-    #else
-      #flash.now[:danger] = 'Something went wrong, please check your input'
-      #render new_admin_user_path
-    #end
-  end
+  
+  
   def edit        
   end
   def update 
