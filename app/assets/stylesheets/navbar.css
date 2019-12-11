@@ -8,6 +8,13 @@
     padding-bottom: 4px!important;
 }
 
+#navbar {
+  position: fixed; /* Make it stick/fixed */
+  top: 0; /* Stay on top */
+  width: 100%; /* Full width */
+  transition: all 0.5s; /* Transition effect when sliding down (and up) */
+}
+
 .navbar-logo {
     float: right;
     max-width: 120px;

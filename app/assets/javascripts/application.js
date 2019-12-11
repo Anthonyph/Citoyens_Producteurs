@@ -14,3 +14,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require sidebar
+//= require navbar
