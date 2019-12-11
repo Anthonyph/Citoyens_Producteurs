@@ -1,0 +1,73 @@
+      .rating:not(:checked) > input {
+        display: none;
+      }
+      
+      #rate {
+        top: -65px;
+      }
+      #rate:not(:checked) > label {
+        cursor:pointer;
+        float: right;
+        width: 30px;
+        height: 30px;
+        display: block;
+        
+        color: rgba(0, 135, 211, .4);
+        line-height: 33px;
+        text-align: center;
+      }
+      #rate:not(:checked) > label:hover,
+      #rate:not(:checked) > label:hover ~ label {
+        color: rgba(0, 135, 211, .6);
+      }
+      #rate > input:checked + label:hover,
+      #rate > input:checked + label:hover ~ label,
+      #rate > input:checked ~ label:hover,
+      #rate > input:checked ~ label:hover ~ label,
+      #rate > label:hover ~ input:checked ~ label {
+        color: rgba(0, 135, 211, .8);
+      }
+      #rate > input:checked ~ label {
+        color: rgb(0, 135, 211);
+      }
+      /* - - - - - LIKE */
+      #like {
+        bottom: -65px;
+      }
+      #like:not(:checked) > label {
+        cursor:pointer;
+        float: right;
+        width: 30px;
+        height: 30px;
+        display: block;
+        
+        color: rgba(233, 54, 40, .4);
+        line-height: 33px;
+        text-align: center;
+      }
+      #like:not(:checked) > label:hover,
+      #like:not(:checked) > label:hover ~ label {
+        color: rgba(233, 54, 40, .6);
+      }
+      #like > input:checked + label:hover,
+      #like > input:checked + label:hover ~ label,
+      #like > input:checked ~ label:hover,
+      #like > input:checked ~ label:hover ~ label,
+      #like > label:hover ~ input:checked ~ label {
+        color: rgba(233, 54, 40, .8);
+      }
+      #like > input:checked ~ label {
+        color: rgb(233, 54, 40);
+      }
+
+      .background-cover {
+        background: url('/assets/top_fruits.jpeg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+      }
+
+      #feedback {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
