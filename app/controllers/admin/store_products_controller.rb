@@ -1,34 +1,41 @@
 class Admin::StoreProductsController < ApplicationController
   before_action :check_if_admin
+  before_action :set_store
+  before_action :set_stock,only: [:show,:edit,:update]
 
   def index
+    @stocks= @store.store_products
 
-    @products = Product.all
+    
   end
 
   def show
-    @product = Product.find(params[:id])
+    
   end
 
   def new
-    @product = Product.new
+    @stock = StoreProduct.new
   end
 
   def create
-
-    @product = Product.new(name: product_params[:name])
-    if @product.save!
-      flash[:success] = 'Product successfully created'
-      redirect_to '/admin/products'
+    @product = Product.find(stock_params[:product])
+    @unit = Unit.find(stock_params[:unit])
+    @store = Store.find(stock_params[:store])
+    @stock = StoreProduct.create(product: @product, unit: @unit, store: @store, quantity: stock_params[:quantity])
+    redirect_to '/admin/store_products/'
+    if @stock.save
+      flash[:success] = 'store product successfully created'
+      
+      
     else
       flash.now[:danger] = 'Something went wrong, please check your input'
-      render new_admin_product_path
+      render new_store_product_path
     end
 
   end
 
   def edit
-    @product = Product.find(params[:id])
+    
   end
 
   def update
@@ -48,9 +55,20 @@ class Admin::StoreProductsController < ApplicationController
 
   private  
 
-  def product_params
+  def set_store
+    @store= Store.find(1)
+    
+  end
 
-    params.require(:product).permit(:name)
+  def set_stock
+    @store= Store.find(1)
+    @stock= @store.store_products.find(params[:id])
+    
+  end
+
+  def stock_params
+
+    params.require(:store_product).permit(:product,:unit,:store,:quantity)
   end
 
   def check_if_admin
