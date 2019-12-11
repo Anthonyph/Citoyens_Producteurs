@@ -20,6 +20,7 @@
           <hr>
           <p><i>
           Le <%= @event.start_date.strftime("%-d %B %Y à %Hh %M") %>
+
           </i></p>  
           <p class="lead"><%= @event.description %></p>        
           <p><%= @event.appointments.count%> <%= @event.appointments.count > 1 ? 'participants' : 'participant' %></p>
@@ -42,7 +43,8 @@
           <% end %>
           <hr>
           <%else current_user == @event.creator%> 
-            <%if @event.start_date > DateTime.now%> 
+            <% DateTime.now%>
+            <%if @event.start_date.strftime("%-d %B %Y à %Hh %M") > DateTime.now.strftime("%-d %B %Y à %Hh %M")%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
            <hr>
             <%else %>
@@ -110,6 +112,7 @@
           <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
           <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %M") %></p>
            <hr>
+          <% if current_user != @event.creator%>
           <% if user_signed_in? %>
             <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
             <% if @appointment != nil %>
@@ -119,6 +122,7 @@
             <% end %>
           <% else %>
             <%= link_to 'Connecte toi pour participer', new_user_session_path, class: 'btn btn-md btn-info ml-1 btn-rounded' %>
+          <% end %>
           <% end %>
         </div>
       </div>

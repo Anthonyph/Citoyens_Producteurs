@@ -40,7 +40,7 @@ require 'time'
 
 t1 = Time.parse("2019-12-13 00:40:00")
 t2 = Time.parse("2020-02-01 00:00:00")
-tnow = DateTime.now + 200
+tnow = DateTime.now
 ########### Unit ###########
 array_unit = ["kg", "L", "unités","pots","bottes"]
 arrayunitlength = array_unit.length
@@ -122,8 +122,9 @@ user = User.new(
   address_id:rand(1..20),
   store_id: "2",
   phone_number:Faker::PhoneNumber.phone_number,
-  is_admin: true 
+  is_admin: true, 
 )
+user.save
 user = User.new(
   first_name: "Anthony", 
   last_name: "Phim", 
@@ -216,21 +217,8 @@ puts "user DONE"
   puts "store_product seed n° #{i}"
 end 
 ########### EVENT 4th #################
-(1..5).each do |i|
-  event = Event.new(
-  title: Faker::Restaurant.name,
-  description: Faker::Restaurant.description,
-  start_date: tnow, 
-  end_date: tnow + rand(900..7600),
-  address_id: rand(1..20), 
-  creator_id: rand(1..20), 
-  event_type_id:rand(1..8),
-  )
-  event.save
-  puts "event seed n° #{i}"
-  end
 
-  (1..25).each do |i|
+  (1..30).each do |i|
   startdate = rand(t1..t2)
 
   event = Event.new(
@@ -246,7 +234,19 @@ end
 
   puts "event seed n° #{i + 5}"
 end
-
+(1..6).each do |i|
+  event = Event.new(
+  title: Faker::Restaurant.name,
+  description: Faker::Restaurant.description,
+  start_date: DateTime.now + 0.01, 
+  end_date: DateTime.now + rand(50..700),
+  address_id: rand(1..20), 
+  creator_id: i, 
+  event_type_id:rand(1..8),
+  )
+  event.save
+  puts "event seed n° #{i}"
+  end
 ########### COMMENT #################
 
 (1..25).each do |i|
