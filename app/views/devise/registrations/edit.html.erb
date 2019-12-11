@@ -7,30 +7,60 @@
     <h1 class="font-weight-light">Bonjour, <%= current_user.first_name%> <% resource_name.to_s.humanize %> 🌞</h1>
     <hr>
     
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_with model: current_user, url: registration_path(current_user), local: true, method: 'put' do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :last_name, "Nom :" %><br />
-        <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+        <%= f.label :first_name, "Prénom :" %><br />
+        <%= f.text_field :first_name, autofocus: true, value: current_user.first_name, class: "form-control" %>
       </div>
         <br>
 
       <div class="field">
-        <%= f.label :first_name, "Prénom :" %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+        <%= f.label :last_name, "Nom :" %><br />
+        <%= f.text_field :last_name, value: current_user.last_name, class: "form-control" %>
       </div>
         <br>
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email,  autocomplete: "email", class: "form-control" %>
+        <%= f.email_field :email, value: current_user.email, class: "form-control" %>
       </div>
         <br>
 
       <div class= 'form-group'>
-      <%= f.label :phone_number "Téléphone :" %><br />
-        <%= f.text_field :phone_number, class: 'form-control' %>
+        <%= f.label :phone_number, "Téléphone :" %><br />
+        <%= f.text_field :phone_number, value: current_user.phone_number, class: 'form-control' %>
+      </div>
+      <br>
+
+      <div class= 'form-group'>
+        <%= f.label :place, "Rue :" %><br />
+        <%= f.text_field :place, value: current_user.address.place, class: 'form-control' %>
+      </div>
+      <br>
+
+      <div class= 'form-group'>
+        <%= f.label :zip_code, "Code postal :" %><br />
+        <%= f.text_field :zip_code, value: current_user.address.zip_code, class: 'form-control' %>
+      </div>
+      <br>
+
+      <div class= 'form-group'>
+        <%= f.label :city, "Ville :" %><br />
+        <%= f.text_field :city, value: current_user.address.city, class: 'form-control' %>
+      </div>
+      <br>
+
+      <div class= 'form-group'>
+        <%= f.label :sector, "Quartier :" %><br />
+        <%= f.text_field :sector, value: current_user.address.sector, class: 'form-control' %>
+      </div>
+      <br>
+
+      <div class= 'form-group'>
+        <%= f.label :store, "Mon local :" %><br />
+        <%= f.select :store, Store.pluck(:name, :id), value: current_user.store.id, class: 'form-control' %>
       </div>
       <br>
         
