@@ -40,20 +40,28 @@ class EventsController < ApplicationController
   end
   
   def update
-    @address1 = Event.find(params[:id]).address
-    @address = Address.find(@address1.id).update(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
-    @type = EventType.find(event_params[:type])
-    @creator = User.find(current_user.id)
-    #@event = Event.find(params[:id])
-    @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
-    #if @event.update(event_params)
-    flash[:success] = 'Event successfully updated'
-    if @creator.is_admin == true
-      redirect_to '/admin/events'
-    else
-    redirect_to @event, notice: 'Event was successfully updated.'
-    #else
-    #render :edit
+    if params[:is_passed] == nil
+      @address1 = Event.find(params[:id]).address
+      @address = Address.find(@address1.id).update(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
+      @type = EventType.find(event_params[:type])
+      @creator = User.find(current_user.id)
+      @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
+      flash[:success] = 'Event successfully updated'
+
+      EventMailer.event_edit_user(@event).deliver_now
+
+      if @creator.is_admin == true
+        redirect_to '/admin/events'
+      else
+      redirect_to @event, notice: 'Event was successfully updated.'
+      end
+    else params[:is_passed] == true
+      @event.update(is_passed: true)
+      @appointments = Appointment.where(event_id: @event.id)
+      @appointments.each do |appointment|
+        EventMailer.ask_feedback(appointment).deliver_now
+      end
+     
     end
   end
 

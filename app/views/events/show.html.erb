@@ -1,4 +1,5 @@
 <div class="container">
+<% require 'time' %>
   <div class="card border-0 shadow my-5" id="event">
   <div class="row">
   
@@ -40,10 +41,21 @@
             <%= link_to 'Connecte toi pour participer !', new_user_session_path, class: 'btn btn-lg btn-info btn-rounded' %>
           <% end %>
           <hr>
-          <%else current_user == @event.creator%>
+          <%else current_user == @event.creator%> 
+            <%if @event.start_date > DateTime.now%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
-          <hr>
+           <hr>
+            <%else %>
+              <%if @event.is_passed == false %>
+          <%= button_to 'L\'évènement est passé - Demander les feedbacks ! ', {:controller => "events", :action => "update", :is_passed => true,}, method: 'patch', class: 'btn btn-lg btn-warning btn-rounded' %>
+              <%else %>
+
+            <% end %>
+            <hr>
+            <% end %>
+
           <% end %>
+          
           <!-- Feedbacks -->
           <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-secondary btn-rounded' %>
 
