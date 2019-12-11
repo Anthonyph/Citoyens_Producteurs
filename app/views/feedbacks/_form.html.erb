@@ -6,26 +6,24 @@
       <h3 class="lighter text-center py-2">Mon expérience :</h3>
       <hr>
         <%= form_with(model: @feedback, url: [@feedback.feedbackable, @feedback], local: true) do |form| %>
+         
           <section id="like" class="rating">
-            <input type="radio" id="heart_5" name="like" value="5" />
-            <label for="heart_5" title="Five">&#10084;</label>
 
-            <input type="radio" id="heart_4" name="like" value="4" />
-            <label for="heart_4" title="Four">&#10084;</label>
+            <%= form.radio_button :rating, 5 %>
+            <%= form.label(:rating.to_s + "_5", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 4 %>
+            <%= form.label(:rating.to_s + "_4", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 3 %>
+            <%= form.label(:rating.to_s + "_3", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 2 %>
+            <%= form.label(:rating.to_s + "_2", "&#10084;".html_safe) %>
+            <%= form.radio_button :rating, 1 %>
+            <%= form.label(:rating.to_s + "_1", "&#10084;".html_safe) %>
 
-            <input type="radio" id="heart_3" name="like" value="3" />
-            <label for="heart_3" title="Three">&#10084;</label>
-
-            <input type="radio" id="heart_2" name="like" value="2" />
-            <label for="heart_2" title="Two">&#10084;</label>
-
-            <input type="radio" id="heart_1" name="like" value="1" />
-            <label for="heart_1" title="One">&#10084;</label>
           </section>
 
-        <p><%= form.text_area :content, class:"form-control" %></p>
         <h6> Noter mon expérience </h6>
-        <p><%= form.number_field :rating, in: 0..5, step: 1, class:"form-control" %></p>
+        <p><%= form.text_area :content, class:"form-control" %></p>
           <div class="text-center">
             <%= form.submit "Envoyer", class:"btn btn-success btn-rounded" %>
           </div>
