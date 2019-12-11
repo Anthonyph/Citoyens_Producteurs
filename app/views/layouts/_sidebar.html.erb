@@ -52,7 +52,7 @@
             <div class="flex-start">
 
             <% if current_user.is_admin %>
-              <%= link_to "Espace Admin", admin_root_path, class:"dropdown-item" %>
+              <%= link_to "Espace Admin", admin_root_path, class:"btn-light sidenav-link" %>
             <% end %>
             <%= link_to "Mon Espace", user_path(current_user.id), class: "btn-light sidenav-link" %>
             <%= link_to "Évenements", events_path, class: "btn-light sidenav-link" %>
