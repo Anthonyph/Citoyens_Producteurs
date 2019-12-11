@@ -1,6 +1,6 @@
 class Admin::UnitsController < ApplicationController
   before_action :check_if_admin
-  before_action :set_Unit,only: [:show,:edit,:update,:destroy]
+  before_action :set_unit,only: [:show,:edit,:update,:destroy]
   
   def index
   
@@ -35,7 +35,7 @@ class Admin::UnitsController < ApplicationController
   def update
       
     
-    if @unit.update(product_params)
+    if @unit.update(unit_params)
       flash[:success] = 'Unit successfully updated'
       redirect_to '/admin/units'
     else
@@ -54,7 +54,7 @@ class Admin::UnitsController < ApplicationController
   
   private  
 
-  def set_type
+  def set_unit
     @unit = Unit.find(params[:id])
   end
 

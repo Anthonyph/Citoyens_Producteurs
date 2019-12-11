@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :products
     resources :store_products
     resources :event_types
+    resources :units
     root 'admin#index'
   end
   
