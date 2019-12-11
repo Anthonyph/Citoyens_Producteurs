@@ -34,8 +34,16 @@
     height: 60px;
 }
 
-.navbar .nav-link:hover,
+.navbar .nav-link {
+    border-bottom: 3px solid transparent;
+}
+
 .navbar .navbar-avatar:hover,
 .navbar .navbar-logo:hover {
     transform: scale(1.05);
+}
+
+.navbar .nav-link:hover {
+    border-bottom: 4px solid #9F9B30;
+    transform: scale(1.1);
 }
