@@ -45,9 +45,9 @@
           <div class="row text-center">
             <div class="col-5 justify-center align-center flex-column py-3">
               <h2><i class="fas fa-seedling"></i></h2>
-              <small class="uppercase">Producteurs engagés</small>
+              <small class="uppercase">Producteurs participants</small>
             </div>
-            <div class="col-7 justify-center align-center "><span class="display-4">30</span></div>
+            <div class="col-7 justify-center align-center"><span class="display-4"><%= Event.where(event_type_id: 1).distinct.count(:creator_id) %></span></div>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
               <h2><i class="fas fa-hand-holding-heart"></i></h2>
               <small class="uppercase">Bénévoles engagés</small>
             </div>
-            <div class="col-7 justify-center align-center "><span class="display-4">121</span></div>
+            <div class="col-7 justify-center align-center"><span class="display-4"><%= Appointment.distinct.count(:user_id) %></span></div>
           </div>
         </div>
       </div>
@@ -66,10 +66,10 @@
         <div class="font-title p-2">
           <div class="row text-center">
             <div class="col-5 justify-center align-center flex-column py-3">
-              <h2><i class="far fa-lemon"></i></h2>
+              <h2><i class="fas fa-seedling"></i></h2>
               <small class="uppercase">Produits récoltés</small>
             </div>
-            <div class="col-7 justify-center align-center "><span class="display-4">99 kg</span></div>
+            <div class="col-7 justify-center align-center"><span class="display-4"><%= Event.where(event_type_id: 1).count %> kg</span></div>
           </div>
         </div>
       </div>
@@ -78,10 +78,10 @@
           <div class="row text-center">
             <div class="col-5 justify-center align-center flex-column py-3">
               <h2><i class="fas fa-carrot"></i></h2>
-              <small class="uppercase">Produits vendus</small>
+              <small class="uppercase">Produits cuisinés</small>
             </div>
-            <div class="col-7 justify-center align-center "><span class="display-4">210</span></div>
-          </div>
+            <div class="col-7 justify-center align-center"><span class="display-4"><%= Event.where(event_type_id: 3).left_outer_joins(:product_events).count %></span></div>
+          </div> 
         </div>
       </div>
     </div>
