@@ -46,11 +46,7 @@ class Admin::UsersController < ApplicationController
 
   private
 
-  def create_adress
-  @user = User.find(params[:id])
-  @address = Address.create(place: "default", zip_code: "11111", city: "default", sector: "default")
-  @user.update(address_id :@address.id)
-  end
+  
 
   def user_params
     params.require(:user).permit(:email,:first_name,:last_name,:phone_number,:is_admin,:place,:zip_code,:city,:sector,:store)
