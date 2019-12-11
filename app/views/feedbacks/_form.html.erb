@@ -26,8 +26,9 @@
         <p><%= form.text_area :content, class:"form-control" %></p>
         <h6> Noter mon expérience </h6>
         <p><%= form.number_field :rating, in: 0..5, step: 1, class:"form-control" %></p>
-
-        <%= form.submit "Envoyer", class:"btn btn-success btn-rounded" %>
+          <div class="text-center">
+            <%= form.submit "Envoyer", class:"btn btn-success btn-rounded" %>
+          </div>
     <% end %>
       </div>
     </div>
