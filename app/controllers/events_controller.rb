@@ -47,9 +47,12 @@ class EventsController < ApplicationController
       @creator = User.find(current_user.id)
       @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
       flash[:success] = 'Event successfully updated'
-
-      EventMailer.event_edit_user(@event).deliver_now
-
+      @appointments = Appointment.where(event_id: @event.id)
+      ############ MAILER ##################
+      @appointments.each do |appointment|
+      EventMailer.event_edit_user(appointment).deliver_now
+      end
+      ############ MAILER ##################
       if @creator.is_admin == true
         redirect_to '/admin/events'
       else
@@ -58,8 +61,10 @@ class EventsController < ApplicationController
     else params[:is_passed] == true
       @event.update(is_passed: true)
       @appointments = Appointment.where(event_id: @event.id)
+      ############ MAILER ##################
       @appointments.each do |appointment|
-        EventMailer.ask_feedback(appointment).deliver_now
+      EventMailer.ask_feedback(appointment).deliver_now
+      ############ MAILER ##################
       end
      
     end
