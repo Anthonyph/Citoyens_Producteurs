@@ -22,16 +22,8 @@ class Admin::StoreProductsController < ApplicationController
     @unit = Unit.find(stock_params[:unit])
     @store = Store.find(stock_params[:store])
     @stock = StoreProduct.create(product: @product, unit: @unit, store: @store, quantity: stock_params[:quantity])
-    redirect_to '/admin/store_products/'
-    if @stock.save
-      flash[:success] = 'store product successfully created'
-      
-      
-    else
-      flash.now[:danger] = 'Something went wrong, please check your input'
-      render new_store_product_path
-    end
-
+    redirect_to admin_store_path(stock_params[:store])
+    
   end
 
   def edit
