@@ -7,9 +7,9 @@
 
       <div class="card">
 
-        <div class="card-header">
+        <div class="card-header bg-white text-center">
 
-          <h1><%=@event.title%><span class="badge badge-pill badge-info float-right"><%= @event.event_type.name %></span></h1>
+          <h2><%=@event.title%>🍒<h6><span class="badge badge-pill badge-info float-right"><%= @event.event_type.name %></span></h6></h2>
 
         </div>
 
@@ -17,35 +17,35 @@
 
           <img class="img-fluid rounded" src="https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
           <hr>
-          <p class="lead"><%= @event.description %></p>
-          <p class="lead">
-          Commence le <%= @event.start_date.strftime("%-d %B %Y à %Hh %Mm %Ss") %>
-          </p>          
+          <p><i>
+          Le <%= @event.start_date.strftime("%-d %B %Y à %Hh %M") %>
+          </i></p>  
+          <p class="lead"><%= @event.description %></p>        
           <p><%= @event.appointments.count%> <%= @event.appointments.count > 1 ? 'participants' : 'participant' %></p>
           
         </div>
 
-        <div class="card-footer">
+        <div class="card-footer text-center bg-white">
 
           <!-- Appointment -->
           <%if current_user != @event.creator%>
           <% if user_signed_in? %>
             <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
             <% if @appointment != nil %>
-              <%= link_to 'Je ne veux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-lg btn-outline-dark ml-1 btn-block' %>  
+              <%= link_to 'Je ne veux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-lg btn-success ml-1 btn-rounded' %>  
             <% else %>
-              <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-lg btn-outline-dark m  l-1 btn-block' %>
+              <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-lg btn-success m  l-1 btn-rounded' %>
             <% end %>
           <% else %>
-            <%= link_to 'Connecte toi pour participer !', new_user_session_path, class: 'btn btn-lg btn-outline-dark btn-block' %>
+            <%= link_to 'Connecte toi pour participer !', new_user_session_path, class: 'btn btn-lg btn-info btn-rounded' %>
           <% end %>
           <hr>
           <%else current_user == @event.creator%>
-          <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-outline-dark btn-block' %>
+          <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
           <hr>
           <% end %>
           <!-- Feedbacks -->
-          <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-outline-dark btn-block' %>
+          <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-secondary btn-rounded' %>
 
         </div>
 
@@ -53,7 +53,7 @@
 
       <!-- Comments Form -->
       <div class="card my-4">
-        <h5 class="card-header">Laisser un commentaire</h5>
+        <h5 class="card-header bg-white">Laisser un commentaire</h5>
         <div class="card-body">
           <%= render 'comments/form' %>
         </div>
@@ -68,7 +68,7 @@
         <div class="media-body">
           <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
           <p><%= comment.text %></p>
-          <%= comment.updated_at.strftime("%-d %B %Y, %Hh %Mm %Ss") %>
+          <%= comment.updated_at.strftime("%-d %B %Y, %Hh %M") %>
         </div>
 
         <% if comment.user == current_user %>
@@ -91,12 +91,12 @@
       <br>
 
       <div class="card event-show-aside">
-        <h5 class="card-header"> <strong><%= @event.title %></strong> <span class="badge badge-pill badge-info float-right"><%= @event.event_type.name %></span></h5>
+        <h5 class="card-header bg-white"> <strong><%= @event.title %></strong> 🍒 <span class="badge badge-pill badge-info float-right"><%= @event.event_type.name %></span></h5>
         <div class="card-body">
           <p><strong>Créé par : </strong><%= @event.creator.first_name && @event.creator.last_name%></p>
           <p><strong>Secteur : </strong><%= @event.address.sector %>
           <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
-          <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %Mm %Ss") %></p>
+          <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %M") %></p>
            <hr>
           <% if user_signed_in? %>
             <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
