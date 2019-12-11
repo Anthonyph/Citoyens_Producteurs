@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   include Feedbackable
 
   after_create :event_creation_user
-
+  after_update :event_edit_user
   # validates :title,
   #   presence: true,
   #   length: {maximum: 30}
@@ -18,7 +18,7 @@ class Event < ApplicationRecord
   # validates :description,
   #   presence: true,
   #   length: {maximum: 250}
-
+  
   validates :start_date, presence: true, 
   date: { after: Proc.new { Time.now }}
 
@@ -27,6 +27,10 @@ class Event < ApplicationRecord
 
   def event_creation_user
     EventMailer.new_event_user(self).deliver_now
+  end
+  
+  def event_edit_user
+    EventMailer.event_edit_user(self).deliver_now
   end
   
 end
