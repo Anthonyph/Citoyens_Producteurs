@@ -49,7 +49,7 @@ class EventsController < ApplicationController
       flash[:success] = 'Event successfully updated'
 
       EventMailer.event_edit_user(@event).deliver_now
-      
+
       if @creator.is_admin == true
         redirect_to '/admin/events'
       else
@@ -57,6 +57,11 @@ class EventsController < ApplicationController
       end
     else params[:is_passed] == true
       @event.update(is_passed: true)
+      @appointments = Appointment.where(event_id: @event.id)
+      @appointments.each do |appointment|
+        EventMailer.ask_feedback(appointment).deliver_now
+      end
+     
     end
   end
 

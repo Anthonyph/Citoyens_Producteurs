@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   include Feedbackable
 
   after_create :event_creation_user
-  #after_update :event_edit_user
+
   # validates :title,
   #   presence: true,
   #   length: {maximum: 30}

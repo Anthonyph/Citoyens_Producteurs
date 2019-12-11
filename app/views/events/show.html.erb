@@ -41,11 +41,11 @@
           <% end %>
           <hr>
           <%else current_user == @event.creator%> 
-            <%if @event.start_date > DateTime.now%> 
+            <%if @event.start_date < DateTime.now%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-outline-dark btn-block' %>
            <hr>
             <%else %>
-              <%if @event.is_passed == false %>
+              <%if @event.is_passed != false %>
           <%= button_to 'L\'évènement est passé - Demander les feedbacks ! ', {:controller => "events", :action => "update", :is_passed => true,}, method: 'patch', class: 'btn btn-lg btn-outline-dark btn-block' %>
               <%else %>
 
