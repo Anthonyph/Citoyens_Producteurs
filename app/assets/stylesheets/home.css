@@ -1,5 +1,5 @@
 .jumbotron {
-    background-image: url(/assets/logo-garden.jpg);
+    background-image: url(/assets/logo-garden.svg);
     background-size: cover;
     height: 860px;
     margin: 0;
@@ -7,7 +7,7 @@
 
 .container-hero {
     width: 100%;
-    padding-top: 180px;
+    padding-top: 130px;
     padding-left: 25px;
     margin: 0;
 }
