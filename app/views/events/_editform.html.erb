@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="card border-5 shadow my-5">
+    
+    <%= form_with model: @event, local: true, class: 'mt-5 col-4 offset-4' do |f| %>
+      <div class= 'form-group'>
+      <h2> Editer l'évènement </h2>
+        <label> Type de l'évènement : </label>
+        <%= f.select :type, EventType.pluck(:name, :id), class: 'form-control' %>
+      </div>  
+      <hr>
+      <%if flash[:danger] %>
+        <div class="alert alert-danger text-center" role="alert">
+          <%=flash[:danger] %>
+        </div>
+      <% end %>
+      <div class= 'form-group'>
+        <label> Titre : </label>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class= 'form-group'>
+        <label> Description :</label>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+      <div class= 'form-group'>
+        <label> Date de début : </label>
+        <%= f.datetime_field :start_date, class: 'form-control' %>
+      </div>
+      <div class= 'form-group'>
+        <label> Date de fin : </label>
+        <%= f.datetime_field :end_date, class: 'form-control' %>
+      </div>
+        <div class= 'form-group'>
+        <label> Adresse : </label>
+        <%= f.text_field :place, class: 'form-control', value: @event.address.place %>
+      </div>
+      <div class= 'form-group'>
+        <label> Code postal : </label>
+        <%= f.text_field :zip_code, class: 'form-control', value: @event.address.zip_code %>
+      </div>
+      <div class= 'form-group'>
+        <label> Ville : </label>
+        <%= f.text_field :city, class: 'form-control', value: @event.address.city %>
+      </div>
+      <div class= 'form-group'>
+        <label> Secteur : </label>
+        <%= f.text_field :sector, class: 'form-control', value: @event.address.sector %>
+      </div>
+      <hr>
+      <%= f.hidden_field :creator, value: current_user %>
+      <%= f.submit "Modifier l'évenement", class: 'btn btn-lg btn-outline-secondary' %>
+    <% end %>
+    <br>
+  </div>
+</div>
