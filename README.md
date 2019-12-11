@@ -9,8 +9,11 @@ Augustin de Louvencourt, Leo Vanel, Thibault Mariolle, Lana Vizeu et Anthony Phi
 ## Liens : 
 
 [Lien Heroku](https://citoyens-producteurs.herokuapp.com/)
+
 [Lien Trello](https://trello.com/b/PKTqicI3/projet-final/)
+
 [Lien Github](https://github.com/Anthonyph/Citoyens_Producteurs/)
+
 
 
 ## Contexte
@@ -20,12 +23,18 @@ Je lui ai parlé de THP, elle m'a parlé de son concept qu'elle commençait à m
 
 ## Comment lancer le projet ?
 
-  $ git clone git@github.com:fthiounn/LaFourmiliere-THP.git
+  $ git clone git@github.com:Anthonyph/Citoyens_Producteurs.git
+
   $ bundle install
+
   $ rails db:drop db:create db:migrate db:seed
+
   $ rails server
+
   => va sur "http://localhost:3000/" sur ton navigateur.
+
   Bonne navigation !
+
 
 ## Pre-requis 
 
@@ -54,29 +63,33 @@ N'importe quel utilisateur peut accéder aux produits en vente. Pour acheter ou 
 ## 3. Concrètement et techniquement
 
 ### 3.1. Base de données
-La base de données aura a quelques grosses tables :
+La base de données aura plusieurs tables :
 - users
 - products
-- events (pour la réalisation d'agenda)
-- messages ?
-
-A confirmer auprès de notre client, Nathalie, nous pourrions avoir un système de référence tarifaire pour fixer les prix (et limiter les problèmes du troc qu'on connaît).
+- events
+- messages
+- address
+- feedback
+- comment
+- store
+- event_type
+- product_event
+- unit
+- store_product
+- appointment
+- product_appointment
 
 ### 3.2. Front
 Notre client nous a donné sa charte graphique (couleurs et logo).
 Nous serons exigents sur l'ergonomie car nos utilisateurs le méritent !
-Evidemment, le site sera responsive.
+
 
 ### 3.3. Backend
-Les APIs Stripe pour le paiement, Google Maps pour localiser les producteurs.
+Les APIs Stripe Google Maps pour localiser les producteurs. Sendgrid pour le Mailer.
 Bonus : une API météo pour l'interface "producteurs".
 
-### 3.4. Mes besoins techniques
-Je suis plus orienté back. Je recherche des personnes motivées avant tout ;)
-- 2 fronts sensibles à l'UX (pléonasme ?)
-- 1 ou 2 back à l'aise (blaise)
-
 ## 4. La version minimaliste mais fonctionnelle qu'il faut avoir livré la première semaine
+
 Deux interfaces : clients et producteurs. Les clients devront pouvoir s'inscrire, accéder aux produits disponibles, les acheter, accéder à une interface "producteurs" pour proposer leurs produits, afficher leurs gains.
 
 ## 5. La version que l'on présentera aux jury
