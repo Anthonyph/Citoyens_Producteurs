@@ -2,14 +2,14 @@
 <body class="show-store">
   <div class="container">
    
-    <div class="card border-0 shadow my-5">
+    <div class="card border-0 shadow my-5" id="store">
       <div class="card-body p-5">
 
         <div class="container">
 
-          <div class="jumbotron-fluid jumbo text-center p-2">
-            <h1>Citoyens Producteurs<br>Bourg-la-Reine</h1>
-          </div>
+        <h1 class="font-weight-light">Local 🍋</h1>
+        <hr>
+
 
           <iframe class="p-relative store-maps"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10516.376138168858!2d2.31667645!3d48.780095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6712a13518e05%3A0x40b82c3688b3e80!2s92340%20Bourg-la-Reine!5e0!3m2!1sfr!2sfr!4v1575456577997!5m2!1sfr!2sfr"
@@ -23,16 +23,25 @@
             </div>
 
             <div class="col-lg-5">
-              <h1 class="font-weight-light">Info :</h1>
-              <p>Blabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasinBlabla decriptif magasin</p>
+              <h3 class="font-weight-light">Infos :</h3>
+              <hr>
+              <p>
+              <i class="fas fa-map-marker-alt"></i> | Bourg-la-Reine
+              <br><br>
+              <i class="fas fa-envelope-open"></i> | citoyens-producteurs@lilo.org
+              <br><br>
+              <i class="fas fa-phone-alt"></i> | 06 83 87 04 95
+              </p>
             </div>
 
           </div>
 
+          <hr>
+
           <div class="jumbotron-fluid call-to-action">
             <div class="container text-center p-4">
 
-              <h1>Produits en stocks :</h1>
+              <h3>Produits en stock :</h3>
               
               <hr>
 
@@ -68,11 +77,11 @@
               <div class="row">
 
                 <div class=col>
-                  <p class="lead">Une idées de recettes ?<br><br><%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-outline-secondary' %></p>
+                  <p class="lead">Une idée de recette ?<br><br><%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-success btn-rounded' %></p>
                 </div>
 
                 <div class="col">
-                  <p class="lead">Voir les évenements <br><br><%= link_to "Voir les évenements", events_path, class:"btn btn-md btn-outline-secondary" %></p>
+                  <p class="lead">Voir les événements <br><br><%= link_to "Voir les évenements", events_path, class:"btn btn-md btn-info btn-rounded" %></p>
                 </div>
 
               </div>

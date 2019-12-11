@@ -6,6 +6,9 @@
   -o-background-size: cover;
 }
 
+#store {
+  background-color: rgba(255, 255, 255, 0.8);
+}
 .show-store .jumbo {
   background: whitesmoke;
 }
