@@ -10634,12 +10634,12 @@
     vertical-align: 0;
     border: 0;
     font-weight: 900;
-    content: '\f105';
+    content: '';
     font-family: 'Font Awesome 5 Free';
   }
   
   .navbar-nav .nav-item.dropdown.show .dropdown-toggle::after {
-    content: '\f107';
+    content: '';
   }
   
   .navbar-nav .nav-item.dropdown.no-arrow .dropdown-toggle::after {
