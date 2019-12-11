@@ -40,7 +40,7 @@ require 'time'
 
 t1 = Time.parse("2019-12-13 00:40:00")
 t2 = Time.parse("2020-02-01 00:00:00")
-
+tnow = DateTime.now + 200
 ########### Unit ###########
 array_unit = ["kg", "L", "unités","pots","bottes"]
 arrayunitlength = array_unit.length
@@ -107,14 +107,23 @@ end
 (0..11).each do |i|
   store = Store.new(
     name: Faker::Company.name,
-    address_id:rand(0..20),
+    address_id:rand(1..20),
   )
   store.save
   puts "Store seed n° #{i}"
 end
 
 ########### USER #################
-
+user = User.new(
+  first_name: "Admin", 
+  last_name: "NIstrator", 
+  email: "admin@yopmail.com", 
+  password: "azerty34",
+  address_id:rand(1..20),
+  store_id: "2",
+  phone_number:Faker::PhoneNumber.phone_number,
+  is_admin: true 
+)
 user = User.new(
   first_name: "Anthony", 
   last_name: "Phim", 
@@ -123,6 +132,7 @@ user = User.new(
   address_id:rand(1..20),
   store_id: "2",
   phone_number:Faker::PhoneNumber.phone_number,
+  is_admin: true, 
 )
 user.save
 puts "Anthony done"
@@ -134,6 +144,7 @@ user = User.new(
   address_id:rand(1..20),
   store_id:"2",
   phone_number:Faker::PhoneNumber.phone_number,
+  is_admin: true,
 )
 user.save
 puts "Leo done"
@@ -145,6 +156,7 @@ user = User.new(
   address_id:rand(1..20),
   store_id:"2",
   phone_number:Faker::PhoneNumber.phone_number,
+  is_admin: true,
 )
 user.save
 puts "Augustin done"
@@ -156,6 +168,7 @@ user = User.new(
   address_id:rand(1..20),
   store_id:"2",
   phone_number:Faker::PhoneNumber.phone_number,
+  is_admin: true,
 )
 user.save
 puts "Thib done"
@@ -167,6 +180,7 @@ user = User.new(
   address_id:rand(1..20),
   store_id:"2",
   phone_number:Faker::PhoneNumber.phone_number,
+  is_admin: true,
 )
 user.save
 puts "Lana done" 
@@ -202,9 +216,21 @@ puts "user DONE"
   puts "store_product seed n° #{i}"
 end 
 ########### EVENT 4th #################
+(1..5).each do |i|
+  event = Event.new(
+  title: Faker::Restaurant.name,
+  description: Faker::Restaurant.description,
+  start_date: tnow, 
+  end_date: tnow + rand(900..7600),
+  address_id: rand(1..20), 
+  creator_id: rand(1..20), 
+  event_type_id:rand(1..8),
+  )
+  event.save
+  puts "event seed n° #{i}"
+  end
 
-
-(1..30).each do |i|
+  (1..25).each do |i|
   startdate = rand(t1..t2)
 
   event = Event.new(
@@ -218,7 +244,7 @@ end
   )
   event.save
 
-  puts "event seed n° #{i}"
+  puts "event seed n° #{i + 5}"
 end
 
 ########### COMMENT #################
