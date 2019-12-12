@@ -1,18 +1,8 @@
 class Admin::StoreProductsController < ApplicationController
-  before_action :check_if_admin
-  before_action :set_store
+  before_action :check_if_admin  
   before_action :set_stock,only: [:show,:edit,:destroy]
 
-  def index
-    @stocks= @store.store_products
-
     
-  end
-
-  def show
-    
-  end
-
   def new
     @stock = StoreProduct.new
   end
@@ -39,20 +29,9 @@ class Admin::StoreProductsController < ApplicationController
       
   end
 
-  def destroy
-    @stock.destroy
-    flash[:success] = "L'évenement #{@stock.product.name} à bien été supprimmé"
-    redirect_to 'admin_store_path(store_id)'
-  end
-
   
 
   private  
-
-  def set_store
-    @store= Store.find(1)
-    
-  end
 
   def set_stock
     #@store= Store.find(params[:store_id])
