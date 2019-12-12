@@ -1,0 +1,5 @@
+<h4>Unité: </h4>
+  <p>Nom : <%=@unit.name%><p>
+  
+  <%=link_to "Modifier le produit", edit_admin_unit_path(@unit.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
+  <%=link_to "Supprimer", admin_unit_path(@unit.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>
