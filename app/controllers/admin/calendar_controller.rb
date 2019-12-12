@@ -29,7 +29,7 @@ class Admin::CalendarController < ApplicationController
     city = params['city']
     sector = params['sector']
     creator = params['creator']
-    event_type = params['event_type']
+    event_type = params['event_type.id']
   
     case mode
     when 'inserted'
@@ -43,7 +43,7 @@ class Admin::CalendarController < ApplicationController
       event = Event.find(id)
       # address = event.address
       # address.update!(place: place, zip_code: zip_code, city: city, sector: sector)
-      type = EventType.find(params[:type])
+      type = EventType.find(event_type)
       event.event_type = type
       event.start_date = start_date
       event.end_date = end_date
