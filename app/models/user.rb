@@ -14,7 +14,7 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true,
     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email address please" }
- 
+  before_create :set_default_store
   after_create :welcome_send
   after_create :create_address
 
@@ -26,6 +26,11 @@ class User < ApplicationRecord
     @user = self
     @address = Address.create(place: "default", zip_code: "11111", city: "default", sector: "default")
     @user.update(address_id: @address.id)
+  end
+
+  def set_default_store
+    
+    self.store_id = 1
   end
 
 
