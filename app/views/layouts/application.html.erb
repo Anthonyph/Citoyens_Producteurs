@@ -22,43 +22,53 @@
 
   </header>
 
-  <body>
 
     <% if user_signed_in? && show_sidebar %>
 
-      <div id="page-content">
-      
+      <body id="page-content">
+
         <%= render "layouts/sidebar" %>
+
+        <div class="bg-citizens">
+
+          <%= yield %>
+
+          <div class="spacer"></div>
         
-        <%= yield %>
+          <%= render 'layouts/footer' %>
 
-        <div class="spacer"></div>
-      
-        <%= render 'layouts/footer' %>
+        </div>
 
-      </div>
+      </body>
 
     <% elsif admin? %>
 
-      <div id="page-content">
+      <body>
 
-        <%= render "layouts/admin_sidebar" %>
-        
-        <%= yield %>
+        <div id="page-content">
 
-      </div>
+          <%= render "layouts/admin_sidebar" %>
+          
+          <%= yield %>
+
+        </div>
+
+      </body>
 
     <% else %>
       
-      <%= yield %>
+      <body>
 
-      <div class="spacer"></div>
-      
-      <%= render 'layouts/footer' %>
+        <%= yield %>
+
+        <div class="spacer"></div>
+        
+        <%= render 'layouts/footer' %>
+
+      </body>
 
     <% end %>
 
-  </body>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -1,21 +1,74 @@
-<h2> Salut <%=@participant.first_name%> <%=@participant.last_name%> </h2>
+<div class="body-mail" bgcolor="#F9F0D9">
+<table width="100%" bgcolor="#F9F0D9" border="0" cellpadding="0" cellspacing="0">
+<tr>
+  <td>
+    <table bgcolor="#F9F0D9" class="content-mail" align="center" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td bgcolor="#F9F0D9" class="header-mail">
+          <table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="70" style="padding: 0 20px 20px 0;">
+                <%=image_tag("lemon")%>
+              </td>
+            </tr>
+          </table>
+          <table class="col425" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 425px;">
+            <tr>
+              <td height="70">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="subhead" style="padding: 0 0 0 3px;">
+                    <h1>Salut <%=@participant.first_name%> <%=@participant.last_name%> <h1>
+                    <hr>
+                    </td>
+                  </tr>
+              </td>
+            </tr>
+            <tr>
+              <td class="innerpadding-mail borderbottom">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="h2" style="text-align:center;">
+              <p>L'évènement auquel tu participes a été modifié.</p>
 
-<p>L'évènement auquel tu participes a été modifié.</p>
-
-<p>Voici les nouvelles informations à propos de cet évènement : </p>
-<p>Le titre de l'évènement est : <%=@event.title%>.</p>
-<p>La description est : <%=@event.description%>.</p>
-<p>L'évènement débute le <%=@event.start_date%>.</p>
-
-<p>L'évènement aura lieu a :</p>
-<p><%=@event.address.place%> 
-<br>
-<%=@event.address.zip_code%>
-<br>
-<%=@event.address.city%>
-<br>
-<%=@event.address.sector%> </p>
-
-<p> Pour plus d'information, contacte directement le créateur de l'évènement par email : <%=@creator.email%> où bien par téléphone : <%=@creator_phone%></p>
-
-<p><b>Merci de faire vivre la communauté et à très bientôt chez <%=@url%></b></p>
+              <p>Voici les nouvelles informations à propos de cet évènement : </p>
+              <p>Le titre de l'évènement est : <%=@event.title%>.</p>
+              <p>La description est : <%=@event.description%>.</p>
+              <p>L'évènement débute le <%=@event.start_date%>.</p>
+              
+              <p>L'évènement aura lieu a :</p>
+              <p><%=@event.address.place%> 
+              <br>
+              <%=@event.address.zip_code%>
+              <br>
+              <%=@event.address.city%>
+              <br>
+              <%=@event.address.sector%> </p>
+              
+              <p> Pour plus d'information, contacte directement le créateur de l'évènement par email : <%=@creator.email%> où bien par téléphone : <%=@creator_phone%></p>
+                          </tr>
+            <tr>
+              <td class="bodycopy" style="text-align:center;">
+              A très bientôt chez Citoyens Producteurs !
+              <hr>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="innerpadding borderbottom">
+          <table width="115" align="center" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="115" style="padding: 0 20px 20px 0;">
+                <%=image_tag("logo.png")%>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+</div>
