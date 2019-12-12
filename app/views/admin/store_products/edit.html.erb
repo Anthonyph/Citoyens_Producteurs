@@ -3,16 +3,17 @@
 </br>
 </br>
 <center>
+<%if flash[:danger] %>
+    <div class="alert alert-danger text-center" role="alert">
+      <%=flash[:danger] %>
+    </div>
+  <% end %>
 <h4>Modifier la quantité de <%=@stock.product.name%> dans le local <%=@stock.store.name%> : </h4>
 
 <%= form_with model: @stock, local: true, url: admin_store_product_path(@stock), method: 'put' do |f| %> 
   
 
-  <%if flash[:danger] %>
-    <div class="alert alert-danger text-center" role="alert">
-      <%=flash[:danger] %>
-    </div>
-  <% end %>
+  
 
   <div class="table-responsive">
 
