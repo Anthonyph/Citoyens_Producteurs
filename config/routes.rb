@@ -6,7 +6,12 @@ Rails.application.routes.draw do
     resources :appointments
     resources :feedbacks
     resources :stores
-    resources :calendar
+    resources :calendar do
+      collection do
+        get 'show', to: 'calendar#show', as: :data
+        get 'update', to: 'calendar#update', as: :db_action
+      end
+    end
     resources :products
     resources :store_products
     resources :event_types
