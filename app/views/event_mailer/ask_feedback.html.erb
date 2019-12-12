@@ -1,7 +1,62 @@
-<h2>Salut Citoyen, l'évènement est fini ! </h2>
+<div class="body-mail" bgcolor="#F9F0D9">
+<table width="100%" bgcolor="#F9F0D9" border="0" cellpadding="0" cellspacing="0">
+<tr>
+  <td>
+    <table bgcolor="#F9F0D9" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td bgcolor="#F9F0D9" class="header-mail">
+          <table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="70" style="padding: 0 20px 20px 0;">
+                <%=image_tag("lemon")%>
+              </td>
+            </tr>
+          </table>
+          <table class="col425" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 425px;">
+            <tr>
+              <td height="70">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="subhead" style="padding: 0 0 0 3px;">
+                    <h1>Salut Citoyen, l'évènement est fini !<h1>
+                    <hr>
+                    </td>
+                  </tr>
+              </td>
+            </tr>
+            <tr>
+              <td class="innerpadding-mail borderbottom">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="h2" style="text-align:center;">
+              <p>Nous espérons que tout s'est bien passé.</p>
 
-<p>Nous espérons que tout s'est bien passé.</p>
-
-<p> Nous allons te demander de laisser un avis sur l'évènement sur ton espace personnel ou <%=link_to "en cliquant sur ce lien", new_event_feedback_url(@id) %> !</p>
-
-<p><b>Merci de faire vivre la communauté et à très bientôt chez <%=@url%>.</b></p>  
+              <p> Nous allons te demander de laisser un avis sur l'évènement sur ton espace personnel ou <%=link_to "en cliquant sur ce lien", new_event_feedback_url(@id) %> !</p>
+              
+              <p><b>Merci de faire vivre la communauté et à très bientôt chez <%=@url%>.</b></p>  
+            </tr>
+            <tr>
+              <td class="bodycopy" style="text-align:center;">
+              A très bientôt chez Citoyens Producteurs !
+              <hr>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="innerpadding borderbottom">
+          <table width="115" align="center" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="115" style="padding: 0 20px 20px 0;">
+                <%=image_tag("logo.png")%>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+</div>

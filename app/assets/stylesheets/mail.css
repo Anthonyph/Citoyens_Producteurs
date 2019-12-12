@@ -1,0 +1,49 @@
+.body-mail {
+    margin: 0; 
+    padding: 0; 
+    min-width: 100%!important;
+}
+
+.img-mail {
+    width:70;
+    height:70;
+}
+
+  .content {
+    width: 100%; 
+    max-width: 600px;
+}
+
+  .header-mail {
+    padding: 40px 30px 20px 30px;
+}
+
+  .innerpadding-mail {
+    padding: 30px 30px 30px 30px;
+}
+
+  .borderbottom {
+    border-bottom: 1px solid #F9F0D9;
+}
+
+  .subhead {
+    font-size: 15px; 
+    color: #F9F0D9; 
+    font-family: sans-serif;
+    letter-spacing: 10px;
+}
+  .bodycopy {
+    color: #F9F0D9; 
+    font-family: sans-serif;
+}
+
+  .h2 {
+    padding: 0 0 15px 0; 
+    font-size: 24px; 
+    line-height: 28px; 
+    font-weight: bold;
+}
+  .bodycopy {
+    font-size: 16px; 
+    line-height: 22px;
+}
