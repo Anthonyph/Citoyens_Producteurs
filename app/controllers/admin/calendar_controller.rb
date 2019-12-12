@@ -1,6 +1,5 @@
 class Admin::CalendarController < ApplicationController
   def index
-    events = Event.all
   end
 
   def show
@@ -29,7 +28,7 @@ class Admin::CalendarController < ApplicationController
     city = params['city']
     sector = params['sector']
     creator = params['creator']
-    event_type = params['event_type.id']
+    event_type = params['type'] || params['event_type.id']
   
     case mode
     when 'inserted'
@@ -44,7 +43,7 @@ class Admin::CalendarController < ApplicationController
       # address = event.address
       # address.update!(place: place, zip_code: zip_code, city: city, sector: sector)
       type = EventType.find(event_type)
-      event.event_type = type
+      event.event_type_id = type.id
       event.start_date = start_date
       event.end_date = end_date
       event.title = title

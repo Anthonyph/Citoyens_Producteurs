@@ -1,41 +1,54 @@
 <%= render 'layouts/navbar' %>
 
-<section class="form-style-1 bg-hue-yellow py-5 background-cover">
-<div class="container">
-  <div class="row">
-    <div class="col-sm-5 col-10 mx-auto text-center">
-      <div class="card p-4 my-4 material-shadow">
-        <h3 class="lighter text-center py-2">Modifier mon mot de passe</h3>
-        <hr>
+<div class="container-fluid devise">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image2"></div>
+      <div class="col-md-8 col-lg-6">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
 
-<h2>Changement de</h2> 
-<h2>mot de passe</h2>
+              <h3 class="login-heading mb-4 text-center">Modifier mon mot de passe</h3>
+              <hr>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <%= f.label :password, "Nouveau mot de passe" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> caractères minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <hr>
-  <div class="actions">
-    <%= f.submit "Changer mon mot de passe", class: "btn btn-light btn-rounded m-2" %>
-  </div>
-      
-      <% end %>
+                <% if devise_error_messages!.empty? %>
+                <% else %>
+                  <div class="alert alert-danger" role="alert">
+                    <%= render "devise/shared/error_messages", resource: resource %>
+                  </div>
+                <% end %>
 
-     </div>
+                <%= f.hidden_field :reset_password_token %>
+
+                <div class="form-group">
+                  <%= f.label :password, "Nouveau mot de passe :" %>
+
+                  <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"  %>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> caractères minimum)</em>
+                  <% end %>
+                </div>
+
+                
+                <div class="form-group">
+                  <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe :" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %>
+                </div>
+
+                <div class="actions text-center">
+                  <%= f.submit "Modifier", class: "btn btn-lg bg-hue-blue btn-rounded m-2" %>
+                </div>
+                    
+              <% end %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
