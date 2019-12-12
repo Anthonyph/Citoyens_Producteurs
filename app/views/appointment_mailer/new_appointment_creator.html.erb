@@ -5,4 +5,68 @@
     <p>Avec cet évènement il va récolter <%=@points%> points.</p>
     <p>Tu peux le contacter via son email : <%=@user_email%> et son numéro de téléphone : <%=@user_phone_number%>.</p>
     <p><b>Merci de faire vivre la communauté et à très bientôt sur <%=@url%> !</b></p>
-  
+
+<div class="body-mail" bgcolor="#F9F0D9">
+<table width="100%" bgcolor="#F9F0D9" border="0" cellpadding="0" cellspacing="0">
+<tr>
+  <td>
+    <table bgcolor="#F9F0D9" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td bgcolor="#F9F0D9" class="header-mail">
+          <table width="70" align="left" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="70" style="padding: 0 20px 20px 0;">
+                <%=image_tag("lemon")%>
+              </td>
+            </tr>
+          </table>
+          <table class="col425" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 425px;">
+            <tr>
+              <td height="70">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="subhead" style="padding: 0 0 0 3px;">
+                    <h1>Salut <%=@creator_first_name%> <%=@creator_last_name%> !<h1>
+                    <hr>
+                    </td>
+                  </tr>
+              </td>
+            </tr>
+            <tr>
+              <td class="innerpadding-mail borderbottom">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="h2" style="text-align:center;">
+              <p>Un Citoyen à rejoint l'évenement : "<%=@title%>".</p>
+              <p>Son nom est <%=@user_first_name%> <%=@user_last_name%>.</p>
+              <p>L'évenement débute le : <%=@apt_start_date%> et dure <%=@apt_duration%> mn.</p>
+              <p>Avec cet évènement il va récolter <%=@points%> points.</p>
+              <p>Tu peux le contacter via son email : <%=@user_email%> et son numéro de téléphone : <%=@user_phone_number%>.</p>
+              <p><b>Merci de faire vivre la communauté et à très bientôt sur <%=@url%> !</b></p>          
+            </tr>
+            <tr>
+              <td class="bodycopy" style="text-align:center;">
+              A très bientôt chez Citoyens Producteurs !
+              <hr>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="innerpadding borderbottom">
+          <table width="115" align="center" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="115" style="padding: 0 20px 20px 0;">
+                <%=image_tag("logo.png")%>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+</div>
+
