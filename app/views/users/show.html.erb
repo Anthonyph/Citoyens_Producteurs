@@ -65,40 +65,46 @@
       <hr>
       <br> 
       <% if current_user.has_payed == false %>
-      <div class="col-lg-8 col-20 mx-auto">
-       <div class="card my-3 card-people-4" id="card-info">
+        <div class="col-lg-8 col-20 mx-auto">
+            <div class="card my-8 card-people-4 " id="card-info">
+               <br>
+                  <div class="row justify-content-center">
+                      <p> La cotisation pour être membre de Citoyens Producteurs est de <%= @amount.to_i/100  %> €.</p>
+                  </div>
+                        <div class="row justify-content-center">
                           <ul>
-                          
-                          <%= form_tag(user_path, method: "patch") do%>
-                            <article>
-                              <% if flash[:error].present? %>
-                                <div id="error_explanation">
-                                  <p><%= flash[:error] %></p>
-                                </div>
+                            <%= form_tag(user_path, method: "patch") do%>
+                              <article>
+                                <% if flash[:error].present? %>
+                                  <div id="error_explanation">
+                                    <p><%= flash[:error] %></p>
+                                  </div>
+                                <% end %>
+                              </article>
+        
+                                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                        data-label="Payer la cotisation"
+                                        data-description="Cotisation à Citoyens Producteurs"
+                                        data-amount=<%=@amount.to_f %>
+                                        data-locale="auto"></script>
                               <% end %>
-                              <label class="amount">
-                                <span>Montant de <%= @amount.to_i/100  %> €</span>
-                              </label>
-                            </article>
-
-                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                                    data-description="Cotisation à Citoyens Producteurs"
-                                    data-amount=<%=@amount.to_f %>
-                                    data-locale="auto"></script>
-                          <% end %>
-                          </ul>
+                            </ul>
+                          </div>
+              </div>
           </div>
-        </div>
-
         <% else %>
-      <div class="col-lg-8 col-20 mx-auto">
-      <div class="card my-3 card-people-4" id="card-info">
-        <h5>Tu es à jour dans tes cotisations, merci beaucoup ! </h5>
-        </div>
-        </div>
+          <div class="col-lg-8 col-20 mx-auto">
+              <div class="card my-3 card-people-4" id="card-info">
+                  <br>
+                    <div class="row justify-content-center">  
+                  <h5>Tu es à jour dans tes cotisations, merci beaucoup ! </h5>
+                    </div>
+                  <br>
+              </div>
+           </div>
         <% end %>
-      <br>
+        <br>
 
       <div id='scheduler_here' class='dhx_cal_container' style='width:100%; height:800px;'>
         <div class='dhx_cal_navline'>
