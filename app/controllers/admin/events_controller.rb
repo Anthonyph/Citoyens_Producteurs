@@ -52,6 +52,7 @@ class Admin::EventsController < ApplicationController
     @event.destroy
     flash[:success] = "L'évenement #{@event.title} à bien été supprimmé"
     redirect_to '/admin/events'
+    
   end
 
   private

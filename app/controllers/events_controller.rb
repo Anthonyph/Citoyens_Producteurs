@@ -71,8 +71,15 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @appointments = Appointment.where(event_id: @event.id)
+    ############ MAILER ##################
+    @appointments.each do |appointment|
+    EventMailer.event_destroy_user(appointment).deliver_now
+    end
+    ############ MAILER ##################
     @event.destroy
       redirect_to events_url, notice: 'Event was successfully destroyed.'
+    
   end
 
   private

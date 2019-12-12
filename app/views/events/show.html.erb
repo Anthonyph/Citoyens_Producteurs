@@ -47,6 +47,8 @@
             <% DateTime.now%>
             <%if @event.start_date.strftime("%-d %B %Y à %Hh %M") > DateTime.now.strftime("%-d %B %Y à %Hh %M")%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
+          <hr>
+          <%= button_to 'Supprimer l\'évènement', event_path(@event.id), params:{destroy_event: true}, method: 'delete', class: 'btn btn-lg btn-danger btn-rounded' %>
            <hr>
             <%else %>
               <%if @event.is_passed == false %>

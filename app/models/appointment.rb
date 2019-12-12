@@ -17,8 +17,7 @@ class Appointment < ApplicationRecord
 
   after_create :appointment_creation_user
   after_create :appointment_creation_creator
-  after_destroy :appointment_destroy_user
-  after_destroy :appointment_destroy_creator
+
 
   def appointment_creation_user
     AppointmentMailer.new_appointment_user(self).deliver_now
