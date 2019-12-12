@@ -1,33 +1,45 @@
 <%= render 'layouts/navbar' %>
 
-<section class="form-style-1 bg-hue-yellow py-5 background-cover">
-<div class="container">
-  <div class="row">
-    <div class="col-sm-5 col-10 mx-auto text-center">
-      <div class="card p-4 my-4 material-shadow">
-        <h3 class="lighter text-center py-2">Modifier mon mot de passe</h3>
-        <hr>
+<div class="container-fluid devise">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
 
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-          <div class="form-group">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <h3 class="login-heading mb-4 text-center">Mot de passe oublié ?</h3>
+            <hr>
+
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="form-group">
+                <%= f.label :"email :" %><br>
+                <%= f.email_field :email, autofocus: true, autocomplete: "Email", class: "form-control"  %>
+              </div>
+
+              <div class="actions text-center">
+                <%= f.submit "Envoyer", class: "btn btn-lg bg-hue-blue btn-rounded m-2" %>
+                
+              </div>
+
+              <hr>
+
+            <% end %>
+
+              <div class= "actions text-center">
+              <%= link_to "Se connecter", new_user_session_path, class:"btn btn-lg bg-light btn-rounded m-1" %><br>
+              <%= link_to "S'inscrire", new_user_registration_path, class:"btn btn-lg bg-light btn-rounded m-1" %>
+              
+              </div>
+
+            </div>
           </div>
-          <div class="actions text-center">
-          <%= f.submit "Envoyer", class: "btn btn-light btn-rounded m-2" %>
-          <hr>
-          </div>
-          <% end %>
-          <form>
-          <div class= "actions text-center">
-          <a class="btn btn-light btn-rounded m-2"><%= link_to "S'inscrire", new_user_registration_path %></a><br>
-          <a class="btn btn-light btn-rounded m-2"> <%= link_to "Se connecter", new_user_session_path %></a><br>
-          </div>
-          </ul>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</section>
