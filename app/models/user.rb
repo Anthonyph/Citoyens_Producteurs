@@ -17,6 +17,7 @@ class User < ApplicationRecord
   before_create :set_default_store
   after_create :welcome_send
   after_create :create_address
+  after_update :membership_fee_payed
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
@@ -32,6 +33,11 @@ class User < ApplicationRecord
     
     self.store_id = 1
   end
+
+  def membership_fee_payed
+    UserMailer.user_has_payed(self).deliver_now
+  end
+
 
 
 

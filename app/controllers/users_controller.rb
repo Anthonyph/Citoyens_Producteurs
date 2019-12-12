@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def update
-  
+  member = User.find(params[:id])
   ###########STRIPE###################
  # Amount in cents
  @amount = 2000
@@ -20,19 +20,16 @@ class UsersController < ApplicationController
    description: 'Rails Stripe customer',
    currency: 'eur',
  })
-puts "salut"
 
-puts "ca va ?"
   ###########STRIPE END###############
 
   ###########Update in database has_payed#######
-  User.find(params[:id]).update(has_payed: true)
+  member.update(has_payed: true)
   
   ###########UPdate END #####################
-  
-  ###########MAILER####################
 
-  ###########MAILER END################
+  UserMailer.user_has_payed(member).deliver_now
+
   redirect_to user_path
   rescue Stripe::CardError => e
   flash[:error] = e.message
