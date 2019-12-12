@@ -4,11 +4,19 @@ class Admin::FeedbacksController < ApplicationController
 
   def index
 
-    @products = Product.all
+    @feedbacks = Feedback.all
   end
 
   def show
-    @product = Product.find(params[:id])
+   
+  end
+
+  def destroy
+
+    @feedback.destroy
+    flash[:success] = "Le feedback #{@feedback.content} à bien été supprimmé"
+    redirect_to '/admin/feedbacks'
+
   end
 
   private
@@ -16,6 +24,8 @@ class Admin::FeedbacksController < ApplicationController
   def set_feedback
 
     @feedback = Feedback.find(params[:id])
+
+  end
  
 
   def check_if_admin
