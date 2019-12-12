@@ -1,5 +1,5 @@
 class Admin::EventsController < ApplicationController
-
+  require 'time'
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :is_past, only: [ :index]
 
@@ -67,11 +67,14 @@ class Admin::EventsController < ApplicationController
   def is_past
     @event_past= []
     @future_events= []
+    @current_events= []
     @events = Event.all
     @events.each do |event|
     
-      if event.end_date < DateTime.now
+      if event.end_date.strftime("%-d %B %Y à %Hh %Mm %Ss") < DateTime.now.strftime("%-d %B %Y à %Hh %Mm %Ss")
         @event_past<< event 
+      elsif event.end_date.strftime("%-d %B %Y à %Hh %Mm %Ss") > DateTime.now.strftime("%-d %B %Y à %Hh %Mm %Ss") && event.start_date.strftime("%-d %B %Y à %Hh %Mm %Ss") < DateTime.now.strftime("%-d %B %Y à %Hh %Mm %Ss")
+        @current_events<< event
       else
         @future_events<< event
       end
