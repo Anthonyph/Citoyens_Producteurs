@@ -13,4 +13,13 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue chez Citoyens Producteurs !') 
   end
 
+  def user_has_payed(user) 
+    ##########
+    @user = user
+
+    @url = 'www.citoyens-producteurs.fr'
+
+    mail(to: @user.email, subject: 'Merci d\'avoir payé ta cotisation pour  Citoyens Producteurs !') 
+  end
+
 end

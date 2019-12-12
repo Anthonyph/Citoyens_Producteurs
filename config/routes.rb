@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :appointments
     resources :feedbacks
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]
 
   get 'story', to: 'home#story'
   get 'community', to: 'home#community'
