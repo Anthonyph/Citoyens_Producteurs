@@ -19,7 +19,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><i><small>Le <%= event.start_date.strftime("%-d %B %Y à %Hh %Mm %Ss") %></i></small></li>
           <li class="list-group-item">Créé le <%= event. updated_at.strftime("%-d %B %Y") %></li>
-          <% if event.appointments.count > 0 %>
+          <% if event.appointments.count > 0 %> 
             <li class="list-group-item"><%= event.appointments.count > 1 ? 'Nombre de participants : ' : 'Nombre de participant : ' %> <%= event.appointments.count %></li>
           <% else %>
             <li class="list-group-item">Aucun participant</li>
