@@ -43,8 +43,8 @@
                   </div>
                 </div>
                 <div class="col-4 p-3"><p><%=@current_events.length%></p><h6 class="my-1 font-body">Evenements en cours</h6><br>
-                  <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-participate-modal-xl">Voir</button>
-                  <div class="modal fade bd-participate-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                  <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-current-modal-xl">Voir</button>
+                  <div class="modal fade bd-current-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                       <div class="modal-content">
                         <br>
@@ -75,16 +75,18 @@
                     <div class="modal-content">
                       <br>
                         <h4>Evenements à venir:</h4>
-
+                          <ul>
                           <% if @future_events.length > 0%>
                           <% @future_events.each do |future_event|%>
-                            <h5 class="card-title"><%= future_event.title %></h5>
+                            <li>Evenement : <h5 class="card-title"><%= future_event.title %></h5>
                             <p class="card-text">Du <%= future_event.start_date %> au <%= future_event.end_date %></p>
                             <%=link_to "voir", admin_event_path(future_event.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
+                            </li>
                           <%end%>
                           <% else %>
                             <p>Aucun événement</p>
                           <% end %> 
+                          </ul>
                       </div>
                     </div>
                   </div>
