@@ -17,7 +17,6 @@ class User < ApplicationRecord
   before_create :set_default_store
   after_create :welcome_send
   after_create :create_address
-  after_update :membership_fee_payed
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
