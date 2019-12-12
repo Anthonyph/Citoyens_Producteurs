@@ -60,7 +60,7 @@
         color: rgb(233, 54, 40);
       }
 
-      .#bg-feedback {
+      .background-cover-feedback {
         background: url('/assets/top_fruits.jpeg') no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
