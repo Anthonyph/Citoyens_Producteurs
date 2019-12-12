@@ -1,0 +1,33 @@
+</br>
+</br>
+</br>
+</br>
+<center>
+<h4>Modifier la quantité de <%=@stock.product.name%> dans le local <%=@stock.store.name%> : </h4>
+
+<%= form_with model: @stock, local: true, url: admin_store_store_product_path, method: 'put' do |f| %> 
+  
+
+  <%if flash[:danger] %>
+    <div class="alert alert-danger text-center" role="alert">
+      <%=flash[:danger] %>
+    </div>
+  <% end %>
+
+  <div class="table-responsive">
+
+    <table class="table">
+      <tr>
+        <td><%= f.text_field :quantity, class: 'form-control',value: @stock.quantity %></td>
+        <td><%= f.select :unit, Unit.pluck(:name, :id), class: 'form-control',value: @stock.unit.name %></td>
+      </tr>
+    </table>
+  </div>
+    
+  <div class='actions'>
+    <%= f.submit "mettre à jour", class: 'btn btn-lg btn-outline-secondary' %>
+  </div>
+  </center>
+ 
+
+  <% end %>
