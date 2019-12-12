@@ -1,3 +1,41 @@
-.calendar {
-    
+/*event in day or week view*/
+.dhx_cal_event.collect_event div{
+    background-color: #009966;
+    color: #fff !important;
+}
+.dhx_cal_event.delivery_event div{
+    background-color: blue !important;
+    color: #fff !important;
+}
+
+.dhx_cal_event.cooking_event div{
+    background-color: orange !important;
+    color: #fff !important;
+}
+
+/*multi-day event in month view*/
+.dhx_cal_event_line.collect_event{
+    background-color: #009966 !important;
+    color: green !important;
+}
+.dhx_cal_event_line.delivery_event{
+    background-color: #009966 !important;
+    color: blue !important;
+}
+
+.dhx_cal_event_line.cooking_event{
+    background-color: #009966 !important;
+    color: orange !important;
+}
+
+/*event with fixed time, in month view*/
+.dhx_cal_event_clear.collect_event{
+    color: green !important;
+}
+.dhx_cal_event_clear.delivery_event{
+    color: blue !important;
+}
+
+.dhx_cal_event_clear.cooking_event{
+    color: orange !important;
 }
