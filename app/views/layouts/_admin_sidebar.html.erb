@@ -15,6 +15,7 @@
 
         <a class="nav-link dropdown-toggle" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
+
         <span class="nav-link">Pages</span>
         </a>
 
@@ -24,7 +25,7 @@
             <%= link_to "Feedbacks", admin_feedbacks_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Gestion de la boutique</h6>
-            <%= link_to "Agenda", admin_root_path, class: "dropdown-item" %> 
+            <%= link_to "Agenda", admin_calendar_index_path, class: "dropdown-item" %> 
             <%= link_to "Stock", admin_store_products_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Autre</h6>

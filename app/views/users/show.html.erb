@@ -59,20 +59,40 @@
           </div>
         </div>
 
-        <br>
+      <br>
 
-        <h1 class="font-weight-light">Mon calendrier 🗓</h1>
-        <hr>
-          <div class="calendar text-center">
-            <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
-            <%= date %>
-        
-          <% events.each do |event| %>
-          <div>
-            <%= event.title %>
+      <h1 class="font-weight-light">Mon calendrier 🗓</h1>
+      <hr>
+        <div class="calendar text-center">
+          <%= month_calendar(attribute: :start_date, events: @events) do |date, events| %>
+            <%= date.strftime('%d %b') %>
+            <% events.each do |event| %>
+            <div class="calendar-event">
+              <%= date.strftime('%I:%M%P') %>
+              <%= event.event_type.name %>
+              <br>
+            </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+
+      <br>
+      
+      <h1 class="font-weight-light">Mon calendrier 🗓</h1>
+      <hr>
+        <div class="calendar text-center">
+          <%= week_calendar(attribute: :start_date, events: @events, number_of_weeks: 2) do |date, events| %>
+            <%= date.strftime('%d %b') %>
+            <% events.each do |event| %>
+            <div class="calendar-event">
+              <%= event.appointments.count %>
+              <%= date.strftime('%I:%M%P') %>
+              <%= event.event_type.name %>
+              <br>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

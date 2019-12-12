@@ -43,6 +43,7 @@
           <% end %>
           <hr>
           <%else%> 
+
             <% DateTime.now%>
             <%if @event.start_date.strftime("%-d %B %Y à %Hh %M") > DateTime.now.strftime("%-d %B %Y à %Hh %M")%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
@@ -119,7 +120,6 @@
             <% else %>
               <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-md btn-success ml-1 btn-rounded' %>
             <% end %>
-          <% else %>
             <%= link_to 'Connecte toi pour participer', new_user_session_path, class: 'btn btn-md btn-info ml-1 btn-rounded' %>
           <% end %>
         </div>
