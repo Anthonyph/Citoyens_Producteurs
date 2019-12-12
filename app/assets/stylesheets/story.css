@@ -1,5 +1,8 @@
-.header-style-14 {
-    background-image: url(/assets/radis.jpg);
+.header-story {
+    margin-top:69px;
+    background-image: url(/assets/top_fruits.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .otro-blockquote{
@@ -13,6 +16,6 @@
     border-left:8px solid #595970 ;
     line-height:1.6;
     position: relative;
-  }
+}
 
 
