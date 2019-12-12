@@ -113,14 +113,17 @@
           <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
           <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %M") %></p>
            <hr>
-          <% if current_user != @event.creator && user_signed_in?%>
+          <% if current_user != @event.creator %>
+          <% if user_signed_in?%>
             <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
             <% if @appointment != nil %>
               <%= link_to 'Je ne veux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-md btn-danger ml-1 btn-rounded' %>  
             <% else %>
               <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-md btn-success ml-1 btn-rounded' %>
             <% end %>
+            <% else %>
             <%= link_to 'Connecte toi pour participer', new_user_session_path, class: 'btn btn-md btn-info ml-1 btn-rounded' %>
+          <% end %>
           <% end %>
         </div>
       </div>
