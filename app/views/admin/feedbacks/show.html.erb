@@ -1,0 +1,13 @@
+<br>
+<br>
+<% if @feedback.feedbackable_type == "Event"%>
+<h4>Detail du feedback laissé par <%= @feedback.feedbackable.creator.first_name %> : </h4>
+<%else%>
+<h4>Detail du feedback laissé par <%= @feedback.feedbackable.user.first_name %> : </h4>
+<%end%>
+</br>
+<h5><%=@feedback.content%></h5>
+<h5>Note : <%=@feedback.rating%><h5>
+</br>
+  
+<%=link_to "Supprimer", admin_feedback_path(@feedback.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>

@@ -1,0 +1,63 @@
+<body class="feedbacks">
+<%if flash[:success] %>
+    <div class="alert alert-success text-center" role="alert">
+      <%=flash[:success] %>
+    </div>
+<%end%>
+
+
+<h4> Tous les feedbacks: </h4>
+</br>
+
+
+<div class="card-body">
+  <div class="table-responsive">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          
+          <th scope="col">rating</th>
+          <th scope="col">Prénom </th>
+          <th scope="col">Nom </th> 
+          <th scope="col">Statut</th>         
+          <th scope="col">Evenement</th>          
+          <th scope="col"></th>
+          
+        </tr>
+      </thead>
+      <tbody>
+
+      <%@feedbacks.each do |feedback|%>
+        <tr>
+          <th scope="row"><%= feedback.id %></th>
+          
+        
+          <td><%= feedback.rating %></td>  
+          <% if feedback.feedbackable_type  == "Event" %>    
+            <td><%= feedback.feedbackable.creator.first_name%></td>
+            <td><%= feedback.feedbackable.creator.last_name%></td>
+            <td><p>Créateur</p></td>
+            <td><%= feedback.feedbackable.title%></td>
+          <%else%>
+            <td><%= feedback.feedbackable.user.first_name%></td>
+            <td><%= feedback.feedbackable.user.first_name%></td>
+            <td><p>Participant</p></td>
+            <td><%= feedback.feedbackable.event.title%></td>
+          <%end%>
+          
+          <td><%= link_to "Voir le feedback", admin_feedback_path(feedback.id), class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %></td>
+         
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+
