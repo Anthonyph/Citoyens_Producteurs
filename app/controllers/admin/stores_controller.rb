@@ -42,7 +42,7 @@ class Admin::StoresController < ApplicationController
   end
 
   def destroy
-    @stock = StoreProduct.find(params[:id])
+    @stock = StoreProduct.find(params[:stock_id])
     @stock.destroy
     flash[:success] = "Le produit #{@stock.product.name} à bien été retiré du stock"
     redirect_to admin_store_path(params[:store_id])

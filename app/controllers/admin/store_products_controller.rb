@@ -1,7 +1,7 @@
 class Admin::StoreProductsController < ApplicationController
   before_action :check_if_admin
   before_action :set_store
-  before_action :set_stock,only: [:show,:edit,:update,:destroy]
+  before_action :set_stock,only: [:show,:edit,:destroy]
 
   def index
     @stocks= @store.store_products
@@ -31,15 +31,11 @@ class Admin::StoreProductsController < ApplicationController
   end
 
   def update
+    @unit = Unit.find(stock_params[:unit])
     
-    @product = Product.find(params[:id]) 
-    if @product.update(product_params)
-      flash[:success] = 'Product successfully updated'
-      redirect_to '/admin/products'
-    else
-      flash.now[:danger] = 'Something went wrong, please check your input'
-      render :edit
-    end
+     
+    @stock = StoreProduct.find(params[:id]).update(unit: @unit,quantity: stock_params[:quantity])
+    redirect_to admin_store_path(params[:store_id])
       
   end
 
