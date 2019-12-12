@@ -67,3 +67,4 @@ gem 'dotenv'
 gem 'validates_zipcode'
 gem 'date_validator'
 gem "simple_calendar", "~> 2.0"
+gem 'stripe'

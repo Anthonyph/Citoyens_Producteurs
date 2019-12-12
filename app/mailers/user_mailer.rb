@@ -13,4 +13,8 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bienvenue chez Citoyens Producteurs !') 
   end
 
+  def user_has_payed(user) 
+    ##########
+  end
+
 end
