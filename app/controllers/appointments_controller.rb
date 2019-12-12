@@ -40,9 +40,18 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment.destroy
-    flash[:destroyed] = 'Appointment was deleted'
-    redirect_back(fallback_location: @event)
+    if params[:destroy_event] == true 
+      @appointment.destroy
+      flash[:destroyed] = 'Appointment was deleted'
+      redirect_back(fallback_location: @event)
+    else
+      AppointmentMailer.destroy_appointment_user(@appointment).deliver_now
+      AppointmentMailer.destroy_appointment_creator(@appointment).deliver_now
+      @appointment.destroy
+      flash[:destroyed] = 'Appointment was deleted'
+      redirect_back(fallback_location: @event)
+    end
+
   end
 
   private
