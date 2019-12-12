@@ -5,7 +5,7 @@
    </div>
   <h4> Voici les produits présents dans la boutique <%=@store.name%> </h4>
 </div>
-<%= link_to 'Ajouter un nouveau produit', new_admin_store_store_product_path(store_id:@store.id), class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
+<%= link_to 'Ajouter un nouveau produit', new_admin_store_product_path(@store.id), method: :get, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
 <div class="card-body">
   <div class="table-responsive">
 
@@ -27,7 +27,7 @@
           <td><%= stock.product.name %></td>
           <td><%= stock.quantity %></td>
           <td><%= stock.unit.name%></td>
-          <td><%= link_to "Modifier la quantité", edit_admin_store_store_product_path(:id => stock.id,:store_id => params[:id]),class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %></td>          
+          <td><%= link_to "Modifier la quantité", edit_admin_store_product_path(:id => stock.id,:store_id => params[:id]),class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %></td>          
           <td><%= button_to "Retirer du stock", {:controller => :stores, :action => 'destroy',:store_id=>params[:id], :stock_id => stock.id }, :method => :delete,class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %></td>
           
         </tr>

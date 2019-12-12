@@ -1,6 +1,6 @@
 class Admin::StoreProductsController < ApplicationController
   before_action :check_if_admin  
-  before_action :set_stock,only: [:show,:edit,:destroy]
+  before_action :set_stock, only: [:show,:edit, :update, :destroy]
 
   def index
     @stocks = StoreProduct.all
@@ -25,10 +25,9 @@ class Admin::StoreProductsController < ApplicationController
 
   def update
     @unit = Unit.find(stock_params[:unit])
-    
-     
-    @stock = StoreProduct.find(params[:id]).update(unit: @unit,quantity: stock_params[:quantity])
-    redirect_to admin_store_path(params[:store_id])
+    @stock.update(unit: @unit,quantity: stock_params[:quantity])
+    @store = Store.find(@stock.store.id)
+    redirect_to admin_store_path(@store)
       
   end
 
@@ -37,18 +36,14 @@ class Admin::StoreProductsController < ApplicationController
   private  
 
   def set_stock
-    #@store= Store.find(params[:store_id])
     @stock= StoreProduct.find(params[:id])
-    
   end
 
   def stock_params
-
     params.require(:store_product).permit(:product,:unit,:store,:quantity)
   end
 
   def check_if_admin
-
     if current_user == nil
       flash[:danger] = "Vous n'avez pas acces a cette page"
       redirect_to '/'
@@ -57,4 +52,5 @@ class Admin::StoreProductsController < ApplicationController
       redirect_to '/'    
     end
   end
+
 end
