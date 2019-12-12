@@ -14,15 +14,20 @@
 
             <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 
-              <%= render "devise/shared/error_messages", resource: resource %>
+              <% if devise_error_messages!.empty? %>
+              <% else %>
+                <div class="alert alert-danger" role="alert">
+                  <%= render "devise/shared/error_messages", resource: resource %>
+                </div>
+              <% end %>
 
               <div class="form-group">
                 <%= f.label :"email :" %><br>
-                <%= f.email_field :email, autofocus: true, autocomplete: "Email", class: "form-control"  %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "Email", class: "form-control" %>
               </div>
 
               <div class="actions text-center">
-                <%= f.submit "Envoyer", class: "btn btn-lg bg-hue-blue btn-rounded m-2" %>
+                <%= f.submit "Envoyer un email de récuperation", class: "btn btn-lg bg-hue-blue btn-rounded m-2" %>
                 
               </div>
 
