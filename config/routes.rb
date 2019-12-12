@@ -5,10 +5,15 @@ Rails.application.routes.draw do
     resources :events
     resources :appointments
     resources :feedbacks
-    resources :stores do 
-      resources :store_products
+
+    resources :stores
+    resources :calendar do
+      collection do
+        get 'show', to: 'calendar#show', as: :data
+        get 'update', to: 'calendar#update', as: :db_action
+      end
     end
-    resources :calendar
+
     resources :products
     resources :store_products
     resources :event_types
