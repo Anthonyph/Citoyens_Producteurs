@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit,:update, :destroy]
+  before_action :is_default_address?, only: [:new, :create,:edit,:update]
+  before_action :is_blank_phone_number?, , only: [:new, :create,:edit,:update] 
   
   before_action :is_creator?, only: [:edit]
 
@@ -85,6 +87,20 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback)
   end
+
+  def is_default_address?
+    if current_user.address.place == "default" || current_user.address.zip_code == "11111"|| current_user.address.city == "default" || current_user.address.sector == "default"
+      flash[:danger] = "Attention! pour créer un événement, tu dois d'abord mettre à jour ton adresse! (seul ton quartier sera visible par les autres utilisateurs)"
+      redirect_to edit_user_registration_path
+
+    end
+
+  def is_blank_phone_number?  
+    if current_user.phone_number.blank?
+      flash[:danger] = "Attention! pour créer un événement, tu dois d'abord renseigner ton numéro de téléphone!(seul le créateur et les autres participants y auront accès)"
+      redirect_to edit_user_registration_path
+    end  
+      
 
   def is_creator?
     if current_user == @event.creator

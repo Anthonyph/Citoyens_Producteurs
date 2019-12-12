@@ -33,6 +33,7 @@ class User < ApplicationRecord
     self.store_id = 1
   end
 
+  
   def membership_fee_payed
     UserMailer.user_has_payed(self).deliver_now
   end
