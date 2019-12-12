@@ -1,0 +1,11 @@
+<br>
+
+<h1> Voici les produits présents dans tous les locaux confondus </h1>
+
+<ul>
+    <% StoreProduct.order(:product_id).group(:product_id, :unit_id).sum(:quantity).flatten.each_with_index do |item, index| %>
+        <%= "#{Product.find(item[0]).name} (en #{Unit.find(item[1]).name}) : " if index % 2 == 0 %> <%= item if index % 2 != 0 %>
+        <%= tag(:br) if index % 2 != 0 %>
+    <% end %>
+
+</ul>

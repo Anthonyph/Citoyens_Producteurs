@@ -2,7 +2,10 @@ class Admin::StoreProductsController < ApplicationController
   before_action :check_if_admin  
   before_action :set_stock,only: [:show,:edit,:destroy]
 
-    
+  def index
+    @stocks = StoreProduct.all
+  end
+
   def new
     @stock = StoreProduct.new
   end
