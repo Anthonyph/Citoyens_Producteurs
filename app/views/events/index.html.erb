@@ -2,106 +2,128 @@
   <div class="card border-0 shadow my-5" id="event">
     <div class="card-body p-5">
 
-  <div class="row">
+      <h1 class="font-weight-light">Liste des évenements 🍓</h1>
+      <hr>
 
-    <div class="col-md-8 col-sm-12 p-0"><br>
+      <div class="row">
 
-      <% @events.each do |event| %>
-      
-      <div class="card mb-4">
-        <div class="card-header bg-white">
-          <h2 class="card-title"><%= event.title %> 🍓<h6><span class="badge badge-pill badge-info float-right"><%= event.event_type.name %></span></h6></h2>
-          <hr>
-          </div>
-        <img class="card-img-top" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-        <div class="card-body">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i><small>Le <%= event.start_date.strftime("%-d %B %Y à %Hh %Mm %Ss") %></i></small></li>
-          <li class="list-group-item">Créé le <%= event. updated_at.strftime("%-d %B %Y") %></li>
-          <% if event.appointments.count > 0 %> 
-            <li class="list-group-item"><%= event.appointments.count > 1 ? 'Nombre de participants : ' : 'Nombre de participant : ' %> <%= event.appointments.count %></li>
-          <% else %>
-            <li class="list-group-item">Aucun participant</li>
-          <% end %>
-          <li class="list-group-item">Local : <%= event.address.city%></li>
-          <li class="list-group-item">Quartier : <%= event.address.sector %></li>
-        </ul>
-        <br>
-        <div class="text-center">
-          <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-info btn-rounded" %>
-        </div>
-        </div>
-      </div>
+        <div class="col-md-8 col-sm-12 p-0">
 
-      <% end %>
+          <% @events.each do |event| %>
+          
+          <div class="card mb-4">
 
-    </div>
+            <div class="card-header bg-white">
 
-    <div class="col-md-4 events-aside">
-
-      <div class="card my-4"> 
-        
-        <div class-="card-header">
-          <h5 class="card-header bg-white">Et si tu créais ton événement?</h5>
-        </div>  
-
-        <div class="card-body text-center">
-          <p>
-          Proposer une récolte, livraison, préparation...
-          </p>
-          <%= link_to 'Proposer', new_event_path, class: 'btn btn-md btn-success btn-rounded' %>
-        </div>
-
-      </div>
-
-      <div class="card my-4">
-        <h5 class="card-header bg-white">Rechercher</h5>
-        <div class="card-body">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="🔍">
-            <span class="input-group-btn">
-              <button class="btn btn-info" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card my-4">
-        <h5 class="card-header bg-white">Local</h5>
-        <div class="card-body p-1">
-          <div class="row">
-            <div class="col-lg-12">
-
-              <section class="showcase-style-2 p-relative bg-white p-0">
-                <div class="container events-store">
-                  <div class="row-12 ">
-
-                    <% @stores.each do |store| %>
-
-                      <div class="col-12 p-1">
-                        <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/2079438/pexels-photo-2079438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
-                          <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
-                            <i class="fa fa-heart cdanger"></i>
-                            <h2 class="cwhite p-2 font-title"><%= store.name %></h2>
-                          </div>
-                        </div>
-                      </div>
-
-                    <% end %>
-
-                  </div>
-                </div>
-              </section>
+              <h2 class="m-0"><%= event.title %>
+              <% if event.event_type.id == 1 %>
+                <span class="badge badge-pill badge-success float-right"><%= event.event_type.name %></span>
+              <% elsif event.event_type.id == 2 %>
+                <span class="badge badge-pill badge-danger float-right"><%= event.event_type.name %></span>
+              <% elsif event.event_type.id == 3 %>
+                <span class="badge badge-pill badge-warning float-right"><%= event.event_type.name %></span>
+              <% end %>
+              </h2>
 
             </div>
+
+            <img class="card-img-top p-1" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
+            
+            <div class="card-body p-2">
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Le <%= event.start_date.strftime("%-d %B %Y à %Hh %Mm") %></li>
+                <% if event.appointments.count > 0 %> 
+                  <li class="list-group-item"><%= event.appointments.count > 1 ? 'Nombre de participants : ' : 'Nombre de participant : ' %> <%= event.appointments.count %></li>
+                <% else %>
+                  <li class="list-group-item">Aucun participant</li>
+                <% end %>
+                <li class="list-group-item">Quartier : <%= event.address.sector %></li>
+                <li class="list-group-item">Local : <%= event.address.city%></li>
+              </ul>
+
+              <div class="text-center">
+
+                <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-info btn-block mt-2 mb-1" %>
+              
+              </div>
+
+            </div>
+
           </div>
+
+          <% end %>
+
+        </div>
+
+        <div class="col-md-4 events-aside">
+
+          <div class="card mb-4"> 
+            
+            <div class-="card-header">
+              <h5 class="card-header bg-white">Et si tu créais ton événement?</h5>
+            </div>  
+
+            <div class="card-body text-center">
+              <p>
+              Proposer une récolte, livraison, préparation...
+              </p>
+              <%= link_to 'Proposer', new_event_path, class: 'btn btn-md btn-success btn-rounded' %>
+            </div>
+
+          </div>
+
+          <div class="card my-4">
+            <h5 class="card-header bg-white">Rechercher</h5>
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="🔍">
+                <span class="input-group-btn">
+                  <button class="btn btn-info" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card my-4">
+
+            <h5 class="card-header bg-white">Local</h5>
+
+            <div class="card-body p-1">
+              <div class="row">
+                <div class="col-lg-12">
+
+                  <section class="showcase-style-2 p-relative bg-white p-0">
+                    <div class="container events-store">
+                      <div class="row-12 ">
+
+                        <% @stores.each do |store| %>
+
+                          <div class="col-12 p-1">
+                            <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/2079438/pexels-photo-2079438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+                              <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
+                                <i class="fa fa-heart cdanger"></i>
+                                <h2 class="cwhite p-2 font-title"><%= store.name %></h2>
+                              </div>
+                            </div>
+                          </div>
+
+                        <% end %>
+
+                      </div>
+                    </div>
+                  </section>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
     </div>
-
   </div>
-
-</div>
 </div>
 
