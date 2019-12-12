@@ -1,5 +1,6 @@
 class Admin::CalendarController < ApplicationController
   def index
+    events = Event.all
   end
 
   def show
@@ -8,7 +9,11 @@ class Admin::CalendarController < ApplicationController
       id: event.id,
       start_date: event.start_date.to_formatted_s(:db),
       end_date: event.end_date.to_formatted_s(:db),
-      text: event.text
+      text: event.title,
+      description: event.description,
+      address: event.address,
+      creator: event.creator,
+      event_type: event.event_type
       } }
   end
 
@@ -17,21 +22,34 @@ class Admin::CalendarController < ApplicationController
     id = params['id']
     start_date = params['start_date']
     end_date = params['end_date']
-    text = params['text']
+    title = params['text']
+    description = params['description']
+    place = params['place']
+    zip_code = params['zip_code']
+    city = params['city']
+    sector = params['sector']
+    creator = params['creator']
+    event_type = params['event_type']
   
     case mode
     when 'inserted'
-      event = Event.create :start_date => start_date, :end_date => end_date, :text => text
+      event = Event.create start_date: start_date, end_date: end_date, title: title, description: description,
+        address: address, creator: creator, event_type: event_type
       tid = event.id
     when 'deleted'
       Event.find(id).destroy
       tid = id
     when 'updated'
       event = Event.find(id)
+      # address = event.address
+      # address.update!(place: place, zip_code: zip_code, city: city, sector: sector)
+      type = EventType.find(params[:type])
+      event.event_type = type
       event.start_date = start_date
       event.end_date = end_date
-      event.text = text
-      event.save
+      event.title = title
+      event.description = description
+      event.save!
       id = id
     end
     

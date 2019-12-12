@@ -1,3 +1,49 @@
+<style>
+
+    /*event in day or week view*/
+    .dhx_cal_event.collect_event div{
+        background-color: #009966;
+        color: #fff !important;
+    }
+    .dhx_cal_event.delivery_event div{
+        background-color: blue !important;
+        color: #fff !important;
+    }
+
+    .dhx_cal_event.cooking_event div{
+        background-color: orange !important;
+        color: #fff !important;
+    }
+ 
+    /*multi-day event in month view*/
+    .dhx_cal_event_line.collect_event{
+        background-color: #009966 !important;
+        color: green !important;
+    }
+    .dhx_cal_event_line.delivery_event{
+        background-color: #009966 !important;
+        color: blue !important;
+    }
+
+    .dhx_cal_event_line.cooking_event{
+        background-color: #009966 !important;
+        color: orange !important;
+    }
+
+    /*event with fixed time, in month view*/
+    .dhx_cal_event_clear.collect_event{
+        color: green !important;
+    }
+    .dhx_cal_event_clear.delivery_event{
+        color: blue !important;
+    }
+
+    .dhx_cal_event_clear.cooking_event{
+        color: orange !important;
+    }
+
+</style>
+
 <div id='scheduler_here' class='dhx_cal_container' style='width:100%; height:800px;'>
   <div class='dhx_cal_navline'>
   <div class='dhx_cal_prev_button'>&nbsp;</div>
@@ -11,9 +57,56 @@
   <div class='dhx_cal_data'></div>
   </div>
 <script>
-  scheduler.init('scheduler_here');
-  scheduler.load('<%= data_admin_calendar_index_path %>', 'json');
-  var dp = new dataProcessor('<%= db_action_admin_calendar_index_path %>');
-  dp.init(scheduler);
-  dp.setTransactionMode('GET', false);
+    scheduler.templates.event_class = function (start, end, event) {
+        if (event.event_type.id == '1') 
+            return "collect_event";
+        else if (event.event_type.id == '2') 
+            return "delivery_event";
+        else 
+            return "cooking_event";
+    };
+    // scheduler.config.icons_select = [
+    //     "icon_details",
+    //     "icon_location",
+    //     "icon_edit",
+    //     "icon_delete"
+    // ];
+    scheduler.config.lightbox.sections=[
+        {name:"title", height:30, map_to:"text", type:"textarea" , focus:true},
+        {name:"description", height:90, map_to:"description", type:"textarea"},
+        // {name:"rue", height:30, map_to:"place", type:"textarea"},
+        // {name:"code postal", height:30, map_to:"zip_code", type:"textarea"},
+        // {name:"ville", height:30, map_to:"city", type:"textarea"},
+        // {name:"quartier", height:30, map_to:"sector", type:"textarea"},
+        { name:"type", height:21, inputWidth:400, map_to:"type", type:"select", 
+            options:scheduler.serverList("options", [
+                {key:1, label:"<%= EventType.first.name %>"},
+                {key:2, label:"<%= EventType.find(2).name %>"},
+                {key:3, label:"<%= EventType.find(3).name %>"}
+            ]
+        )},
+        {name:"time", height:72, type:"time", map_to:"auto"}
+    ];
+ 
+scheduler.templates.event_text = scheduler.templates.event_bar_text = function(start, end, event){
+    var options = scheduler.serverList("options");
+ 
+    for(var i = 0; i < options.length; i++){
+        if(options[i].key == event.type){
+            return options[i].label;
+        }
+    }
+ 
+    return "";
+};
+    scheduler.attachEvent("onTemplatesReady", function(){
+        scheduler.templates.event_text=function(start,end,event){
+            return "<b>" + event.id + " " + event.event_type.name + "<br>" + event.text + "</b><br><i>" + event.description + "</i>" + "</b><br><br>" + event.address.city + "<br>";
+        }
+        });
+    scheduler.init('scheduler_here');
+    scheduler.load('<%= data_admin_calendar_index_path %>', 'json');
+    var dp = new dataProcessor('<%= db_action_admin_calendar_index_path %>');
+    dp.init(scheduler);
+    dp.setTransactionMode('GET', false);
 </script>
