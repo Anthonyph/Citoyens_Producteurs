@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit,:update, :destroy]
   before_action :is_default_address?, only: [:new, :create,:edit,:update]
-  before_action :is_blank_phone_number?, , only: [:new, :create,:edit,:update] 
+  before_action :is_blank_phone_number?,  only: [:new, :create,:edit,:update] 
   
   before_action :is_creator?, only: [:edit]
 
@@ -94,12 +94,14 @@ class EventsController < ApplicationController
       redirect_to edit_user_registration_path
 
     end
+  end
 
   def is_blank_phone_number?  
     if current_user.phone_number.blank?
       flash[:danger] = "Attention! pour créer un événement, tu dois d'abord renseigner ton numéro de téléphone!(seul le créateur et les autres participants y auront accès)"
       redirect_to edit_user_registration_path
-    end  
+    end
+  end  
       
 
   def is_creator?
