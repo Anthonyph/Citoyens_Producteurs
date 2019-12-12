@@ -2,6 +2,7 @@ class Admin::EventsController < ApplicationController
   require 'time'
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :is_past, only: [ :index]
+  before_action :check_if_admin
 
   def index
     @events = Event.all
@@ -62,6 +63,17 @@ class Admin::EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback)
+  end
+
+  def check_if_admin
+  
+    if current_user == nil
+      flash[:danger] = "Vous n'avez pas acces a cette page"
+      redirect_to '/'
+    elsif current_user.is_admin == false
+      flash[:danger] = "Vous n'avez pas acces a cette page"
+      redirect_to '/'    
+    end
   end
 
   def is_past
