@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card border-5 shadow my-5">
     
-    <%= form_with model: @event, local: true, class: 'mt-5 col-4 offset-4' do |f| %>
+    <%= form_with model: @event, url: admin_event_path(@event.id), local: true, class: 'mt-5 col-4 offset-4' do |f| %>
       <div class= 'form-group'>
       <h2> Editer l'évènement </h2>
         <label> Type d'évènement : </label>

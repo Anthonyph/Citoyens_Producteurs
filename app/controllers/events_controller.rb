@@ -58,7 +58,7 @@ class EventsController < ApplicationController
       else
       redirect_to @event, notice: 'Event was successfully updated.'
       end
-    else params[:is_passed] == true
+    elsif params[:is_passed] == true
       @event.update(is_passed: true)
       @appointments = Appointment.where(event_id: @event.id)
       ############ MAILER ##################
