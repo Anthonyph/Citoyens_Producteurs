@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
   def show
     @events = Event.all
+    @amount = 2000 #prix de l'adhésion
   end
 
   def update
   
   ###########STRIPE###################
  # Amount in cents
- @amount = 500
-
+ @amount = 2000
  customer = Stripe::Customer.create({
    email: params[:stripeEmail],
    source: params[:stripeToken],
@@ -16,25 +16,26 @@ class UsersController < ApplicationController
 
  charge = Stripe::Charge.create({
    customer: customer.id,
-   amount: @amount,
+   amount: @amount.to_i ,
    description: 'Rails Stripe customer',
    currency: 'eur',
  })
+puts "salut"
 
-rescue Stripe::CardError => e
- flash[:error] = e.message
- redirect_to new_charge_path
+puts "ca va ?"
   ###########STRIPE END###############
 
   ###########Update in database has_payed#######
-
+  User.find(params[:id]).update(has_payed: true)
   
   ###########UPdate END #####################
   
   ###########MAILER####################
 
   ###########MAILER END################
-
+  redirect_to user_path
+  rescue Stripe::CardError => e
+  flash[:error] = e.message
   end 
   
 end
