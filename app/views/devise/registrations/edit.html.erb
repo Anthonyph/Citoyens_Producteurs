@@ -1,106 +1,125 @@
 <%= render 'layouts/navbar' %>
 
 <div class="user-edit">
-<div class="container">
-<div class="card border-0 shadow my-5">
-  <div class="card-body p-5">
-    <h1 class="font-weight-light">Bonjour, <%= current_user.first_name%> <% resource_name.to_s.humanize %> 🌞</h1>
-    <hr>
+  <div class="container">
+
+    <br>
     
-      <%= form_with model: current_user, url: registration_path(current_user), local: true, method: 'put' do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
 
-      <div class="field">
-        <%= f.label :first_name, "Prénom :" %><br />
-        <%= f.text_field :first_name, autofocus: true, value: current_user.first_name, class: "form-control" %>
-      </div>
-        <br>
-
-      <div class="field">
-        <%= f.label :last_name, "Nom :" %><br />
-        <%= f.text_field :last_name, value: current_user.last_name, class: "form-control" %>
-      </div>
-        <br>
-
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, value: current_user.email, class: "form-control" %>
-      </div>
-        <br>
-
-      <div class= 'form-group'>
-        <%= f.label :phone_number, "Téléphone :" %><br />
-        <%= f.text_field :phone_number, value: current_user.phone_number, class: 'form-control' %>
-      </div>
-      <br>
-
-      <div class= 'form-group'>
-        <%= f.label :place, "Rue :" %><br />
-        <%= f.text_field :place, value: current_user.address.place, class: 'form-control' %>
-      </div>
-      <br>
-
-      <div class= 'form-group'>
-        <%= f.label :zip_code, "Code postal :" %><br />
-        <%= f.text_field :zip_code, value: current_user.address.zip_code, class: 'form-control' %>
-      </div>
-      <br>
-
-      <div class= 'form-group'>
-        <%= f.label :city, "Ville :" %><br />
-        <%= f.text_field :city, value: current_user.address.city, class: 'form-control' %>
-      </div>
-      <br>
-
-      <div class= 'form-group'>
-        <%= f.label :sector, "Quartier :" %><br />
-        <%= f.text_field :sector, value: current_user.address.sector, class: 'form-control' %>
-      </div>
-      <br>
-
-      <div class= 'form-group'>
-        <%= f.label :store, "Mon local :" %><br />
-        <%= f.select :store, Store.pluck(:name, :id), value: current_user.store.id, class: 'form-control' %>
-      </div>
-      <br>
+        <h1 class="font-weight-light">Modifie ton profil 🌞</h1>
+        <hr><br>
         
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-        <br>
-      <div class="field">
-        <%= f.label :password, "Mot-de-passe" %> <i>(Laisse vide si tu ne veux pas changer)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-        <% if @minimum_password_length %>
-        <em><%= @minimum_password_length %> characters minimum</em>
+        <%= form_with model: current_user, url: registration_path(current_user), local: true, method: 'put' do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class= 'form-group'>
+            <%= f.label :store, "Mon local :" %>
+            <%= f.select :store, Store.pluck(:name, :id), value: current_user.store.id, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :first_name, "Prénom :" %>
+            <%= f.text_field :first_name, autofocus: true, value: current_user.first_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :last_name, "Nom :" %>
+            <%= f.text_field :last_name, value: current_user.last_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, value: current_user.email, class: "form-control" %>
+          </div>
+
+          <div class= 'form-group'>
+            <%= f.label :phone_number, "Téléphone :" %>
+            <%= f.text_field :phone_number, value: current_user.phone_number, class: 'form-control' %>
+          </div>
+
+          <div class= 'form-group'>
+            <%= f.label :place, "Rue :" %>
+            <%= f.text_field :place, value: current_user.address.place, class: 'form-control' %>
+          </div>
+
+          <div class= 'form-group'>
+            <%= f.label :zip_code, "Code postal :" %>
+            <%= f.text_field :zip_code, value: current_user.address.zip_code, class: 'form-control' %>
+          </div>
+
+          <div class= 'form-group'>
+            <%= f.label :city, "Ville :" %>
+            <%= f.text_field :city, value: current_user.address.city, class: 'form-control' %>
+          </div>
+
+          <div class= 'form-group'>
+            <%= f.label :sector, "Quartier :" %>
+            <%= f.text_field :sector, value: current_user.address.sector, class: 'form-control' %>
+          </div>
+
+
+          <div class="actions text-center">
+            <%= f.submit "Mettre à jour", class:"btn btn-primary btn-rounded my-2" %>
+          </div>
+          
+          
+
         <% end %>
-      </div>
+        
+        <hr>
         <br>
 
-      <div class="field">
-        <%= f.label :password_confirmation, "Confirmer le mot-de-passe" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-      </div>
-      <br>
+        <h1 class="font-weight-light">Modifie ton mot de passe :</h1>
+        <hr>
 
-      <div class="field">
-        <%= f.label :current_password, "Mot-de-passe actuel" %><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-      </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <%= f.hidden_field :email, value: current_user.email %>
+          <%= f.hidden_field :store, value: current_user.store.id %>
+          <%= f.hidden_field :zip_code, value: current_user.address.zip_code %>
+          <%= f.hidden_field :city, value: current_user.address.city %>
+          <%= f.hidden_field :place, value: current_user.address.place %>
+          <%= f.hidden_field :sector, value: current_user.address.sector %>
+
+          <div class="form-group">
+            <%= f.label :password, "Nouveau mot-de-passe :" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %> caractères minimum</em>
+            <% end %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Confirmer le mot-de-passe :" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          
+
+          <div class="actions text-center">
+            <%= f.submit "Modifier", class:"btn btn-primary btn-rounded my-2" %>
+          </div>
+
+        <% end %>
+        
+        <hr>
         <br>
-      <div class="actions text-center">
-        <%= f.submit "Mettre à jour", class:"btn btn-primary btn-rounded my-2" %>
-       </div>
-    <% end %>
 
-      <hr>
-      <br><br><br>
-    <h3 class="font-weight-light text-center"> Tu veux supprimer ton compte? </h3>
-      <div class="actions text-center">
-        <%= button_to "Supprimer", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger btn-rounded my-2" %>
+        <h3 class="font-weight-light text-center"> Tu veux supprimer ton compte? </h3>
+
+        <div class="actions text-center">
+          <%= button_to "Supprimer", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger btn-rounded my-2" %>
+        </div>
+        
       </div>
-    <%= link_to "Retour", :back %>
+    </div>
   </div>
-</div>
-</div>
 </div>

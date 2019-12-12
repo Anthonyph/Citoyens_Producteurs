@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @store = Store.find(user_params[:store])
     @address= @user.address
     
-    if (@user.update!(email: user_params[:email], first_name: user_params[:first_name], last_name:  user_params[:last_name], phone_number: user_params[:phone_number], password: user_params[:password], password_confirmation: user_params[:password_confirmation], store:@store)) && (@address.update!(place: user_params[:place], zip_code: user_params[:zip_code], city:  user_params[:city], sector: user_params[:sector]))
+    if (@user.update(email: user_params[:email], first_name: user_params[:first_name], last_name:  user_params[:last_name], phone_number: user_params[:phone_number], password: user_params[:password], password_confirmation: user_params[:password_confirmation], store:@store)) && (@address.update!(place: user_params[:place], zip_code: user_params[:zip_code], city:  user_params[:city], sector: user_params[:sector]))
       bypass_sign_in(@user)
       redirect_to user_path(current_user) # si ça marche, il redirige vers la page d'index du site
     else
