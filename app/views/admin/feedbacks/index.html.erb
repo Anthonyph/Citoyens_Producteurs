@@ -1,0 +1,50 @@
+<body class="feedbacks">
+<%if flash[:success] %>
+    <div class="alert alert-success text-center" role="alert">
+      <%=flash[:success] %>
+    </div>
+<%end%>
+
+
+<h4> Tous les feedbacks: </h4>
+</br>
+
+
+<div class="card-body">
+  <div class="table-responsive">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          
+          <th scope="col">rating</th>
+          <th scope="col">laissé par </th>
+          <th scope="col">evenement</th>          
+          <th scope="col"></th>
+          
+        </tr>
+      </thead>
+      <tbody>
+
+      <%@feedbacks.each do |feedback|%>
+        <tr>
+          <th scope="row"><%= feedback.id %></th>
+          
+          <td><%= feedback.rating %></td>          
+          <td><%= feedback.user.name%></td>
+          <td><%= feedback.event.name%></td>
+          <td><%= link_to "Voir le feedback", admin_feedback_path(feedback.id), class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %></td>
+         
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+
