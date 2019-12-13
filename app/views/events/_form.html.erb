@@ -1,3 +1,8 @@
+<%if flash[:danger] %>
+  <div class="alert alert-danger text-center" role="alert">
+    <%=flash[:danger] %>
+  </div>
+<% end %>
 <div class="container mx-auto px-5">
   <div class="card material-shadow m-5" id="event">
     <div class="card-body">
@@ -16,12 +21,7 @@
             </div>
             <hr>
 
-            <%if flash[:danger] %>
-              <div class="alert alert-danger text-center" role="alert">
-                <%=flash[:danger] %>
-              </div>
-            <% end %>
-
+            
             <div class= 'form-group'>
               <label> Titre : </label>
               <%= f.text_field :title, class: 'form-control' %>
@@ -40,6 +40,11 @@
             <div class= 'form-group'>
               <label> Date de fin : </label>
               <%= f.datetime_field :end_date, class: 'form-control' %>
+            </div>
+
+            <div class= 'form-group'>
+              <label><h4> Produits à recolter/cuisiner : </h4></label>
+              <%= f.select :product, Product.pluck(:name, :id), class: 'form-control' %>
             </div>
 
             <div class= 'form-group'>

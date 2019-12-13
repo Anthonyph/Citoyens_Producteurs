@@ -23,17 +23,20 @@ class EventsController < ApplicationController
   end
 
   
+
+  
   def create
     @address = Address.create(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
     @type = EventType.find(event_params[:type])
     @creator = User.find(current_user.id)
+    @product = ProductEvent.create(event_params[:product])
     @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
     if @event.save
       flash[:success] = 'Event successfully created'
       if @event.creator.is_admin == true
         redirect_to '/admin/events'
       else
-      redirect_to @event
+        redirect_to @event
       end
     else
       flash.now[:danger] = 'Something went wrong, please check your input'
@@ -46,7 +49,7 @@ class EventsController < ApplicationController
       @address1 = Event.find(params[:id]).address
       @address = Address.find(@address1.id).update(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
       @type = EventType.find(event_params[:type])
-      @creator = User.find(current_user.id)
+      @creator = User.find(current_user.id)      
       @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
       flash[:success] = 'Event successfully updated'
       @appointments = Appointment.where(event_id: @event.id)
@@ -92,7 +95,7 @@ class EventsController < ApplicationController
 
 
   def event_params
-    params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback)
+    params.require(:event).permit(:type, :title, :description, :start_date, :end_date, :place, :zip_code, :city, :sector, :creator, :creator_feedback,:product)
   end
 
   def is_default_address?
