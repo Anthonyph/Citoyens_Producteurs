@@ -20,19 +20,23 @@ class AppointmentsController < ApplicationController
     @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))    
     
     end_time = (@appointment.start_date) + @appointment.duration.minutes
-    
-    if @appointment.start_date < @event.start_date || @appointment.start_date > @event.end_date
-      flash.now[:danger] = "Attention! tu dois choisir une date dans le créneau proposé!"
-      render :new
-    elsif end_time > @event.end_date
-      flash.now[:danger] = "Attention! ta durée de participation ne dois pas depasser le créneau proposé!"
-      render :new
-    else
-      if @appointment.save!
-        redirect_to @event, success: 'Appointment created'
-      else
-        flash.now[:danger] = 'Something went wrong, please check your input'
+    if @appointment.start_date == nil
+      flash.now[:danger] = "Attention! tu n'as pas choisi ta date de participation !"
         render :new
+    else
+      if @appointment.start_date < @event.start_date || @appointment.start_date >@event.end_date
+        flash.now[:danger] = "Attention! tu dois choisir une date dans le créneau proposé!"
+        render :new
+      elsif end_time > @event.end_date
+        flash.now[:danger] = "Attention! ta durée de participation ne dois pas depasser le créneau proposé!"
+        render :new
+      else
+        if @appointment.save!
+          redirect_to @event, success: 'Appointment created'
+        else
+          flash.now[:danger] = 'Something went wrong, please check your input'
+          render :new
+        end
       end
     end
   end

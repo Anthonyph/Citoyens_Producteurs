@@ -46,9 +46,23 @@
         <%elsif @event.is_passed == false %>
           <%= button_to 'L\'évènement est passé - Demander les feedbacks ! ', {:controller => "events", :action => "update", :is_passed => true,}, method: 'patch', class: 'btn btn-lg btn-warning btn-rounded' %>
         <% end %>
+         
+        <hr>
           
           <!-- Feedbacks -->
-          <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-secondary btn-rounded' %>
+          <% if @event.start_date.strftime("%-d %B %Y à %Hh %Mm %Ss") < DateTime.now.strftime("%-d %B %Y à %Hh %Mm %Ss") %>
+            <% if user_signed_in? %>  
+              <% if current_user != @event.creator %>
+                  <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %> 
+                    <% if @appointment != nil %>
+                      <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-secondary btn-rounded' %>
+                      <% else %>
+                      <% end %>
+                    <% else %> 
+                <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-secondary btn-rounded' %> 
+              <% end %>
+            <% end %>
+          <% end %>
 
         </div>
 
