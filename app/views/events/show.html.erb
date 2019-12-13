@@ -19,7 +19,7 @@
           <img class="img-fluid rounded" src="https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
           <hr>
           <p><i>
-          Le <%= @event.start_date.strftime("%-d %B %Y à %Hh %M") %>
+          Le <%=l(@event.start_date, format: "%-d %B %Y à %H h %M")%>
 
           </i></p>  
           <p class="lead"><%= @event.description %></p>        
@@ -112,8 +112,8 @@
         <div class="card-body">
           <p><strong>Créé par : </strong><%= @event.creator.first_name && @event.creator.last_name%></p>
           <p><strong>Secteur : </strong><%= @event.address.sector %>
-          <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
-          <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %M") %></p>
+          <p><strong>Date : </strong><%=l(@event.start_date, format: "%-d %B %Y")%></p>
+          <p><strong>Heure : </strong><%=l(@event.start_date, format: "%H h %M")%></p>
            <hr>
           <% if current_user != @event.creator %>
           <% if user_signed_in?%>
