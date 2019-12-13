@@ -9,7 +9,7 @@
     <div class="col-sm-5 col-10 mx-auto">
       <div class="card p-4 my-4 material-shadow text-center">
         <h4 class="lighter text-center py-2">créneau disponible pour cet événement:</h4>
-        <h5> Du <%=@appointment.event.start_date%> Au <%=@appointment.event.end_date%></h5>
+        <h5> Du <%=l(@appointment.event.start_date, format: "%-d %B %Y à %Hh %M")%></br> Au <%=l(@appointment.event.end_date, format: "%-d %B %Y à %Hh %M")%></h5>
         <hr>
         <%= form_with(model: @appointment, url: [@appointment.event, @appointment], local: true) do |form| %>
         <p>
