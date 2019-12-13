@@ -15,21 +15,25 @@
 
   <%=link_to "Supprimer", admin_user_path(@user.id), method: :delete, class: 'btn btn-sm btn-outline-dark ml-1' %>
 
-  <center><div class="card-deck"></center>
+  <center>
+    <div class="card-deck"></center>
   
-<% @events.each do |event| %>
+      <% @events.each do |event| %>
 
-  <% if @user == event.creator_id %>
-  <center><div class="card" style="width: 50rem;">
-  <h5 class="card-header"><%=event.creator.last_name%></h5>
-  <div class="card-body">
-    <h5 class="card-title"><%=event.title%></h5>
-    <%= link_to "voir l'evenement", event_path(liste.id) %>
-  </div>
-</div><center>
+        <% if @user == event.creator_id %>
+  <center>
+    <div class="card" style="width: 50rem;">
+      <h5 class="card-header"><%=event.creator.last_name%></h5>
+        <div class="card-body">
+          <h5 class="card-title"><%=event.title%></h5>
+          <%= link_to "voir l'evenement", event_path(liste.id) %>
+        </div>
+    </div>
+<center>
 </br>
 </br>
 
 <% end %>
 <% end %>
-</div></center>
+</div>
+</center>

@@ -11,9 +11,6 @@
 <h4>Modifier la quantité de <%=@stock.product.name%> dans le local <%=@stock.store.name%> : </h4>
 
 <%= form_with model: @stock, local: true, url: admin_store_product_path(@stock), method: 'put' do |f| %> 
-  
-
-  
 
   <div class="table-responsive">
 
@@ -28,7 +25,7 @@
   <div class='actions'>
     <%= f.submit "mettre à jour", class: 'btn btn-lg btn-outline-secondary' %>
   </div>
-  </center>
+</center>
  
 
   <% end %>
