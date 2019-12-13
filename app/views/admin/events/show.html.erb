@@ -15,7 +15,7 @@
 
         <div class="card-body">
 
-          <img class="img-fluid rounded" src="https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
+          <img class="img-fluid rounded" <%=image_tag("https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260") %>
           <hr>
           <p class="lead"><%= @event.description %></p>
           <p class="lead">
@@ -61,7 +61,7 @@
   
       <div class="media mb-4">
 
-        <img class="d-flex mr-3 rounded-circle avatar" src="https://image.flaticon.com/icons/svg/145/145848.svg" alt="">
+        <img class="d-flex mr-3 rounded-circle avatar" <%= image_tag("https://image.flaticon.com/icons/svg/145/145848.svg") %>
         <div class="media-body">
           <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
           <p><%= comment.text %></p>
