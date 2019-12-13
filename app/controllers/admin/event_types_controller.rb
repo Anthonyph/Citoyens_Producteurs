@@ -19,7 +19,7 @@ class Admin::EventTypesController < ApplicationController
   def create
   
     @newtype = EventType.new(name: product_params[:name])
-    if @newtype.save!
+    if @newtype.save
       flash[:success] = 'Event type successfully created'
       redirect_to '/admin/event_types'
     else
