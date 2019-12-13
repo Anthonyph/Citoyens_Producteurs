@@ -31,12 +31,15 @@
         <div class="card-footer text-center bg-white">
 
           <!-- Appointment -->
-        <% if current_user != @event.creator%>
+
+        <% if current_user != @event.creator %>
+        <% if @event.end_date.strftime("%-d %B %Y à %Hh %Mm %Ss") > DateTime.now.strftime("%-d %B %Y à %Hh %Mm %Ss")%>
           <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
           <% if @appointment != nil %>
             <%= link_to 'Je ne veux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-md btn-danger ml-1 btn-rounded' %>  
           <% else %>
             <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-lg btn-success m  l-1 btn-rounded' %>
+          <% end %>
           <% end %>
         <% elsif @event.start_date.strftime("%-d %B %Y à %Hh %M") > DateTime.now.strftime("%-d %B %Y à %Hh %M")%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
