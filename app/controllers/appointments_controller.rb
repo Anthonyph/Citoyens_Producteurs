@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
   # POST /events/:event_id/appointments
   def create
     @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))
-    if @appointment.save!
+    if @appointment.save
       redirect_to @event, success: 'Appointment created'
     else
       render :new

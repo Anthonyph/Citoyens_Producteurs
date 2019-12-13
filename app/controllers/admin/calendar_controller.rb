@@ -48,7 +48,7 @@ class Admin::CalendarController < ApplicationController
       event.end_date = end_date
       event.title = title
       event.description = description
-      event.save!
+      event.save
       id = id
     end
     
