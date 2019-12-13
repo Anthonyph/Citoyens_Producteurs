@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"><%=image_tag("list.png")%></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent8">
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent8">
       <ul class="navbar-nav">
 
         <% if user_signed_in? %>
@@ -26,6 +26,14 @@
         <li class="nav-item">
         <%= link_to "Communauté", community_path, class:"nav-link" %>
         </li>
+
+
+
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent8">
+      <ul class="navbar-nav mx-auto">
 
         <li class="nav-item">
           <%= link_to "Qui sommes nous ?", root_path(anchor: "about"), class: "nav-link" %>
