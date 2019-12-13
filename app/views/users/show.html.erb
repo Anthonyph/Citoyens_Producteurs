@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <div class="container">
   <div class="card border-0 shadow my-5" id="user-contain">
     <div class="card-body p-5">
@@ -21,14 +22,15 @@
                      
                           <ul>
                             <% if current_user.appointments.length > 0%>
+
                             <% current_user.appointments.each do |appointment|%>
                               <li>Evenement : <%= appointment.id %>
-                               <p>(Le <%= appointment.start_date %> | Durée : <%= appointment.duration %>)</p>
+                               <p>(Le <%=l(appointment.start_date, format: "%-d %B %Y à %H h %M")%> | Durée : <%= appointment.duration %> mn)</p>
                               </li>
                              <%end%>
+
                             <%end%>
                           </ul>
-
 
                       </div>
                     </div>
@@ -38,19 +40,19 @@
                 <div class="col-6 p-3"><p><%=current_user.created_events.length%></p><h6 class="my-1 font-body">Evenement organisés</h6><br>
                   <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-event-modal-xl">Voir</button>
                   <div class="modal fade bd-event-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
                       <br>
-                        <h4>Evenements organisés :</h4>
+                      <h4>Evenements organisés :</h4>
 
-                          <% if current_user.created_events.length > 0%>
+                        <% if current_user.created_events.length > 0%>
                           <% current_user.created_events.each do |event|%>
                             <h5 class="card-title"><%= event.id %></h5>
-                            <p class="card-text">A partir de <%= event.start_date %> au <%= event.end_date %></p>
+                            <p class="card-text">A partir de <%=l(event.start_date, format: "%-d %B %Y à %H h %M")%> au <%=l(event.end_date, format: "%-d %B %Y à %H h %M")%></p>
                           <%end%>
-                          <% else %>
-                            <p>Aucun évènement organisé</p>
-                          <% end %> 
+                        <% else %>
+                          <p>Aucun évènement organisé</p>
+                        <% end %> 
                       </div>
                     </div>
                   </div>
@@ -66,45 +68,49 @@
       <br> 
       <% if current_user.has_payed == false %>
         <div class="col-lg-8 col-20 mx-auto">
-            <div class="card my-8 card-people-4 " id="card-info">
-               <br>
-                  <div class="row justify-content-center">
-                      <p> La cotisation pour être membre de Citoyens Producteurs est de <%= @amount.to_i/100  %> €.</p>
-                  </div>
-                        <div class="row justify-content-center">
-                          <ul>
-                            <%= form_tag(user_path, method: "patch") do%>
-                              <article>
-                                <% if flash[:error].present? %>
-                                  <div id="error_explanation">
-                                    <p><%= flash[:error] %></p>
-                                  </div>
-                                <% end %>
-                              </article>
-        
-                                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                                        data-label="Payer la cotisation"
-                                        data-description="Cotisation à Citoyens Producteurs"
-                                        data-amount=<%=@amount.to_f %>
-                                        data-locale="auto"></script>
-                              <% end %>
-                            </ul>
-                          </div>
-              </div>
+          <div class="card my-8 card-people-4 " id="card-info">
+            <br>
+            <div class="row justify-content-center">
+              <p> La cotisation pour être membre de Citoyens Producteurs est de <%= @amount.to_i/100  %> €.</p>
+            </div>
+            <div class="row justify-content-center">
+              <ul>
+                <%= form_tag(user_path, method: "patch") do%>
+                  <article>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
+                  </article>
+
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                          data-label="Payer la cotisation"
+                          data-description="Cotisation à Citoyens Producteurs"
+                          data-amount=<%=@amount.to_f %>
+                          data-locale="auto"></script>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        <% else %>
-          <div class="col-lg-8 col-20 mx-auto">
-              <div class="card my-3 card-people-4" id="card-info">
-                  <br>
-                    <div class="row justify-content-center">  
-                  <h5>Tu es à jour dans tes cotisations, merci beaucoup ! </h5>
-                    </div>
-                  <br>
-              </div>
-           </div>
-        <% end %>
-        <br>
+        </div>
+      <% else %>
+        <div class="col-lg-8 col-20 mx-auto">
+          <div class="card my-3 card-people-4" id="card-info">
+            <br>
+            <div class="row justify-content-center">  
+              <h5>Tu es à jour dans tes cotisations, merci beaucoup ! </h5>
+            </div>
+            <br>
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <br>
+
+      <h1 class="font-weight-light">Mon calendrier 🗓</h1>
+      <hr>
 
       <div id='scheduler_here' class='dhx_cal_container' style='width:100%; height:800px;'>
         <div class='dhx_cal_navline'>

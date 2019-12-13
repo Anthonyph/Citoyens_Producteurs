@@ -15,6 +15,9 @@
                     <th scope="col">Nom </th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Local</th>
+                    <th scope="col"># participations</th>
+                    <th scope="col"># événements créés</th>
+                    <th scope="col">Date création</th>
                     <th scope="col">Profil</th>
                   </tr>
                 </thead>
@@ -26,6 +29,9 @@
                     <td><%= user.first_name %></td>
                     <td><%= user.last_name %></td>
                     <td><%= user.store.name %></td>
+                    <td><%= user.appointments.count %></td>
+                    <td><%= user.created_events.count %></td>
+                    <td><%= user.created_at.strftime("%d %b %Y") %></td>
                     <td><%= link_to "voir le profil", admin_user_path(user.id) %></td>
                   </tr>
                 <% end %>

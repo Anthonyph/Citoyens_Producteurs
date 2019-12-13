@@ -17,8 +17,7 @@ class AppointmentsController < ApplicationController
 
   # POST /events/:event_id/appointments
   def create
-    @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))
-    
+    @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))    
     
     end_time = (@appointment.start_date) + @appointment.duration.minutes
     
