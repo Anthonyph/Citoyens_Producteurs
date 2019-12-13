@@ -1,3 +1,4 @@
+
 <div class="container mx-auto px-5">
   <div class="card material-shadow m-5" id="event">
     <div class="card-body">
@@ -10,6 +11,12 @@
           
           <%= form_with model: current_user, url: registration_path(current_user), local: true, method: 'put' do |f| %>
           
+            <%if flash[:danger] %>
+            <div class="alert alert-danger text-center" role="alert">
+              <%=flash[:danger] %>
+            </div>
+            <% end %>
+
             <% if devise_error_messages!.empty? %>
             <% else %>
               <div class="alert alert-danger" role="alert">

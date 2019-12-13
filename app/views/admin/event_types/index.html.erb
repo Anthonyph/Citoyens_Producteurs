@@ -1,14 +1,15 @@
 <body class="types">
-<%if flash[:success] %>
+  <%if flash[:success] %>
     <div class="alert alert-success text-center" role="alert">
       <%=flash[:success] %>
     </div>
-<%end%>
-<%if flash[:danger] %>
+  <%end%>
+
+  <%if flash[:danger] %>
     <div class="alert alert-danger text-center" role="alert">
       <%=flash[:danger] %>
     </div>
-<%end%>
+  <%end%>
 
 
 <div class="container">
@@ -17,35 +18,34 @@
       <h1 class="font-weight-light">Tous les types d'évenements 🌾</h1>
       <hr>
 
-<div class="container">
-	<table id="cart" class="table table-hover table-condensed"  style="background-color:#F4F2F2; border-radiux:9px;">
-    				<thead>
+        <div class="container">
+	        <table id="cart" class="table table-hover table-condensed"  style="background-color:#F4F2F2; border-radiux:9px;">
+    			  <thead>
 						<tr>
 							
 							
 						</tr>
-					</thead>
-					<tbody>
-            <tr>            
-              <% @event_types.each do |event_type| %>
-              <td data-th="event_type">
-              <p><%=link_to event_type.name, admin_event_type_path(event_type.id) %></p>
+					  </thead>
+					    <tbody>
+                <tr>            
+                <% @event_types.each do |event_type| %>
+                <td data-th="event_type">
+                <p><%=link_to event_type.name, admin_event_type_path(event_type.id) %></p>
 								
-									<div class="col-sm-10">
+							  <div class="col-sm-10">
 										
 								</div>
-              </div>
-           </div>
+        </div>
+      </div>
     </div>
   </div>
 
-							</td>
-													
-						</tr>
-					</tbody>
-					<%end%>
-					
-        </table>
+                  </td>													
+                </tr>
+				      </tbody>
+					      <%end%>
+             </table>
+             
 <div class="col-md-4 products-aside">
   <div class="card my-4">       
     <div class="card-header"><%= link_to 'Ajouter un nouveau type d évenement', new_admin_event_type_path, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>

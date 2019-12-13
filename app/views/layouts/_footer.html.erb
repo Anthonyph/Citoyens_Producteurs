@@ -2,45 +2,45 @@
     <div class="overlay op-7 bg-dark"></div>
     <div class="row">
       <div class="col-12 col-lg-3 my-1 text-center py-2">
-        <%=image_tag(("logo.png"), :class => "logo")%><br>
+        <%=link_to image_tag(("logo.png"), class: "logo"), root_path %><br>
         <br>
         <ul class="py-2 px-0">
-        <li class="inline"><%= link_to "", "https://www.facebook.com/CitoyensProducteurs/", class:"fab fa-facebook inline fa-2x", :target => '_blank'%></li>
-        <li class="inline"><%= link_to "", "https://twitter.com/CProducteurs", class:"fab fa-twitter inline fa-2x", :target => '_blank'%></li>
-        <li class="inline"><%= link_to "", "https://www.instagram.com/citoyensproducteurs/", class:"fab fa-instagram inline fa-2x", :target => '_blank'%></li>
+        <li class="inline m-1"><%= link_to "", "https://www.facebook.com/CitoyensProducteurs/", class:"fab fa-facebook inline fa-2x", :target => '_blank'%></li>
+        <li class="inline m-1"><%= link_to "", "https://twitter.com/CProducteurs", class:"fab fa-twitter inline fa-2x", :target => '_blank'%></li>
+        <li class="inline m-1"><%= link_to "", "https://www.instagram.com/citoyensproducteurs/", class:"fab fa-instagram inline fa-2x", :target => '_blank'%></li>
         </ul>
       </div>
       <div class="col-12 col-lg-6 my-1 text-center py-2 font-title">
         <div class="row">
           <div class="col-4">
-            <h6 class="uppercase py-1">Producteurs</h6>
+            <h5 class="uppercase py-1">Coopérative</h5>
             <ul class="py-1 px-0">
-              <li>Local</li>
-              <li>Frais</li>
-              <li>Zéro gâchis</li>
+              <li>Agricole</li>
+              <li>Urbaine</li>
+              <li>Citoyenne</li>
             </ul>
           </div>
           <div class="col-4">
-            <h6 class="uppercase py-1">Bénévoles</h6>
+            <h5 class="uppercase py-1">Bénévoles</h5>
             <ul class="py-1 px-0">
-              <li>Cueillir</li>
-              <li>Livrer</li>
-              <li>Transformer</li>
+              <li>Récolter</li>
+              <li>Cuisiner</li>
+              <li>Partager</li>
 
             </ul>
           </div>
           <div class="col-4">
-            <h6 class="uppercase py-1">Blog</h6>
+            <h5 class="uppercase py-1">Blog</h5>
             <ul class="py-1 px-0">
-              <li>Recettes</li>
               <li>Avis</li>
+              <li>Recettes</li>
               <li>Style de vie</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="col-12 col-lg-3 text-center my-1 text-left py-2">
-        <h6 class="uppercase py-1">À propos</h6>
+        <h5 class="uppercase py-1">À propos</h5>
         <small class="lighter my-3 op-7 inline font-body">La première coopérative agricole urbaine !</small><br>
         <%= link_to "Nous contacter", root_path(:anchor => "contact"), class:"btn btn-rounded btn-secondary"%><br><br>
         <%= link_to "À propos", root_path(:anchor => "about"), class:"btn btn-rounded btn-secondary"%>

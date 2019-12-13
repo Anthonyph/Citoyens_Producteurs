@@ -13,7 +13,7 @@ class FeedbacksController < ApplicationController
       @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id}
       @feedback = @appointment.feedbacks.new(feedback_params.merge(feedbackable: @appointment))
     end
-    if @feedback.save!
+    if @feedback.save
       redirect_to @event, success: 'Feedback created'
     else
       render :new

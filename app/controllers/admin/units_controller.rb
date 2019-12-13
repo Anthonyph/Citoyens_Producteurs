@@ -18,7 +18,7 @@ class Admin::UnitsController < ApplicationController
   def create
   
     @newunit = Unit.new(name: unit_params[:name])
-    if @newunit.save!
+    if @newunit.save
       flash[:success] = 'Unit successfully created'
       redirect_to '/admin/units'
     else

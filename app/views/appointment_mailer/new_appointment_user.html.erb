@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <div class="body-mail" bgcolor="#F9F0D9">
 <table width="100%" bgcolor="#F9F0D9" border="0" cellpadding="0" cellspacing="0">
 <tr>
@@ -30,7 +31,7 @@
             <tr>
               <td class="h2" style="text-align:center;">
               <p>Tu as rejoint l'évènement <%=@title%>.</p>
-              <p>L'évenement débute le : <%=@apt_start_date%> et dure <%=@apt_duration%> mn.</p>
+              <p>L'évenement débute le : <%=l(@apt_start_date, format: "%-d %B %Y à %Hh %M")%> et dure <%=@apt_duration%> mn.</p>
               <p>L'évènement aura lieu à l'adresse suivante : "<%=@apt.user.address.place%> <%=@apt.user.address.zip_code%> <%=@apt.user.address.city%>".</p>
               <p>Avec cet évènement tu vas récolter <%=@apt.points%> points.</p>
               <p>Cet évènement est géré par <%=@creator_first_name%> <%=@creator_last_name%>.</p>

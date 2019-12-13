@@ -1,8 +1,7 @@
 <%= render 'layouts/navbar' %>
 
-<br><br><br><br>
-<header class="header-style-14">
-    <div class="overlay op-6 "></div>
+<header class="header-style-14 header-community">
+  <div class="overlay op-6 "></div>
     <div class="container">
       <div class="row m-0 p-relative o-hidden">
         <div class="col-12 col-md-6 mx-auto">
@@ -12,135 +11,150 @@
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
 <section class="py-5">
-<div class="container">
-  <h1 class="font-weight-light">Le principe</h1>
-  <hr>
-  <p class="lead">  Il s’agit d’aller chercher les surplus de production chez les particuliers afin de créer une activité économique 100% locale. En écoulant des produits sains, qui ont poussé sans produits chimiques, et qui n’ont pas voyagé.<br />
-  Un des enjeux est de lutter contre le gaspillage alimentaire. On parle ici du gaspillage qui intervient à la source, c’est-à-dire les produits qui n’arrivent même pas jusqu’aux étals.<br />
-  Un autre enjeu est de profiter d’une ressource alimentaire déjà disponible en récupérant les fruits (ou les légumes) qui auraient poussé de toute façon. <br />
-  Le développement de l’activité peut même inciter les gens à produire plus d’alimentation locale par l’effet d’un entrainement positif. 
-  </p>
-  
-  <blockquote class="otro-blockquote">
-  La première coopérative agricole urbaine ! Pour que les citoyens reprennent le pouvoir sur leur alimentation en la produisant eux-mêmes !
-  </blockquote>
-  <br>
-
-  <h1 class="font-weight-light">Les rôles</h1>
-  <hr>
-  <section class="feature-style-5 bg-light white">
   <div class="container">
-      <div class="row">
+
+    <h1 class="title-goal">Le principe</h1>
+    <hr>
+    <p class="lead">  Il s’agit d’aller chercher les surplus de production chez les particuliers afin de créer une activité économique 100% locale. En écoulant des produits sains, qui ont poussé sans produits chimiques, et qui n’ont pas voyagé.<br />
+    Un des enjeux est de lutter contre le gaspillage alimentaire. On parle ici du gaspillage qui intervient à la source, c’est-à-dire les produits qui n’arrivent même pas jusqu’aux étals.<br />
+    Un autre enjeu est de profiter d’une ressource alimentaire déjà disponible en récupérant les fruits (ou les légumes) qui auraient poussé de toute façon. <br />
+    Le développement de l’activité peut même inciter les gens à produire plus d’alimentation locale par l’effet d’un entrainement positif. 
+    </p>
+    
+    <blockquote class="otro-blockquote">
+    La première coopérative agricole urbaine ! Pour que les citoyens reprennent le pouvoir sur leur alimentation en la produisant eux-mêmes !
+    </blockquote>
+    <br>
+
+    <h1 class="title-about">Les rôles</h1>
+    <hr>
+    <section class="feature-style-5 bg-light white animated fadeInUp">
+      <div class="container">
+
+        <div class="row">
+
           <div class="col-md-6 col-12 justify-center align-center ">
-              <div class="flex-1 py-5">
-                    <h3>Les producteurs</h3>
-					<h6 class="py-4">Il s’agit de particuliers disposant d’un jardin ou d’une petite surface cultivée. Cette surface est productive (fruitiers, potager, haie fruitières, herbes aromatiques…)
-                    La production est surabondante. C’est-à-dire que les fruits récoltés sont en quantité supérieure à ce que peut exploiter le particulier (stockage, conservation, distribution aux proches.
-                    Il s'agit pour eux de signaler les récoltes possibles dans leur jardin et d’indiquer les périodes de récoltes (à l’avance pour une planification et aussi au dernier moment, quand c’est le moment)
-                    </h6>
-              </div>
+            <div class="flex-1 py-5 ml-4">
+            
+              <h3>Les producteurs</h3>
+              <h6 class="py-4">Il s’agit de particuliers disposant d’un jardin ou d’une petite surface cultivée. Cette surface est productive mais la production est surabondante.
+              Il s'agit pour eux de signaler les récoltes possibles dans leur jardin et d’indiquer les périodes de récoltes (à l’avance pour une planification et aussi au dernier moment, quand c’est le moment)
+              </h6>
+
+            </div>
           </div>
-          <div class="col-md-6 col-12 p-5 bg-light">
-              <%=image_tag(("garden.jpg"), class:"w-100")%>
+
+          <div class="col-md-6 col-12 p-4 bg-light">
+            <%=image_tag(("garden.jpg"), class:"w-100")%>
           </div>
-      </div>
-      <div class="row">
-          <div class="col-md-6 col-12 p-5 bg-light order-md-1 order-2">
-              <%=image_tag(("pick.jpg"), class:"w-100")%>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 col-12 p-4 bg-light order-md-1 order-2">
+            <%=image_tag(("pick.jpg"), class:"w-100")%>
           </div>
 
           <div class="col-md-6 col-12 justify-center align-center order-md-2 order-1">
-              <div class="flex-1 py-5">
-                  <h3>Les cueilleurs</h3>
-					<h6 class="py-4">IIl s’agit de particuliers, résidant près des lieux de récolte et qui peuvent consacrer du temps pour cueillir/ramasser les récoltes.
-                    Idéalement ils disposent d’un vélo/vélo cargo, afin de limiter l’impact carbone de l’activité.
-                    Les récoltes sont nombreuses mais peu volumineuses à chaque fois (un maximum constaté de 30 kilos environ).
-                    Ils peuvent être amenés à passer plusieurs fois dans le même jardin (tout n’est pas mur en même temps)
-                    </h6>
-            </div>
-          </div>
-      </div>
+            <div class="flex-1 py-5">
 
-      <div class="row">
-          <div class="col-md-6 col-12 justify-center align-center order-2 order-md-1">
-              <div class="flex-1 py-5">
-              <h3>Les transformateurs</h3>
-              <h6 class="py-4">Il s’agit de particulier ayant des connaissances culinaires, capables de transformer les produits récoltés en produits consommables et conservables : <br />
-              <ul>
-              <li>Confitures, gelées, pâtes de fruits, compotes</li>
-              <li>Soupes, purées, potages, sauces</li>
-              <li>Tisanes, herbes séchées</li>
-              </ul>
-              Dans un premier temps, la transformation se fait chez une personne (dont on s’assure au préalable que la cuisine permet ce type d’activité).
+              <h3>Les cueilleurs</h3>
+              <h6 class="py-4">Il s’agit de particuliers, résidant près des lieux de récolte et qui peuvent consacrer du temps pour cueillir/ramasser les récoltes.
+              Idéalement ils disposent d’un vélo/vélo cargo, afin de limiter l’impact carbone de l’activité.
               </h6>
+
             </div>
           </div>
-          <div class="col-md-6 col-12 p-5 bg-light order-1 order-md-2">
-              <%=image_tag(("soup.jpg"), class:"w-100")%>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 col-12 justify-center align-center order-2 order-md-1">
+            <div class="flex-1 py-5  ml-4">
+
+              <h3>Les transformateurs</h3>
+              <h6 class="py-4">Il s’agit de particulier ayant des connaissances culinaires, capables de transformer les produits récoltés en produits consommables et conservables :<br>
+              <br>
+              <em>Confitures, gelées, pâtes de fruits, compotes,...</em> <br>
+              <em>Soupes, purées, potages, sauces,...</em><br>
+              <em>Tisanes, herbes séchées,...</em><br>
+              </h6>
+
+            </div>
           </div>
+
+          <div class="col-md-6 col-12 p-4 bg-light order-1 order-md-2">
+            <%=image_tag(("soup.jpg"), class:"w-100")%>
+          </div>
+
+        </div>
+
       </div>
+  
+    </section>
+
+    <section id="services">
+      <div class="container animated fadeInUp">
+        <div class="section-header">
+          <h1 class="title-about">Autres engagements</h1><hr>
+        </div>
+        <br><br><br>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <div class="icon"><i class="fas fa-bullhorn"></i></a></div>
+              <h4 class="title">Communication</a></h4>
+              <p class="description">Animer la communauté et faire connaitre Citoyens Producteurs, animer des évènements, mettre en place une image et du contenu, fédérer autour du projet de nouvelles personnes</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <div class="icon"><i class="fas fa-shopping-basket"></i></a></div>
+              <h4 class="title">Vente</a></h4>
+              <p class="description">Tenir des stands sur des salons, être capable de négocier avec des distributeurs locaux.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <div class="icon"><i class="far fa-thumbs-up"></i></a></div>
+              <h4 class="title">Gestion</a></h4>
+              <p class="description">Gérer l’activité d’un point de vue comptable </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <div class="icon"><i class="far fa-calendar-check"></i></a></div>
+              <h4 class="title">Planifier</a></h4>
+              <p class="description">Tenir à jour un état des lieux des différentes parties prenantes (terrains, périodes de récolte, cueilleurs, lieux de stockage, transformation)</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <div class="icon"><i class="fa fa-road"></i></a></div>
+              <h4 class="title">Déployer</a></h4>
+              <p class="description">Aider à déployer l’activité dans d’autres zones géographiques tout en préservant le concept d’origine</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <div class="icon"><i class="fas fa-utensils"></i></a></div>
+              <h4 class="title">Consommer</a></h4>
+              <p class="description"> Confitures, gelées, pâtes de fruits, compotes, soupes, purées, potages, sauces, tisanes, herbes séchées
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
   </div>
-</section>
-
-<section id="services">
-  <div class="container wow fadeIn">
-    <div class="section-header">
-      <h1>Autres engagements</h1><hr>
-    </div>
-    <br><br><br>
-    <div class="row">
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fas fa-bullhorn"></i></a></div>
-          <h4 class="title"><a href="">Communication</a></h4>
-          <p class="description">Animer la communauté et faire connaitre Citoyens Producteurs, animer des évènements, mettre en place une image et du contenu, fédérer autour du projet de nouvelles personnes</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fas fa-shopping-basket"></i></a></div>
-          <h4 class="title"><a href="">Vente</a></h4>
-          <p class="description">Tenir des stands sur des salons, être capable de négocier avec des distributeurs locaux.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="far fa-thumbs-up"></i></a></div>
-          <h4 class="title"><a href="">Gestion</a></h4>
-          <p class="description">Gérer l’activité d’un point de vue comptable </p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="far fa-calendar-check"></i></a></div>
-          <h4 class="title"><a href="">Planifier</a></h4>
-          <p class="description">Tenir à jour un état des lieux des différentes parties prenantes (terrains, périodes de récolte, cueilleurs, lieux de stockage, transformation)</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fa fa-road"></i></a></div>
-          <h4 class="title"><a href="">Déployer</a></h4>
-          <p class="description">Aider à déployer l’activité dans d’autres zones géographiques tout en préservant le concept d’origine</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-        <div class="box">
-          <div class="icon"><a href=""><i class="fas fa-utensils"></i></a></div>
-          <h4 class="title"><a href="">Consommer</a></h4>
-          <p class="description"> Confitures, gelées, pâtes de fruits, compotes, soupes, purées, potages, sauces, tisanes, herbes séchées
-           </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-</div>
 </section>

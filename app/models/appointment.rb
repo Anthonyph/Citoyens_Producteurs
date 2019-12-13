@@ -5,20 +5,20 @@ class Appointment < ApplicationRecord
   has_many :products, through: :product_appointments
   include Feedbackable
 
-  # validates :start_date, presence: true,
-  # date: { after: Proc.new { Time.now }}
   
-  # validates :duration,
-  # presence: true, numericality:  { :greater_than_or_equal_to => 1}
+  # date: { after: Proc.new { Time.now }}
+  # validates :start_date, presence: true,
+  
+
   
 
   validates :status, presence: true
-  # validates :points, presence: true
+  
+  
 
   after_create :appointment_creation_user
   after_create :appointment_creation_creator
-  after_destroy :appointment_destroy_user
-  after_destroy :appointment_destroy_creator
+
 
   def appointment_creation_user
     AppointmentMailer.new_appointment_user(self).deliver_now

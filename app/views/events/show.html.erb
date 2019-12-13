@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <div class="container">
 <% require 'time' %>
   <div class="card border-0 shadow my-5" id="event">
@@ -16,10 +17,10 @@
 
         <div class="card-body">
 
-          <img class="img-fluid rounded" src="https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
+          <img class="img-fluid rounded" <%= image_tag("https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260") %>
           <hr>
           <p><i>
-          Le <%= @event.start_date.strftime("%-d %B %Y à %Hh %M") %>
+          Le <%=l(@event.start_date, format: "%-d %B %Y à %H h %M")%>
 
           </i></p>  
           <p class="lead"><%= @event.description %></p>        
@@ -47,6 +48,8 @@
             <% DateTime.now%>
             <%if @event.start_date.strftime("%-d %B %Y à %Hh %M") > DateTime.now.strftime("%-d %B %Y à %Hh %M")%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
+          <hr>
+          <%= button_to 'Supprimer l\'évènement', event_path(@event.id), params:{destroy_event: true}, method: 'delete', class: 'btn btn-lg btn-danger btn-rounded' %>
            <hr>
             <%else %>
               <%if @event.is_passed == false %>
@@ -79,11 +82,11 @@
   
       <div class="media mb-4">
 
-        <img class="d-flex mr-3 rounded-circle avatar" src="https://image.flaticon.com/icons/svg/145/145848.svg" alt="">
+        <img class="d-flex mr-3 rounded-circle avatar" <%= image_tag("https://image.flaticon.com/icons/svg/145/145848.svg") %>
         <div class="media-body">
           <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
           <p><%= comment.text %></p>
-          <%= comment.updated_at.strftime("%-d %B %Y, %Hh %M") %>
+          <%=l(comment.updated_at, format: "%-d %B %Y à %H h %M")%>
         </div>
 
         <% if comment.user == current_user %>
@@ -110,8 +113,8 @@
         <div class="card-body">
           <p><strong>Créé par : </strong><%= @event.creator.first_name && @event.creator.last_name%></p>
           <p><strong>Secteur : </strong><%= @event.address.sector %>
-          <p><strong>Date : </strong><%= @event.start_date.strftime("%-d %B %Y") %></p>
-          <p><strong>Heure : </strong><%= @event.start_date.strftime("%Hh %M") %></p>
+          <p><strong>Date : </strong><%=l(@event.start_date, format: "%-d %B %Y")%></p>
+          <p><strong>Heure : </strong><%=l(@event.start_date, format: "%H h %M")%></p>
            <hr>
           <% if current_user != @event.creator %>
           <% if user_signed_in?%>

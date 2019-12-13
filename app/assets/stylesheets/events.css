@@ -9,3 +9,7 @@
 #event {
   background-color: rgba(255, 255, 255, 0.8);
 }
+
+#city-bg {
+  background-image: url('https://images.pexels.com/photos/2079438/pexels-photo-2079438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+}

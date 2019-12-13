@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <div class="container">
   <div class="card border-0 shadow my-5" id="event">
     <div class="card-body p-5">
@@ -27,12 +28,12 @@
 
             </div>
 
-            <img class="card-img-top p-1" src="https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
+            <%=image_tag 'https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', class:"card-img-top p-1" %>
             
             <div class="card-body p-2">
 
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Le <%= event.start_date.strftime("%-d %B %Y à %Hh %Mm") %></li>
+                <li class="list-group-item">Le <%=l(event.start_date, format: "%-d %B %Y à %Hh %M")%></li>
                 <% if event.appointments.count > 0 %> 
                   <li class="list-group-item"><%= event.appointments.count > 1 ? 'Nombre de participants : ' : 'Nombre de participant : ' %> <%= event.appointments.count %></li>
                 <% else %>
@@ -100,7 +101,7 @@
                         <% @stores.each do |store| %>
 
                           <div class="col-12 p-1">
-                            <div class="card background-cover flat no-border" style="background-image:url('https://images.pexels.com/photos/2079438/pexels-photo-2079438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+                            <div class="card background-cover flat no-border" id="city-bg">
                               <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
                                 <i class="fa fa-heart cdanger"></i>
                                 <h2 class="cwhite p-2 font-title"><%= store.name %></h2>

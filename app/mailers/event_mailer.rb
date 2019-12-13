@@ -34,6 +34,16 @@ class EventMailer < ApplicationMailer
     @url  = 'www.citoyens-producteurs.fr' 
     @id = appointment.event_id
     mail(to: appointment.user.email, subject: 'Après l\'évènement, le feedback !')
+    
+   end
+
+    def event_destroy_user(appointment)
+      @user = appointment.user
+      @event = appointment.event
+      @url  = 'www.citoyens-producteurs.fr' 
+      @id = appointment.event_id
+      mail(to: appointment.user.email, subject: 'Un évènement a été supprimé !')
     end
+
 end
   

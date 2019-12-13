@@ -26,7 +26,7 @@ class Admin::EventsController < ApplicationController
       @address.update(place: event_params[:place], zip_code: event_params[:zip_code], city: event_params[:city], sector: event_params[:sector])
       @type = EventType.find(event_params[:type])
       @creator = @event.creator
-      @event.update!(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
+      @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
       flash[:success] = 'Event successfully updated'
       @appointments = Appointment.where(event_id: @event.id)
       ############ MAILER ##################
@@ -52,6 +52,7 @@ class Admin::EventsController < ApplicationController
     @event.destroy
     flash[:success] = "L'évenement #{@event.title} à bien été supprimmé"
     redirect_to '/admin/events'
+    
   end
 
   private

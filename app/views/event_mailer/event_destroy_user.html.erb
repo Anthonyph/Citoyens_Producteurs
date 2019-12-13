@@ -1,5 +1,3 @@
- <% require 'time' %>
- <% I18n.locale = :fr%>
 <div class="body-mail" bgcolor="#F9F0D9">
 <table width="100%" bgcolor="#F9F0D9" border="0" cellpadding="0" cellspacing="0">
 <tr>
@@ -20,7 +18,7 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
                     <td class="subhead" style="padding: 0 0 0 3px;">
-                    <h1>Salut <%=@creator_first_name%> <%=@creator_last_name%> !<h1>
+                    <h1>Salut <%=@user.first_name%>, un évènement a été supprimé !<h1>
                     <hr>
                     </td>
                   </tr>
@@ -31,14 +29,11 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td class="h2" style="text-align:center;">
-              <p>Un Citoyen à rejoint l'évenement : "<%=@title%>".</p>
-              <p>Son nom est <%=@user_first_name%> <%=@user_last_name%>.</p>
-             
-              <p>Le créneau qu'il a choisi est : <%=l(@apt_start_date, format: "%-d %B %Y à %Hh %M")%> et dure <%=@apt_duration%> mn.</p>
+              <p>L'évènement "<%=@event.title%>" auquel tu t'es inscrit été supprimé par son créateur</p>
+
+              <p>N'hésite pas à t'inscrire à d'autres évènements</p>
               
-              <p>Avec cet évènement il va récolter <%=@points%> points.</p>
-              <p>Tu peux le contacter via son email : <%=@user_email%> et son numéro de téléphone : <%=@user_phone_number%>.</p>
-              <p><b>Merci de faire vivre la communauté et à très bientôt sur <%=@url%> !</b></p>          
+              <p><b>Merci de faire vivre la communauté et à très bientôt chez <%=@url%>.</b></p>  
             </tr>
             <tr>
               <td class="bodycopy" style="text-align:center;">
@@ -65,4 +60,3 @@
 </tr>
 </table>
 </div>
-

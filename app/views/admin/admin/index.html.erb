@@ -41,10 +41,11 @@
                 <div class="mr-5">
                   <ul>
 
-                    <li> <%= Appointment %> </li>
-                    <li>  </li>
-                    <li>  </li>
-
+                    <li> <%= User.joins(:appointments, :created_events).distinct.count %> CP (les 2) </li>
+                    <li> <%= Event.distinct.count(:creator_id) %> producteurs </li>
+                    <li> <%= Appointment.distinct.count(:user_id) %> citoyens </li>
+                    <li> <%= User.where(is_admin: true).distinct.count %> admin </li>
+                    <!-- <li> <%= User.left_outer_joins([:appointments, :created_events]).where(is_admin: false).group('user_id').having("count(appointments.id) = ?", 0).having("count(events.id) = ?", 0).count %> inactifs </li> -->
                   </ul>
                 </div>
 
@@ -95,7 +96,7 @@
                 </div>
 
                 <div class="mr-5 lead">
-                  <%= Store.first.store_products.all.length %> Produits en stock <br>
+                  <%= StoreProduct.distinct.count(:product_id) %> Produits en stock <br>
                 </div>
 
                 <div class="mr-5">
@@ -177,6 +178,7 @@
                     <th scope="col">Nom </th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Local</th>
+                    <th scope="col">Cotisation</th>
                     <th scope="col">Profil</th>
                   </tr>
                 </thead>
@@ -188,6 +190,12 @@
                     <td><%= user.first_name %></td>
                     <td><%= user.last_name %></td>
                     <td><%= user.store.name %></td>
+                    <% if user.has_payed == true %>
+                    <td>reglée</td>
+                    <%else%>
+                    <td>à regler</td>
+                    <%end%>
+
                     <td><%= link_to "voir le profil", admin_user_path(user.id) %></td>
                   </tr>
                 <% end %>

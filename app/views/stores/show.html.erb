@@ -5,26 +5,22 @@
 
       <div class="container">
 
-      <h1 class="font-weight-light">Local 🍋</h1>
-      <hr>
+        <h1 class="font-weight-light">Local Citoyens-Producteurs 🍋</h1>
+        <hr>
 
-
-        <iframe class="p-relative store-maps"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10516.376138168858!2d2.31667645!3d48.780095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6712a13518e05%3A0x40b82c3688b3e80!2s92340%20Bourg-la-Reine!5e0!3m2!1sfr!2sfr!4v1575456577997!5m2!1sfr!2sfr"
-          allowfullscreen>
-        </iframe>
-
-        <div class="row my-5">
+        <div class="row my-2">
 
           <div class="col-lg-7">
-            <img class="img-fluid rounded mb-4 mb-lg-0" src="/assets/market.jpeg" alt="">
+            <%= image_tag(("market.jpeg"), class:"img-fluid rounded mb-4 mb-lg-0") %>
           </div>
 
           <div class="col-lg-5">
-            <h3 class="font-weight-light">Infos :</h3>
+            <h3 class="font-weight-bold">Infos :</h3>
             <hr>
             <p>
-            <i class="fas fa-map-marker-alt"></i> | Bourg-la-Reine
+            <i class="fas fa-map-marker-alt"></i> | 420 Rue du Citoyens, Bourg-la-Reine, 92340
+            <br><br>
+            <i class="fas fa-clock"></i> | Ouvert du lundi au vendredi de 8h à 20h30
             <br><br>
             <i class="fas fa-envelope-open"></i> | citoyens-producteurs@lilo.org
             <br><br>
@@ -34,57 +30,59 @@
 
         </div>
 
-        <hr>
+        <br>
 
-        <div class="jumbotron-fluid call-to-action">
-          <div class="container text-center p-4">
+        <iframe class="p-relative store-maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10516.376138168858!2d2.31667645!3d48.780095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6712a13518e05%3A0x40b82c3688b3e80!2s92340%20Bourg-la-Reine!5e0!3m2!1sfr!2sfr!4v1575456577997!5m2!1sfr!2sfr"
+          allowfullscreen>
+        </iframe>
 
-            <h3>Produits en stock :</h3>
+        <div class="container text-center p-4">
+
+          <h3 class="font-weight-bold">Produits en stock :</h3>
+          
+          <hr>
+
+          <div class="card-columns">
             
-            <hr>
+            <% @products.each do |product| %>
 
-            <div class="card-columns">
-              
-
-              <% @products.each do |product| %>
-
-                <div class="card text-center p-4">
-                  
-                  <div class="media">
-
-                    <img class="d-flex mr-3 rounded-circle avatar" src="https://images.pexels.com/photos/70862/pexels-photo-70862.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                    <div class="media-body">
-                      <h4 class="mt-0"><%= product.product.name %></h4>
-                      <p>Quantité : <%= product.quantity %>  <%= product.unit.name %></p>
-                      <a class="text-muted">Date de livraison :</a>
-                      <p><%= product.created_at.strftime("%-d %B %Y")  %></p>
-                    </div>                      
-
-                  </div>
-
-                  <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-sm btn-outline-secondary  btn-block' %>
+              <div class="card text-center p-4">
                 
+                <div class="media">
+                  <%= image_tag(("https://images.pexels.com/photos/70862/pexels-photo-70862.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"), class:"d-flex mr-3 rounded-circle avatar") %>
+                  <div class="media-body">
+                    <h4 class="mt-0"><%= product.product.name %></h4>
+                    <p>Quantité : <%= product.quantity %>  <%= product.unit.name %></p>
+                    <a class="text-muted">Date de livraison :</a>
+                    <p><%=l(product.created_at, format: "%-d %B %Y")%></p>
+                    
+                  </div>                      
+
                 </div>
 
-              <% end %>
-
-            </div>
-
-            <hr>
-
-            <div class="row">
-
-              <div class=col>
-                <p class="lead">Une idée de recette ?<br><br><%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-success btn-rounded' %></p>
+                <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-sm btn-outline-secondary  btn-block' %>
+              
               </div>
 
-              <div class="col">
-                <p class="lead">Voir les événements <br><br><%= link_to "Voir les évenements", events_path, class:"btn btn-md btn-info btn-rounded" %></p>
-              </div>
-
-            </div>
+            <% end %>
 
           </div>
+
+          <hr>
+
+          <div class="row">
+
+          <div class=col>
+            <p class="lead">Une idée de recette ?<br><br><%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-success btn-rounded' %></p>
+          </div>
+
+          <div class="col">
+            <p class="lead">Envie de participer ? <br><br><%= link_to "Voir les évenements", events_path, class:"btn btn-md btn-info btn-rounded" %></p>
+          </div>
+
+          </div>
+
         </div>
 
       </div>
