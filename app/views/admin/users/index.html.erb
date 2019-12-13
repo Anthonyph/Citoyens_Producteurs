@@ -1,52 +1,53 @@
-        <div class="card mb-3">
+<div class="card mb-3">
 
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            User
-          </div>
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    User
+  </div>
 
-          <div class="card-body">
-            <div class="table-responsive">
+  <div class="card-body">
+    <div class="table-responsive">
 
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Nom </th>
-                    <th scope="col">Prénom</th>
-                    <th scope="col">Local</th>
-                    <th scope="col"># participations</th>
-                    <th scope="col"># événements créés</th>
-                    <th scope="col">Date création</th>
-                    <th scope="col">Cotisation</th>
-                    <th scope="col">Profil</th>
-                  </tr>
-                </thead>
-                <tbody>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nom </th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Local</th>
+            <th scope="col"># participations</th>
+            <th scope="col"># événements créés</th>
+            <th scope="col">Date création</th>
+            <th scope="col">Cotisation</th>
+            <th scope="col">Profil</th>
+          </tr>
+        </thead>
+                
+        <tbody>
 
-                <%@users.each do |user|%>
-                  <tr>
-                    <th scope="row"><%= user.id %></th>
-                    <td><%= user.first_name %></td>
-                    <td><%= user.last_name %></td>
-                    <td><%= user.store.name %></td>
-                    <td><%= user.appointments.count %></td>
-                    <td><%= user.created_events.count %></td>
-                    <td><%= user.created_at.strftime("%d %b %Y") %></td>
-                    <% if user.has_payed == true %>
-                    <td>reglée</td>
-                    <%else%>
-                    <td>à regler</td>
-                    <%end%>
+          <%@users.each do |user|%>
+            <tr>
+              <th scope="row"><%= user.id %></th>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.store.name %></td>
+              <td><%= user.appointments.count %></td>
+              <td><%= user.created_events.count %></td>
+              <td><%= user.created_at.strftime("%d %b %Y") %></td>
+              <% if user.has_payed == true %>
+              <td>reglée</td>
+              <%else%>
+              <td>à regler</td>
+              <%end%>
 
-                    <td><%= link_to "voir le profil", admin_user_path(user.id) %></td>
-                  </tr>
-                <% end %>
+              <td><%= link_to "voir le profil", admin_user_path(user.id) %></td>
+            </tr>
+              <% end %>
 
-                </tbody>
-              </table>
+        </tbody>
+      </table>
 
-            </div>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+    </div>
+  </div>
+<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
