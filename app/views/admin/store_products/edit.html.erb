@@ -8,7 +8,7 @@
       <%=flash[:danger] %>
     </div>
   <% end %>
-<h4>Modifier la quantité de <%=@stock.product.name%> dans le local <%=@stock.store.name%> : </h4>
+<h3>Modifier la quantité de <%=@stock.product.name%> dans le local <%=@stock.store.name%> : </h3>
 
 <%= form_with model: @stock, local: true, url: admin_store_product_path(@stock), method: 'put' do |f| %> 
 
