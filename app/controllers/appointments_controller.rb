@@ -2,6 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
   before_action :set_event, only: [:index, :new, :edit, :create, :update, :destroy]
   before_action :is_blank_phone_number?,  only: [:new, :create,:edit,:update] 
+  
 
   
   # GET /events/:event_id/appointments
@@ -17,10 +18,16 @@ class AppointmentsController < ApplicationController
   # POST /events/:event_id/appointments
   def create
     @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))
-    if @appointment.save!
-      redirect_to @event, success: 'Appointment created'
-    else
+    if @appointment.start_date < @event.start_date || @appointment.start_date > @event.end_date
+      flash.now[:danger] = "Attention! tu dois choisir une date dans le créneau proposé!"
       render :new
+    else
+      if @appointment.save!
+        redirect_to @event, success: 'Appointment created'
+      else
+        flash.now[:danger] = 'Something went wrong, please check your input'
+        render :new
+      end
     end
   end
 
@@ -32,10 +39,16 @@ class AppointmentsController < ApplicationController
 
 
   def update
-    if @appointment.update(appointment_params)
-      redirect_to event_path(@event), notice: 'Appointment was successfully updated.'
-    else
+    if @appointment.start_date < @event.start_date || @appointment.start_date > @event.end_date
+      flash.now[:danger] = "Attention! tu dois choisir une date dans le créneau proposé!"
       render :edit
+    else
+      if @appointment.update(appointment_params)
+        redirect_to event_path(@event), notice: 'Appointment was successfully updated.'
+      else
+        flash.now[:danger] = 'Something went wrong, please check your input'
+        render :edit
+      end
     end
   end
 
@@ -70,6 +83,8 @@ class AppointmentsController < ApplicationController
       redirect_to edit_user_registration_path
     end  
   end
+
+  
 
   def appointment_params
     params.require(:appointment).permit(:start_date, :duration, :points, :user_id, :event_id)

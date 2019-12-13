@@ -29,10 +29,7 @@ class EventsController < ApplicationController
     @creator = User.find(current_user.id)
     @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
     if @event.save
-      flash[:success] = 'Event successfully created'
-      if @event.creator.is_admin == true
-        redirect_to '/admin/events'
-      else
+      flash[:success] = 'Event successfully created'      
       redirect_to @event
       end
     else
