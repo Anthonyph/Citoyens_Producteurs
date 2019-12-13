@@ -19,16 +19,17 @@ class Admin::StoresController < ApplicationController
 
   def edit
   end
+  
 
   def create
     @address = Address.create(place: store_params[:place], zip_code: store_params[:zip_code], city: store_params[:city], sector: store_params[:sector])
     @store = Store.new(name: store_params[:name], address: @address)
     if @store.save
       flash[:success] = 'Store successfully created'
-      redirect_to stores_path
+      redirect_to '/admin/stores'
     else
       flash.now[:danger] = 'Something went wrong, please check your input'
-      render new_store_path
+      render :new
     end
   end
 
