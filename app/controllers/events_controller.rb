@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  # before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!
   before_action :set_event, only: [:show, :edit,:update, :destroy]
   before_action :is_default_address?, only: [:new, :create,:edit,:update]
   before_action :is_blank_phone_number?,  only: [:new, :create,:edit,:update] 

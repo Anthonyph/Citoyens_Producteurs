@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @events = Event.all
     @amount = 2000 #prix de l'adhésion
