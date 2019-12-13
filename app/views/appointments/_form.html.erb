@@ -1,18 +1,24 @@
+<%if flash.now[:danger] %>
+<div class="alert alert-danger text-center" role="alert">
+  <%=flash.now[:danger] %>
+</div>
+<% end %>
 <section class="form-style-1 bg-hue-yellow py-5 background-cover">
 <div class="container">
   <div class="row">
     <div class="col-sm-5 col-10 mx-auto">
       <div class="card p-4 my-4 material-shadow text-center">
-        <h3 class="lighter text-center py-2">Choisir un créneau </h3>
+        <h4 class="lighter text-center py-2">créneau disponible pour cet événement:</h4>
+        <h5> Du <%=l(@appointment.event.start_date, format: "%-d %B %Y à %Hh %M")%></br> Au <%=l(@appointment.event.end_date, format: "%-d %B %Y à %Hh %M")%></h5>
         <hr>
         <%= form_with(model: @appointment, url: [@appointment.event, @appointment], local: true) do |form| %>
         <p>
-          <h5> Début : </h5>
+          <h5> Je participe le (date et heure) : </h5>
           <%= form.datetime_field :start_date, class:"form-control text-center" %>
         </p>
         <p>
-          <h5> Temps de participation : </h5>
-          <%= form.number_field :duration, in: 10..300, step: 5, value: 30, class:"form-control text-center" %>
+          <h5> Pour une durée estimée de : </h5>
+          <p><%= form.number_field :duration, in: 10..300, step: 5, value: 30, class:"form-control text-center" %>Minutes</p>
           <%= form.hidden_field :points, value: 0 %>
           <%= form.hidden_field :user_id, value: current_user.id %>
           <%= form.hidden_field :event_id, value: @appointment.event.id %>
