@@ -126,62 +126,6 @@
       </div>
 
       <br> 
-      <h1 class="font-weight-light">Devenir adhérent 🌈</h1>
-      <hr>
-      <br> 
-      <% if current_user.has_payed == false %>
-        <div class="col-lg-8 col-20 mx-auto">
-          <div class="card my-8 card-people-4 " id="card-info">
-            <br>
-            <div class="row justify-content-center">
-              <ul class="text-center">
-                <li>Devenir adhérent permet d'acquérir des parts sociales de la coopérative</li>
-                <li>En faisant l'acquisition de parts sociales de la coopérative, vous en deviendrez copropriétaire avec les autres membres.
-                <br>Vous pourrez participer à l'ensemble des décisions prises au sein de la structure
-                <br>et vous obtenez une voix lors de l'assemblée générale.</li>
-                <li><br>Le prix est de <%= @amount.to_i/100  %> €</li>
-              </ul>
-            </div>
-            <div class="row justify-content-center">
-              <ul>
-                <%= form_tag(user_path, method: "patch") do%>
-                  <article>
-                    <% if flash[:error].present? %>
-                      <div id="error_explanation">
-                        <p><%= flash[:error] %></p>
-                      </div>
-                    <% end %>
-                  </article>
-
-                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                          data-label="Devenir adhérent"
-                          data-description="Devenir adhérent à Citoyens Producteurs"
-                          data-amount=<%=@amount.to_f %>
-                          data-locale="auto">
-                  </script>
-
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-      <% else %>
-        <div class="col-lg-8 col-20 mx-auto">
-          <div class="card my-8 card-people-4 " id="card-info">
-            <br>
-            <div class="row justify-content-center">
-              <ul class="text-center">
-                <li><h4>Tu es adhérent à Citoyens Producteurs, merci beaucoup !</h4></li>
-                <li><h5>Nous te préviendrons par email des prochaines assemblées !</h5></li>
-              </ul>
-            </div>
-            <br>
-          </div>
-        </div>
-      <% end %>
-      <br>
-      <br>
 
       <h1 class="font-weight-light">Mon calendrier 🗓</h1>
       <hr>
@@ -253,6 +197,64 @@
           dp.init(scheduler);
           dp.setTransactionMode('GET', false);
       </script>
+
+      <br>
+      
+      <h1 class="font-weight-light">Devenir adhérent 🌈</h1>
+      <hr>
+      <br> 
+      <% if current_user.has_payed == false %>
+        <div class="col-lg-8 col-20 mx-auto">
+          <div class="card my-8 card-people-4 " id="card-info">
+            <br>
+            <div class="row justify-content-center">
+              <ul class="text-center">
+                <li>Devenir adhérent permet d'acquérir des parts sociales de la coopérative</li>
+                <li>En faisant l'acquisition de parts sociales de la coopérative, vous en deviendrez copropriétaire avec les autres membres.
+                <br>Vous pourrez participer à l'ensemble des décisions prises au sein de la structure
+                <br>et vous obtenez une voix lors de l'assemblée générale.</li>
+                <li><br>Le prix est de <%= @amount.to_i/100  %> €</li>
+              </ul>
+            </div>
+            <div class="row justify-content-center">
+              <ul>
+                <%= form_tag(user_path, method: "patch") do%>
+                  <article>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
+                  </article>
+
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                          data-label="Devenir adhérent"
+                          data-description="Devenir adhérent à Citoyens Producteurs"
+                          data-amount=<%=@amount.to_f %>
+                          data-locale="auto">
+                  </script>
+
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-lg-8 col-20 mx-auto">
+          <div class="card my-8 card-people-4 " id="card-info">
+            <br>
+            <div class="row justify-content-center">
+              <ul class="text-center">
+                <li><h4>Tu es adhérent à Citoyens Producteurs, merci beaucoup !</h4></li>
+                <li><h5>Nous te préviendrons par email des prochaines assemblées !</h5></li>
+              </ul>
+            </div>
+            <br>
+          </div>
+        </div>
+      <% end %>
+      <br>
 
     </div>
   </div>
