@@ -82,7 +82,7 @@
   
       <div class="media mb-4">
 
-        <img class="d-flex mr-3 rounded-circle avatar" src="https://image.flaticon.com/icons/svg/145/145848.svg" alt="">
+        <img class="d-flex mr-3 rounded-circle avatar" <%= image_tag("https://image.flaticon.com/icons/svg/145/145848.svg") %>
         <div class="media-body">
           <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
           <p><%= comment.text %></p>
