@@ -1,7 +1,7 @@
 .jumbotron {
     background-image: url(/assets/logo-garden.svg);
     background-size: cover;
-    height: 860px;
+    height: 700px;
     margin: 0;
 }
 
@@ -13,7 +13,8 @@
 
 .hero-logo {
     text-align: center;
-    width: 100%;
+    width: 80%;
+    margin-left: 6%;
 }
 
 .hero-btn {
@@ -22,13 +23,13 @@
 }
 
 .title-slogan {
-    font-size: 2.8em;
+    font-size: 30px;
     font-weight: 500;
     color: #181f49;
     text-transform: uppercase;
     text-align: center;
     margin-top: 8%;
-    margin-left: 0%;
+    margin-left: -10%;
 }
 
 
