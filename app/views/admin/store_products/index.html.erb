@@ -1,6 +1,6 @@
 <br>
 
-<h1> Voici les produits présents dans tous les locaux confondus </h1>
+<h3> Voici les produits présents dans tous les locaux confondus </h3>
 
 <ul>
     <% StoreProduct.order(:product_id).group(:product_id, :unit_id).sum(:quantity).flatten.each_with_index do |item, index| %>
