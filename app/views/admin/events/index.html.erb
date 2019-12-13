@@ -1,105 +1,191 @@
 <% I18n.locale = :fr%>
-<body class="myspace">
-<%if flash[:success] %>
-    <div class="alert alert-success text-center" role="alert">
-      <%=flash[:success] %>
-    </div>
-<%end%>
+
 <div class="container">
   <div class="card border-0 shadow my-5" id="user-contain">
     <div class="card-body p-5">
 
-      <center><h3 class="font-weight-light">Tous les événements: </h3></center>
+      <h3 class="font-weight-light text-center">Tous les événements: </h3>
       <hr>
-
-        <div class="col-lg-10 col-20 mx-auto">
-          <div class="card my-3 card-people-4" id="card-info">
-            <div class="card-header p-5 background-cover"  style="background-image:url('/assets/kiwi.jpeg')">
-            </div>
-            <div class="card-body p-relative font-title text-center">
-              
-              <div class="flex my-6">
-                <div class="col-4 p-3"><p><%=@event_past.length%></p><h6 class="my-1 font-body">Evenements passés</h6><br>
-                  <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-participate-modal-xl">Voir</button>
-                  <div class="modal fade bd-participate-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                      <div class="modal-content">
-                        <br>
-                        <h4>Evenements passés :</h4>
-                     
-                          <ul>
-                            <% if @event_past.length > 0%>
-                            <% @event_past.each do |pastevent|%>
-                              <li>Evenement : <%= pastevent.title %>
-                               <p>(Du <%=l(pastevent.start_date, format: "%-d %B %Y à %H h %M")%> | Au : <%=l(pastevent.start_date, format: "%-d %B %Y à %H h %M")%>)</p>
-                               <%=link_to "voir", admin_event_path(pastevent.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
-                              </li>
-                             <%end%>
-                             <% else %>
-                              <p>Aucun événement</p>
-                            <%end%>
-                          </ul>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-4 p-3"><p><%=@current_events.length%></p><h6 class="my-1 font-body">Evenements en cours</h6><br>
-                  <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-current-modal-xl">Voir</button>
-                  <div class="modal fade bd-current-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                      <div class="modal-content">
-                        <br>
-                        <h4>Evenements en cours :</h4>
-                     
-                          <ul>
-                            <% if @current_events.length > 0%>
-                            <% @current_events.each do |currentevent|%>
-                              <li>Evenement : <%= currentevent.title %>
-                               <p>(Du <%=l(currentevent.start_date, format: "%-d %B %Y à %H h %M")%> | Au : <%=l(currentevent.start_date, format: "%-d %B %Y à %H h %M")%>)</p>
-                               <%=link_to "voir", admin_event_path(currentevent.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
-                              </li>
-                             <%end%>
-                             <% else %>
-                              <p>Aucun événement</p>
-                            <%end%>
-                          </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                  
-                <div class="col-4 p-3"><p><%=@future_events.length%></p><h6 class="my-1 font-body">Evenement à venir</h6><br>
-                  <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-event-modal-xl">Voir</button>
-                  <div class="modal fade bd-event-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+      <%if flash[:success] %>
+          <div class="alert alert-success text-center" role="alert">
+            <%=flash[:success] %>
+          </div>
+      <%end%>
+      <div class="col-lg-10 col-20 mx-auto">
+        <div class="card my-3 card-people-4" id="card-info">
+          <div class="card-header p-5 background-cover"  style="background-image:url('/assets/kiwi.jpeg')">
+          </div>
+          <div class="card-body p-relative font-title text-center">
+            
+            <div class="flex my-6">
+              <div class="col-4 p-3"><p><%=@event_past.length%></p><h6 class="my-1 font-body">Evenements passés</h6><br>
+                <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-participate-modal-xl">Voir</button>
+                <div class="modal fade bd-participate-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-xl">
                     <div class="modal-content">
-                      <br>
-                        <h4>Evenements à venir:</h4>
-                          <ul>
-                          <% if @future_events.length > 0%>
-                          <% @future_events.each do |future_event|%>
-                            <li>Evenement : <h5 class="card-title"><%= future_event.title %></h5>
-                            <p class="card-text">Du <%=l(future_event.start_date, format: "%-d %B %Y à %H h %M")%> au <%=l(future_event.end_date, format: "%-d %B %Y à %H h %M")%></p>
-                            <%=link_to "voir", admin_event_path(future_event.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
-                            </li>
-                          <%end%>
-                          <% else %>
-                            <p>Aucun événement</p>
-                          <% end %> 
-                          </ul>
+
+                      <div class="card-body">
+                        <div class="table-responsive">
+
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nom </th>
+                                <th scope="col">Date de début</th>
+                                <th scope="col">Date de fin</th>
+                                <th scope="col">Participants</th>
+                                <th scope="col">Voir</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                            <% if @event_past.length > 0%>
+
+                              <h4>Evenements passés :</h4>
+
+                              <% @event_past.each do |pastevent|%>
+
+                                <tr>
+                                  <th scope="row"><%= pastevent.id %></th>
+                                  <td><%= pastevent.title %></td>
+                                  <td><%= l(pastevent.start_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= l(pastevent.end_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= pastevent.appointments.count %>
+                                  <td><%=link_to "voir", admin_event_path(pastevent.id),  class: 'btn btn-sm btn-outline-dark ml-1' %></td>
+                                </tr>
+
+                              <% end %>
+                            <% else %>
+                              <p>Aucun événement</p>
+                            <% end %>
+                            
+                            </tbody>
+                          </table>
+
+                        </div>
                       </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 p-3"><p><%=@current_events.length%></p><h6 class="my-1 font-body">Evenements en cours</h6><br>
+                <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-current-modal-xl">Voir</button>
+                <div class="modal fade bd-current-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+
+                      <div class="card-body">
+                        <div class="table-responsive">
+
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nom </th>
+                                <th scope="col">Date de début</th>
+                                <th scope="col">Date de fin</th>
+                                <th scope="col">Participants</th>
+                                <th scope="col">Voir</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                            <% if @current_events.length > 0%>
+
+                              <h4>Evenements en cours :</h4>
+
+                              <% @current_events.each do |currentevent|%>
+
+                                <tr>
+                                  <th scope="row"><%= currentevent.id %></th>
+                                  <td><%= currentevent.title %></td>
+                                  <td><%= l(currentevent.start_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= l(currentevent.end_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= currentevent.appointments.count %>
+                                  <td><%=link_to "voir", admin_event_path(currentevent.id),  class: 'btn btn-sm btn-outline-dark ml-1' %></td>
+                                </tr>
+
+                              <% end %>
+                            <% else %>
+                              <p>Aucun événement</p>
+                            <% end %>
+                            
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                
+              <div class="col-4 p-3"><p><%=@future_events.length%></p><h6 class="my-1 font-body">Evenement à venir</h6><br>
+                <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-event-modal-xl">Voir</button>
+                <div class="modal fade bd-event-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+
+                      <div class="card-body">
+                        <div class="table-responsive">
+
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nom </th>
+                                <th scope="col">Date de début</th>
+                                <th scope="col">Date de fin</th>
+                                <th scope="col">Participants</th>
+                                <th scope="col">Voir</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                            <% if @future_events.length > 0%>
+
+                              <h4>Evenements à venir :</h4>
+
+                              <% @future_events.each do |future_event|%>
+
+                                <tr>
+                                  <th scope="row"><%= future_event.id %></th>
+                                  <td><%= future_event.title %></td>
+                                  <td><%= l(future_event.start_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= l(future_event.end_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= future_event.appointments.count %>
+                                  <td><%=link_to "voir", admin_event_path(future_event.id),  class: 'btn btn-sm btn-outline-dark ml-1' %></td>
+                                </tr>
+
+                              <% end %>
+                            <% else %>
+                              <p>Aucun événement</p>
+                            <% end %>
+                            
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <%= link_to 'Créer un nouvel évenement', new_admin_event_path, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
         </div>
+
+        <%= link_to 'Créer un nouvel évenement', new_admin_event_path, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
+        
       </div>
-      </div>
+    </div>
+  </div>
+</div>
 
 
 
