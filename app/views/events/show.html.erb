@@ -61,10 +61,17 @@
             <% end %>
 
           <% end %>
-          
-          <!-- Feedbacks -->
-          <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-secondary btn-rounded' %>
 
+         
+          <!-- Feedbacks -->
+           <% if current_user != @event.creator %>
+          <% if user_signed_in?%>
+            <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %> 
+            <% if @appointment != nil %>
+            <%= button_to 'Feedback', new_event_feedback_path(@event.id), method: 'get', class: 'btn btn-lg btn-secondary btn-rounded' %>
+          <% end %>
+          <% end %>
+          <% end %>
         </div>
 
       </div>
