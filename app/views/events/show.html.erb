@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <div class="container">
 <% require 'time' %>
   <div class="card border-0 shadow my-5" id="event">
@@ -85,7 +86,7 @@
         <div class="media-body">
           <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
           <p><%= comment.text %></p>
-          <%= comment.updated_at.strftime("%-d %B %Y, %Hh %M") %>
+          <%=l(comment.updated_at, format: "%-d %B %Y à %H h %M")%>
         </div>
 
         <% if comment.user == current_user %>

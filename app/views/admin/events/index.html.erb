@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <body class="myspace">
 <%if flash[:success] %>
     <div class="alert alert-success text-center" role="alert">
@@ -29,7 +30,7 @@
                             <% if @event_past.length > 0%>
                             <% @event_past.each do |pastevent|%>
                               <li>Evenement : <%= pastevent.title %>
-                               <p>(Du <%= pastevent.start_date %> | Au : <%= pastevent.end_date %>)</p>
+                               <p>(Du <%=l(pastevent.start_date, format: "%-d %B %Y à %H h %M")%> | Au : <%=l(pastevent.start_date, format: "%-d %B %Y à %H h %M")%>)</p>
                                <%=link_to "voir", admin_event_path(pastevent.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
                               </li>
                              <%end%>
@@ -54,7 +55,7 @@
                             <% if @current_events.length > 0%>
                             <% @current_events.each do |currentevent|%>
                               <li>Evenement : <%= currentevent.title %>
-                               <p>(Du <%= currentevent.start_date %> | Au : <%= currentevent.end_date %>)</p>
+                               <p>(Du <%=l(currentevent.start_date, format: "%-d %B %Y à %H h %M")%> | Au : <%=l(currentevent.start_date, format: "%-d %B %Y à %H h %M")%>)</p>
                                <%=link_to "voir", admin_event_path(currentevent.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
                               </li>
                              <%end%>
@@ -79,7 +80,7 @@
                           <% if @future_events.length > 0%>
                           <% @future_events.each do |future_event|%>
                             <li>Evenement : <h5 class="card-title"><%= future_event.title %></h5>
-                            <p class="card-text">Du <%= future_event.start_date %> au <%= future_event.end_date %></p>
+                            <p class="card-text">Du <%=l(future_event.start_date, format: "%-d %B %Y à %H h %M")%> au <%=l(future_event.end_date, format: "%-d %B %Y à %H h %M")%></p>
                             <%=link_to "voir", admin_event_path(future_event.id),  class: 'btn btn-sm btn-outline-dark ml-1' %>
                             </li>
                           <%end%>
