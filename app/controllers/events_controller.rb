@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     if @event.save
       flash[:success] = 'Event successfully created'      
       redirect_to @event
-      end
+      
     else
       flash.now[:danger] = 'Something went wrong, please check your input'
       render new_event_path

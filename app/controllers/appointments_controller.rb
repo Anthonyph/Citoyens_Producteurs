@@ -18,8 +18,17 @@ class AppointmentsController < ApplicationController
   # POST /events/:event_id/appointments
   def create
     @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))
+    
+    #start_time = Time.parse(@appointment.start_date)
+    #end_time = start_time + @appointment.duration
+    #end_time_slot = Time.parse(@event.end_date)
+    end_time = (@appointment.start_date) + @appointment.duration.minutes
+    
     if @appointment.start_date < @event.start_date || @appointment.start_date > @event.end_date
       flash.now[:danger] = "Attention! tu dois choisir une date dans le créneau proposé!"
+      render :new
+    elsif end_time > @event.end_date
+      flash.now[:danger] = "Attention! ta durée de participation ne dois pas depasser le créneau proposé!"
       render :new
     else
       if @appointment.save!
@@ -76,6 +85,8 @@ class AppointmentsController < ApplicationController
   def set_event
     @event = Event.find(params[:event_id])
   end
+
+     
 
   def is_blank_phone_number?  
     if current_user.phone_number.blank?
