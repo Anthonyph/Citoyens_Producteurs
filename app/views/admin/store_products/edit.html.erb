@@ -16,8 +16,8 @@
 
     <table class="table">
       <tr>
-        <td><%= f.text_field :quantity, class: 'form-control',value: @stock.quantity %></td>
-        <td><%= f.select :unit, Unit.pluck(:name, :id), class: 'form-control',value: @stock.unit.name %></td>
+        <td><%= f.text_field :quantity, class: 'form-control', value: @stock.quantity %></td>
+        <td><%= f.select :unit, Unit.pluck(:name, :id), selected: @stock.unit_id, class: 'form-control' %></td>
       </tr>
     </table>
   </div>

@@ -31,38 +31,24 @@
         <div class="card-footer text-center bg-white">
 
           <!-- Appointment -->
-          <%if current_user != @event.creator%>
-          <% if user_signed_in? %>
-            <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
-            <% if @appointment != nil %>
-              <%= link_to 'Je ne veux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-lg btn-danger ml-1 btn-rounded' %>  
-            <% else %>
-              <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-lg btn-success m  l-1 btn-rounded' %>
-            <% end %>
+        <% if current_user != @event.creator%>
+          <% @appointment = @event.appointments.find { |appointment| appointment.user_id == current_user.id} %>   
+          <% if @appointment != nil %>
+            <%= link_to 'Je ne veux plus participer', event_appointment_path(@event.id, @appointment.id), method: :delete, class: 'btn btn-md btn-danger ml-1 btn-rounded' %>  
           <% else %>
-            <%= link_to 'Connecte toi pour participer !', new_user_session_path, class: 'btn btn-lg btn-info btn-rounded' %>
+            <%= link_to 'Participer', new_event_appointment_path(@event.id), class: 'btn btn-lg btn-success m  l-1 btn-rounded' %>
           <% end %>
-          <hr>
-          <%else%> 
-
-            <% DateTime.now%>
-            <%if @event.start_date.strftime("%-d %B %Y à %Hh %M") > DateTime.now.strftime("%-d %B %Y à %Hh %M")%> 
+        <% elsif @event.start_date.strftime("%-d %B %Y à %Hh %M") > DateTime.now.strftime("%-d %B %Y à %Hh %M")%> 
           <%= button_to 'Editer l\'évènement', edit_event_path(@event.id), method: 'get', class: 'btn btn-lg btn-warning btn-rounded' %>
           <hr>
           <%= button_to 'Supprimer l\'évènement', event_path(@event.id), params:{destroy_event: true}, method: 'delete', class: 'btn btn-lg btn-danger btn-rounded' %>
            <hr>
-            <%else %>
-              <%if @event.is_passed == false %>
+        <%elsif @event.is_passed == false %>
           <%= button_to 'L\'évènement est passé - Demander les feedbacks ! ', {:controller => "events", :action => "update", :is_passed => true,}, method: 'patch', class: 'btn btn-lg btn-warning btn-rounded' %>
-              <%else %>
-
-            <% end %>
-            <hr>
-            <% end %>
-
-          <% end %>
-
+        <% end %>
          
+        <hr>
+          
           <!-- Feedbacks -->
           <% if @event.start_date.strftime("%-d %B %Y à %Hh %Mm %Ss") < DateTime.now.strftime("%-d %B %Y à %Hh %Mm %Ss") %>
             <% if user_signed_in? %>  

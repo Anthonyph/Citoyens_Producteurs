@@ -5,7 +5,7 @@
       <div class= 'form-group'>
       <h3> Editer l'évènement </h3>
         <label> Type d'évènement : </label>
-        <%= f.select :type, EventType.pluck(:name, :id), class: 'form-control' %>
+        <%= f.select :type, EventType.pluck(:name, :id), selected: @event.event_type_id, class: 'form-control' %>
       </div>  
       <hr>
       <%if flash[:danger] %>

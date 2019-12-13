@@ -5,7 +5,7 @@
    </div>
   <h3> Voici les produits présents dans la boutique <%=@store.name%> </h3>
 </div>
-<%= link_to 'Ajouter un nouveau produit', new_admin_store_product_path(@store.id), method: :get, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
+<%= link_to 'Ajouter un nouveau produit', new_admin_store_product_path, method: :get, class: 'btn btn-md btn-outline-secondary ml-1 btn-block' %>
 <div class="card-body">
   <div class="table-responsive">
 
