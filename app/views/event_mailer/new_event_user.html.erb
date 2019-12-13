@@ -1,3 +1,4 @@
+ <% I18n.locale = :fr%>
 <div class="body-mail" bgcolor="#F9F0D9">
 <table width="100%" bgcolor="#F9F0D9" border="0" cellpadding="0" cellspacing="0">
 <tr>
@@ -32,7 +33,7 @@
               <p> Tu viens de créer un nouvel évènement chez Citoyens Producteurs et nous te remercions chaleureusement de faire vivre la communauté.</p>
               <p> Le titre de ton évènement est : <%=@event.title%> et voici sa description : <%=@event.description%>.</p>
               <p> Le lieu de l'évènement <%=@event.address.place%> <%=@event.address.zip_code%> <%=@event.address.city%> situé dans le secteur <%=@event.address.sector%>.</p>
-              <p> L'évènement aura lieu le : <%=@event.start_date%>.</p>
+              <p> L'évènement aura lieu le : <%=l(@event.start_date, format: "%-d %B %Y à %Hh %M")%>.</p>
               <p> Les personnes qui s'inscriront à l'évènement recevrons ton adresse email : <%=@user_email%> et ton numéro de téléphone.</p>
             <tr>
               <td class="bodycopy" style="text-align:center;">

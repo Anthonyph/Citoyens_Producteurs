@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <div class="container">
   <div class="card border-0 shadow my-5" id="event">
     <div class="card-body p-5">
@@ -32,7 +33,7 @@
             <div class="card-body p-2">
 
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Le <%= event.start_date.strftime("%-d %B %Y à %Hh %Mm") %></li>
+                <li class="list-group-item">Le <%=l(event.start_date, format: "%-d %B %Y à %Hh %M")%></li>
                 <% if event.appointments.count > 0 %> 
                   <li class="list-group-item"><%= event.appointments.count > 1 ? 'Nombre de participants : ' : 'Nombre de participant : ' %> <%= event.appointments.count %></li>
                 <% else %>
