@@ -4,8 +4,8 @@ class Unit < ApplicationRecord
   has_many :store_products
 
   validates :name,
-  presence: true,
-  length: {maximum: 10}
+    presence: true,
+    length: {maximum: 20}
 
 
   
