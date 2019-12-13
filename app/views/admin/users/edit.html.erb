@@ -5,50 +5,50 @@
 <%= form_with model: @user,url: admin_user_path, local: true, class: 'mt-5 col-4 offset-4' do |f| %>
 
   <div class= 'form-group'>
-  <label> type </label>
-  <%= f.select :store, Store.pluck(:name, :id), class: 'form-control' %>
+  <label> Local </label>
+  <%= f.select :store, Store.pluck(:name, :id), selected: @user.store_id, class: 'form-control' %>
   </div>
 
   <div class= 'form-group'>
-    <label> Prenom </label>
+    <label> Prénom </label>
     <%= f.text_field :first_name, class: 'form-control' %>
   </div>
 
   <div class= 'form-group'>
-   <label>Nom </label>
+   <label> Nom </label>
     <%= f.text_field :last_name, class: 'form-control' %>
   </div>
 
   <div class= 'form-group'>
-   <label>Email </label>
+   <label> Email </label>
     <%= f.text_field :email, class: 'form-control' %>
   </div>
 
   <div class= 'form-group'>
-   <label>phone_number </label>
+   <label> Numéro de téléphone </label>
     <%= f.text_field :phone_number, class: 'form-control' %>
   </div>
 
   <div class= 'form-group'>
-   <label>Statut </label>
+   <label> Admin </label>
    <%= f.check_box :is_admin, class: 'form-control' %>
   </div>
 
 
   <div class= 'form-group'>
-    <label> Adresse : </label>
+    <label> Rue : </label>
     <%= f.text_field :place, class: 'form-control', value: @user.address.place %>
   </div>
   <div class= 'form-group'>
-    <label> code postal </label>
+    <label> Code postal </label>
     <%= f.text_field :zip_code, class: 'form-control', value: @user.address.zip_code %>
   </div>
   <div class= 'form-group'>
-    <label> ville </label>
+    <label> Ville </label>
     <%= f.text_field :city, class: 'form-control', value: @user.address.city  %>
   </div>
   <div class= 'form-group'>
-    <label> quartier </label>
+    <label> Quartier </label>
     <%= f.text_field :sector, class: 'form-control', value: @user.address.sector  %>
   </div>
 
@@ -60,7 +60,7 @@
 
 
 <center>
-<% if@user.errors.any? %>
+<% if @user.errors.any? %>
   <div class="alert alert-dismissible alert-danger">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong> Erreur ! </strong>
