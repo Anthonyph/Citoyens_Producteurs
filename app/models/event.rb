@@ -10,13 +10,11 @@ class Event < ApplicationRecord
   include Feedbackable
 
   after_create :event_creation_user
-  # validates :title,
-  #   presence: true,
-  #   length: {maximum: 30}
+  validates :title,
+    presence: true
 
-  # validates :description,
-  #   presence: true,
-  #   length: {maximum: 250}
+  validates :description,
+    presence: true
   
   validates :start_date, presence: true, 
   date: { after: Proc.new { Time.now }}
