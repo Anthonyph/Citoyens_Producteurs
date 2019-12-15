@@ -28,7 +28,7 @@
 
             </div>
 
-            <%=image_tag 'https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', class:"card-img-top p-1" %>
+            <%= image_tag(('https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-1") %>
             
             <div class="card-body p-2">
 
@@ -45,7 +45,7 @@
 
               <div class="text-center">
 
-                <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-info btn-block mt-2 mb-1" %>
+                <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-outline-success btn-block mt-2 mb-1" %>
               
               </div>
 
