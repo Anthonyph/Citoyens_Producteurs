@@ -20,11 +20,11 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = @event.appointments.new(appointment_params.merge(status: 'to_validate'))    
     
-    end_time = (@appointment.start_date) + @appointment.duration.minutes
     if @appointment.start_date == nil
       flash.now[:danger] = "Attention! tu n'as pas choisi ta date de participation !"
         render :new
     else
+      end_time = (@appointment.start_date) + @appointment.duration.minutes
       if @appointment.start_date < @event.start_date || @appointment.start_date >@event.end_date
         flash.now[:danger] = "Attention! tu dois choisir une date dans le créneau proposé!"
         render :new
@@ -33,7 +33,8 @@ class AppointmentsController < ApplicationController
         render :new
       else
         if @appointment.save!
-          redirect_to @event, success: 'Appointment created'
+          flash[:success] = "Ta participation à bien été enregistrée ! Un email vient de t'être envoyé avec plus d'infomations sur l'événement !"
+          redirect_to user_path(current_user.id)
         else
           flash.now[:danger] = 'Something went wrong, please check your input'
           render :new
@@ -76,8 +77,8 @@ class AppointmentsController < ApplicationController
       AppointmentMailer.destroy_appointment_user(@appointment).deliver_now
       AppointmentMailer.destroy_appointment_creator(@appointment).deliver_now
       @appointment.destroy
-      flash[:destroyed] = 'Appointment was deleted'
-      redirect_back(fallback_location: @event)
+      flash[:destroyed] = 'Ta participation à été supprimée !'
+      redirect_to user_path(current_user.id)
     end
 
   end
