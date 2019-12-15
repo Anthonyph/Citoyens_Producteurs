@@ -15,9 +15,11 @@
         if (event.event_type.id == '1') 
             return "collect_event";
         else if (event.event_type.id == '2') 
-            return "delivery_event";
-        else 
             return "cooking_event";
+        else if (event.event_type.id == '3')
+            return "communication_event";
+        else
+            return "other_event";
     };
     // scheduler.config.icons_select = [
     //     "icon_details",

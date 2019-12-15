@@ -1,41 +1,49 @@
 /*event in day or week view*/
 .dhx_cal_event.collect_event div{
-    background-color: #009966;
+    background-color: rgba(40, 167, 69, 0.9);
     color: #fff !important;
 }
-.dhx_cal_event.delivery_event div{
-    background-color: blue !important;
-    color: #fff !important;
-}
-
 .dhx_cal_event.cooking_event div{
-    background-color: orange !important;
+    background-color: rgba(220, 53, 69, 0.9) !important;
     color: #fff !important;
+}
+.dhx_cal_event.communication_event div{
+    background-color: rgba(255, 193, 7, 0.9) !important;
+    color: #fff !important;
+}
+.dhx_cal_event.other_event div{
+    background-color: grey !important;
+    color: black !important;
 }
 
 /*multi-day event in month view*/
 .dhx_cal_event_line.collect_event{
-    background-color: #009966 !important;
-    color: green !important;
+    background-color: rgba(40, 167, 69, 0.9) !important;
+    color: #fff !important;
 }
-.dhx_cal_event_line.delivery_event{
-    background-color: #009966 !important;
+.dhx_cal_event_line.cooking_event{
+    background-color: rgba(220, 53, 69, 0.9) !important;
+    color: #fff !important;
+}
+.dhx_cal_event_line.communication_event{
+    background-color: rgba(255, 193, 7, 0.9) !important;
     color: blue !important;
 }
-
-.dhx_cal_event_line.cooking_event{
-    background-color: #009966 !important;
-    color: orange !important;
+.dhx_cal_event_line.other_event{
+    background-color: grey !important;
+    color: black !important;
 }
 
 /*event with fixed time, in month view*/
 .dhx_cal_event_clear.collect_event{
-    color: green !important;
+    color: rgba(40, 167, 69, 0.9) !important;
 }
-.dhx_cal_event_clear.delivery_event{
-    color: blue !important;
-}
-
 .dhx_cal_event_clear.cooking_event{
-    color: orange !important;
+    color: rgba(220, 53, 69, 0.9) !important;
+}
+.dhx_cal_event_clear.communication_event{
+    color: rgba(255, 193, 7, 0.9) !important;
+}
+.dhx_cal_event_clear.other_event{
+    color: grey !important;
 }
