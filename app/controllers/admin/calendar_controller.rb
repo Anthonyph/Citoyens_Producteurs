@@ -40,16 +40,18 @@ class Admin::CalendarController < ApplicationController
       tid = id
     when 'updated'
       event = Event.find(id)
-      # address = event.address
-      # address.update!(place: place, zip_code: zip_code, city: city, sector: sector)
-      type = EventType.find(event_type)
-      event.event_type_id = type.id
-      event.start_date = start_date
-      event.end_date = end_date
-      event.title = title
-      event.description = description
-      event.save
-      id = id
+      if event.creator != current_user && current_user.is_admin == false
+        return redirect_back(fallback_location: user_path(current_user))
+      else
+        type = EventType.find(event_type)
+        event.event_type_id = type.id
+        event.start_date = start_date
+        event.end_date = end_date
+        event.title = title
+        event.description = description
+        event.save
+        id = id
+      end
     end
     
     render json: {
