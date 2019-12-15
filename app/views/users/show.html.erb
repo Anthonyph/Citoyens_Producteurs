@@ -15,8 +15,21 @@
             🌱
             <% end %>
             </h4>
+
+            <% if flash[:destroyed] %>
+              <div class="alert alert-danger text-center" role="alert">
+                <%= flash[:destroyed] %>
+              </div>
+            <% elsif flash[:success] %>
+              <div class="alert alert-success text-center" role="alert">
+                <%= flash[:success] %>
+              </div>
+            <% end %>
+
             <hr>
+
             <h4>Mes évenements :</h4>
+            
             <div class="flex my-3">
 
               <div class="col-6 p-3"><p><%=current_user.appointments.length%></p><h6 class="my-1 font-body">Participations</h6><br>
