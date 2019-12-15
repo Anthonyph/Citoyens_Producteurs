@@ -28,12 +28,14 @@ class EventsController < ApplicationController
     @type = EventType.find(event_params[:type])
     @creator = User.find(current_user.id)
     @event = Event.new(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address, creator: @creator)
-    if @event.save
-      flash[:success] = 'Event successfully created'
+    if @event.address_id == nil
+      flash[:danger] = "Tu dois renseigner une adresse complète"
+      render new_event_path
+    elsif @event.save
+      flash[:success] = "Événement créé avec succès."
       redirect_to @event
-     
     else
-      flash.now[:danger] = 'Something went wrong, please check your input'
+      flash.now[:danger] = "L'événement n'a pas pu être créé, tous les champs doivent être renseignés"
       render new_event_path
     end
   end
@@ -45,7 +47,7 @@ class EventsController < ApplicationController
       @type = EventType.find(event_params[:type])
       @creator = User.find(current_user.id)
       @event.update(event_type: @type, title: event_params[:title], description: event_params[:description], start_date: event_params[:start_date], end_date: event_params[:end_date], address: @address1, creator: @creator)
-      flash[:success] = 'Event successfully updated'
+      flash[:success] = "L'événement a bien été mis à jour"
       @appointments = Appointment.where(event_id: @event.id)
       ############ MAILER ##################
       @appointments.each do |appointment|
