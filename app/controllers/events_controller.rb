@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :is_default_address?, only: [:new, :create,:edit,:update]
   before_action :is_blank_phone_number?,  only: [:new, :create,:edit,:update] 
   
-  before_action :is_creator?, only: [:edit]
+  before_action :is_creator?, only: [:edit, :update]
 
   def index
     @events = Event.all
@@ -111,10 +111,8 @@ class EventsController < ApplicationController
       
 
   def is_creator?
-    if current_user == @event.creator
-    
-    else
-    redirect_to event_path
+    if current_user != @event.creator && current_user.is_admin == false
+      redirect_to event_path
     end
   end
 
