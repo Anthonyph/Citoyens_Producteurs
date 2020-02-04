@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   resources :comments #, only: [:create, :update, :destroy]
   resources :product
+  resources :blog
   
   resources :events do
     resources :appointments

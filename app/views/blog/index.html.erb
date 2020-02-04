@@ -1,0 +1,118 @@
+<%= render 'layouts/navbar' %>
+
+<div class="bg-citizens">
+  <div class="container pt-4">
+    <div class="card material-shadow my-5" id="event">
+      <div class="card-body p-4">
+
+        <div id="carouselInterval" class="carousel-blog slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-interval="6000">
+              <img src="https://images.pexels.com/photos/890507/pexels-photo-890507.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-interval="4000">
+              <img src="https://lhf.glaive.pro/partners/header/1200_140_lhf_2021%20(1)-filters(1200x140).jpg" class="d-block w-100" alt="...">
+            </div>
+          </div>
+        </div>
+        
+        <hr>
+
+        <div class="row">
+
+          <div class="col-md-8 col-sm-12 p-0">
+
+            <% @blogs.each do |blog| %>
+            
+            <div class="card mb-4">
+
+              <div class="card-header bg-white">
+
+                <h2 class="m-0"><%= blog.title %>
+                </h2>
+
+              </div>
+
+              <%= image_tag(('https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-1") %>
+              
+              <div class="card-body p-2">
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Le <%=l(blog.start_date, format: "%-d %B %Y à %Hh %M")%></li>
+                  <li class="list-group-item">Quartier : </li>
+                  <li class="list-group-item">Local : </li>
+                </ul>
+
+                <div class="text-center">
+
+                  <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-outline-success btn-block mt-2 mb-1" %>
+                
+                </div>
+
+              </div>
+
+            </div>
+
+            <% end %>
+
+          </div>
+
+          <div class="col-md-4 events-aside">
+
+            <div class="card mb-4"> 
+              
+              <div class-="card-header">
+                <h5 class="card-header bg-white">Envie de participer ?</h5>
+              </div>  
+
+              <div class="card-body text-center">
+                <p>
+                Proposer une recette, préparation...
+                </p>
+                <%= link_to 'Proposer', new_blog_path, class: 'btn btn-md btn-success btn-rounded' %>
+              </div>
+
+            </div>
+
+            <div class="card my-4">
+
+              <h5 class="card-header bg-white">Local</h5>
+
+              <div class="card-body p-1">
+                <div class="row">
+                  <div class="col-lg-12">
+
+                    <section class="showcase-style-2 p-relative bg-white p-0">
+                      <div class="container events-store">
+                        <div class="row-12 ">
+
+                          <% @stores.each do |store| %>
+
+                            <div class="col-12 p-1">
+                              <div class="card background-cover flat no-border" id="city-bg">
+                                <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
+                                  <i class="fa fa-heart cdanger"></i>
+                                  <h2 class="cwhite p-2 font-title"><%= store.name %></h2>
+                                </div>
+                              </div>
+                            </div>
+
+                          <% end %>
+
+                        </div>
+                      </div>
+                    </section>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
