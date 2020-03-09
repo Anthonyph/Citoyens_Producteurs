@@ -22,31 +22,55 @@
 
           <div class="col-md-8 col-sm-12 p-0">
 
+            <%if flash[:success] %>
+              <div class="alert alert-success text-center" role="alert">
+                <%= flash[:success] %>
+              </div>
+            <% end %>
+
             <% @blogs.each do |blog| %>
             
-            <div class="card mb-4">
+            <div class="card shadow mb-4">
 
               <div class="card-header bg-white">
 
-                <h2 class="m-0"><%= blog.title %>
-                </h2>
+                <h1 class="blog-title"> <%= blog.title.capitalize %> </h1>
+                <%= image_tag(("https://image.flaticon.com/icons/svg/145/145848.svg"), class:"d-flex mr-3  -circle blog-avatar") %>
+                <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
 
               </div>
-
-              <%= image_tag(('https://images.pexels.com/photos/1656665/pexels-photo-1656665.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-1") %>
-              
+                 
               <div class="card-body p-2">
 
+                <%= image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img") %>
+
+                <h6>
+                       <% if blog.content.to_s.length > 80 %> 
+                        <p class="card-text"> <%=  blog.content.to_s[0..260] + ' [...]' %> </p>
+                      <% else %>
+                        <p class="card-text"> <%=  blog.content.to_s[0..260] %> </p>
+                      <% end %>
+                </h6>
+
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Le <%=l(blog.start_date, format: "%-d %B %Y à %Hh %M")%></li>
-                  <li class="list-group-item">Quartier : </li>
-                  <li class="list-group-item">Local : </li>
+                  <li class="list-group-item text-muted">Publié le <%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
                 </ul>
 
                 <div class="text-center">
 
-                  <%= link_to "Voir l'évenement", event_path(event.id), class:"btn btn-md btn-outline-success btn-block mt-2 mb-1" %>
+                  <div class="row">
+
+                    <div class="col">
+                      <%= link_to "Voir plus...", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
+                    </div>
+                    <div class="col">
+                      <% if current_user.id == blog.user_id %>
+                        <%= button_to 'Supprimer', blog_path(blog.id), method: 'delete', class: 'btn btn-md btn-outline-danger m-2' %>
+                      <% end %>
+                    </div>
                 
+                  </div>
+
                 </div>
 
               </div>
@@ -59,22 +83,7 @@
 
           <div class="col-md-4 events-aside">
 
-            <div class="card mb-4"> 
-              
-              <div class-="card-header">
-                <h5 class="card-header bg-white">Envie de participer ?</h5>
-              </div>  
-
-              <div class="card-body text-center">
-                <p>
-                Proposer une recette, préparation...
-                </p>
-                <%= link_to 'Proposer', new_blog_path, class: 'btn btn-md btn-success btn-rounded' %>
-              </div>
-
-            </div>
-
-            <div class="card my-4">
+            <div class="card mb-4">
 
               <h5 class="card-header bg-white">Local</h5>
 
@@ -105,6 +114,21 @@
 
                   </div>
                 </div>
+              </div>
+
+            </div>
+
+            <div class="card my-4"> 
+              
+              <div class-="card-header">
+                <h5 class="card-header bg-white">Envie de participer ?</h5>
+              </div>  
+
+              <div class="card-body text-center">
+                <p>
+                Proposer une recette, préparation...
+                </p>
+                <%= link_to 'Proposer', new_blog_path, class: 'btn btn-md btn-success btn-rounded' %>
               </div>
 
             </div>
