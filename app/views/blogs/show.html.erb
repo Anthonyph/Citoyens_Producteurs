@@ -4,48 +4,48 @@
     <div class="card material-shadow my-5" id="event">
       <div class="card-body p-4">
 
-                    <div class="card shadow mb-4">
+        <div class="card shadow mb-4">
 
-              <div class="card-header bg-white">
+          <div class="card-header bg-white">
 
-                <h1 class="blog-title"> <%= @blog.title.capitalize %> </h1>
-                <%= image_tag(("https://image.flaticon.com/icons/svg/145/145848.svg"), class:"d-flex mr-3  -circle blog-avatar") %>
-                <h6 class="lead mt-3 text-muted"><%= @blog.user.last_name %> <%= @blog.user.first_name %></h6>
+            <h1 class="blog-title"> <%= @blog.title.capitalize %> </h1>
+            <%= image_tag(("https://image.flaticon.com/icons/svg/145/145848.svg"), class:"d-flex mr-3  -circle blog-avatar") %>
+            <h6 class="lead mt-3 text-muted"><%= @blog.user.last_name %> <%= @blog.user.first_name %></h6>
 
-              </div>
-                 
-              <div class="card-body p-2">
+          </div>
+              
+          <div class="card-body p-2">
 
-                <%= image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img") %>
+            <%= image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img") %>
 
-                <h6>
-                <%= @blog.content %>
-                </h6>
+            <h6>
+            <%= @blog.content %>
+            </h6>
 
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item text-muted">Publié le <%= l(@blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
-                </ul>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-muted">Publié le <%= l(@blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
+            </ul>
 
-                <div class="text-center">
+            <div class="text-center">
 
-                  <div class="row">
+              <div class="row">
 
-                    <div class="col">
-                      <%= link_to "Retour", blogs_path, class:"btn btn-md btn-outline-success m-2" %>
-                    </div>
-                    <div class="col">
-                      <% if current_user.id == @blog.user_id %>
-                        <%= button_to 'Supprimer', blog_path(@blog.id), method: 'delete', class: 'btn btn-md btn-outline-danger m-2' %>
-                      <% end %>
-                    </div>
-                
-                  </div>
-
+                <div class="col">
+                  <%= link_to "Retour", blogs_path, class:"btn btn-md btn-outline-success m-2" %>
                 </div>
-
+                <div class="col">
+                  <% if current_user.id == @blog.user_id %>
+                    <%= button_to 'Supprimer', blog_path(@blog.id), method: 'delete', class: 'btn btn-md btn-outline-danger m-2' %>
+                  <% end %>
+                </div>
+            
               </div>
 
             </div>
+
+          </div>
+
+        </div>
 
       </div>
     </div>
