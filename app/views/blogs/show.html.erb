@@ -40,13 +40,14 @@
                     <p><%= comment.text %></p>
                     <%= l(comment.updated_at,format: "%-d %B %Y à %Hh %M") %>
                   </div>
-
-                  <% if comment.user == current_user %>
-                  <%= link_to 'Modifier', edit_blog_comment_path(comment, blog_comment: { text: comment.text, user_id: comment.user_id, blog_id: comment.blog_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
-                  <% end %>
-                  <% if  current_user.is_admin == true %>
-                  <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
-                  <% end %>
+                  <% if user_signed_in? %>
+                    <% if comment.user == current_user %>
+                    <%= link_to 'Modifier', edit_blog_comment_path(comment, blog_comment: { text: comment.text, user_id: comment.user_id, blog_id: comment.blog_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
+                    <% end %>
+                    <% if  current_user.is_admin == true %>
+                    <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
+                    <% end %>
+                  <%end %>
 
                 </div>
               </div>

@@ -6,8 +6,10 @@
       <%= form_with(model: @blog_comment, local: true) do |form| %>
           <h6> Nouveau commentaire : </h6>
           <p><%= form.text_area :text, class: 'form-control' %></p>
-          <%= form.hidden_field :blog_id, value: @blog.id %>
-          <%= form.hidden_field :user_id, value: current_user.id %>
+          <% if user_signed_in? %>
+            <%= form.hidden_field :blog_id, value: @blog.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          <% end %>
 
           <button type="submit" class="btn btn-success btn-rounded">Commenter</button>
           
