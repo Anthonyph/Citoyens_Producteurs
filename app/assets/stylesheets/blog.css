@@ -1,5 +1,6 @@
 .carousel-blog,.carousel-inner,.carousel-item {
 height: 120px;
+z-index: 0;
 }
 
 .blog-avatar {

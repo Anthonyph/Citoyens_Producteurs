@@ -8,7 +8,7 @@
           <div class="card-header bg-white">
 
             <h1 class="blog-title"> <%= @blog.title.capitalize %> </h1>
-            <%= image_tag(("https://image.flaticon.com/icons/svg/145/145848.svg"), class:"d-flex mr-3  -circle blog-avatar") %>
+            <%= image_tag((@blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
             <h6 class="lead mt-3 text-muted"><%= @blog.user.last_name %> <%= @blog.user.first_name %></h6>
 
           </div>
