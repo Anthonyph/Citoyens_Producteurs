@@ -1,13 +1,11 @@
-<%= render 'layouts/navbar' %>
-
 <div class="bg-citizens">
-  <div class="container pt-4">
+  <div class="container">
     <div class="card material-shadow my-5" id="event">
       <div class="card-body p-4">
 
         <div id="carouselInterval" class="carousel-blog slide carousel-fade" data-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="6000">
+            <div class="carousel-item active" data-interval="4000">
               <img src="https://images.pexels.com/photos/890507/pexels-photo-890507.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" data-interval="4000">
@@ -20,120 +18,84 @@
 
         <div class="row">
 
-          <div class="col-md-8 col-sm-12 p-0">
+          <div class="col">
 
-            <%if flash[:success] %>
-              <div class="alert alert-success text-center" role="alert">
-                <%= flash[:success] %>
+            <div class="card-columns">
+
+
+              <%if flash[:success] %>
+                <div class="alert alert-success text-center" role="alert">
+                  <%= flash[:success] %>
+                </div>
+              <% end %>
+
+              <div class="card"> 
+                
+                <div class-="card-header">
+                  <h5 class="card-header bg-white">Envie de participer ?</h5>
+                </div>  
+
+                <div class="card-body text-center">
+                  <p>
+                  Proposer une recette, préparation...
+                  </p>
+                  <%= link_to 'Proposer', new_blog_path, class: 'btn btn-md btn-success btn-rounded' %>
+                </div>
+
               </div>
-            <% end %>
 
-            <% @blogs.each do |blog| %>
-            
-            <div class="card shadow mb-4">
+              <% @blogs.each do |blog| %>
+              
+              <div class="card shadow mb-4">
 
-              <div class="card-header bg-white">
+                <div class="card-header bg-white">
 
-                <h1 class="blog-title"> <%= blog.title.capitalize %> </h1>
-                <%= image_tag(("https://image.flaticon.com/icons/svg/145/145848.svg"), class:"d-flex mr-3  -circle blog-avatar") %>
-                <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
+                  <h1 class="blog-title"> <%= blog.title.capitalize %> </h1>
+                  <%= image_tag(("https://image.flaticon.com/icons/svg/145/145848.svg"), class:"d-flex mr-3  -circle blog-avatar") %>
+                  <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
 
-              </div>
-                 
-              <div class="card-body p-2">
+                </div>
+                  
+                <div class="card-body p-2">
 
-                <%= image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img") %>
+                  <%= image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img") %>
 
-                <h6>
-                       <% if blog.content.to_s.length > 80 %> 
-                        <p class="card-text"> <%=  blog.content.to_s[0..260] + ' [...]' %> </p>
-                      <% else %>
-                        <p class="card-text"> <%=  blog.content.to_s[0..260] %> </p>
-                      <% end %>
-                </h6>
+                  <h6>
+                        <% if blog.content.to_s.length > 80 %> 
+                          <p class="card-text"> <%=  blog.content.to_s[0..180] + ' [...]' %> </p>
+                        <% else %>
+                          <p class="card-text"> <%=  blog.content.to_s[0..180] %> </p>
+                        <% end %>
+                  </h6>
 
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item text-muted">Publié le <%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
-                </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-muted">Publié le <%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
+                  </ul>
 
-                <div class="text-center">
-
-                  <div class="row">
+                  <div class="row text-center">
 
                     <div class="col">
-                      <%= link_to "Voir plus...", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
+                      <%= link_to "Lire", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
                     </div>
+                    
                     <div class="col">
                       <% if current_user.id == blog.user_id %>
                         <%= button_to 'Supprimer', blog_path(blog.id), method: 'delete', class: 'btn btn-md btn-outline-danger m-2' %>
                       <% end %>
                     </div>
-                
+                  
                   </div>
 
                 </div>
 
               </div>
 
-            </div>
-
-            <% end %>
-
-          </div>
-
-          <div class="col-md-4 events-aside">
-
-            <div class="card mb-4">
-
-              <h5 class="card-header bg-white">Local</h5>
-
-              <div class="card-body p-1">
-                <div class="row">
-                  <div class="col-lg-12">
-
-                    <section class="showcase-style-2 p-relative bg-white p-0">
-                      <div class="container events-store">
-                        <div class="row-12 ">
-
-                          <% @stores.each do |store| %>
-
-                            <div class="col-12 p-1">
-                              <div class="card background-cover flat no-border" id="city-bg">
-                                <div class="showcase-details p-absolute w-100 h-100 text-center d-none align-center flex-column justify-center h1">
-                                  <i class="fa fa-heart cdanger"></i>
-                                  <h2 class="cwhite p-2 font-title"><%= store.name %></h2>
-                                </div>
-                              </div>
-                            </div>
-
-                          <% end %>
-
-                        </div>
-                      </div>
-                    </section>
-
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="card my-4"> 
-              
-              <div class-="card-header">
-                <h5 class="card-header bg-white">Envie de participer ?</h5>
-              </div>  
-
-              <div class="card-body text-center">
-                <p>
-                Proposer une recette, préparation...
-                </p>
-                <%= link_to 'Proposer', new_blog_path, class: 'btn btn-md btn-success btn-rounded' %>
-              </div>
+              <% end %>
 
             </div>
 
           </div>
+
         </div>
 
       </div>

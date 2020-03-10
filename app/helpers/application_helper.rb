@@ -4,9 +4,6 @@ module ApplicationHelper
     !current_page?(controller: '/home', action: 'index') &&
     !current_page?(controller: '/home', action: 'community') &&
     !current_page?(controller: '/home', action: 'story') &&
-    !current_page?(controller: '/blogs', action: 'index') &&
-    !current_page?(controller: '/blogs', action: 'new') &&
-    !current_page?(controller: '/blogs', action: 'show') &&
     !current_page?(controller: '/users/registrations', action: 'new') &&
     !current_page?(controller: '/devise/sessions', action: 'new') &&
     !current_page?(controller: '/devise/sessions', action: 'create') &&
