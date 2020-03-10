@@ -30,9 +30,17 @@
 
             <h4>Mon profil :</h4>
 
-            <button type="button" class="btn btn-success m-3" data-toggle="popover" 
-            title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?" disabled >Niveau <span class="badge badge-light"><%= current_user.created_events.length + current_user.appointments.length + current_user.blogs.length %></span></button>
+            <p>
+              <button class="btn btn-success m-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Niveau <span class="badge badge-light"><%= current_user.created_events.length + current_user.appointments.length + current_user.blogs.length %></span>
+              </button>
+            </p>
 
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                Ne jugez pas chaque journée par votre récolte, mais par les graines que vous avez plantées !
+              </div>
+            </div>
 
             <div class="progress">
               <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: <%= (current_user.created_events.length + current_user.appointments.length + current_user.blogs.length) * 4 %>%"></div>
