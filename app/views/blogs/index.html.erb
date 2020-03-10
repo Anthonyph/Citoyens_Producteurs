@@ -79,11 +79,20 @@
                       <%= link_to "Lire", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
                     </div>
                     
-                    <div class="col">
-                      <% if current_user.id == blog.user_id %>
+                    
+                    <% if user_signed_in? %>
+                      <% if current_user.id == blog.user_id || current_user.is_admin?%>
+
+                        <div class="col">
+                        <%= button_to 'Modifier', edit_blog_path(blog.id), method: 'get', class: 'btn btn-md btn-outline-warning m-2' %>
+                        </div>
+
+                        <div class="col">
                         <%= button_to 'Supprimer', blog_path(blog.id), method: 'delete', class: 'btn btn-md btn-outline-danger m-2' %>
+                        </div>
+                        
                       <% end %>
-                    </div>
+                    <% end %>
                   
                   </div>
 

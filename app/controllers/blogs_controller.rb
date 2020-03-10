@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show]
   before_action :set_blog, only: [:show, :edit,:update, :destroy]
 
   def index
@@ -23,6 +23,16 @@ class BlogsController < ApplicationController
   end
 
   def show
+  end
+
+  def update
+    if @blog.save
+      flash[:success] = "Post modifié avec succès."
+      redirect_to blogs_url
+    else
+      flash[:danger] = "Le post n'a pas pu être mmodifié, tous les champs doivent être renseignés"
+      render
+    end
   end
 
   def destroy

@@ -33,9 +33,11 @@
                   <%= link_to "Retour", blogs_path, class:"btn btn-md btn-outline-success m-2" %>
                 </div>
                 <div class="col">
+                <% if current_user != nil %>
                   <% if current_user.id == @blog.user_id %>
                     <%= button_to 'Supprimer', blog_path(@blog.id), method: 'delete', class: 'btn btn-md btn-outline-danger m-2' %>
                   <% end %>
+                <% end %>
                 </div>
             
               </div>
