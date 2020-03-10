@@ -51,7 +51,7 @@
                 <div class="card-header bg-white">
 
                   <span class="badge badge-secondary float-right">New</span>
-                  <h1 class="blog-title"> <%= blog.title.capitalize %> </h1>
+                  <h1 class="blog-title"> <%= link_to blog.title.capitalize, blog_path(blog.id)%>  </h1>
                   <%= image_tag((blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
                   <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
 

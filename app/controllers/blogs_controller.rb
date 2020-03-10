@@ -23,6 +23,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog_comment = BlogComment.new
   end
 
   def update

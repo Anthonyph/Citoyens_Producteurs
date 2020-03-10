@@ -1,3 +1,4 @@
+<% I18n.locale = :fr%>
 <div class="bg-citizens">
   <div class="container">
     <div class="card material-shadow my-5" id="event">
@@ -6,7 +7,8 @@
         <div class="card shadow mb-4">
 
           <div class="card-header bg-white">
-
+          
+            <span class="badge badge-secondary float-right">New</span>
             <h1 class="blog-title"> <%= @blog.title.capitalize %> </h1>
             <%= image_tag((@blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
             <h6 class="lead mt-3 text-muted"><%= @blog.user.last_name %> <%= @blog.user.first_name %></h6>
@@ -25,21 +27,55 @@
               <li class="list-group-item text-muted">Publié le <%= l(@blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
             </ul>
 
+            <%= render 'blog_comments/form' %>
+
+            <% @blog.blog_comments.each do |comment| %>
+
+              <div class="card p-3">        
+                <div class="media">
+
+                  <%= image_tag((comment.user.avatar), class:"d-flex mr-3 rounded-circle avatar") %>
+                  <div class="media-body">
+                    <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
+                    <p><%= comment.text %></p>
+                    <%= l(comment.updated_at,format: "%-d %B %Y à %Hh %M") %>
+                  </div>
+
+                  <% if comment.user == current_user %>
+                  <%= link_to 'Modifier', edit_blog_comment_path(comment, blog_comment: { text: comment.text, user_id: comment.user_id, blog_id: comment.blog_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
+                  <% end %>
+                  <% if  current_user.is_admin == true %>
+                  <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
+                  <% end %>
+
+                </div>
+              </div>
+
+            <% end %>
+
             <div class="text-center">
 
               <div class="row">
 
                 <div class="col">
                   <%= link_to "Retour", blogs_path, class:"btn btn-md btn-outline-success m-2" %>
-                </div>
-                <div class="col">
-                <% if current_user != nil %>
-                  <% if current_user.id == @blog.user_id %>
+                </div>                    
+                    
+                <% if user_signed_in? %>
+                  <% if current_user.id == @blog.user_id || current_user.is_admin?%>
+
+                    <div class="col">
+                    <%= button_to "Modifier l'article", edit_blog_path(@blog.id), method: 'get', class: 'btn btn-md btn-warning m-2' %>
+                    </div>
+
+                    <div class="col">
                     <%= button_to 'Supprimer', blog_path(@blog.id), method: 'delete', class: 'btn btn-md btn-outline-danger m-2' %>
+                    </div>
+                    
                   <% end %>
                 <% end %>
+                  
                 </div>
-            
               </div>
 
             </div>
