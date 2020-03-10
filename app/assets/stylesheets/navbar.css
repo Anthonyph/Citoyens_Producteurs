@@ -28,12 +28,6 @@
     margin-right: 10px;
 }
 
-.navbar-avatar {
-    float: right;
-    width: 60px;
-    height: 60px;
-}
-
 .navbar .nav-link {
     border-bottom: 4px solid transparent;
 }

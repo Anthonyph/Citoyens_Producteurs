@@ -24,8 +24,41 @@
               </div>
             <% end %>
 
+            <div class="form-group">
+
+              <div class="row">
+
+                <div class="col">
+                  <%= image_tag(("avatar_1.png"), class:"avatar")%><br>
+                  <%= f.radio_button :avatar, 'avatar_1.png' %>
+                </div>
+
+                <div class="col">
+                  <%= image_tag(("avatar_2.png"), class:"avatar")%><br>
+                  <%= f.radio_button :avatar, 'avatar_2.png' %>
+                </div>
+
+                <div class="col">
+                  <%= image_tag(("avatar_3.png"), class:"avatar")%><br>
+                  <%= f.radio_button :avatar, 'avatar_3.png' %>
+                </div>
+
+                <div class="col">
+                  <%= image_tag(("avatar_4.png"), class:"avatar")%><br>
+                  <%= f.radio_button :avatar, 'avatar_4.png' %>
+                </div>
+
+                <div class="col">
+                  <%= image_tag(("avatar_5.png"), class:"avatar")%><br>
+                  <%= f.radio_button :avatar, 'avatar_5.png' %>
+                </div>
+
+              </div>
+
+            </div>
+
             <div class= 'form-group'>
-              <h4><%= f.label :store, "Mon local :" %></h4>
+              <h4><%= f.label :store, "Ma ville :" %></h4>
               <%= f.select :store, Store.pluck(:name, :id), selected: current_user.store_id, class: 'form-control' %>
             </div>
 
