@@ -17,8 +17,8 @@ class BlogsController < ApplicationController
       flash[:success] = "Post créé avec succès."
       redirect_to blogs_url
     else
-      flash[:danger] = "Le post n'a pas pu être créé, tous les champs doivent être renseignés"
-      redirect_to new_blog_path
+      flash[:danger] = "Le post n'a pas pu être créé, tous les champs doivent être renseignés et le contenu doit être de 40 caractères minimum"
+      render new_blog_path
     end
   end
 
@@ -27,7 +27,7 @@ class BlogsController < ApplicationController
   end
 
   def update
-    if @blog.save
+    if @blog.update(blog_params)
       flash[:success] = "Post modifié avec succès."
       redirect_to blogs_url
     else
