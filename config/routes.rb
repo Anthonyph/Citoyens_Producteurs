@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
   resources :comments #, only: [:create, :update, :destroy]
   resources :product
-  resources :blogs
+  resources :blogs do
+    resources :likes
+  end
   resources :blog_comments
   
   resources :events do

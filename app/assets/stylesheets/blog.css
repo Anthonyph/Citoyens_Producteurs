@@ -13,7 +13,18 @@ z-index: 0;
 }
 
 .blog-img {
-  width: 42%;
+  width: 40%;
   float: left;
   border-radius: 10%;
+}
+
+.like {
+  width: 34px;
+  margin: 8px;
+}
+
+.comment_icon {
+  width: 24px;
+  margin-left: 4px;
+  margin-top: 2px;
 }

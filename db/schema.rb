@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_205037) do
+ActiveRecord::Schema.define(version: 2020_03_11_173236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2020_03_10_205037) do
     t.index ["user_id"], name: "index_blog_comments_on_user_id"
   end
 
+  create_table "blog_likes", force: :cascade do |t|
+    t.integer "like"
+    t.bigint "user_id"
+    t.bigint "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_blog_likes_on_blog_id"
+    t.index ["user_id"], name: "index_blog_likes_on_user_id"
+  end
+
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -64,6 +74,16 @@ ActiveRecord::Schema.define(version: 2020_03_10_205037) do
     t.datetime "updated_at", null: false
     t.index ["blog_id"], name: "index_blogs_comments_on_blog_id"
     t.index ["user_id"], name: "index_blogs_comments_on_user_id"
+  end
+
+  create_table "blogs_likes", force: :cascade do |t|
+    t.integer "like"
+    t.bigint "user_id"
+    t.bigint "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_blogs_likes_on_blog_id"
+    t.index ["user_id"], name: "index_blogs_likes_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -106,6 +126,15 @@ ActiveRecord::Schema.define(version: 2020_03_10_205037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feedbackable_type", "feedbackable_id"], name: "index_feedbacks_on_feedbackable_type_and_feedbackable_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "blog_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_likes_on_blog_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "product_appointments", force: :cascade do |t|
@@ -190,14 +219,20 @@ ActiveRecord::Schema.define(version: 2020_03_10_205037) do
   add_foreign_key "appointments", "users"
   add_foreign_key "blog_comments", "blogs"
   add_foreign_key "blog_comments", "users"
+  add_foreign_key "blog_likes", "blogs"
+  add_foreign_key "blog_likes", "users"
   add_foreign_key "blogs", "users"
   add_foreign_key "blogs_comments", "blogs"
   add_foreign_key "blogs_comments", "users"
+  add_foreign_key "blogs_likes", "blogs"
+  add_foreign_key "blogs_likes", "users"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "events", "addresses"
   add_foreign_key "events", "event_types"
   add_foreign_key "events", "users", column: "creator_id"
+  add_foreign_key "likes", "blogs"
+  add_foreign_key "likes", "users"
   add_foreign_key "product_appointments", "appointments"
   add_foreign_key "product_appointments", "products"
   add_foreign_key "product_appointments", "units"

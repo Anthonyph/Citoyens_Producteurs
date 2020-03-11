@@ -177,7 +177,7 @@
                                 <tr>
                                   <th scope="row"><%= blog.title %></th>
                                   <td><%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M") %></td>
-                                  <td><%= blog.id %></td>
+                                  <td><%= blog.likes.length %></td>
                                   <td><%= blog.blog_comments.length %></td>
                                   <td><%=link_to "voir", blog_path(blog.id),  class: 'btn btn-sm btn-rounded btn-outline-secondary ml-1' %></td>
                                 </tr>

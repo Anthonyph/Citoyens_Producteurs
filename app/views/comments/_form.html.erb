@@ -1,5 +1,5 @@
 <div class="card">
-  <h5 class="card-header">Laisser un commentaire</h5>
+  <h5 class="card-header">Laisser un commentaire <%= link_to image_tag(("comment.png"), class:"comment_icon float-right"), event_path(@event) %> <span class="float-right"><%= @event.comments.count %></span> </h5>
   <div class="card-body"> 
     <div class='container'>
 
