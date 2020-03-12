@@ -28,8 +28,9 @@ Rails.application.routes.draw do
     resources :store_product
   end
 
-  resources :comments #, only: [:create, :update, :destroy]
+  resources :comments
   resources :product
+
   resources :blogs do
     resources :likes
   end

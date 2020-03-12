@@ -1,4 +1,6 @@
-<% I18n.locale = :fr%>
+<%if !user_signed_in? %>
+<%= render 'layouts/navbar' %>
+<% end %>
 <div class="bg-citizens">
   <div class="container">
     <div class="card material-shadow my-5" id="event">
@@ -40,10 +42,10 @@
                     <h5 class="mt-0 text-muted"><i><%=  "#{comment.user.first_name}" "#{comment.user.last_name}"%></i></h5>
                     <p><%= comment.text %></p>
                     
-                    <% if user_signed_in? && comment.user == current_user || current_user.is_admin == true %>
+                    <% if user_signed_in? && comment.user == current_user || user_signed_in? && current_user.is_admin == true %>
 
                       <%= link_to 'Modifier', edit_blog_comment_path(comment, blog_comment: { text: comment.text, user_id: comment.user_id, blog_id: comment.blog_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
-                      <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
+                      <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
                       
                     <% end %>
                   </div>
@@ -63,12 +65,6 @@
                 </div>      
                 
                     <div class="col">
-
-                      <%if flash[:notice] %>
-                        <div class="alert alert-success text-center" role="alert">
-                          <%= flash[:notice] %>
-                        </div>
-                      <% end %>
 
                       <% if user_signed_in? %>
                         <% pre_like = @blog.likes.find { |like| like.user_id == current_user.id} %>

@@ -1,3 +1,6 @@
+<%if !user_signed_in? %>
+<%= render 'layouts/navbar' %>
+<% end %>
 <div class="bg-citizens">
   <div class="container">
     <div class="card material-shadow my-5" id="event">
@@ -80,12 +83,6 @@
                     </div>
 
                     <div class="col">
-
-                      <%if flash[:notice] %>
-                        <div class="alert alert-success text-center" role="alert">
-                          <%= flash[:notice] %>
-                        </div>
-                      <% end %>
 
                       <% if user_signed_in? %>
                         <% pre_like = blog.likes.find { |like| like.user_id == current_user.id} %>
