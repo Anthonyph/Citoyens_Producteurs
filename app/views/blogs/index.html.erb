@@ -1,105 +1,103 @@
 <%if !user_signed_in? %>
 <%= render 'layouts/navbar' %>
-<% end %>
 <div class="bg-citizens">
-  <div class="container">
-    <div class="card material-shadow my-5" id="event">
-      <div class="card-body p-4">
+<% end %>
+<div class="container">
+  <div class="card material-shadow my-5" id="event">
+    <div class="card-body p-4">
 
-        <div id="carouselInterval" class="carousel-blog slide carousel-fade" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="4000">
-              <img src="https://images.pexels.com/photos/890507/pexels-photo-890507.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-interval="4000">
-              <img src="https://lhf.glaive.pro/partners/header/1200_140_lhf_2021%20(1)-filters(1200x140).jpg" class="d-block w-100" alt="...">
-            </div>
+      <div id="carouselInterval" class="carousel-blog slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-interval="4000">
+            <img src="https://images.pexels.com/photos/890507/pexels-photo-890507.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-interval="4000">
+            <img src="https://lhf.glaive.pro/partners/header/1200_140_lhf_2021%20(1)-filters(1200x140).jpg" class="d-block w-100" alt="...">
           </div>
         </div>
-        
-        <hr>
+      </div>
+      
+      <hr>
 
-        <div class="row">
+      <div class="row">
 
-          <div class="col">
+        <div class="col">
 
-            <div class="card-columns">
+          <div class="card-columns">
 
 
-              <%if flash[:success] %>
-                <div class="alert alert-success text-center" role="alert">
-                  <%= flash[:success] %>
-                </div>
-              <% end %>
+            <%if flash[:success] %>
+              <div class="alert alert-success text-center" role="alert">
+                <%= flash[:success] %>
+              </div>
+            <% end %>
 
-              <div class="card"> 
-                
-                <div class-="card-header">
-                  <h4 class="card-header bg-white">Une idée à exprimer ?</h4>
-                </div>  
+            <div class="card"> 
+              
+              <div class-="card-header">
+                <h4 class="card-header bg-white">Une idée à exprimer ?</h4>
+              </div>  
 
-                <div class="card-body text-center">
-                  <p>
-                  Parler de la coopérative Citoyens-Producteurs, proposer une recette, discuter de projets citoyens... le blog est ouvert à tous !
-                  </p>
-                  <%= link_to 'Proposer', new_blog_path, class: 'btn btn-md btn-success btn-rounded' %>
-                </div>
-
+              <div class="card-body text-center">
+                <p>
+                Parler de la coopérative Citoyens-Producteurs, proposer une recette, discuter de projets citoyens... le blog est ouvert à tous !
+                </p>
+                <%= link_to 'Proposer', new_blog_path, class: 'btn btn-md btn-success btn-rounded' %>
               </div>
 
-              <% @blogs.each do |blog| %>
-              
-              <div class="card shadow mb-4">
+            </div>
 
-                <div class="card-header bg-white">
+            <% @blogs.each do |blog| %>
+            
+            <div class="card shadow mb-4">
 
-                  <span class="badge badge-secondary float-right">New</span>
-                  <h3 class="blog-title"> <%= link_to blog.title.capitalize, blog_path(blog.id)%>  </h3>
-                  <%= image_tag((blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
-                  <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
+              <div class="card-header bg-white">
 
-                </div>
-                  
-                <div class="card-body p-2">
+                <span class="badge badge-secondary float-right">New</span>
+                <h3 class="blog-title"> <%= link_to blog.title.capitalize, blog_path(blog.id)%>  </h3>
+                <%= image_tag((blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
+                <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
 
-                  <%= link_to image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img"), blog_path(blog.id) %>
+              </div>
+                
+              <div class="card-body p-2">
 
-                  <h6>
-                        <% if blog.content.to_s.length > 80 %> 
-                          <p class="card-text"> <%=  blog.content.to_s[0..400] + ' [...]' %> </p>
-                        <% else %>
-                          <p class="card-text"> <%=  blog.content.to_s[0..400] %> </p>
-                        <% end %>
-                  </h6>
+                <%= link_to image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img"), blog_path(blog.id) %>
 
-                  <li class="text-muted">Publié le <%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
-
-                  <div class="row text-center">
-
-                    <div class="col">
-
-                      <%= link_to "Lire", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
-
-                    </div>
-
-                    <div class="col">
-
-                      <% if user_signed_in? %>
-                        <% pre_like = blog.likes.find { |like| like.user_id == current_user.id} %>
+                <h6>
+                      <% if blog.content.to_s.length > 80 %> 
+                        <p class="card-text"> <%=  blog.content.to_s[0..400] + ' [...]' %> </p>
+                      <% else %>
+                        <p class="card-text"> <%=  blog.content.to_s[0..400] %> </p>
                       <% end %>
-                        <% if pre_like %>
-                          <%= blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(blog, pre_like), method: :delete %>
-                        <% else %>
-                        <%= blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(blog), method: :post %>
-                      <% end %>
+                </h6>
 
-                    </div>
+                <li class="text-muted">Publié le <%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
 
-                    <div class="col">
+                <div class="row text-center">
 
-                      <%= blog.blog_comments.count %><%= link_to image_tag(("comment.png"), class:"like"), blog_path(blog) %>
+                  <div class="col">
 
-                    </div>
+                    <%= link_to "Lire", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
+
+                  </div>
+
+                  <div class="col">
+
+                    <% if user_signed_in? %>
+                      <% pre_like = blog.likes.find { |like| like.user_id == current_user.id} %>
+                    <% end %>
+                      <% if pre_like %>
+                        <%= blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(blog, pre_like), method: :delete %>
+                      <% else %>
+                      <%= blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(blog), method: :post %>
+                    <% end %>
+
+                  </div>
+
+                  <div class="col">
+
+                    <%= blog.blog_comments.count %><%= link_to image_tag(("comment.png"), class:"like"), blog_path(blog) %>
 
                   </div>
 
@@ -107,15 +105,20 @@
 
               </div>
 
-              <% end %>
-
             </div>
+
+            <% end %>
 
           </div>
 
         </div>
 
       </div>
+
     </div>
   </div>
 </div>
+<%if !user_signed_in? %>
+<%= render 'layouts/footer' %>
+</div>
+<% end %>

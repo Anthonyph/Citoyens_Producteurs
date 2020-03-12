@@ -1,81 +1,81 @@
 <%if !user_signed_in? %>
 <%= render 'layouts/navbar' %>
-<% end %>
 <div class="bg-citizens">
-  <div class="container">
-    <div class="card material-shadow my-5" id="event">
-      <div class="card-body p-4">
+<% end %>
+<div class="container">
+  <div class="card material-shadow my-5" id="event">
+    <div class="card-body p-4">
 
-        <div class="card shadow mb-4">
+      <div class="card shadow mb-4">
 
-          <div class="card-header bg-white">
-          
-            <span class="badge badge-secondary float-right">New</span>
-            <h1 class="blog-title"> <%= @blog.title.capitalize %> </h1>
-            <%= image_tag((@blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
-            <h6 class="lead mt-3 text-muted"><%= @blog.user.last_name %> <%= @blog.user.first_name %></h6>
+        <div class="card-header bg-white">
+        
+          <span class="badge badge-secondary float-right">New</span>
+          <h1 class="blog-title"> <%= @blog.title.capitalize %> </h1>
+          <%= image_tag((@blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
+          <h6 class="lead mt-3 text-muted"><%= @blog.user.last_name %> <%= @blog.user.first_name %></h6>
 
-          </div>
-              
-          <div class="card-body p-2">
+        </div>
+            
+        <div class="card-body p-2">
 
-            <%= image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img") %>
+          <%= image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img") %>
 
-            <h6>
-            <%= @blog.content %>
-            </h6>
+          <h6>
+          <%= @blog.content %>
+          </h6>
 
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item text-muted">Publié le <%= l(@blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
-            </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-muted">Publié le <%= l(@blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
+          </ul>
 
-            <%= render 'blog_comments/form' %>
+          <%= render 'blog_comments/form' %>
 
-            <% @blog.blog_comments.each do |comment| %>
+          <% @blog.blog_comments.each do |comment| %>
 
-              <div class="card p-3">        
-                <div class="media">
+            <div class="card p-3">        
+              <div class="media">
 
-                  <%= image_tag((comment.user.avatar), class:"d-flex mr-3 rounded-circle avatar") %>
-                  <div class="media-body">
-                    <li class="float-right">Posté le <%= l(comment.updated_at,format: "%-d %B %Y à %Hh %M") %></li>
-                    <h5 class="mt-0 text-muted"><i><%=  "#{comment.user.first_name}" "#{comment.user.last_name}"%></i></h5>
-                    <p><%= comment.text %></p>
+                <%= image_tag((comment.user.avatar), class:"d-flex mr-3 rounded-circle avatar") %>
+                <div class="media-body">
+                  <li class="float-right">Posté le <%= l(comment.updated_at,format: "%-d %B %Y à %Hh %M") %></li>
+                  <h5 class="mt-0 text-muted"><i><%=  "#{comment.user.first_name}" "#{comment.user.last_name}"%></i></h5>
+                  <p><%= comment.text %></p>
+                  
+                  <% if user_signed_in? && comment.user == current_user || user_signed_in? && current_user.is_admin == true %>
+
+                    <%= link_to 'Modifier', edit_blog_comment_path(comment, blog_comment: { text: comment.text, user_id: comment.user_id, blog_id: comment.blog_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
+                    <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
                     
-                    <% if user_signed_in? && comment.user == current_user || user_signed_in? && current_user.is_admin == true %>
-
-                      <%= link_to 'Modifier', edit_blog_comment_path(comment, blog_comment: { text: comment.text, user_id: comment.user_id, blog_id: comment.blog_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
-                      <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
-                      
-                    <% end %>
-                  </div>
-
-
+                  <% end %>
                 </div>
+
+
               </div>
+            </div>
 
-            <% end %>
+          <% end %>
 
-            <div class="text-center">
+          <div class="text-center">
 
-              <div class="row">
+            <div class="row">
 
-                <div class="col">
-                  <%= link_to "Retour", blogs_path, class:"btn btn-md btn-outline-success m-2" %>
-                </div>      
-                
-                    <div class="col">
+              <div class="col">
+                <%= link_to "Retour", blogs_path, class:"btn btn-md btn-outline-success m-2" %>
+              </div>      
+              
+                  <div class="col">
 
-                      <% if user_signed_in? %>
-                        <% pre_like = @blog.likes.find { |like| like.user_id == current_user.id} %>
-                      <% end %>
-                        <% if pre_like %>
-                          <%= @blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(@blog, pre_like), method: :delete %>
-                        <% else %>
-                          <%= @blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(@blog), method: :post %>
-                      <% end %>
-                      
-                    </div>
+                    <% if user_signed_in? %>
+                      <% pre_like = @blog.likes.find { |like| like.user_id == current_user.id} %>
+                    <% end %>
+                      <% if pre_like %>
+                        <%= @blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(@blog, pre_like), method: :delete %>
+                      <% else %>
+                        <%= @blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(@blog), method: :post %>
+                    <% end %>
+                    
+                  </div>
 
                 <% if user_signed_in? %>
                   <% if current_user.id == @blog.user_id || current_user.is_admin?%>
@@ -90,10 +90,8 @@
                     
                   <% end %>
                 <% end %>
-                  
-                </div>
+                
               </div>
-
             </div>
 
           </div>
@@ -101,6 +99,11 @@
         </div>
 
       </div>
+
     </div>
   </div>
 </div>
+<%if !user_signed_in? %>
+<%= render 'layouts/footer' %>
+</div>
+<% end %>

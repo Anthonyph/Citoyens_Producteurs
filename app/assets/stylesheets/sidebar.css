@@ -15,6 +15,7 @@
 #page-content {
   transition: all 500ms ease;
   margin-left: 250px;
+  min-height: 100%;
 }
 
 #page-content.active {
