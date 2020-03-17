@@ -1,0 +1,4 @@
+blog_comment = document.getElementById("blog-comment-<%=@blog_comment.id%>")
+while (blog_comment.firstChild) {
+    blog_comment.removeChild(blog_comment.firstChild);
+}

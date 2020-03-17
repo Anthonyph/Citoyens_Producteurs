@@ -3,7 +3,7 @@
   <div class="card-body"> 
     <div class='container'>
 
-      <%= form_with(model: @blog_comment, local: true) do |form| %>
+      <%= form_with(model: @blog_comment, remote: true) do |form| %>
           <h6> Nouveau commentaire : </h6>
           <p><%= form.text_area :text, class: 'form-control' %></p>
           <% if user_signed_in? %>

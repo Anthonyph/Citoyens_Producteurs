@@ -18,10 +18,13 @@ class BlogCommentsController < ApplicationController
     @blog = Blog.find(comment_params[:blog_id])
     if @blog_comment.save
       flash[:success] = 'Le commentaire a été créé avec succès'
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: @blog) }
+        format.js { }
+      end
     else
       flash[:danger] = 'Impossible de créer un commentaire - vérifiez votre saisie'
     end
-    redirect_back(fallback_location: @blog)
   end
 
   def update
@@ -35,7 +38,10 @@ class BlogCommentsController < ApplicationController
   def destroy
     @blog_comment.destroy
     flash[:destroyed] = 'Comment was deleted'
-    redirect_back(fallback_location: @blog)
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: @blog) }
+      format.js { }
+    end
   end
 
   private
