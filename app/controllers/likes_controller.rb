@@ -9,8 +9,11 @@ class LikesController < ApplicationController
       flash[:notice] = "You can't like more than once"
     else
       @blog.likes.create(user_id: current_user.id)
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: @blog) }
+        format.js { }
+      end
     end
-    redirect_back(fallback_location: @blog)
   end
 
   def destroy
@@ -18,8 +21,11 @@ class LikesController < ApplicationController
       flash[:notice] = "Cannot unlike"
     else
       @like.destroy
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: @blog) }
+        format.js { }
+      end
     end
-    redirect_back(fallback_location: @blog)
   end
  
  private

@@ -31,6 +31,7 @@
 
           <%= render 'blog_comments/form' %>
 
+          <div id="blog-comment">
           <% @blog.blog_comments.each do |comment| %>
 
             <div class="card p-3">        
@@ -53,6 +54,7 @@
 
               </div>
             </div>
+            </ul>
 
           <% end %>
 
@@ -64,15 +66,15 @@
                 <%= link_to "Retour", blogs_path, class:"btn btn-md btn-outline-success m-2" %>
               </div>      
               
-                  <div class="col">
+                  <div class="col", id="blog-<%=@blog.id%>-like">
 
                     <% if user_signed_in? %>
                       <% pre_like = @blog.likes.find { |like| like.user_id == current_user.id} %>
                     <% end %>
                       <% if pre_like %>
-                        <%= @blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(@blog, pre_like), method: :delete %>
+                        <%= @blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(@blog, pre_like), method: :delete, remote: true %>
                       <% else %>
-                        <%= @blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(@blog), method: :post %>
+                        <%= @blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(@blog), method: :post, remote: true %>
                     <% end %>
                     
                   </div>

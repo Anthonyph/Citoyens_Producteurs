@@ -49,63 +49,63 @@
 
             <% @blogs.each do |blog| %>
             
-            <div class="card shadow mb-4">
+              <div class="card shadow mb-4">
 
-              <div class="card-header bg-white">
+                <div class="card-header bg-white">
 
-                <span class="badge badge-secondary float-right">New</span>
-                <h3 class="blog-title"> <%= link_to blog.title.capitalize, blog_path(blog.id)%>  </h3>
-                <%= image_tag((blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
-                <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
+                  <span class="badge badge-secondary float-right">New</span>
+                  <h3 class="blog-title"> <%= link_to blog.title.capitalize, blog_path(blog.id)%>  </h3>
+                  <%= image_tag((blog.user.avatar), class:"d-flex mr-3  -circle blog-avatar") %>
+                  <h6 class="lead mt-3 text-muted"><%= blog.user.last_name %> <%= blog.user.first_name %></h6>
 
-              </div>
-                
-              <div class="card-body p-2">
+                </div>
+                  
+                <div class="card-body p-2">
 
-                <%= link_to image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img"), blog_path(blog.id) %>
+                  <%= link_to image_tag(('https://images.pexels.com/photos/2228559/pexels-photo-2228559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'), class:"card-img-top p-2 blog-img"), blog_path(blog.id) %>
 
-                <h6>
-                      <% if blog.content.to_s.length > 80 %> 
-                        <p class="card-text"> <%=  blog.content.to_s[0..400] + ' [...]' %> </p>
-                      <% else %>
-                        <p class="card-text"> <%=  blog.content.to_s[0..400] %> </p>
+                  <h6>
+                        <% if blog.content.to_s.length > 80 %> 
+                          <p class="card-text"> <%=  blog.content.to_s[0..400] + ' [...]' %> </p>
+                        <% else %>
+                          <p class="card-text"> <%=  blog.content.to_s[0..400] %> </p>
+                        <% end %>
+                  </h6>
+
+                  <li class="text-muted">Publié le <%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
+
+                  <div class="row text-center">
+
+                    <div class="col">
+
+                      <%= link_to "Lire", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
+
+                    </div>
+
+                    <div class="col", id="blog-<%=blog.id%>-like">
+
+                      <% if user_signed_in? %>
+                        <% pre_like = blog.likes.find { |like| like.user_id == current_user.id} %>
                       <% end %>
-                </h6>
+                        <% if pre_like %>
+                          <%= blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(blog, pre_like), method: :delete, remote: true %>
+                        <% else %>
+                        <%= blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(blog), method: :post, remote: true %>
+                      <% end %>
 
-                <li class="text-muted">Publié le <%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M")%></li>
+                    </div>
 
-                <div class="row text-center">
+                    <div class="col">
 
-                  <div class="col">
+                      <%= blog.blog_comments.count %><%= link_to image_tag(("comment.png"), class:"like"), blog_path(blog) %>
 
-                    <%= link_to "Lire", blog_path(blog.id), class:"btn btn-md btn-outline-success m-2" %>
-
-                  </div>
-
-                  <div class="col">
-
-                    <% if user_signed_in? %>
-                      <% pre_like = blog.likes.find { |like| like.user_id == current_user.id} %>
-                    <% end %>
-                      <% if pre_like %>
-                        <%= blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(blog, pre_like), method: :delete %>
-                      <% else %>
-                      <%= blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(blog), method: :post %>
-                    <% end %>
-
-                  </div>
-
-                  <div class="col">
-
-                    <%= blog.blog_comments.count %><%= link_to image_tag(("comment.png"), class:"like"), blog_path(blog) %>
+                    </div>
 
                   </div>
 
                 </div>
 
               </div>
-
-            </div>
 
             <% end %>
 

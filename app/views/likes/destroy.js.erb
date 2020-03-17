@@ -1,0 +1,5 @@
+blog_like = document.getElementById("blog-<%=@blog.id%>-like")
+while (blog_like.firstChild) {
+    blog_like.removeChild(blog_like.firstChild);
+}
+blog_like.insertAdjacentHTML("beforeend", "<%= j render 'like',  blog: @blog %>")
