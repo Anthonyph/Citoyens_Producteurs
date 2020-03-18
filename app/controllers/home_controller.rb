@@ -8,5 +8,5 @@ class HomeController < ApplicationController
 
   def community
   end
-  
+
 end

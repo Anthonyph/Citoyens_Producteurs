@@ -20,4 +20,6 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  display: block;
+  flex: 1 0 auto;
 }

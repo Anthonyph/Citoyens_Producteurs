@@ -10,7 +10,7 @@
     
         <div class="col-lg-8 col-sm-12">
 
-          <div class="card">
+          <div class="card shadow">
 
             <div class="card-header bg-white">
 
@@ -81,36 +81,30 @@
 
           </div>
 
-          <!-- Comments Form -->
-          <div class="card my-4">
-            <h5 class="card-header bg-white">Laisser un commentaire</h5>
-            <div class="card-body">
-              <%= render 'comments/form' %>
-            </div>
-          </div>
-
-          <!-- Comment -->
           <% @event.comments.order('created_at DESC').each do |comment| %>
-      
-          <div class="media mb-4">
+            
+            <div class="card shadow p-3">
+              <div class="media">
 
-            <%= image_tag(("https://image.flaticon.com/icons/svg/145/145848.svg"), class:"d-flex mr-3 rounded-circle avatar") %>
-            <div class="media-body">
-              <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
-              <p><%= comment.text %></p>
-              <%=l(comment.updated_at, format: "%-d %B %Y à %H h %M")%>
+                <%= image_tag((comment.user.avatar), class:"d-flex mr-3 rounded-circle avatar") %>
+                <div class="media-body">
+                  <h5 class="mt-0"><%=  "#{comment.user.first_name}" " #{comment.user.last_name}"%></h5>
+                  <p><%= comment.text %></p>
+                  <%=l(comment.updated_at, format: "%-d %B %Y à %H h %M")%>
+                </div>
+                <% if user_signed_in? && comment.user == current_user %>
+                  <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
+                <% end %>
+                <% if  current_user.is_admin == true %>
+                  <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
+                <% end %>
+
+              </div>
             </div>
-
-            <% if comment.user == current_user %>
-            <%= link_to 'Modifier', edit_comment_path(comment, comment: { text: comment.text, user_id: comment.user_id, event_id: comment.event_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
-            <% end %>
-            <% if  current_user.is_admin == true %>
-            <%= link_to 'Supprimer', comment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm bg-danger btn-rounded m-1" %>
-            <% end %>
-
-          </div>
 
           <% end %>
+
+          <%= render 'comments/form' %>
 
           <br>
 
@@ -119,7 +113,7 @@
 
         <div class="col-md-4 events-aside">
 
-          <div class="card">
+          <div class="card shadow">
 
             <h5 class="card-header bg-white"><strong><%= @event.title %></strong>
               <% if @event.event_type.id == 1 %>

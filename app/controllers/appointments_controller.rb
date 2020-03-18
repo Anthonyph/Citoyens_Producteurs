@@ -32,7 +32,7 @@ class AppointmentsController < ApplicationController
         flash.now[:danger] = "Attention! ta durée de participation ne dois pas depasser le créneau proposé!"
         render :new
       else
-        if @appointment.save!
+        if @appointment.save
           flash[:success] = "Ta participation à bien été enregistrée ! Un email vient de t'être envoyé avec plus d'infomations sur l'événement !"
           redirect_to user_path(current_user.id)
         else

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :appointments
     resources :feedbacks
     resources :stores
+    resources :blogs
+
     resources :calendar do
       collection do
         get 'show', to: 'calendar#show', as: :data
@@ -26,8 +28,13 @@ Rails.application.routes.draw do
     resources :store_product
   end
 
-  resources :comments #, only: [:create, :update, :destroy]
+  resources :comments
   resources :product
+
+  resources :blogs do
+    resources :likes
+  end
+  resources :blog_comments
   
   resources :events do
     resources :appointments

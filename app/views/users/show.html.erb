@@ -28,11 +28,79 @@
 
             <hr>
 
-            <h4>Mes évenements :</h4>
+            <h4>Mon profil :</h4>
+
+            <p>
+              <button class="btn btn-success m-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Niveau <span class="badge badge-light"><%= current_user.created_events.length + current_user.appointments.length + current_user.blogs.length %></span>
+              </button>
+            </p>
+
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                Ne jugez pas chaque journée par votre récolte, mais par les graines que vous avez plantées !
+              </div>
+            </div>
+
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: <%= (current_user.created_events.length + current_user.appointments.length + current_user.blogs.length) * 4 %>%"></div>
+            </div>
             
             <div class="flex my-3">
 
-              <div class="col-6 p-3"><p><%=current_user.appointments.length%></p><h6 class="my-1 font-body">Participations</h6><br>
+              <div class="col p-3"><p><%=current_user.created_events.length%></p><h6 class="my-1 font-body">Évenements organisés</h6><br>
+                <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-event-modal-xl">Voir</button>
+                <div class="modal fade bd-event-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+
+
+                      <div class="card-body">
+                        <div class="table-responsive">
+
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Type</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Date de début</th>
+                                <th scope="col">Date de fin</th>
+                                <th scope="col">Participants</th>
+                                <th scope="col">Détails</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <h2 class="font-weight-bold">Évenements organisés 🥕</h2>
+
+                              <% current_user.created_events.each do |event|%>
+
+                                <tr>
+                                  <th scope="row"><%= event.event_type.name %></th>
+                                  <td><%= event.title %></td>
+                                  <td><%= l(event.start_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= l(event.end_date, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= event.appointments.count %></td>
+                                  <td><%=link_to "voir", event_path(event.id),  class: 'btn btn-sm btn-rounded btn-outline-secondary ml-1' %></td>
+                                </tr>
+
+                              <% end %>
+
+                            
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+
+                      <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-outline-secondary' %>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col p-3"><p><%=current_user.appointments.length%></p><h6 class="my-1 font-body">Participations</h6><br>
                 <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-participate-modal-xl">Voir</button>
                 <div class="modal fade bd-participate-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-xl">
@@ -79,10 +147,10 @@
                   </div>
                 </div>
               </div>
-                
-              <div class="col-6 p-3"><p><%=current_user.created_events.length%></p><h6 class="my-1 font-body">Évenements organisés</h6><br>
-                <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-event-modal-xl">Voir</button>
-                <div class="modal fade bd-event-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+
+              <div class="col p-3"><p><%=current_user.blogs.length%></p><h6 class="my-1 font-body">Articles postés</h6><br>
+                <button type="button" class="btn btn-outline-secondary btn-rounded m-2" data-toggle="modal" data-target=".bd-blog-modal-xl">Voir</button>
+                <div class="modal fade bd-blog-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-xl">
                     <div class="modal-content">
 
@@ -93,31 +161,28 @@
                           <table class="table">
                             <thead>
                               <tr>
-                                <th scope="col">Type</th>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Date de début</th>
-                                <th scope="col">Date de fin</th>
-                                <th scope="col">Participants</th>
+                                <th scope="col">Nom de l'article</th>
+                                <th scope="col">Crée le ...</th>
+                                <th scope="col">Like</th>
+                                <th scope="col">Commentaires</th>
                                 <th scope="col">Détails</th>
                               </tr>
                             </thead>
                             <tbody>
 
-                              <h2 class="font-weight-bold">Évenements organisés 🥕</h2>
+                              <h2 class="font-weight-bold">Articles postés 🥕</h2>
 
-                              <% current_user.created_events.each do |event|%>
+                              <% current_user.blogs.each do |blog|%>
 
                                 <tr>
-                                  <th scope="row"><%= event.event_type.name %></th>
-                                  <td><%= event.title %></td>
-                                  <td><%= l(event.start_date, format: "%-d %B %Y à %Hh %M") %></td>
-                                  <td><%= l(event.end_date, format: "%-d %B %Y à %Hh %M") %></td>
-                                  <td><%= event.appointments.count %></td>
-                                  <td><%=link_to "voir", event_path(event.id),  class: 'btn btn-sm btn-rounded btn-outline-secondary ml-1' %></td>
+                                  <th scope="row"><%= blog.title %></th>
+                                  <td><%= l(blog.updated_at, format: "%-d %B %Y à %Hh %M") %></td>
+                                  <td><%= blog.likes.length %></td>
+                                  <td><%= blog.blog_comments.length %></td>
+                                  <td><%=link_to "voir", blog_path(blog.id),  class: 'btn btn-sm btn-rounded btn-outline-secondary ml-1' %></td>
                                 </tr>
 
                               <% end %>
-
                             
                             </tbody>
                           </table>
@@ -125,7 +190,7 @@
                         </div>
                       </div>
 
-                      <%= link_to 'Créer un événement', new_event_path, class: 'btn btn-md btn-outline-secondary' %>
+                      <%= link_to 'Voir les articles', blogs_path, class: 'btn btn-md btn-outline-secondary' %>
                       
                     </div>
                   </div>

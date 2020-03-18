@@ -1,0 +1,20 @@
+<div class="card">
+  <h5 class="card-header">Laisser un commentaire <%= link_to image_tag(("comment.png"), class:"comment_icon float-right"), blog_path(@blog) %> <span class="float-right"><%= @blog.blog_comments.count %></span> </h5>
+  <div class="card-body"> 
+    <div class='container'>
+
+      <%= form_with(model: @blog_comment, remote: true) do |form| %>
+          <h6> Nouveau commentaire : </h6>
+          <p><%= form.text_area :text, class: 'form-control' %></p>
+          <% if user_signed_in? %>
+            <%= form.hidden_field :blog_id, value: @blog.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          <% end %>
+
+          <button type="submit" class="btn btn-success btn-rounded">Commenter</button>
+          
+      <% end %>
+
+    </div>
+  </div>
+</div>

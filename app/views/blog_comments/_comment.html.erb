@@ -1,0 +1,22 @@
+<div id="blog-comment-<%=comment.id%>">
+  <div class="card p-3">    
+    <div class="media">
+
+      <%= image_tag((comment.user.avatar), class:"d-flex mr-3 rounded-circle avatar") %>
+      <div class="media-body">
+        <li class="float-right">Posté le <%= l(comment.updated_at,format: "%-d %B %Y à %Hh %M") %></li>
+        <h5 class="mt-0 text-muted"><i><%=  "#{comment.user.first_name}" "#{comment.user.last_name}"%></i></h5>
+        <p><%= comment.text %></p>
+        
+        <% if user_signed_in? && comment.user == current_user || user_signed_in? && current_user.is_admin == true %>
+
+          <%= link_to 'Modifier', edit_blog_comment_path(comment, blog_comment: { text: comment.text, user_id: comment.user_id, blog_id: comment.blog_id }), class:"btn btn-sm bg-warning btn-rounded m-1" %>
+          <%= link_to 'Supprimer', comment, method: :delete, remote: true, class:"btn btn-sm bg-danger btn-rounded m-1" %>
+          
+        <% end %>
+      </div>
+
+
+    </div>
+  </div>
+ </div>

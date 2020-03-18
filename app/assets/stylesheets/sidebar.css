@@ -15,6 +15,7 @@
 #page-content {
   transition: all 500ms ease;
   margin-left: 250px;
+  min-height: 100%;
 }
 
 #page-content.active {
@@ -64,6 +65,21 @@
 }
 
 #sidebar .sidenav-link:hover {
+  transform: scale(1.15);
+  padding-left: 39px;
+}
+
+#sidebar .sidenav-link-active {
+  display: inline-block;
+  text-align: left;
+  width: 88%;
+  margin: 5px 0px 5px 0px;
+  transition: all 0.35s ease-in-out;
+  color: #181F49;
+  text-shadow: 0px 5px 5px rgba(255, 255, 255, 0);
+}
+
+#sidebar .sidenav-link-active:hover {
   transform: scale(1.15);
   padding-left: 39px;
 }

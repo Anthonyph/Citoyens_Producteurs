@@ -1,6 +1,7 @@
 footer {
   background-image: url(/assets/footer.jpg);
   background-size: cover;
+  bottom: 0%;
 }
 
 footer .row {

@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <% pre_like = @blog.likes.find { |like| like.user_id == current_user.id} %>
+<% end %>
+  <% if pre_like %>
+    <%= @blog.likes.count %><%= link_to image_tag(("like.png"), class:"like"), blog_like_path(@blog, pre_like), method: :delete, remote: true %>
+  <% else %>
+    <%= @blog.likes.count %><%= link_to image_tag(("unlike.png"), class:"like"), blog_likes_path(@blog), method: :post, remote: true %>
+<% end %>
