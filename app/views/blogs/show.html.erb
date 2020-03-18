@@ -41,7 +41,7 @@
                     <%= image_tag((comment.user.avatar), class:"d-flex mr-3 rounded-circle avatar") %>
                     <div class="media-body">
                       <li class="float-right">Posté le <%= l(comment.updated_at,format: "%-d %B %Y à %Hh %M") %></li>
-                      <h5 class="mt-0 text-muted"><i><%=  "#{comment.user.first_name}" "#{comment.user.last_name}"%></i></h5>
+                      <h5 class="mt-0 text-muted"><i><%=  "#{comment.user.first_name}" ' ' "#{comment.user.last_name}"%></i></h5>
                       <p><%= comment.text %></p>
                       
                       <% if user_signed_in? && comment.user == current_user || user_signed_in? && current_user.is_admin == true %>
