@@ -8,7 +8,7 @@ Augustin de Louvencourt, Leo Vanel, Thibault Mariolle, Lana Vizeu et Anthony Phi
 
 ## Liens : 
 
-[Lien Heroku](https://citoyens-producteurs.herokuapp.com/)
+[Lien Heroku](https://citoyensproducteurs.herokuapp.com/)
 
 [Lien Trello](https://trello.com/b/PKTqicI3/projet-final/)
 
